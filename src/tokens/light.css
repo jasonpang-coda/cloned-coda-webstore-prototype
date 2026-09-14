@@ -1,0 +1,75 @@
+/* ============================================================================
+   Light tokens — the single scene light every material/effect gradient traces
+   back to. See .claude/skills/material-fx (the scene-gate concept) and its
+   codm-mapping.md §10a, which found this repo's own gradients disagreeing on
+   light direction by up to 40° with no shared source of truth. Consumed by
+   materials.css (§13) and effects.css's shimmer variants (§12); NOT yet
+   retrofitted into --x-shadow-* / the static rim-border gradients audited in
+   §10a — that's a larger, separate follow-up (see the Scope note below).
+   ============================================================================ */
+
+:root {
+  /* Direction — 0deg = light from directly overhead/behind the viewer,
+     increasing clockwise. Baseline matches COD:M's own implied light (the
+     ~310-340deg family confirmed in .claude/skills/material-fx/codm-mapping.md
+     §10a) since COD:M is this repo's reference theme. A store whose key art
+     implies a different light direction overrides this in its own theme file,
+     the same way --x-hdr-glow/-hot/-bloom are already overridden per store. */
+  --x-light-azimuth: 315deg;
+
+  /* Elevation — how high the light sits above the page plane. Declared now so
+     the token name is reserved and themes can start tuning it, but it has NO
+     consumer yet in this pass (shadow penumbra/offset work is a separate,
+     larger follow-up — see Scope below). */
+  --x-light-elevation: 62deg;
+
+  /* Type/hardness — a small angular size describes a hard, point-like light
+     (tight, high-contrast highlights, sharp shadows); a large one describes a
+     soft, area light (broad, low-contrast highlights, soft shadows). This is
+     the "what kind of light" axis: it scales highlight WIDTH, not angle. */
+  --x-light-angular-size: 12deg;
+
+  /* Colour — what a highlight tints toward at grazing angles / what a matte
+     surface's ambient shimmer reads as. Aliased to the existing gloss-sheen
+     brand white rather than a new literal. */
+  --x-light-color: var(--x-gloss-sheen);
+
+  /* Ambient/fill — what a shadow takes on instead of pure black (a shadow is
+     the region that lost the *direct* light but kept the *indirect* light —
+     see physics.md §5). No consumer yet in this pass; declared for the same
+     forward-reservation reason as --x-light-elevation. */
+  --x-light-ambient-color: oklch(0.35 0.04 265);
+
+  /* Derived once, consumed by every linear-gradient standing in for a lit
+     surface (shimmer, and eventually rim borders). A CSS linear-gradient's
+     bright stop sits opposite its own angle value, so angle = azimuth + 180deg
+     recovers the gradient angle whose bright stop lands exactly at the
+     light's azimuth. At the default 315deg azimuth this resolves to 135deg —
+     the same number --x-gradient-thumb-gloss already hand-picked, confirming
+     the derivation points the right way. */
+  --x-light-gradient-angle: calc(var(--x-light-azimuth) + 180deg);
+}
+
+/* Codashop — first store to actually exercise the per-store override this
+   file's header comment invites. Only --x-light-ambient-color changes: the
+   reskin's neutral ramp is violet (hue ~305°) rather than the generic cool
+   blue baked into the :root default, and per physics.md §6 (radiosity) a
+   shadow/ambient region keeps the *indirect* light of the room it's in — on
+   Codashop that room is violet-black, not the reference store's blue-black.
+   Azimuth/elevation/angular-size/light-color are left inherited: there's no
+   key-art evidence Codashop's light comes from a different direction than
+   the repo's 315deg baseline, and the CTA/homepage-panel highlights should
+   stay neutral-white regardless (see codashop-mapping.md — the highlight
+   colour is a Fresnel/F0 question, not an ambient one). */
+[data-theme="codashop"] {
+  --x-light-ambient-color: oklch(0.30 0.05 305);
+}
+
+/* ── Scope note ───────────────────────────────────────────────────────────
+   This file wires light into the shimmer/material system only. It does NOT
+   retrofit --x-shadow-*, --x-sys-colour-surface-l1-border, or the static
+   --x-gradient-bestseller-* / -thumb-gloss gradients audited in
+   .claude/skills/material-fx/codm-mapping.md §10a — those already work today
+   and retuning them to derive from --x-light-azimuth/-elevation is a real,
+   separate follow-up (physics.md §5's penumbra-geometry rules would apply
+   directly to shadow offset/blur), not a silent side effect of this change. */

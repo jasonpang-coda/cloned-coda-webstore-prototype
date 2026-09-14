@@ -1,0 +1,764 @@
+/* ============================================================================
+   CODASHOP THEME  —  [data-theme="codashop"]
+   ----------------------------------------------------------------------------
+   Pure-dark reskin. Codashop was previously the repo's one LIGHT-card
+   exception (white cards on a dark page); this version drops that exception
+   — Codashop is now a dark-card store like every other store in this repo,
+   so the pure alias graph (system.css's dark `:root` defaults, seeded from
+   COD:M, the reference store) needs almost no surface/ink overrides anymore.
+   This file carries only what's genuinely brand-specific: colour seeds, the
+   spectrum ramps, the typography system, the radius/grid profile, and the
+   handful of semantic overrides the pure alias graph can't express on its
+   own (hyperlink polarity, on-brand text, final-price accent, the homepage-
+   only aggregator tokens).
+
+   Brand: electric violet primary CTA, volt-lime secondary (hyperlinks +
+   on-brand text), orchid tertiary (final-price accent). Neutral ramp is a
+   quiet violet-black family (hue ~305°) — matches the primary hue family so
+   shadows/ambient surfaces read as belonging to the same "room" as the
+   brand colour, not a generic grey.
+
+   See `.claude/skills/material-fx/codashop-mapping.md` for the physics
+   audit this reskin was checked against (scene-light ambient tuning,
+   material classification of the CTA pill / homepage promo panels).
+
+   Font: Inter (400/600/700/800) for both heading and body — already linked
+   in index.html for COD:M's body pairing, so no new @font-face or <link> is
+   needed here. --x-sys-font-condense stays 1 (Inter is not a condensed face).
+
+   Colours are authored in OKLCH (perceptual, HDR headroom). The 500 step of
+   each chromatic ramp aliases its seed (note: the negative ramp's seed sits
+   at -400, not -500 — preserved from the original export convention, not a
+   typo). Ramps are generated dark-first (950 = darkest, 50 = lightest, same
+   direction as every other store's ramps in this repo) so a store-wide grep
+   for "which step is dark" never has to special-case Codashop.
+   ============================================================================ */
+
+[data-theme="codashop"] {
+  /* ── Seeds ────────────────────────────────────────────────────────────── */
+  --x-ref-primary:         oklch(0.620 0.245 293);  /* #8B5CFF electric violet */
+  --x-ref-secondary:       oklch(0.905 0.195 116);  /* #D8F23E volt lime */
+  --x-ref-tertiary:        oklch(0.700 0.215 340);  /* #F45CC8 orchid */
+  --x-ref-status-positive: oklch(0.750 0.190 152);  /* #3ED47E mint green */
+  --x-ref-status-caution:  oklch(0.800 0.155 75);   /* #FFBE45 amber */
+  --x-ref-status-negative: oklch(0.640 0.220 25);   /* #FF5540 signal red */
+  --x-ref-neutral:         oklch(0.180 0.035 305);  /* #17091F violet-black page */
+
+  /* ── Spectrums ────────────────────────────────────────────────────────── */
+
+  /* primary (electric violet) */
+  --x-palette-primary-950: oklch(0.205 0.039 293);  /* #181327 */
+  --x-palette-primary-900: oklch(0.288 0.080 293);  /* #2D214E */
+  --x-palette-primary-800: oklch(0.371 0.122 293);  /* #442F79 */
+  --x-palette-primary-700: oklch(0.454 0.163 293);  /* #5D3CA6 */
+  --x-palette-primary-600: oklch(0.537 0.204 293);  /* #774AD6 */
+  --x-palette-primary-500: var(--x-ref-primary);      /* #8B5CFF */
+  --x-palette-primary-400: oklch(0.749 0.166 293);  /* #B397FF */
+  --x-palette-primary-300: oklch(0.849 0.104 293);  /* #D0C1FF */
+  --x-palette-primary-200: oklch(0.921 0.060 293);  /* #E6DEFF */
+  --x-palette-primary-100: oklch(0.964 0.033 293);  /* #F3EFFF */
+  --x-palette-primary-50:  oklch(0.978 0.024 293);  /* #F8F5FF */
+
+  /* secondary (volt lime) */
+  --x-palette-secondary-950: oklch(0.205 0.031 116);  /* #161908 */
+  --x-palette-secondary-900: oklch(0.345 0.064 116);  /* #383D12 */
+  --x-palette-secondary-800: oklch(0.485 0.097 116);  /* #5C651B */
+  --x-palette-secondary-700: oklch(0.625 0.129 116);  /* #849123 */
+  --x-palette-secondary-600: oklch(0.765 0.162 116);  /* #AEBE2B */
+  --x-palette-secondary-500: var(--x-ref-secondary);    /* #D8F23E */
+  --x-palette-secondary-400: oklch(0.931 0.132 116);  /* #E4F48A */
+  --x-palette-secondary-300: oklch(0.952 0.083 116);  /* #ECF7B7 */
+  --x-palette-secondary-200: oklch(0.966 0.048 116);  /* #F2F9D5 */
+  --x-palette-secondary-100: oklch(0.975 0.027 116);  /* #F5F9E5 */
+  --x-palette-secondary-50:  oklch(0.978 0.019 116);  /* #F7FAEB */
+
+  /* tertiary (orchid — final-price accent) */
+  --x-palette-tertiary-950: oklch(0.205 0.034 340);  /* #22111C */
+  --x-palette-tertiary-900: oklch(0.304 0.071 340);  /* #451F3A */
+  --x-palette-tertiary-800: oklch(0.403 0.107 340);  /* #6D2E5A */
+  --x-palette-tertiary-700: oklch(0.502 0.143 340);  /* #963D7D */
+  --x-palette-tertiary-600: oklch(0.601 0.179 340);  /* #C24CA1 */
+  --x-palette-tertiary-500: var(--x-ref-tertiary);     /* #F45CC8 */
+  --x-palette-tertiary-400: oklch(0.800 0.145 340);  /* #FB97DB */
+  --x-palette-tertiary-300: oklch(0.878 0.091 340);  /* #FFC0EA */
+  --x-palette-tertiary-200: oklch(0.934 0.052 340);  /* #FFDCF4 */
+  --x-palette-tertiary-100: oklch(0.967 0.029 340);  /* #FFEDFA */
+  --x-palette-tertiary-50:  oklch(0.978 0.021 340);  /* #FFF2FC */
+
+  /* status-positive (mint green) */
+  --x-palette-status-positive-950: oklch(0.205 0.030 152);  /* #0C1B10 */
+  --x-palette-status-positive-900: oklch(0.314 0.062 152);  /* #153A21 */
+  --x-palette-status-positive-800: oklch(0.423 0.094 152);  /* #1B5C33 */
+  --x-palette-status-positive-700: oklch(0.532 0.126 152);  /* #1F8046 */
+  --x-palette-status-positive-600: oklch(0.641 0.158 152);  /* #21A75A */
+  --x-palette-status-positive-500: var(--x-ref-status-positive); /* #3ED47E */
+  --x-palette-status-positive-400: oklch(0.832 0.128 152);  /* #84E09E */
+  --x-palette-status-positive-300: oklch(0.896 0.081 152);  /* #B5EDC3 */
+  --x-palette-status-positive-200: oklch(0.942 0.046 152);  /* #D6F5DD */
+  --x-palette-status-positive-100: oklch(0.969 0.026 152);  /* #E9FAEC */
+  --x-palette-status-positive-50:  oklch(0.978 0.019 152);  /* #EFFCF2 */
+
+  /* status-caution (amber) */
+  --x-palette-status-caution-950: oklch(0.205 0.025 75);  /* #1E160A */
+  --x-palette-status-caution-900: oklch(0.324 0.051 75);  /* #433013 */
+  --x-palette-status-caution-800: oklch(0.443 0.077 75);  /* #6C4D1C */
+  --x-palette-status-caution-700: oklch(0.562 0.103 75);  /* #986B23 */
+  --x-palette-status-caution-600: oklch(0.681 0.129 75);  /* #C78C2A */
+  --x-palette-status-caution-500: var(--x-ref-status-caution); /* #FFBE45 */
+  --x-palette-status-caution-400: oklch(0.864 0.105 75);  /* #FBC982 */
+  --x-palette-status-caution-300: oklch(0.914 0.066 75);  /* #FDDDB2 */
+  --x-palette-status-caution-200: oklch(0.950 0.038 75);  /* #FEEBD3 */
+  --x-palette-status-caution-100: oklch(0.971 0.021 75);  /* #FEF4E6 */
+  --x-palette-status-caution-50:  oklch(0.978 0.015 75);  /* #FEF7ED */
+
+  /* status-negative (signal red) — seed sits at -400, not -500 (matches the
+     original export convention, preserved through this reskin) */
+  --x-palette-status-negative-950: oklch(0.205 0.035 25);  /* #25100F */
+  --x-palette-status-negative-900: oklch(0.277 0.066 25);  /* #431917 */
+  --x-palette-status-negative-800: oklch(0.350 0.097 25);  /* #64211F */
+  --x-palette-status-negative-700: oklch(0.422 0.128 25);  /* #862928 */
+  --x-palette-status-negative-600: oklch(0.495 0.158 25);  /* #A93030 */
+  --x-palette-status-negative-500: oklch(0.568 0.189 25);  /* #CF3638 */
+  --x-palette-status-negative-400: var(--x-ref-status-negative); /* #FF5540 */
+  --x-palette-status-negative-300: oklch(0.788 0.133 25);  /* #FF968E */
+  --x-palette-status-negative-200: oklch(0.893 0.071 25);  /* #FFCAC4 */
+  --x-palette-status-negative-100: oklch(0.957 0.034 25);  /* #FFE9E5 */
+  --x-palette-status-negative-50:  oklch(0.978 0.022 25);  /* #FFF3F0 */
+
+  /* neutral — 1000 (violet-black void, the PAGE colour, == --x-ref-neutral) →
+     0 (white, used only for ink-inverse). Same direction as every other
+     store's neutral ramp now — no more light-card special case. */
+  --x-palette-neutral-1000: var(--x-ref-neutral);      /* #17091F */
+  --x-palette-neutral-950:  oklch(0.311 0.029 305);  /* #342D3D */
+  --x-palette-neutral-900:  oklch(0.431 0.024 305);  /* #534D5B */
+  --x-palette-neutral-800:  oklch(0.539 0.020 305);  /* #716C78 */
+  --x-palette-neutral-700:  oklch(0.636 0.016 305);  /* #8D8993 */
+  --x-palette-neutral-600:  oklch(0.721 0.012 305);  /* #A6A3AB */
+  --x-palette-neutral-500:  oklch(0.795 0.009 305);  /* #BDBBC1 */
+  --x-palette-neutral-400:  oklch(0.858 0.006 305);  /* #D1CFD3 */
+  --x-palette-neutral-300:  oklch(0.909 0.004 305);  /* #E1E0E3 */
+  --x-palette-neutral-200:  oklch(0.949 0.002 305);  /* #EEEEEF */
+  --x-palette-neutral-100:  oklch(0.977 0.001 305);  /* #F8F7F8 */
+  --x-palette-neutral-50:   oklch(0.994 0.000 305);  /* #FDFDFD */
+  --x-palette-neutral-0:    oklch(1.000 0.000 305);  /* #FFFFFF */
+
+  /* ── Typography ─────────────────────────────────────────────────────────
+     Untouched by the reskin — Inter for both faces, already linked in
+     index.html. Weights/sizes/letter-spacing/line-height converted from the
+     original export's raw values (weights were emitted in "px" by a Figma
+     export bug; letter-spacing and line-height were emitted in %; both are
+     unitless/em here as the repo's token contract requires). */
+  --x-sys-font-family-heading: 'Inter', system-ui, sans-serif;
+  --x-sys-font-family-body:    'Inter', system-ui, sans-serif;
+
+  --x-sys-weight-extra-bold: 800;
+  --x-sys-weight-bold:       700;
+  --x-sys-weight-semibold:   600;
+  --x-sys-weight-regular:    400;
+
+  --x-sys-size-h1: 28px;
+  --x-sys-size-h2: 24px;
+  --x-sys-size-h3: 22px;
+  --x-sys-size-h4: 20px;
+  --x-sys-size-h5: 18px;
+  --x-sys-size-h6: 16px;
+  --x-sys-size-h7: 14px;
+  --x-sys-size-body-l:    16px;
+  --x-sys-size-body-main: 14px;
+  --x-sys-size-body-s:    12px;
+  --x-sys-size-body-xs:   10px;
+
+  --x-sys-letter-spacing-tight:  -0.005em;
+  --x-sys-letter-spacing-narrow: -0.002em;
+  --x-sys-letter-spacing-main:    0.005em;
+  --x-sys-letter-spacing-loose:   0.01em;
+  --x-sys-letter-spacing-wide:    0.01em;
+
+  --x-sys-line-height-main:  1.2;
+  --x-sys-line-height-loose: 1.35;
+  --x-sys-line-height-wide:  1.5;
+
+  --x-sys-font-condense: 1;
+}
+
+/* ── Semantic OVERRIDES ────────────────────────────────────────────────────
+   Codashop is now a dark-card store like every other store in this repo, so
+   the L1/L2/L3 elevation surfaces, the ink ramp, and the SKU-card/input-
+   disabled interactive states are NO LONGER overridden here — they inherit
+   system.css's dark `:root` defaults directly, same as COD:M. What remains
+   below is genuinely brand-specific: it must still be set from
+   html[data-theme] (specificity 0,1,1) to beat :root (0,1,0) regardless of
+   source order — see web-store-tokens §3. */
+html[data-theme="codashop"] {
+  /* Chrome — the navbar stays a fixed dark panel regardless of card colour
+     (matches the Figma reference's dark top bar). Override the semantic
+     directly rather than re-pointing --x-sys-colour-surface-inverse (which
+     other components rely on resolving to a LIGHT surface on this dark
+     theme, e.g. an inverse chip on the page). */
+  --x-bg-navbar:     var(--x-palette-neutral-1000);
+  --x-border-navbar: var(--x-sys-colour-neutral-strong);
+
+  /* Card border — repo default (semantics.css) aliases --sys-colour-neutral-
+     soft, an OPAQUE mid-lightness neutral (palette-neutral-900). COD:M
+     overrides this to a translucent white hairline (8% alpha) for exactly
+     this reason; Codashop never had — so every --bg-card-default consumer
+     (.catalog-card, StepCard.vue's Enter-Gamer-ID/Select-Payment/Zip-Code/
+     Enter-Details panels) rendered a comparatively bright, fully-opaque
+     border. Stacked vertically with small gaps between panels, several
+     independently-bordered boxes sharing the same left margin read as one
+     broken vertical line down the page rather than individual card edges —
+     the reported "border in the middle of nowhere". Same hairline treatment
+     as COD:M, tinted to the violet neutral ramp instead of pure white. */
+  --x-border-card-default: oklch(1 0 0 / 0.08);
+
+  /* Hyperlink family — default/hover/pressed point at the volt-lime ramp
+     (reads on both the dark page and dark cards now, no more white-card
+     exception); inverse points at violet, for use on lime surfaces (e.g.
+     the homepage ribbon). Repointing the sys alias-roles (not the semantic)
+     per web-store-tokens §2 — system.css's default direction (hyperlink =
+     primary) is backwards for Codashop's brand, which uses primary as the
+     CTA colour and secondary as the link colour. */
+  --x-sys-colour-hyperlink-main:    var(--x-sys-colour-secondary-main);
+  --x-sys-colour-hyperlink-strong:  var(--x-sys-colour-secondary-strong);
+  --x-sys-colour-hyperlink-heavy:   var(--x-sys-colour-secondary-heavy);
+  --x-sys-colour-hyperlink-inverse: var(--x-sys-colour-primary-main);
+
+  /* Export specifies volt-lime text on the violet CTA pill (e.g. the
+     navbar's filled Sign In pill) — the repo default (ink-inverse, near-
+     white) has weak contrast against a mid-lightness violet fill; lime
+     reads clean. See codashop-mapping.md for the Fresnel note: this is a
+     brand colour choice on a flat fill, not a specular claim — no gloss
+     highlight should ever tint to this lime, only to neutral white/violet
+     per the CTA's actual material (gloss plastic, per material-fx). */
+  --x-text-on-primary: var(--x-sys-colour-secondary-main);
+
+  --x-text-final-price: var(--x-sys-colour-tertiary-heavy);
+  --x-bg-info:          var(--x-sys-colour-fill-main-strong);
+
+  /* Radius profile — repo clamps --sys-radius-{m,l,xl,xxl} all to 12px; the
+     export wants a rising 12/16/24/32 scale, and Codashop's controls are
+     pill-shaped (repo's --x-radius-control-full otherwise aliases to a
+     non-round 2px — the same trap FCM had to fix). Untouched by the reskin. */
+  --x-sys-radius-l:   16px;
+  --x-sys-radius-xl:  24px;
+  --x-sys-radius-xxl: 32px;
+
+  --x-radius-control-xs:    var(--x-sys-radius-xxs);
+  --x-radius-control-s:     var(--x-sys-radius-xs);
+  --x-radius-control-full:  var(--x-sys-radius-full);
+  --x-radius-input-s:       var(--x-sys-radius-xs);
+  --x-radius-input-m:       var(--x-sys-radius-s);
+  --x-radius-container-xs:  var(--x-sys-radius-xs);
+  --x-radius-container-s:   var(--x-sys-radius-s);
+  --x-radius-container-m:   var(--x-sys-radius-m);
+  --x-radius-container-l:   var(--x-sys-radius-l);
+  --x-radius-thumbnail-xs:  var(--x-sys-radius-xs);
+  --x-radius-thumbnail-s:   var(--x-sys-radius-s);
+  --x-radius-thumbnail-m:   var(--x-sys-radius-m);
+  --x-radius-badge-s:       var(--x-sys-radius-xs);
+  --x-radius-badge-full:    var(--x-sys-radius-full);
+
+  /* Grid gutters/margins at L — Codashop's own 1280px/12-col/12px-gutter/
+     16px-margin grid, distinct from the repo's default 16px/16px L profile.
+     Untouched by the reskin. */
+  --x-gap-grid-gutter-l: var(--x-sys-space-main);
+  --x-gap-grid-margin-l: 16px;
+
+  /* Effect colours — glow/shadow accents used by rarity/border-glow FX.
+     Formulas unchanged from the original file; they resolve to the new
+     violet/lime/orchid palette automatically since they alias the seed and
+     palette tokens above, not a raw literal. */
+  --x-sys-effect-glow-primary:     var(--x-ref-primary);
+  --x-sys-effect-glow-secondary:   var(--x-ref-secondary);
+  --x-sys-effect-glow-tertiary:    var(--x-ref-tertiary);
+  --x-sys-effect-glow-neutral:     var(--x-palette-neutral-500);
+  --x-sys-effect-glow-positive:    var(--x-ref-status-positive);
+  --x-sys-effect-glow-caution:     var(--x-ref-status-caution);
+  --x-sys-effect-glow-negative:    var(--x-ref-status-negative);
+  --x-sys-effect-shadow-primary:   var(--x-palette-primary-950);
+  --x-sys-effect-shadow-secondary: var(--x-palette-secondary-950);
+  --x-sys-effect-shadow-tertiary:  var(--x-palette-tertiary-950);
+  --x-sys-effect-shadow-neutral:   var(--x-ref-neutral);
+  --x-sys-effect-shadow-positive:  var(--x-palette-status-positive-950);
+  --x-sys-effect-shadow-caution:   var(--x-palette-status-caution-950);
+  --x-sys-effect-shadow-negative:  var(--x-palette-status-negative-950);
+
+  /* Aggregator homepage (config.home) — Codashop only, so these live here
+     rather than extensions.css. Formulas unchanged from the original file
+     (composed from palette steps, never raw literals); they resolve to the
+     new palette automatically. See codashop-mapping.md — these are flat
+     brand-colour fills, not specular highlights, so leaving them as plain
+     linear/radial gradients is physically fine as-is; only a future sweep
+     layered on top would need to derive from the scene light. */
+  --x-gradient-home-ribbon: linear-gradient(135deg, var(--x-palette-secondary-500), var(--x-palette-tertiary-500));
+  --x-gradient-home-tile-scrim: linear-gradient(
+    to top,
+    var(--x-palette-neutral-1000) 0%,
+    color-mix(in oklch, var(--x-palette-neutral-1000) 55%, transparent) 32%,
+    transparent 62%
+  );
+  --x-gradient-home-payments: linear-gradient(135deg, var(--x-palette-tertiary-500), var(--x-palette-tertiary-800));
+  --x-glow-home-payments: radial-gradient(circle, var(--x-palette-tertiary-500), transparent 70%);
+  --x-gradient-home-spotlight: linear-gradient(135deg, var(--x-palette-primary-500), var(--x-palette-primary-800));
+  --x-glow-home-spotlight: radial-gradient(circle, var(--x-palette-primary-500), transparent 70%);
+  --x-home-step-ink-1: var(--x-palette-primary-400);
+  --x-home-step-ink-2: var(--x-palette-primary-500);
+  --x-home-step-ink-3: var(--x-palette-primary-600);
+  --x-tint-home-fold-1: color-mix(in oklch, var(--x-home-step-ink-1) 28%, transparent);
+  --x-tint-home-fold-2: color-mix(in oklch, var(--x-home-step-ink-2) 36%, transparent);
+  --x-tint-home-fold-3: color-mix(in oklch, var(--x-home-step-ink-3) 45%, transparent);
+  --x-wash-home-step-1: linear-gradient(var(--x-tint-home-fold-1), var(--x-tint-home-fold-1));
+  --x-wash-home-step-2: linear-gradient(var(--x-tint-home-fold-2), var(--x-tint-home-fold-2));
+  --x-wash-home-step-3: linear-gradient(var(--x-tint-home-fold-3), var(--x-tint-home-fold-3));
+
+  /* HDR glow trio — drives the SKU card selected/hover glow
+     (--x-fx-glow-selected/-hover in extensions.css) and the bestseller
+     comet border/bloom. Previously undefined here, so every one of those
+     consumers fell through to the store-agnostic default in motion-sku.css
+     — an arbitrary amber with no relation to Codashop's violet, which is
+     why the selected card showed a yellow glow against its violet border.
+     Aliased to the primary ramp, same pattern as every other store. */
+  --x-hdr-glow:  var(--x-palette-primary-500);
+  --x-hdr-hot:   var(--x-palette-primary-200);
+  --x-hdr-bloom: var(--x-palette-primary-700);
+
+  /* SKU card material pilot (config.skuCard.materialExploration,
+     SkuCard.vue's .sku-card--{metal,plastic,carbonFibre}) — extension-tier
+     tokens (--x-fx- naming, per material-fx/codm-mapping.md "where new FX
+     tokens belong") so the component never reads a --palette-* step
+     directly. Deliberately RESTRAINED "suggested material" finishes, not
+     literal material-fx simulations — see codashop-mapping.md for the full
+     rationale (carbon fibre in particular drops the physically-mandated
+     woven-twill pattern; too busy under SKU price/bonus text). All three
+     share one shape: a full-surface fill (a narrow lightness band around
+     Codashop's own dark violet card, not a generic material colour), a
+     thin edge, and ONE highlight cue — static for metal/carbon (no
+     travelling comet: a satin or dark-composite surface has no discrete
+     specular lobe to animate, materials.md §Metal-matte/§Carbon-fibre),
+     animated only for plastic (the one material with a real, if weak,
+     travelling white highlight, materials.md §Plastic-gloss). */
+
+  /* Metal — satin, not chrome. Narrow L range (~0.19–0.42) so it stays a
+     dark violet surface, never a bright mirror; text stays legible. */
+  --x-fx-metal-fill: linear-gradient(
+    160deg,
+    oklch(0.40 0.085 293) 0%,
+    oklch(0.27 0.065 293) 55%,
+    oklch(0.19 0.045 293) 100%
+  );
+  --x-fx-metal-sheen: radial-gradient(120% 90% at 25% 0%, oklch(1 0 0 / 0.10), transparent 55%);
+  --x-fx-metal-edge: color-mix(in oklch, var(--x-palette-primary-500) 55%, transparent);
+
+  /* Plastic — gloss dielectric, flat saturated pigment (materials.md:
+     "strong, saturated diffuse colour dominates" — no directional gradient,
+     unlike metal). Sheen is the ONE travelling highlight in the set — tight,
+     weak, neutral-white, never tinted to the fill (materials.md's plastic-
+     vs-metal tell). Angle traces the shared scene light. */
+  /* linear-gradient(colour, colour), not a flat colour literal — this token
+     also feeds --x-bg-card-default (see the [data-sku-material] block
+     below), which several consumers (PcCard.vue) set via `background-image`
+     rather than `background`; background-image silently drops a plain
+     colour value (invalid <image>), same trap PcCard's own --bg-card-
+     selected comment already flags. A 2-stop same-colour gradient is a
+     valid <image> everywhere a flat colour would only work in some places. */
+  --x-fx-plastic-fill: linear-gradient(oklch(0.26 0.07 293), oklch(0.26 0.07 293));
+  --x-fx-plastic-edge: color-mix(in oklch, var(--x-palette-primary-400) 40%, transparent);
+  --x-fx-plastic-sheen: linear-gradient(
+    var(--x-light-gradient-angle),
+    transparent 0%, transparent 30%,
+    oklch(1 0 0 / 0.16) 46%,
+    oklch(1 0 0 / 0.30) 50%,
+    oklch(1 0 0 / 0.16) 54%,
+    transparent 70%, transparent 100%
+  );
+
+  /* Carbon fibre — dark technical surface, no weave. Darkest of the three
+     (near-black per materials.md's "not pure black" tell), but with enough
+     chroma to read as Codashop's own violet, not a generic charcoal grey —
+     the first pass's chroma (0.012) was so low it looked like plain dark
+     neutral rather than a branded finish, matching --x-ref-neutral's own
+     hue/chroma ratio (oklch(0.180 0.035 305)) but a touch darker to stay
+     the darkest of the three finishes. Edge now reads from the primary
+     ramp (like metal/plastic) instead of the neutral ramp, for the same
+     reason. ONE soft static diagonal highlight — kept neutral-white
+     (materials.md: the clearcoat lobe never tints to the base colour,
+     brand or otherwise) — stands in for the material's anisotropic
+     character, nowhere near as busy as the literal twill pattern this
+     replaces. */
+  /* linear-gradient(colour, colour), not a flat colour literal — same
+     background-image-drops-flat-colours reason as --x-fx-plastic-fill
+     above (this token also feeds --x-bg-card-default). */
+  --x-fx-carbon-fill: linear-gradient(oklch(0.15 0.04 305), oklch(0.15 0.04 305));
+  --x-fx-carbon-sheen: linear-gradient(
+    135deg,
+    transparent 30%,
+    oklch(1 0 0 / 0.05) 48%,
+    oklch(1 0 0 / 0.05) 54%,
+    transparent 72%
+  );
+  --x-fx-carbon-edge: color-mix(in oklch, var(--x-palette-primary-600) 45%, transparent);
+}
+
+/* ── Home Blob variant — parent container (App.vue sets [data-home-layout]
+   on <html>, mirroring [data-theme]/[data-sku-material]) ───────────────────
+   Colour set for the third `homepageLayout` option ("Blob — acrylic organic
+   shapes", useFeatureFlags.js), scoped entirely to this attribute so it can
+   never bleed into Standard/Visual or any non-homepage surface. "Hue
+   separation set C": purple primary (300°), cyan-teal secondary (195°),
+   amber-gold tertiary (75°), magenta-violet neutral (320°) — a deliberately
+   DIFFERENT palette from Codashop's own violet/lime/orchid theme above, not
+   a retune of it. Full 11-step ramps given verbatim (values authored
+   upstream, not derived) even though this pilot only currently consumes the
+   -500/-300 steps, so future Blob-variant components have the rest of the
+   ramp already in place rather than growing it piecemeal.
+   Radius tokens match the Figma export's exact pixel values (cards/images
+   noticeably more rounded than Codashop's own --x-sys-radius-* profile —
+   that's the "100% corner smoothing" the design calls for); corner-shape is
+   the progressive-enhancement squircle curve on top of that fallback arc,
+   consumed directly by the Blob components' CSS (`corner-shape:
+   var(--x-corner-shape-home-blob)`), a no-op wherever the property isn't
+   recognised (Safari/Firefox as of 2026 — see the material-fx skill's
+   css-ceiling.md). */
+html[data-theme="codashop"][data-home-layout="blob"] {
+  /* primary (purple) */
+  --x-palette-home-blob-primary-950: oklch(0.180 0.115 300);  /* #100060 */
+  --x-palette-home-blob-primary-900: oklch(0.240 0.170 300);  /* #180080 */
+  --x-palette-home-blob-primary-800: oklch(0.310 0.195 300);  /* #2200A0 */
+  --x-palette-home-blob-primary-700: oklch(0.370 0.208 300);  /* #2C00B4 */
+  --x-palette-home-blob-primary-600: oklch(0.440 0.210 300);  /* #4000AA */
+  --x-palette-home-blob-primary-500: oklch(0.510 0.195 300);  /* #5420B4 */
+  --x-palette-home-blob-primary-400: oklch(0.580 0.170 300);  /* #6838C0 */
+  --x-palette-home-blob-primary-300: oklch(0.660 0.140 300);  /* #8054CC */
+  --x-palette-home-blob-primary-200: oklch(0.740 0.100 300);  /* #9870D8 */
+  --x-palette-home-blob-primary-100: oklch(0.840 0.055 300);  /* #B894E4 */
+  --x-palette-home-blob-primary-50:  oklch(0.920 0.028 300);  /* #D4B8F0 */
+  --x-palette-home-blob-primary-0:   oklch(0.970 0.012 300);  /* #ECD8F8 */
+
+  /* secondary (cyan-teal) */
+  --x-palette-home-blob-secondary-950: oklch(0.160 0.040 195);  /* #001A20 */
+  --x-palette-home-blob-secondary-900: oklch(0.360 0.080 195);  /* #004850 */
+  --x-palette-home-blob-secondary-800: oklch(0.460 0.100 195);  /* #006268 */
+  --x-palette-home-blob-secondary-700: oklch(0.550 0.115 195);  /* #007C80 */
+  --x-palette-home-blob-secondary-600: oklch(0.640 0.125 195);  /* #009898 */
+  --x-palette-home-blob-secondary-500: oklch(0.720 0.130 195);  /* #1CB0AA */
+  --x-palette-home-blob-secondary-400: oklch(0.800 0.125 195);  /* #38C8BE */
+  --x-palette-home-blob-secondary-300: oklch(0.860 0.110 195);  /* #58DACC */
+  --x-palette-home-blob-secondary-200: oklch(0.905 0.090 195);  /* #80E8DA */
+  --x-palette-home-blob-secondary-100: oklch(0.940 0.065 195);  /* #A8F2E6 */
+  --x-palette-home-blob-secondary-50:  oklch(0.970 0.035 195);  /* #D0FAF0 */
+  --x-palette-home-blob-secondary-0:   oklch(0.990 0.012 195);  /* #ECFEF8 */
+
+  /* tertiary (amber-gold) */
+  --x-palette-home-blob-tertiary-950: oklch(0.180 0.060 75);  /* #200E00 */
+  --x-palette-home-blob-tertiary-900: oklch(0.360 0.108 75);  /* #583C00 */
+  --x-palette-home-blob-tertiary-800: oklch(0.440 0.128 75);  /* #765408 */
+  --x-palette-home-blob-tertiary-700: oklch(0.520 0.140 75);  /* #946C14 */
+  --x-palette-home-blob-tertiary-600: oklch(0.600 0.148 75);  /* #B28420 */
+  --x-palette-home-blob-tertiary-500: oklch(0.680 0.152 75);  /* #CEA030 */
+  --x-palette-home-blob-tertiary-400: oklch(0.740 0.150 75);  /* #DEB238 */
+  --x-palette-home-blob-tertiary-300: oklch(0.800 0.148 75);  /* #EEC440 */
+  --x-palette-home-blob-tertiary-200: oklch(0.840 0.145 75);  /* #FFD050 */
+  --x-palette-home-blob-tertiary-100: oklch(0.910 0.105 75);  /* #FFE478 */
+  --x-palette-home-blob-tertiary-50:  oklch(0.955 0.055 75);  /* #FFF0A8 */
+  --x-palette-home-blob-tertiary-0:   oklch(0.985 0.022 75);  /* #FFF8D0 */
+
+  /* neutral (magenta-violet) */
+  --x-palette-home-blob-neutral-1000: oklch(0.098 0.050 320);  /* #080018 — deepest, page */
+  --x-palette-home-blob-neutral-950:  oklch(0.148 0.065 320);  /* #100028 */
+  --x-palette-home-blob-neutral-900:  oklch(0.208 0.075 320);  /* #1A0038 — ink main */
+  --x-palette-home-blob-neutral-800:  oklch(0.278 0.080 320);  /* #260048 */
+  --x-palette-home-blob-neutral-700:  oklch(0.358 0.078 320);  /* #381058 */
+  --x-palette-home-blob-neutral-600:  oklch(0.448 0.070 320);  /* #4C2268 — borders */
+  --x-palette-home-blob-neutral-500:  oklch(0.548 0.058 320);  /* #663880 */
+  --x-palette-home-blob-neutral-400:  oklch(0.658 0.045 320);  /* #84549C */
+  --x-palette-home-blob-neutral-300:  oklch(0.768 0.032 320);  /* #A874B8 */
+  --x-palette-home-blob-neutral-200:  oklch(0.858 0.022 320);  /* #C498D2 */
+  --x-palette-home-blob-neutral-100:  oklch(0.928 0.014 320);  /* #E0BEE4 */
+  --x-palette-home-blob-neutral-50:   oklch(0.964 0.008 320);  /* #F0E0F2 */
+  --x-palette-home-blob-neutral-0:    oklch(1.000 0.008 320);  /* #FFF8FC */
+
+  /* status-positive (fresh green) */
+  --x-palette-home-blob-status-positive-950: oklch(0.260 0.090 148); /* #003220 */
+  --x-palette-home-blob-status-positive-900: oklch(0.340 0.115 148); /* #004830 */
+  --x-palette-home-blob-status-positive-800: oklch(0.420 0.140 148); /* #006042 */
+  --x-palette-home-blob-status-positive-700: oklch(0.500 0.160 148); /* #007854 */
+  --x-palette-home-blob-status-positive-600: oklch(0.580 0.175 148); /* #0C9064 */
+  --x-palette-home-blob-status-positive-500: oklch(0.700 0.185 148); /* #2CC868 */
+  --x-palette-home-blob-status-positive-400: oklch(0.755 0.170 148); /* #40D878 */
+  --x-palette-home-blob-status-positive-300: oklch(0.805 0.148 148); /* #58E48A */
+  --x-palette-home-blob-status-positive-200: oklch(0.860 0.115 148); /* #74F0A0 */
+  --x-palette-home-blob-status-positive-100: oklch(0.925 0.065 148); /* #A0FCC0 */
+  --x-palette-home-blob-status-positive-50:  oklch(0.962 0.030 148); /* #C6FED6 */
+
+  /* status-caution (warm amber) */
+  --x-palette-home-blob-status-caution-950: oklch(0.280 0.085 82); /* #3C2600 */
+  --x-palette-home-blob-status-caution-900: oklch(0.360 0.108 82); /* #583E00 */
+  --x-palette-home-blob-status-caution-800: oklch(0.440 0.128 82); /* #765608 */
+  --x-palette-home-blob-status-caution-700: oklch(0.520 0.140 82); /* #946E14 */
+  --x-palette-home-blob-status-caution-600: oklch(0.600 0.148 82); /* #B28820 */
+  --x-palette-home-blob-status-caution-500: oklch(0.700 0.152 82); /* #CEA430 */
+  --x-palette-home-blob-status-caution-400: oklch(0.750 0.150 82); /* #DEB438 */
+  --x-palette-home-blob-status-caution-300: oklch(0.790 0.148 82); /* #E8C240 */
+  --x-palette-home-blob-status-caution-200: oklch(0.840 0.140 82); /* #F4D450 */
+  --x-palette-home-blob-status-caution-100: oklch(0.920 0.095 82); /* #FEE880 */
+  --x-palette-home-blob-status-caution-50:  oklch(0.960 0.048 82); /* #FFF4B0 */
+
+  /* status-negative (signal red) */
+  --x-palette-home-blob-status-negative-950: oklch(0.220 0.125 22); /* #2A0000 */
+  --x-palette-home-blob-status-negative-900: oklch(0.300 0.155 22); /* #420000 */
+  --x-palette-home-blob-status-negative-800: oklch(0.380 0.180 22); /* #5C0800 */
+  --x-palette-home-blob-status-negative-700: oklch(0.460 0.200 22); /* #781400 */
+  --x-palette-home-blob-status-negative-600: oklch(0.540 0.210 22); /* #962400 */
+  --x-palette-home-blob-status-negative-500: oklch(0.620 0.215 22); /* #EE3828 */
+  --x-palette-home-blob-status-negative-400: oklch(0.680 0.195 22); /* #F85848 */
+  --x-palette-home-blob-status-negative-300: oklch(0.740 0.170 22); /* #FF7870 */
+  --x-palette-home-blob-status-negative-200: oklch(0.800 0.135 22); /* #FF9890 */
+  --x-palette-home-blob-status-negative-100: oklch(0.900 0.070 22); /* #FFC8C0 */
+  --x-palette-home-blob-status-negative-50:  oklch(0.955 0.032 22); /* #FFE8E4 */
+
+  /* Blob fill per section — the exact hue-separated roles the Figma export's
+     3 blob shapes map onto: Publisher Spotlight = primary, Highlighted
+     Titles = secondary, Genres/Category = tertiary. 2 of 3 already matched
+     the Figma mock's blob colours exactly (secondary #1CB0AA, tertiary
+     #CEA030); Spotlight's mock blue (#4D6EFF) is superseded by this set's
+     own primary-500, since the mock predates this palette. */
+  --x-home-blob-fill-spotlight:  var(--x-palette-home-blob-primary-500);
+  --x-home-blob-fill-highlights: var(--x-palette-home-blob-secondary-500);
+  --x-home-blob-fill-genres:     var(--x-palette-home-blob-tertiary-500);
+  /* "Picked for you" has no Figma-mocked blob of its own (Figma only
+     designed 3 sections) — given the one unused hue in set C's status
+     trio so every blob section still reads as a distinct colour. */
+  --x-home-blob-fill-picked: var(--x-palette-home-blob-status-positive-500);
+
+  /* Card caption / hyperlink colour — every title caption in the Figma
+     export uses this same purple regardless of which section it's in. */
+  --x-home-blob-text-link: var(--x-palette-home-blob-primary-300); /* #8054CC */
+
+  /* Elastic hover curve — a stronger overshoot than this repo's shared
+     --x-motion-sys-ease-spring (cubic-bezier(0.34,1.56,0.64,1)), which read
+     as too subtle on the Highlighted Titles cards' large radius warp.
+     cubic-bezier(0.68,-0.55,0.27,1.55) is the classic "easeInOutBack"
+     curve — negative Y at the start plus >1 Y at the end gives a real
+     elastic snap. Scoped to this variant's own token rather than changing
+     the shared system spring (which other, non-blob motion also uses). */
+  --x-motion-home-blob-ease-elastic: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+  /* Elevation — the two drop-shadow effects the Figma export actually
+     defines (see the file's own capture notes): L1 for every card, L2 for
+     anything that floats above the page chrome (the section nav pill, and
+     — per this variant's own request — the app navbar). Both share the
+     same blur/spread; only the offset and opacity step up from L1 to L2. */
+  --x-shadow-home-blob-l1: 0 16px 64px 16px rgba(0, 0, 0, 0.25);
+  --x-shadow-home-blob-l2: 0 24px 64px 16px rgba(0, 0, 0, 0.32);
+
+  /* Radius profile — Figma's exported pixel values (see the file header
+     comment above this block for why these are much larger than Codashop's
+     own --x-sys-radius-* scale). */
+  --x-radius-home-blob-card:        64px;
+  --x-radius-home-blob-image-top:   48px;
+  --x-radius-home-blob-image-bottom: 56px;
+  --x-radius-home-blob-rail-card:        32px;
+  --x-radius-home-blob-rail-image-top:    20px;
+  --x-radius-home-blob-rail-image-bottom: 32px;
+  --x-radius-home-blob-pill: 999px;
+  /* Progressive enhancement only — engines that don't recognise
+     corner-shape ignore the whole declaration and keep the border-radius
+     arc above; no @supports gate needed (see file header comment). */
+  --x-corner-shape-home-blob: squircle;
+}
+
+/* ── Repoint the MAIN theme palette at the blob ramps ────────────────────
+   Everything above is scoped under new --x-palette-home-blob-* names so it
+   never touches Standard/Visual — but that also meant chrome shared across
+   every layout (NavBar, StoryCarousel, Footer) kept reading the ORIGINAL
+   Codashop palette (electric violet/volt-lime/orchid) even while Blob was
+   active, since none of them consume the home-blob-prefixed tokens.
+   Codashop's whole design system is built so every semantic colour token
+   (--x-bg-action-primary, --x-text-hyperlink-default, --x-bg-navbar, the
+   hero carousel's CTA/progress-bar colour, …) chains down to these SAME
+   --x-palette-{family}-{step} leaves (via system.css's --x-sys-colour-*
+   intermediate aliases) — so repointing just the leaves here, once, is
+   enough to make ALL of that chrome pick up the blob palette automatically
+   the moment this attribute is present, with no per-component edits.
+   Every step below is one Codashop's own theme actually defines (950→50 for
+   primary/secondary/tertiary/status; 1000→0 for neutral) — see the ramps
+   above this block for the source values. */
+html[data-theme="codashop"][data-home-layout="blob"] {
+  --x-ref-primary: var(--x-palette-home-blob-primary-500);
+  --x-ref-secondary: var(--x-palette-home-blob-secondary-500);
+  --x-ref-tertiary: var(--x-palette-home-blob-tertiary-500);
+  --x-ref-status-positive: var(--x-palette-home-blob-status-positive-500);
+  --x-ref-status-caution: var(--x-palette-home-blob-status-caution-500);
+  --x-ref-status-negative: var(--x-palette-home-blob-status-negative-500);
+  --x-ref-neutral: var(--x-palette-home-blob-neutral-1000);
+
+  --x-palette-primary-950: var(--x-palette-home-blob-primary-950);
+  --x-palette-primary-900: var(--x-palette-home-blob-primary-900);
+  --x-palette-primary-800: var(--x-palette-home-blob-primary-800);
+  --x-palette-primary-700: var(--x-palette-home-blob-primary-700);
+  --x-palette-primary-600: var(--x-palette-home-blob-primary-600);
+  --x-palette-primary-500: var(--x-palette-home-blob-primary-500);
+  --x-palette-primary-400: var(--x-palette-home-blob-primary-400);
+  --x-palette-primary-300: var(--x-palette-home-blob-primary-300);
+  --x-palette-primary-200: var(--x-palette-home-blob-primary-200);
+  --x-palette-primary-100: var(--x-palette-home-blob-primary-100);
+  --x-palette-primary-50:  var(--x-palette-home-blob-primary-50);
+
+  --x-palette-secondary-950: var(--x-palette-home-blob-secondary-950);
+  --x-palette-secondary-900: var(--x-palette-home-blob-secondary-900);
+  --x-palette-secondary-800: var(--x-palette-home-blob-secondary-800);
+  --x-palette-secondary-700: var(--x-palette-home-blob-secondary-700);
+  --x-palette-secondary-600: var(--x-palette-home-blob-secondary-600);
+  --x-palette-secondary-500: var(--x-palette-home-blob-secondary-500);
+  --x-palette-secondary-400: var(--x-palette-home-blob-secondary-400);
+  --x-palette-secondary-300: var(--x-palette-home-blob-secondary-300);
+  --x-palette-secondary-200: var(--x-palette-home-blob-secondary-200);
+  --x-palette-secondary-100: var(--x-palette-home-blob-secondary-100);
+  --x-palette-secondary-50:  var(--x-palette-home-blob-secondary-50);
+
+  --x-palette-tertiary-950: var(--x-palette-home-blob-tertiary-950);
+  --x-palette-tertiary-900: var(--x-palette-home-blob-tertiary-900);
+  --x-palette-tertiary-800: var(--x-palette-home-blob-tertiary-800);
+  --x-palette-tertiary-700: var(--x-palette-home-blob-tertiary-700);
+  --x-palette-tertiary-600: var(--x-palette-home-blob-tertiary-600);
+  --x-palette-tertiary-500: var(--x-palette-home-blob-tertiary-500);
+  --x-palette-tertiary-400: var(--x-palette-home-blob-tertiary-400);
+  --x-palette-tertiary-300: var(--x-palette-home-blob-tertiary-300);
+  --x-palette-tertiary-200: var(--x-palette-home-blob-tertiary-200);
+  --x-palette-tertiary-100: var(--x-palette-home-blob-tertiary-100);
+  --x-palette-tertiary-50:  var(--x-palette-home-blob-tertiary-50);
+
+  --x-palette-status-positive-950: var(--x-palette-home-blob-status-positive-950);
+  --x-palette-status-positive-900: var(--x-palette-home-blob-status-positive-900);
+  --x-palette-status-positive-800: var(--x-palette-home-blob-status-positive-800);
+  --x-palette-status-positive-700: var(--x-palette-home-blob-status-positive-700);
+  --x-palette-status-positive-600: var(--x-palette-home-blob-status-positive-600);
+  --x-palette-status-positive-500: var(--x-palette-home-blob-status-positive-500);
+  --x-palette-status-positive-400: var(--x-palette-home-blob-status-positive-400);
+  --x-palette-status-positive-300: var(--x-palette-home-blob-status-positive-300);
+  --x-palette-status-positive-200: var(--x-palette-home-blob-status-positive-200);
+  --x-palette-status-positive-100: var(--x-palette-home-blob-status-positive-100);
+  --x-palette-status-positive-50:  var(--x-palette-home-blob-status-positive-50);
+
+  --x-palette-status-caution-950: var(--x-palette-home-blob-status-caution-950);
+  --x-palette-status-caution-900: var(--x-palette-home-blob-status-caution-900);
+  --x-palette-status-caution-800: var(--x-palette-home-blob-status-caution-800);
+  --x-palette-status-caution-700: var(--x-palette-home-blob-status-caution-700);
+  --x-palette-status-caution-600: var(--x-palette-home-blob-status-caution-600);
+  --x-palette-status-caution-500: var(--x-palette-home-blob-status-caution-500);
+  --x-palette-status-caution-400: var(--x-palette-home-blob-status-caution-400);
+  --x-palette-status-caution-300: var(--x-palette-home-blob-status-caution-300);
+  --x-palette-status-caution-200: var(--x-palette-home-blob-status-caution-200);
+  --x-palette-status-caution-100: var(--x-palette-home-blob-status-caution-100);
+  --x-palette-status-caution-50:  var(--x-palette-home-blob-status-caution-50);
+
+  --x-palette-status-negative-950: var(--x-palette-home-blob-status-negative-950);
+  --x-palette-status-negative-900: var(--x-palette-home-blob-status-negative-900);
+  --x-palette-status-negative-800: var(--x-palette-home-blob-status-negative-800);
+  --x-palette-status-negative-700: var(--x-palette-home-blob-status-negative-700);
+  --x-palette-status-negative-600: var(--x-palette-home-blob-status-negative-600);
+  --x-palette-status-negative-500: var(--x-palette-home-blob-status-negative-500);
+  --x-palette-status-negative-400: var(--x-palette-home-blob-status-negative-400);
+  --x-palette-status-negative-300: var(--x-palette-home-blob-status-negative-300);
+  --x-palette-status-negative-200: var(--x-palette-home-blob-status-negative-200);
+  --x-palette-status-negative-100: var(--x-palette-home-blob-status-negative-100);
+  --x-palette-status-negative-50:  var(--x-palette-home-blob-status-negative-50);
+
+  --x-palette-neutral-1000: var(--x-palette-home-blob-neutral-1000);
+  --x-palette-neutral-950:  var(--x-palette-home-blob-neutral-950);
+  --x-palette-neutral-900:  var(--x-palette-home-blob-neutral-900);
+  --x-palette-neutral-800:  var(--x-palette-home-blob-neutral-800);
+  --x-palette-neutral-700:  var(--x-palette-home-blob-neutral-700);
+  --x-palette-neutral-600:  var(--x-palette-home-blob-neutral-600);
+  --x-palette-neutral-500:  var(--x-palette-home-blob-neutral-500);
+  --x-palette-neutral-400:  var(--x-palette-home-blob-neutral-400);
+  --x-palette-neutral-300:  var(--x-palette-home-blob-neutral-300);
+  --x-palette-neutral-200:  var(--x-palette-home-blob-neutral-200);
+  --x-palette-neutral-100:  var(--x-palette-home-blob-neutral-100);
+  --x-palette-neutral-50:   var(--x-palette-home-blob-neutral-50);
+  --x-palette-neutral-0:    var(--x-palette-home-blob-neutral-0);
+}
+
+/* Codashop's own main theme (above, non-blob) deliberately repoints
+   hyperlink to secondary and text-on-primary to secondary too (its own
+   comment: "system.css's default direction (hyperlink = primary) is
+   backwards for Codashop's brand"). For the Blob variant specifically,
+   that's now wrong the OTHER way — the carousel CTA/progress bar reading
+   as secondary-teal looked like an unrelated "blue" against this palette,
+   and the Sign In button's on-primary text needs to be tertiary (gold),
+   not secondary, per this variant's own explicit colour-role mapping. So
+   under blob scope only: hyperlink reverts to the generic default
+   (primary — cancelling Codashop's own override, not changing the
+   generic system), and text-on-primary moves to tertiary. */
+html[data-theme="codashop"][data-home-layout="blob"] {
+  --x-sys-colour-hyperlink-main:    var(--x-sys-colour-primary-main);
+  --x-sys-colour-hyperlink-strong:  var(--x-sys-colour-primary-strong);
+  --x-sys-colour-hyperlink-heavy:   var(--x-sys-colour-primary-heavy);
+  --x-sys-colour-hyperlink-inverse: var(--x-sys-colour-tertiary-main);
+  --x-text-on-primary: var(--x-sys-colour-tertiary-main);
+}
+
+/* NavBar.vue's own .navbar root (plain global selector — Vue's scoped-style
+   data-v attribute doesn't block an external stylesheet's class selector
+   from matching) gets the same L2 elevation as the floating section-nav
+   pills, matching this variant's own request that navbar and section nav
+   share one elevation language. Scoped to the blob attribute so every other
+   layout/store's navbar is untouched. */
+html[data-theme="codashop"][data-home-layout="blob"] .navbar {
+  box-shadow: var(--x-shadow-home-blob-l2);
+}
+
+/* HDR boost — same `@media (dynamic-range: high)` pattern this repo's
+   --x-hdr-glow/-hot/-bloom triad already uses (motion-sku.css): redefine
+   the same custom properties with higher lightness/chroma so an HDR-
+   capable display renders visibly more vivid colour, while SDR displays
+   keep the plain oklch() values above untouched. Scoped to the 5 tokens
+   actually SEEN directly (the 4 blob fills + the caption/link colour) —
+   not every ramp step, since blindly boosting neutral/ink steps would
+   blow out text legibility rather than looking "HDR" (the codm-mapping.md
+   audit explicitly calls out boosting only genuine highlight/accent
+   colours, not backgrounds/ink, as the physically-correct move). */
+@media (dynamic-range: high) {
+  html[data-theme="codashop"][data-home-layout="blob"] {
+    --x-palette-home-blob-primary-500:            oklch(0.620 0.240 300);
+    --x-palette-home-blob-primary-300:             oklch(0.760 0.170 300);
+    --x-palette-home-blob-secondary-500:           oklch(0.840 0.160 195);
+    --x-palette-home-blob-tertiary-500:            oklch(0.800 0.190 75);
+    --x-palette-home-blob-status-positive-500:     oklch(0.820 0.220 148);
+  }
+}
+
+/* ── Material pilot — parent containers (App.vue sets [data-sku-material] on
+   <html>, mirroring [data-theme]) ──────────────────────────────────────────
+   The skuCardMaterial flag was originally wired to SkuCard.vue alone; every
+   OTHER bordered "card" on the page (.catalog-card, StepCard.vue's Enter-
+   Gamer-ID/Select-Payment/Zip-Code/Enter-Details panels, PcCard.vue's
+   payment-method buttons) kept the plain default look regardless of the
+   chosen material, which read as inconsistent — a mismatched surface next
+   to the SKU grid it's supposedly styling alongside. Fixed by retargeting
+   the SAME shared DS tokens these containers already consume
+   (--x-bg-card-default / --x-border-card-default / --x-border-sku-card-*)
+   at the --x-fx-* material tokens above, once per material, instead of
+   patching each component individually — every current and future
+   consumer of those tokens follows the chosen material for free. Doesn't
+   touch backdrop-filter/--x-blur-container: none of these containers use
+   blur today (unlike SkuCard's own glass default), so there's nothing to
+   turn off. */
+html[data-theme="codashop"][data-sku-material="metal"] {
+  --x-bg-card-default: var(--x-fx-metal-sheen), var(--x-fx-metal-fill);
+  --x-border-card-default: var(--x-fx-metal-edge);
+  --x-border-sku-card-default: var(--x-fx-metal-edge);
+  --x-border-sku-card-hover: var(--x-fx-metal-edge);
+}
+html[data-theme="codashop"][data-sku-material="plastic"] {
+  --x-bg-card-default: var(--x-fx-plastic-fill);
+  --x-border-card-default: var(--x-fx-plastic-edge);
+  --x-border-sku-card-default: var(--x-fx-plastic-edge);
+  --x-border-sku-card-hover: var(--x-fx-plastic-edge);
+}
+html[data-theme="codashop"][data-sku-material="carbonFibre"] {
+  --x-bg-card-default: var(--x-fx-carbon-sheen), var(--x-fx-carbon-fill);
+  --x-border-card-default: var(--x-fx-carbon-edge);
+  --x-border-sku-card-default: var(--x-fx-carbon-edge);
+  --x-border-sku-card-hover: var(--x-fx-carbon-edge);
+}

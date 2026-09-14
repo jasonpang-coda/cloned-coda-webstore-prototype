@@ -1,0 +1,26 @@
+/**
+ * Trust Bar Motion Tokens
+ * -----------------------
+ * Component-scoped motion tokens for TrustBar.vue (Codashop only). Compose
+ * the base primitives from motion.css, same convention as motion-sku.css.
+ *
+ * Usage:
+ *   transition: opacity var(--x-motion-trust-rotate-fade);
+ *   (interval read in JS: getComputedStyle(el).getPropertyValue('--x-motion-trust-rotate-interval'))
+ */
+
+:root {
+  /* Publisher-chip rotator: how long each chip pair holds before crossfading */
+  --x-motion-trust-rotate-interval: 2600ms;
+  /* Crossfade duration between chip pairs */
+  --x-motion-trust-rotate-fade: var(--x-motion-sys-duration-slow);
+
+  /* Mobile peek-carousel: slide transform + entrance. Duration-slower +
+     ease-decelerate reads calmer than duration-slow/-base — the card settles
+     into place gradually rather than snapping. */
+  --x-motion-trust-slide: var(--x-motion-sys-duration-slower) var(--x-motion-sys-ease-decelerate);
+  --x-motion-trust-enter: var(--x-motion-sys-duration-base) var(--x-motion-sys-ease-decelerate);
+  /* How long each card rests before auto-advancing — matches StoryCarousel's
+     own per-slide hold (--x-motion-sku-story) rather than a shorter, busier cadence. */
+  --x-motion-trust-carousel-interval: 5000ms;
+}

@@ -1,0 +1,9 @@
+# COD:M web store — handoff specs
+
+- [Download Banner — App Store / Google Play / PWA Install](/handoff/download-banner.md) — Site-wide "get the app" banner: heading/body, optional PWA-install CTA row, optional store badges — one bordered box, no standalone component.
+- [Locale Selector Sheets](/handoff/locale-selector-sheets.md) — Region & language picker sheets — searchable market list + flat language list.
+- [Payment Channel Sheet — Landscape](/handoff/payment-channel-sheet.md) — CheckoutStepBody/Footer's full-screen landscape layout (Figma 6060:3935): a 2-col grid (5fr:3fr) replacing the portrait bottom sheet, plus a promo-code field and the Boleto BR KYC form.
+- [PWA Install + Web Push](/handoff/pwa-web-push.md) — Install-to-home-screen (Android native prompt / iOS instruction sheet) and the post-install web-push opt-in, across 5 install surfaces and 4 general push surfaces (Gifts banner, story slide, Order Complete bar, nav drawer) — a task-gated 5th entry point (TaskGiftSheet) belongs to a separate reward-gift flow.
+- [SEO Value-Prop Block](/handoff/seo-block.md) — Heading/body + benefit grid + FAQ accordion, gated purely on strings.page.seo presence — currently ZZZ and Diablo Immortal only.
+- [SKU Card Family — Staggered Entrance (Loading) Animation](/handoff/sku-card-entrance-stagger.md) — Two-axis mount cascade (section base delay + per-card index stagger) shared by every SKU-shaped card. Pure opacity/transform — no colour or typography axis.
+- [Trust Bar — Codashop Trust Carousel Card](/handoff/trust-bar.md) — Four-card trust-signal row (partnerships, gamer count, delivery speed, payment methods). Codashop only. Self-scoped container query, drag-to-swipe carousel, publisher-logo crossfade rotator, count-up stats.

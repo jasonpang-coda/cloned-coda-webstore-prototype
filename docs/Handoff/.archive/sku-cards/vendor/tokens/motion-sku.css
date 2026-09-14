@@ -1,0 +1,92 @@
+/**
+ * SKU Card Motion Tokens
+ * ----------------------
+ * Component-scoped motion tokens for the CODM SKU Card 3.0.
+ * All values compose the base primitives from motion.css — changing
+ * a primitive (e.g. --x-motion-sys-ease-spring) updates all SKU tokens automatically.
+ *
+ * Usage:
+ *   transition: transform var(--x-motion-sku-hover);
+ *   transition: border-color var(--x-motion-sku-select);
+ *   animation: var(--motion-sku-badge-animation);
+ */
+
+:root {
+  /* ── Entrance / exit ─────────────────────────────────────────────────── */
+  /* Card slides up and fades in when the list mounts */
+  --x-motion-sku-enter: var(--x-motion-sys-duration-slow) var(--x-motion-sys-ease-decelerate);
+  /* Card fades out when removed */
+  --x-motion-sku-exit: var(--x-motion-sys-duration-exit) var(--x-motion-sys-ease-accelerate);
+
+  /* ── Interaction feedback ────────────────────────────────────────────── */
+  /* Hover-in: card rises with ease-out so the lift decelerates naturally */
+  --x-motion-sku-hover-in: 220ms var(--x-motion-sys-ease-decelerate);
+  /* Hover-out (return): snappier standard curve — feels settled, not sluggish */
+  --x-motion-sku-hover: var(--x-motion-sys-duration-fast) var(--x-motion-sys-ease-standard);
+  /* Press: quick scale-down (tap feedback) */
+  --x-motion-sku-press: 100ms var(--x-motion-sys-ease-standard);
+  --x-motion-sku-press-scale: 0.99;
+  /* Selected state: border colour transition */
+  --x-motion-sku-select: var(--x-motion-sys-duration-base) var(--x-motion-sys-ease-standard);
+
+  /* ── Badge ───────────────────────────────────────────────────────────── */
+  /* "Best Value" badge springs in with an overshoot pop */
+  --x-motion-sku-badge: var(--x-motion-sys-duration-slow) var(--x-motion-sys-ease-spring);
+
+  /* ── Price reveal ────────────────────────────────────────────────────── */
+  /* Price area fades/slides in after the card has entered (add a delay) */
+  --x-motion-sku-price-reveal: var(--x-motion-sys-duration-slow) var(--x-motion-sys-ease-decelerate);
+
+  /* ── List stagger ────────────────────────────────────────────────────── */
+  /* Increment per card index: calc(index * var(--x-motion-sku-stagger)) */
+  --x-motion-sku-stagger: var(--x-motion-sys-stagger-sm); /* 50ms per card */
+
+  /* ── Shimmer (best-value highlight) ─────────────────────────────────── */
+  /* Perpetual gloss sweep on the highest-value / best-value card */
+  --x-motion-sku-shimmer: var(--x-motion-shimmer-sweep); /* 3000ms */
+
+  /* ── Best-seller HDR glow / bloom ────────────────────────────────────── */
+  /* Bloom breathe period (soft light-bleed halo behind the hero card) */
+  --x-motion-sku-bloom: 3500ms;
+
+  /* ── Story slideshow ─────────────────────────────────────────────────── */
+  /* Per-slide auto-advance interval (Instagram-style segmented progress) */
+  --x-motion-sku-story: 5000ms;
+  /* Gentle crossfade duration when swapping slides */
+  --x-motion-sku-story-fade: 350ms;
+
+  /* ── Skeleton loader ─────────────────────────────────────────────────── */
+  /* Sweep period for the .fx-skeleton placeholder sheen (image loading state) */
+  --x-motion-sku-skeleton: 1400ms;
+
+  /* OKLCH glow colours — perceptually-uniform, vivid. On wide-gamut/HDR
+     displays these push beyond sRGB for a punchy "lit" look.
+     glow = warm gold, hot = near-white highlight, bloom = orange flare. */
+  --x-hdr-glow: oklch(0.82 0.20 75);
+  --x-hdr-hot:  oklch(0.97 0.16 95);
+  --x-hdr-bloom: oklch(0.72 0.23 55);
+}
+
+/* On HDR-capable displays, brighten the highlights past the SDR ceiling. */
+@media (dynamic-range: high) {
+  :root {
+    --x-hdr-glow: oklch(0.92 0.26 75);
+    --x-hdr-hot:  oklch(1 0.18 95);
+    --x-hdr-bloom: oklch(0.82 0.29 55);
+  }
+
+  /* Action yellow — COD:M only. L > 1 is above the sRGB white ceiling; on
+     P3/HDR panels this renders as a genuinely superluminant gold rather than
+     just a bright yellow, matching the HDR treatment of the best-seller glow
+     and COD:M's own yellow --x-ref-primary (#FFE700). This used to live at the
+     unscoped `:root` above, which meant every OTHER store's --x-bg-action-primary
+     (each a different brand colour — Codashop's purple, etc.) got silently
+     overridden to this same hardcoded gold on any HDR-capable display, e.g.
+     rendering Codashop's Sign In button as an unreadable yellow-on-yellow
+     pill. --x-hdr-glow/-hot/-bloom above stay unscoped since they're already a
+     per-theme-overridable system (see efootball.css/tdr.css/fcm.css/ygodl.css). */
+  html[data-theme="codm"] {
+    --x-text-hyperlink-inverse: oklch(1.03 0.25 97);
+    --x-bg-action-primary: oklch(1.03 0.25 97);
+  }
+}

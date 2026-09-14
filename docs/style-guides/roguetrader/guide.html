@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Warhammer 40,000: Rogue Trader — Style Guide v1.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Oswald:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0c0a0a;
+    --paper:#f3ead0;
+    --muted:#6d5d3f;
+    --accent:#72a846;
+    --accent2:#d1a974;
+    --gold:#d1a974;
+    --warp:#a1e967;
+    --font-display:'Cinzel',serif;
+    --font-head:'Oswald',sans-serif;
+    --font-body:'Open Sans',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#ddd;color:var(--ink);font-family:var(--font-body);font-size:14px;line-height:1.55}
+  p{max-width:68ch}
+  h1,h2,h3{line-height:1.15}
+  .page{
+    width:210mm;min-height:297mm;margin:8mm auto;
+    padding:16mm 18mm;background:var(--paper);
+    box-shadow:0 1mm 4mm rgba(0,0,0,.18);
+    page-break-after:always;position:relative;overflow:hidden
+  }
+  .page--dark{background:var(--ink);color:var(--paper)}
+  .page--accent{background:var(--accent);color:var(--ink)}
+  h1{font-family:var(--font-display);font-size:52px;line-height:.98;letter-spacing:.01em;margin-bottom:.3em;font-weight:900}
+  h2{font-family:var(--font-head);font-size:30px;margin-bottom:.5em;font-weight:700;text-transform:uppercase;letter-spacing:.02em}
+  h3{font-family:var(--font-head);font-size:18px;margin-bottom:.35em;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+  .eyebrow{font:600 10px/1 var(--font-head);letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .page--dark .eyebrow,.page--accent .eyebrow{color:var(--gold)}
+  .gold-title{background:linear-gradient(180deg,#f3e3b0,#d1a974 45%,#8a6e3f);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .chip{display:inline-block;padding:2px 7px;border-radius:3px;font:700 9px/1.6 var(--font-body);
+        letter-spacing:.1em;text-transform:uppercase;margin-left:6px;vertical-align:middle}
+  .chip--locked{background:#1a1a2e;color:#fff}
+  .chip--flex{background:#2d4a22;color:#fff}
+  .chip--system{background:#7a1f1f;color:#fff}
+  table.ref{width:100%;border-collapse:collapse;margin-top:5mm;font-size:11px}
+  table.ref th,table.ref td{border:1px solid rgba(0,0,0,.12);padding:5px 7px;text-align:left;vertical-align:top}
+  table.ref th{font:700 10px/1.3 var(--font-head);letter-spacing:.04em;background:rgba(0,0,0,.04);text-transform:uppercase}
+  table.ref td code,table.ref th code{font:10px/1.4 ui-monospace,monospace}
+  .page--dark table.ref th,.page--dark table.ref td{border-color:rgba(255,255,255,.18)}
+  .page--dark table.ref th{background:rgba(255,255,255,.06)}
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(42mm,1fr));gap:6mm;margin-top:6mm}
+  .swatch{border-radius:6px;overflow:hidden;border:1px solid rgba(0,0,0,.15)}
+  .swatch__chip{height:28mm}
+  .swatch__meta{padding:8px;font-size:11px;line-height:1.6;background:#fff}
+  .swatch__role{font-weight:700;font-size:12px;display:block;margin-bottom:2px;font-family:var(--font-head);text-transform:uppercase;letter-spacing:.04em}
+  .cascade{display:flex;flex-direction:column;gap:3mm;margin-top:5mm}
+  .tier{border-radius:6px;padding:4mm 5mm;display:flex;align-items:flex-start;gap:4mm}
+  .tier--locked{background:#1a1a2e;color:#fff}
+  .tier--flex{background:#2d4a22;color:#fff}
+  .tier__num{font:900 20px/1 var(--font-display);opacity:.4;min-width:12mm}
+  .tier__body{flex:1}
+  .tier__title{font:700 13px/1.2 var(--font-head);margin-bottom:3px;text-transform:uppercase}
+  .tier__tokens{font:11px/1.7 ui-monospace,monospace;opacity:.8}
+  .tier__tag{font:600 9px/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase;
+             padding:2px 6px;border-radius:3px;background:rgba(255,255,255,.15);
+             margin-left:auto;white-space:nowrap;align-self:center}
+  .anchor-rule{background:rgba(255,255,255,.08);border-radius:4px;padding:3mm 4mm;
+               font:11px/1.6 ui-monospace,monospace;margin-top:3mm}
+  .specimen{border-top:2px solid currentColor;padding-top:5mm;margin-top:5mm}
+  .specimen+.specimen{margin-top:6mm}
+  .specimen__label{font:600 10px/1 var(--font-head);letter-spacing:.15em;text-transform:uppercase;opacity:.55;margin-bottom:6px}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-top:5mm}
+  .card{border:1px solid rgba(0,0,0,.14);border-radius:8px;padding:5mm}
+  .page--dark .card{border-color:rgba(209,169,116,.35)}
+  .card b{display:block;font-size:13px;margin-bottom:4px;font-family:var(--font-head);text-transform:uppercase;letter-spacing:.02em}
+  .card p,.card ul{font-size:12px;opacity:.85}
+  .card ul{padding-left:1em}
+  .dodont{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-top:5mm}
+  .do{border-left:4px solid #1b8e3a;padding-left:4mm}
+  .dont{border-left:4px solid #c0392b;padding-left:4mm}
+  .do b,.dont b{font-size:12px;font-weight:700;display:block;margin-bottom:4px}
+  .do p,.dont p,.do ul,.dont ul{font-size:11px;opacity:.85}
+  .do ul,.dont ul{padding-left:1em}
+  .intent-card{border:1px solid rgba(0,0,0,.14);border-radius:8px;padding:5mm;margin-bottom:4mm}
+  .intent-card__feel{font-size:13px;font-style:italic;opacity:.75;margin-bottom:6px}
+  .intent-card__row{display:flex;gap:4mm;align-items:baseline;flex-wrap:wrap;margin-top:3px}
+  .intent-card__label{font:600 9px/1.4 var(--font-head);letter-spacing:.1em;text-transform:uppercase;min-width:24mm;opacity:.55}
+  .intent-card__val{font-size:11px}
+  .intent-card b{font-family:var(--font-head);text-transform:uppercase;font-size:14px}
+  .prompt{background:rgba(255,255,255,.08);color:var(--paper);border:1px solid rgba(209,169,116,.3);border-radius:6px;padding:5mm;
+          font:12px/1.6 ui-monospace,monospace;white-space:pre-wrap;margin-top:4mm}
+  .appendix pre{font-size:8px;line-height:1.4;overflow:hidden;white-space:pre-wrap;word-break:break-word}
+  img{max-width:100%;display:block}
+  .frame-demo{border:1px solid var(--gold);box-shadow:inset 0 0 0 3px rgba(209,169,116,.18);border-radius:6px;padding:8mm;text-align:center;margin-top:5mm}
+  @page{size:A4;margin:0}
+  @media print{
+    html,body{background:#fff}
+    .page{margin:0;box-shadow:none;width:100%;min-height:100vh;page-break-after:always}
+  }
+</style>
+</head>
+<body>
+
+<!-- ① COVER -->
+<section class="page page--dark" style="display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(180deg,#0c0a0a,#141213 60%,#19191b)">
+  <div class="eyebrow">Brand &amp; Webstore Style Guide · v1.0 · 2026</div>
+  <div style="text-align:center">
+    <img src="refs/RTlogo.png" alt="Warhammer 40,000: Rogue Trader logo" style="max-width:150mm;margin:0 auto 8mm">
+    <p style="max-width:150mm;font-size:15px;margin:0 auto;color:var(--gold)">Command your dynasty across the Koronus Expanse — gilded authority and gothic grandeur in the unending war of the 41st Millennium.</p>
+  </div>
+  <div style="font:600 10px/1.5 var(--font-head);letter-spacing:.15em;text-transform:uppercase;opacity:.5">Lock the brand · Free the store — a token-driven reskin spec for the multi-store webstore</div>
+</section>
+
+<!-- ② BRAND ESSENCE -->
+<section class="page page--dark">
+  <div class="eyebrow">01 · Brand Essence</div>
+  <h1 class="gold-title">GRIMDARK · IMPERIAL · ORNATE · BAROQUE · COMMANDING</h1>
+  <p style="max-width:135mm;margin-bottom:8mm">Rogue Trader's identity is one of <strong>gilded authority over an unforgiving void</strong>. Painterly grimdark realism meets baroque Imperial ornament: near-black backgrounds, gold filigree frames, inscriptional titling, and the cold green light of the warp. Everything reads weighty, ceremonial and commanding — the storefront of a dynasty, not a kiosk.</p>
+  <table class="ref">
+    <tr><th>Adjective</th><th>Visual evidence</th></tr>
+    <tr><td><strong>Grimdark</strong></td><td>Near-black void backgrounds (#0c0a0a–#19191b); desaturated cathedral environments in the key art.</td></tr>
+    <tr><td><strong>Imperial</strong></td><td>Aquila / sunburst medallion in the logo; gold inscriptional Roman titling.</td></tr>
+    <tr><td><strong>Ornate</strong></td><td>Thin gold double-hairline frames, corner fittings and centre-medallion dividers throughout the site UI.</td></tr>
+    <tr><td><strong>Baroque</strong></td><td>Layered metallic ornament, bronze trim, painterly grandeur over flat minimalism.</td></tr>
+    <tr><td><strong>Commanding</strong></td><td>Hero composition centres a Rogue Trader leading a retinue; deliberate, ceremonial pacing.</td></tr>
+  </table>
+</section>
+
+<!-- ③ LOGO -->
+<section class="page">
+  <div class="eyebrow">02 · Logo &amp; Clear Space</div>
+  <h2>Logo</h2>
+  <p style="margin-bottom:5mm">"ROGUE TRADER" set in a metallic gold <strong>inscriptional Roman titling</strong> face (Stevens Titling Pro; webstore proxy <em>Cinzel</em>), seated on a steel sunburst/aquila medallion, with "WARHAMMER 40,000" in a condensed sans lockup above. The mark is gold-on-steel over void black.</p>
+  <div style="background:#0c0a0a;border-radius:8px;padding:10mm;text-align:center"><img src="refs/RTlogo.png" alt="logo" style="max-width:130mm;margin:0 auto"></div>
+  <div class="dodont">
+    <div class="do"><b>✓ Approved use</b><ul>
+      <li>Gold/steel mark on void-black or darkened scrim.</li>
+      <li>Maintain clear space ≥ the height of the central medallion on all sides.</li>
+      <li>Minimum legible width ~32mm print / 180px screen.</li>
+      <li>Place over an isolation panel when on busy key-art.</li>
+    </ul></div>
+    <div class="dont"><b>✗ Misuse — never</b><ul>
+      <li>Recolour, flatten, or tint the gold/steel mark.</li>
+      <li>Place directly on high-detail painterly art without a scrim.</li>
+      <li>Stretch, rotate, or rearrange the WH40K / Rogue Trader lockup.</li>
+      <li>Add drop shadows or outer glows to the mark.</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- ④ COLOUR -->
+<section class="page">
+  <div class="eyebrow">03 · Colour System</div>
+  <h2>Palette</h2>
+  <p style="font-size:12px;opacity:.75">Sampled directly from the production stylesheets. Green is the brand's CTA colour; gold/parchment and warp-green are the ornament and VFX accents; the foundation is void-black.</p>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch__chip" style="background:#72a846"></div><div class="swatch__meta"><span class="swatch__role">Primary</span>#72a846<br>rgb(114,168,70)<br><span style="font-size:10px;opacity:.65">Military-green CTA, active states</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#d1a974"></div><div class="swatch__meta"><span class="swatch__role">Secondary</span>#d1a974<br>rgb(209,169,116)<br><span style="font-size:10px;opacity:.65">Imperial gold — ornament, hairline frames</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#a1e967"></div><div class="swatch__meta"><span class="swatch__role">Tertiary</span>#a1e967<br>rgb(161,233,103)<br><span style="font-size:10px;opacity:.65">Warp-green VFX glow accent</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#9a8f7d"></div><div class="swatch__meta"><span class="swatch__role">Neutral</span>#9a8f7d<br>rgb(154,143,125)<br><span style="font-size:10px;opacity:.65">Warm taupe foundation seed</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#0c0a0a"></div><div class="swatch__meta"><span class="swatch__role">Void (bg-page)</span>#0c0a0a<br>rgb(12,10,10)<br><span style="font-size:10px;opacity:.65">Page background foundation</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#8fd14f"></div><div class="swatch__meta"><span class="swatch__role">Status · Positive</span>#8fd14f<br>rgb(143,209,79)<br><span style="font-size:10px;opacity:.65">+ check icon (primary is also green)</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#e0a52e"></div><div class="swatch__meta"><span class="swatch__role">Status · Caution</span>#e0a52e<br>rgb(224,165,46)<br><span style="font-size:10px;opacity:.65">+ triangle icon</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#a51c20"></div><div class="swatch__meta"><span class="swatch__role">Status · Negative</span>#a51c20<br>rgb(165,28,32)<br><span style="font-size:10px;opacity:.65">Blood-red + cross icon</span></div></div>
+  </div>
+  <div style="margin-top:7mm">
+    <h3>Contrast &amp; placement rules</h3>
+    <ul style="font-size:12px;padding-left:1.2em;opacity:.85;line-height:1.7">
+      <li>Parchment #e8dd9c on void-black ≈ <strong>14:1</strong>; white on void-black ≈ 19:1 — body default.</li>
+      <li>Gold #d1a974 on void-black ≈ <strong>8.4:1</strong> — large text &amp; ornament safe.</li>
+      <li>Primary-green CTA uses <strong>near-black text</strong> (#0c0a0a) ≈ 7.4:1 — never white-on-green (fails).</li>
+      <li>Status never by colour alone — positive=check, caution=triangle, negative=cross/skull (mandatory: primary &amp; positive are both greenish).</li>
+      <li>Type over art requires a darkened scrim or isolation panel.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ⑤ TOKEN ARCHITECTURE -->
+<section class="page page--dark">
+  <div class="eyebrow">04 · Token Architecture — 5-Tier Cascade</div>
+  <h2>How the system is structured</h2>
+  <p style="font-size:12px;opacity:.7;margin-bottom:5mm">Every visual property resolves through this cascade. Tiers 1–3 are brand-locked; tiers 4–5 are store-flexible defaults. The theme file injects only ref seeds + font + page background — everything else resolves automatically. <em>In this repo the live vars drop the <code>--x-</code> prefix (use <code>--ref-*</code>, <code>--sys-*</code>, <code>--bg-*</code>…).</em></p>
+  <div class="cascade">
+    <div class="tier tier--locked"><div class="tier__num">1</div><div class="tier__body"><div class="tier__title">Type primitives + Ref seeds</div><div class="tier__tokens">--x-sys-font-weight-{extra-bold|bold|semibold|regular}<br>--x-text-size-{h1..h7|body-l|body-main|body-s|body-xs}<br>--x-ref-{primary|secondary|tertiary|neutral|status-*}</div></div><div class="tier__tag">Brand-Locked</div></div>
+    <div class="tier tier--locked"><div class="tier__num">2</div><div class="tier__body"><div class="tier__title">Palette ramps</div><div class="tier__tokens">--x-palette-{role}-{50..950} · neutral adds -0 / -1000</div><div class="anchor-rule">Anchor rule: --x-palette-{role}-500 = var(--x-ref-{role})<br>The -500 step IS the ref seed. The ramp is built around it.</div></div><div class="tier__tag">Brand-Locked</div></div>
+    <div class="tier tier--locked"><div class="tier__num">3</div><div class="tier__body"><div class="tier__title">System — intensity, dimensions, effects, states</div><div class="tier__tokens">--x-sys-colour-{role}-{subtle|soft|main|strong|heavy|inverse}<br>--x-sys-effect-{shadow|glow}-{role} · --x-states-{hover|pressed}<br>--x-sys-space-* · --x-sys-radius-* · --x-sys-stroke-{thin|medium|thick}<br>--x-sys-elevation-{flat|level-1|level-2|level-3}-{main|inverse}</div></div><div class="tier__tag">Brand-Locked</div></div>
+    <div class="tier tier--flex"><div class="tier__num">4</div><div class="tier__body"><div class="tier__title">Semantic / component — store-overridable</div><div class="tier__tokens">--x-bg-* · --x-text-* · --x-border-*<br>--x-radius-{control|input|container|thumbnail|badge}-* · --x-bg-action-*</div></div><div class="tier__tag">Store-Flexible</div></div>
+    <div class="tier tier--flex"><div class="tier__num">5</div><div class="tier__body"><div class="tier__title">Text-style classes — composed from Tier 1</div><div class="tier__tokens">.text-style-{heading|paragraph|utility}-*</div></div><div class="tier__tag">Store-Flexible</div></div>
+  </div>
+  <p style="font-size:11px;opacity:.5;margin-top:5mm">Per-store overrides: <code>html[data-theme="roguetrader"]</code> (specificity 0,1,1) beats the static <code>:root</code> tier (0,1,0) — no <code>!important</code> needed.</p>
+</section>
+
+<!-- ⑥ LAYOUT & GRID SYSTEM -->
+<section class="page">
+  <div class="eyebrow">05 · Layout &amp; Grid System <span class="chip chip--system">System Constant</span></div>
+  <h2>Non-Negotiable Layout</h2>
+  <p style="font-size:12px;opacity:.7;margin-bottom:3mm">Identical in every guide. The brand never changes the grid. Responsiveness is driven by CSS <code>@container</code> queries against the device-screen container — never viewport <code>@media</code>. The screen sets <code>container-type: inline-size</code>; the overlay deliberately does not (it would trap <code>position: fixed</code> descendants).</p>
+  <h3 style="margin-top:4mm">Breakpoints &amp; grid</h3>
+  <table class="ref">
+    <tr><th>&nbsp;</th><th>XS &lt; 641px</th><th>S 641–800px</th><th>M 801–1279px</th><th>L ≥ 1280px</th></tr>
+    <tr><td>Columns</td><td>8</td><td>8</td><td>12</td><td>12</td></tr>
+    <tr><td>Column gap <code>--x-gap-grid-gutter</code></td><td>8px</td><td>8px</td><td>12px</td><td>16px</td></tr>
+    <tr><td>Side padding <code>--x-gap-grid-margin</code></td><td>12px</td><td>12px</td><td>12px</td><td>16px</td></tr>
+    <tr><td>Row gap <code>--x-gap-grid-row-default</code></td><td>8px</td><td>8px</td><td>8px</td><td>8px</td></tr>
+    <tr><td>Span "content"</td><td>full width</td><td>full width</td><td>cols 3–10, max 960px</td><td>cols 3–10, max 960px</td></tr>
+  </table>
+  <h3 style="margin-top:5mm">Span variants</h3>
+  <ul style="font-size:11px;padding-left:1.2em;opacity:.85;line-height:1.7">
+    <li><b>fluid / full</b> — <code>grid-column: 1 / -1</code> at all breakpoints (full bleed).</li>
+    <li><b>content</b> — full width on XS/S; centred cols 3–10 of 12, capped at 960px, on M/L.</li>
+    <li><b>carousel</b> — full-bleed on XS/S (negative margin cancels grid margin); same as content on M/L.</li>
+  </ul>
+  <h3 style="margin-top:5mm">SKU / content grid patterns <span style="font-size:10px;opacity:.5">(all <code>display:grid; gap:var(--x-gap-content-default)</code>)</span></h3>
+  <table class="ref">
+    <tr><th>Pattern</th><th>XS</th><th>≥ 641px</th><th>≥ 801px</th></tr>
+    <tr><td>SkuList / SkuImageList</td><td>2 cols</td><td>4 cols</td><td>4 cols</td></tr>
+    <tr><td>BundleGrid</td><td>1 col</td><td>1 col</td><td>2 cols</td></tr>
+    <tr><td>GiftGrid</td><td>2 cols</td><td>variable</td><td>variable</td></tr>
+    <tr><td>StoryCarousel aspect</td><td>1/1</td><td>1/1</td><td>2.6/1</td></tr>
+  </table>
+  <h3 style="margin-top:5mm">Token-tier discipline</h3>
+  <table class="ref">
+    <tr><th>Tier</th><th>Prefix</th><th>Consumed by</th></tr>
+    <tr><td>Seeds / Ref</td><td><code>--x-ref-*</code></td><td>theme file only</td></tr>
+    <tr><td>Palette</td><td><code>--x-palette-*</code></td><td>system tier only</td></tr>
+    <tr><td>System</td><td><code>--x-sys-*</code></td><td>semantic / spacing tier only</td></tr>
+    <tr><td><b>Semantic ✓</b></td><td><code>--x-bg-* · --x-text-* · --x-border-*</code></td><td><b>components</b></td></tr>
+    <tr><td><b>Spacing / Size ✓</b></td><td><code>--x-pad-* · --x-gap-* · --x-radius-* · --x-size-*</code></td><td><b>components</b></td></tr>
+  </table>
+  <p style="font-size:10px;opacity:.5;margin-top:3mm">Mobile vs desktop values switch via the <code>-desktop-</code> token twins.</p>
+</section>
+
+<!-- ⑦ TYPOGRAPHY -->
+<section class="page">
+  <div class="eyebrow">06 · Typography</div>
+  <h2>Type System <span class="chip chip--system">System Constant</span> <span class="chip chip--locked">Font + Sizes Brand-Locked</span></h2>
+  <p style="font-size:12px;opacity:.8;margin-bottom:2mm"><strong>Display</strong> Cinzel (proxy for Stevens Titling Pro) · <strong>Heading/UI</strong> Oswald (proxy for TT Supermolot Neue) · <strong>Body</strong> Open Sans. The webstore's <code>--sys-font-heading</code> = Oswald, <code>--sys-font-body</code> = Open Sans; Cinzel is reserved for the hero gold-gradient title.</p>
+  <h3 style="margin-top:5mm">Tier 1 — Type Primitives (Mobile / Desktop)</h3>
+  <p style="font-size:12px;opacity:.7;margin-bottom:3mm">Weights <code>regular 400 · semibold 600 · bold 700 · extra-bold 800</code>. Leading <code>main 105% · loose 120% · wide 150%</code>. Tracking <code>tight −0.5% · narrow −0.2% · main 0% · loose 0.5% · wide 1%</code>.</p>
+  <table class="ref">
+    <tr><th>Step</th><th>Mobile</th><th>Desktop</th></tr>
+    <tr><td>h1</td><td>28px</td><td>48</td></tr>
+    <tr><td>h2</td><td>24px</td><td>40</td></tr>
+    <tr><td>h3</td><td>22px</td><td>32</td></tr>
+    <tr><td>h4</td><td>20px</td><td>28</td></tr>
+    <tr><td>h5</td><td>18px</td><td>24</td></tr>
+    <tr><td>h6</td><td>16px</td><td>20</td></tr>
+    <tr><td>h7</td><td>14px</td><td>18</td></tr>
+    <tr><td>body-l</td><td>16px</td><td>18</td></tr>
+    <tr><td>body-main</td><td>14px</td><td>16</td></tr>
+    <tr><td>body-s</td><td>12px</td><td>14</td></tr>
+    <tr><td>body-xs</td><td>10px</td><td>12</td></tr>
+  </table>
+  <h3 style="margin-top:6mm">Tier 2 — The 27 Text-Style Classes</h3>
+  <table class="ref">
+    <tr><th>Class</th><th>Primitive</th><th>Weight</th><th>Leading</th><th>Tracking</th><th>Case</th></tr>
+    <tr><td><code>heading-display-hero</code></td><td>h1</td><td>extra-bold</td><td>loose</td><td>loose</td><td>UPPER</td></tr>
+    <tr><td><code>heading-page-title</code></td><td>h2</td><td>bold</td><td>loose</td><td>main</td><td>UPPER</td></tr>
+    <tr><td><code>heading-section</code></td><td>h3</td><td>bold</td><td>loose</td><td>main</td><td>UPPER</td></tr>
+    <tr><td><code>heading-modal</code></td><td>h4</td><td>bold</td><td>main</td><td>main</td><td>Title</td></tr>
+    <tr><td><code>heading-card</code></td><td>h5</td><td>semibold</td><td>main</td><td>main</td><td>Title</td></tr>
+    <tr><td><code>heading-banner</code></td><td>h6</td><td>bold</td><td>main</td><td>main</td><td>UPPER</td></tr>
+    <tr><td><code>heading-final-price</code></td><td>h6</td><td>extra-bold</td><td>main</td><td>main</td><td>Title</td></tr>
+    <tr><td><code>heading-sku-title</code></td><td>h4</td><td>semibold</td><td>main</td><td>main</td><td>Title</td></tr>
+    <tr><td><code>heading-subtitle</code></td><td>h7</td><td>semibold</td><td>main</td><td>main</td><td>Title</td></tr>
+    <tr><td><code>paragraph-lead</code></td><td>body-l</td><td>regular</td><td>wide</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>paragraph-regular</code></td><td>body-main</td><td>regular</td><td>wide</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>paragraph-small</code></td><td>body-s</td><td>regular</td><td>wide</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>paragraph-strikethrough</code></td><td>body-main</td><td>regular</td><td>wide</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-action-regular</code></td><td>body-main</td><td>semibold</td><td>main</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-action-uppercase</code></td><td>body-main</td><td>semibold</td><td>main</td><td>wide</td><td>UPPER</td></tr>
+    <tr><td><code>utility-action-strikethrough</code></td><td>body-main</td><td>semibold</td><td>main</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-default-regular</code></td><td>body-s</td><td>regular</td><td>wide</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-default-strikethrough</code></td><td>body-s</td><td>regular</td><td>wide</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-default-uppercase</code></td><td>body-s</td><td>semibold</td><td>main</td><td>wide</td><td>UPPER</td></tr>
+    <tr><td><code>utility-label-regular</code></td><td>body-s</td><td>semibold</td><td>main</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-label-uppercase</code></td><td>body-s</td><td>semibold</td><td>main</td><td>wide</td><td>UPPER</td></tr>
+    <tr><td><code>utility-label-tall</code></td><td>body-s</td><td>semibold</td><td>loose</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-label-strikethrough</code></td><td>body-s</td><td>semibold</td><td>main</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-micro-regular</code></td><td>body-xs</td><td>regular</td><td>main</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-micro-bold</code></td><td>body-xs</td><td>extra-bold</td><td>main</td><td>wide</td><td>sentence</td></tr>
+    <tr><td><code>utility-micro-uppercase</code></td><td>body-xs</td><td>semibold</td><td>main</td><td>wide</td><td>UPPER</td></tr>
+    <tr><td><code>utility-micro-strikethrough</code></td><td>body-xs</td><td>regular</td><td>main</td><td>main</td><td>sentence</td></tr>
+  </table>
+  <h3 style="margin-top:6mm">Specimens</h3>
+  <div class="specimen"><div class="specimen__label">heading-display-hero — Cinzel · h1 · extra-bold · UPPER · gold gradient</div><div class="gold-title" style="font-family:var(--font-display);font-size:46px;line-height:1.1;font-weight:900">ROGUE TRADER</div></div>
+  <div class="specimen"><div class="specimen__label">heading-section — Oswald · h3 · bold · UPPER</div><div style="font-family:var(--font-head);font-size:28px;font-weight:700;text-transform:uppercase;letter-spacing:.02em">Best Sellers of the Expanse</div></div>
+  <div class="specimen"><div class="specimen__label">utility-action-uppercase — Oswald · body-main · semibold · UPPER · wide</div><div style="font-family:var(--font-head);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.08em">Buy Now · 1,200 Profit Factor</div></div>
+  <div class="specimen"><div class="specimen__label">paragraph-regular — Open Sans · body-main · regular · wide (150%)</div><p style="font-size:14px;line-height:1.5;max-width:110mm">Acquire relics, void-craft upgrades and warrant supplies for your dynasty. Profit Factor spent here strengthens your hold over the Koronus Expanse.</p></div>
+</section>
+
+<!-- ⑧ COMPONENT STYLE DNA -->
+<section class="page">
+  <div class="eyebrow">07 · Component Style DNA</div>
+  <h2>Visual Building Blocks</h2>
+  <div class="cards">
+    <div class="card"><b>Shape language <span class="chip chip--locked">Brand-Locked</span></b><p>Soft-but-squared: controls/inputs/thumbnails <code>--sys-radius-xs</code>; containers <code>--sys-radius-s</code>. Angular, militaristic — not pill-shaped. Motifs: gold hairline frames, corner fittings, aquila emblem.</p></div>
+    <div class="card"><b>Lighting model <span class="chip chip--locked">Brand-Locked</span></b><p>Interactive = elevation-level-1 + gold hairline + warm rim/sheen on hover. Non-interactive = flat + subtle fill + no shadow.</p></div>
+    <div class="card"><b>Effect tints <span class="chip chip--locked">Brand-Locked</span></b><p>shadow-primary #0c0a0a · shadow-secondary #6d5d3f · glow-primary <strong>#a1e967</strong> (warp) · glow-secondary #e5c994 (gold). hover #e5c994 · pressed #548031.</p></div>
+    <div class="card"><b>Density &amp; spacing <span class="chip chip--locked">Brand-Locked</span></b><p>Regular rhythm on a 4px base; base gap <code>--sys-space-s</code>. Border-grouped (gold hairlines separate content rather than whitespace alone).</p></div>
+    <div class="card"><b>Elevation <span class="chip chip--locked">Brand-Locked</span></b><p>Cards level-1-main; modals level-2-main; toasts level-3-main; non-interactive flat. Layers like inlaid panels, not floating cards.</p></div>
+    <div class="card"><b>Stroke weight <span class="chip chip--locked">Brand-Locked</span></b><p>Gold hairline <code>--sys-stroke-thin</code> for dividers/frames; <code>medium</code> for active borders; <code>thick</code> for emphasis.</p></div>
+    <div class="card"><b>Material &amp; texture <span class="chip chip--locked">Brand-Locked</span></b><p>Gilded filigree frames + corner fittings; subtle parchment grain &amp; ~4% noise overlay; metallic wear on gold only. No halftone.</p></div>
+    <div class="card"><b>Motion language <span class="chip chip--locked">Brand-Locked</span></b><p>200ms <code>cubic-bezier(.2,0,0,1)</code>; weighty &amp; ceremonial. Gilded sheen sweep on hover; slow fade-up reveals; scale 0.98 on press. Never bouncy.</p></div>
+    <div class="card"><b>Iconography <span class="chip chip--locked">Brand-Locked</span></b><p>Solid/engraved, medium stroke, sharp corners; Imperial heraldic motifs (aquila, skull, cog) where apt.</p></div>
+    <div class="card"><b>Semantic colour mapping <span class="chip chip--flex">Store-Flexible</span></b><p>Default bg-action-primary → sys-colour-primary-main. Borders default to gold (secondary-soft). Any intensity step is overridable.</p></div>
+  </div>
+  <div style="margin-top:6mm">
+    <h3>Interactive vs non-interactive rule</h3>
+    <p style="font-size:12px"><strong>Interactive</strong> = elevation-level-1 + gold hairline border + sys-colour-*-main + states overlay. <strong>Non-interactive</strong> = elevation-flat + sys-colour-*-subtle + no overlay.</p>
+  </div>
+  <div class="frame-demo"><span style="font-family:var(--font-head);text-transform:uppercase;letter-spacing:.05em;font-size:13px;color:var(--muted)">↑ Gilded filigree frame — the signature container treatment (gold hairline + inset)</span></div>
+</section>
+
+<!-- ⑨ ART DIRECTION -->
+<section class="page page--dark">
+  <div class="eyebrow">08 · Art Direction &amp; VFX</div>
+  <h2>Imagery System</h2>
+  <img src="refs/landing_companions-bg.jpg" alt="key art" style="border-radius:8px;border:1px solid rgba(209,169,116,.35);margin-bottom:5mm">
+  <div class="cards">
+    <div class="card"><b>Framing &amp; subject</b><p>Ensemble hero: a Rogue Trader leading a retinue, ¾ action angle, eye-level; subject placement rule-of-thirds.</p></div>
+    <div class="card"><b>Background</b><p>Environmental gothic void-ship / cathedral depth; desaturated, atmospheric haze.</p></div>
+    <div class="card"><b>Lighting &amp; mood</b><p>Cool ambient with warm key/rim on heroes; high chiaroscuro; foreboding.</p></div>
+    <div class="card"><b>VFX signature</b><p>Warp-green energy orbs &amp; lightning, gilded edge-light, embers, lens haze.</p></div>
+    <div class="card"><b>Figure-ground</b><p>Heroes rim-lit forward of a darker environment; scrim behind any overlaid type.</p></div>
+    <div class="card"><b>Text-over-art</b><p>Reserve a darker third for the gold logo/type; min body 14px; never on busy detail.</p></div>
+  </div>
+  <div class="dodont" style="margin-top:5mm">
+    <div class="do"><b>✓ Do</b><ul><li>Keep characters warm against cool environments.</li><li>Use warp-green glow sparingly as a focal accent.</li><li>Frame SKU art on transparent/void with a top-right key light.</li></ul></div>
+    <div class="dont"><b>✗ Don't</b><ul><li>Flatten to bright saturated fields (breaks grimdark).</li><li>Let type touch un-scrimmed painterly detail.</li><li>Add modern neon or clean flat-vector treatments.</li></ul></div>
+  </div>
+</section>
+
+<!-- ⑩ COMPONENT INTENT -->
+<section class="page">
+  <div class="eyebrow">09 · Component Intent <span class="chip chip--flex">Store-Flexible</span></div>
+  <h2>Feel, defaults &amp; alternatives</h2>
+  <p style="font-size:12px;opacity:.65;margin-bottom:5mm">The brand sets a <em>feel</em>; the store picks the variant. These are starting defaults, not a contract.</p>
+  <div class="intent-card"><b>Button — Primary CTA</b><div class="intent-card__feel">Imperial command — solid, weighty, gilded-edged.</div>
+    <div class="intent-card__row"><span class="intent-card__label">Default</span><span class="intent-card__val">solid — primary-main green bg + near-black text + gold hairline</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Alternatives</span><span class="intent-card__val">gold-outline · ghost · gradient · glow</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Tokens</span><span class="intent-card__val">--x-bg-action-primary, --x-text-on-action-primary, --x-border-emphasis</span></div></div>
+  <div class="intent-card"><b>Button — Secondary</b><div class="intent-card__feel">Supporting, restrained — defers to the primary.</div>
+    <div class="intent-card__row"><span class="intent-card__label">Default</span><span class="intent-card__val">gold-outline</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Alternatives</span><span class="intent-card__val">ghost · solid-soft</span></div></div>
+  <div class="intent-card"><b>Card / Panel</b><div class="intent-card__feel">Gilded reliquary — dark surface bound by a thin gold hairline.</div>
+    <div class="intent-card__row"><span class="intent-card__label">Default</span><span class="intent-card__val">outlined (gold hairline) + near-flat elevation + sys-radius-s</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Alternatives</span><span class="intent-card__val">elevated · flat · frosted</span></div></div>
+  <div class="intent-card"><b>Badge / Tag</b><div class="intent-card__feel">Imperial seal / purity stamp — compact, angular.</div>
+    <div class="intent-card__row"><span class="intent-card__label">Default</span><span class="intent-card__val">solid-gold, sys-radius-xs</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Alternatives</span><span class="intent-card__val">outline · soft-tint · neutral</span></div></div>
+  <div class="intent-card"><b>Input / Field</b><div class="intent-card__feel">Engraved field — gold hairline on dark.</div>
+    <div class="intent-card__row"><span class="intent-card__label">Default</span><span class="intent-card__val">outlined; focus → gold border</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Alternatives</span><span class="intent-card__val">filled · underline</span></div></div>
+  <div class="intent-card"><b>Modal / Sheet</b><div class="intent-card__feel">A sealed council chamber — gold-framed over a void scrim.</div>
+    <div class="intent-card__row"><span class="intent-card__label">Default</span><span class="intent-card__val">surface — elevation-level-2 + gold frame</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Alternatives</span><span class="intent-card__val">drawer · bottomSheet</span></div></div>
+</section>
+
+<!-- ⑪ ASSET PROMPTS -->
+<section class="page page--dark">
+  <div class="eyebrow">10 · Webstore Asset Prompts</div>
+  <h2>Reusable Image-Generation Prompts</h2>
+  <p style="font-size:12px;opacity:.6;margin-bottom:5mm">Paste into an image model to generate on-brand webstore visuals.</p>
+  <p style="font-size:11px;opacity:.5;margin-bottom:2mm">Hero banner (landscape 16:9)</p>
+  <div class="prompt">Grimdark Warhammer 40,000 painterly key art, 16:9 cinematic banner: a Rogue Trader noble in an ornate black-and-gold longcoat commanding a retinue (space marine, psyker with warp-lightning, xenos foes) aboard a gothic void-ship bridge; cool desaturated cathedral environment, warm rim-light on heroes, glowing warp-green energy orb, atmospheric haze; dramatic chiaroscuro, gilded ornament, painterly digital illustration; leave a darker scrim zone on the left third for the gold inscriptional logo.</div>
+  <p style="font-size:11px;opacity:.5;margin:4mm 0 2mm">SKU / pack art (portrait 2:3)</p>
+  <div class="prompt">Single Warhammer 40,000 item render on transparent/void background, portrait 2:3: ornate gilded bolt weapon / relic / supply crate with Imperial aquila engraving, battle-worn metal, bronze and gold trim, subtle warp-green glow rim-light, painterly stylized-realism, centred, dramatic top-right key light.</div>
+  <p style="font-size:11px;opacity:.5;margin:4mm 0 2mm">Background / texture tile</p>
+  <div class="prompt">Seamless dark gothic-tech texture tile: near-black void (#0c0a0a) with faint engraved gold filigree, rivets and aquila motifs at very low contrast, subtle parchment grain and 4% noise; must not compete with foreground content.</div>
+</section>
+
+<!-- ⑫ MACHINE-READABLE APPENDIX -->
+<section class="page appendix">
+  <div class="eyebrow">11 · Machine-Readable Spec</div>
+  <h2>For downstream automation</h2>
+  <p style="font-size:12px;margin-bottom:4mm">The full JSON spec lives alongside this file at <code>docs/style-guides/roguetrader/spec.json</code> and is embedded below. Feed it to a coding agent to generate theme-token overwrites and component-intent guidance.</p>
+  <pre>See spec.json — themePreset (7 ref seeds + font + bg), cssOverride, brandLocked (ref, palette, typePrimitives, the 27 textStyles, brandCharacter), storeFlexible (semanticDefaults + componentIntent), tier2SignatureSurfaces (gilded frame · warp glow · gold-gradient title · medallion divider).</pre>
+</section>
+
+</body>
+</html>

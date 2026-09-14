@@ -1,0 +1,6 @@
+<!-- PLACEHOLDER — swap for the real PvZ3 wordmark lockup. -->
+<svg width="320" height="64" viewBox="0 0 320 64" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="64" rx="8" fill="#1F6D33"/>
+  <text x="160" y="40" font-family="sans-serif" font-size="20" font-weight="700"
+        fill="#EAF5E6" text-anchor="middle">PvZ3 WORDMARK</text>
+</svg>

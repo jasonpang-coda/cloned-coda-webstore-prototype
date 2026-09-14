@@ -1,0 +1,312 @@
+/* ============================================================================
+   WARHAMMER 40,000: ROGUE TRADER THEME  —  [data-theme="roguetrader"]
+   ----------------------------------------------------------------------------
+   Generated from docs/style-guides/roguetrader/spec.json (style-guide-designer),
+   itself extracted from the live site roguetrader.owlcat.games. This is the ONLY
+   file the reskin duplicates: colour seeds, the spectrum ramps, the typography
+   system, and the handful of semantic + surface OVERRIDES that the pure alias
+   graph cannot express (gilded gold-hairline frames, dark void surfaces).
+
+   Brand: grimdark gothic — void-black page, military-green primary CTA, imperial
+   gold ornament/hairlines, warp-green VFX accent. "Ornate" is expressed through
+   gold-tinted container surfaces + fully sharp (0px) corners on all containers,
+   controls, inputs, thumbnails, and badges — NOT through any component edit.
+
+   Fonts:
+     TT Supermolot Neue  — licensed woff2 (local); condensed grotesque heading +
+                           display. 3 cuts: Regular 400 / Medium 500 / Demibold 600.
+     Open Sans           — body; loaded via <link> in index.html (no local file).
+
+   Colours are authored in OKLCH (perceptual, HDR headroom). The 500 step of each
+   chromatic ramp aliases its seed; the neutral ramp anchors 1000 to the page void.
+   ============================================================================ */
+
+@font-face {
+  font-family: 'TT Supermolot Neue';
+  src: url('../../../stores/roguetrader/fonts/TTSupermolotNeueRegular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'TT Supermolot Neue';
+  src: url('../../../stores/roguetrader/fonts/TTSupermolotNeueMedium.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'TT Supermolot Neue';
+  src: url('../../../stores/roguetrader/fonts/TTSupermolotNeueDemibold.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+
+[data-theme="roguetrader"] {
+  /* ── Seeds ──────────────────────────────────────────────────────────────
+     Raw brand anchors. sRGB hex equivalents in comments (observed from site). */
+  --x-ref-primary:         oklch(0.672 0.142 133.1);  /* #72a846 — military green CTA */
+  --x-ref-secondary:       oklch(0.759 0.084 73.8);   /* #d1a974 — imperial gold */
+  --x-ref-tertiary:        oklch(0.859 0.178 133.1);  /* #a1e967 — warp-green VFX */
+  --x-ref-status-positive: oklch(0.790 0.175 132.1);  /* #8fd14f */
+  --x-ref-status-caution:  oklch(0.759 0.144 80.0);   /* #e0a52e */
+  --x-ref-status-negative: oklch(0.468 0.172 25.9);   /* #a51c20 — Imperial blood-red */
+  --x-ref-neutral:         oklch(0.147 0.003 17.6);   /* #0c0a0a — the page void */
+
+  /* ── Spectrums ──────────────────────────────────────────────────────────
+     Per-role 50–950 ramps; 500 aliases the seed. Neutral = warm void→parchment. */
+
+  /* primary (military green) */
+  --x-palette-primary-950: oklch(0.19 0.057 133.1);   /* #091900 */
+  --x-palette-primary-900: oklch(0.244 0.078 133.1);  /* #0f2700 */
+  --x-palette-primary-800: oklch(0.351 0.102 133.1);  /* #234500 */
+  --x-palette-primary-700: oklch(0.458 0.121 133.1);  /* #3b650f */
+  --x-palette-primary-600: oklch(0.565 0.135 133.1);  /* #558629 */
+  --x-palette-primary-500: var(--x-ref-primary);
+  --x-palette-primary-400: oklch(0.74 0.131 133.1);   /* #89bc63 */
+  --x-palette-primary-300: oklch(0.807 0.111 133.1);  /* #a4d085 */
+  --x-palette-primary-200: oklch(0.874 0.085 133.1);  /* #c0e2a9 */
+  --x-palette-primary-100: oklch(0.941 0.054 133.1);  /* #def4cf */
+  --x-palette-primary-50:  oklch(0.975 0.028 133.1);  /* #effbe8 */
+
+  /* secondary (imperial gold) */
+  --x-palette-secondary-950: oklch(0.19 0.034 73.8);  /* #1d1103 */
+  --x-palette-secondary-900: oklch(0.253 0.046 73.8); /* #2f1f06 */
+  --x-palette-secondary-800: oklch(0.38 0.06 73.8);   /* #553d1a */
+  --x-palette-secondary-700: oklch(0.506 0.071 73.8); /* #7d5f34 */
+  --x-palette-secondary-600: oklch(0.632 0.08 73.8);  /* #a78352 */
+  --x-palette-secondary-500: var(--x-ref-secondary);
+  --x-palette-secondary-400: oklch(0.807 0.077 73.8); /* #deb988 */
+  --x-palette-secondary-300: oklch(0.855 0.065 73.8); /* #eacaa0 */
+  --x-palette-secondary-200: oklch(0.903 0.05 73.8);  /* #f4dbbb */
+  --x-palette-secondary-100: oklch(0.951 0.032 73.8); /* #fcecd8 */
+  --x-palette-secondary-50:  oklch(0.975 0.017 73.8); /* #fef5eb */
+
+  /* tertiary (warp green) */
+  --x-palette-tertiary-950: oklch(0.19 0.071 133.1);  /* #061a00 */
+  --x-palette-tertiary-900: oklch(0.264 0.098 133.1); /* #0f2e00 */
+  --x-palette-tertiary-800: oklch(0.413 0.128 133.1); /* #2c5900 */
+  --x-palette-tertiary-700: oklch(0.562 0.151 133.1); /* #4f8712 */
+  --x-palette-tertiary-600: oklch(0.711 0.169 133.1); /* #76b73b */
+  --x-palette-tertiary-500: var(--x-ref-tertiary);
+  --x-palette-tertiary-400: oklch(0.885 0.164 133.1); /* #adf07b */
+  --x-palette-tertiary-300: oklch(0.911 0.139 133.1); /* #bdf694 */
+  --x-palette-tertiary-200: oklch(0.936 0.107 133.1); /* #cefab0 */
+  --x-palette-tertiary-100: oklch(0.962 0.068 133.1); /* #e1fdcf */
+  --x-palette-tertiary-50:  oklch(0.975 0.036 133.1); /* #eefce4 */
+
+  /* status-positive (lime — kept distinct from primary green; carries icon cue) */
+  --x-palette-status-positive-950: oklch(0.19 0.07 132.1);
+  --x-palette-status-positive-900: oklch(0.257 0.096 132.1);
+  --x-palette-status-positive-800: oklch(0.39 0.126 132.1);
+  --x-palette-status-positive-700: oklch(0.523 0.149 132.1);
+  --x-palette-status-positive-600: oklch(0.657 0.166 132.1);
+  --x-palette-status-positive-500: var(--x-ref-status-positive);
+  --x-palette-status-positive-400: oklch(0.831 0.161 132.1);
+  --x-palette-status-positive-300: oklch(0.872 0.137 132.1);
+  --x-palette-status-positive-200: oklch(0.913 0.105 132.1);
+  --x-palette-status-positive-100: oklch(0.954 0.067 132.1);
+  --x-palette-status-positive-50:  oklch(0.975 0.035 132.1);
+
+  /* status-caution (amber) */
+  --x-palette-status-caution-950: oklch(0.19 0.057 80.0);
+  --x-palette-status-caution-900: oklch(0.253 0.079 80.0);
+  --x-palette-status-caution-800: oklch(0.38 0.103 80.0);
+  --x-palette-status-caution-700: oklch(0.506 0.122 80.0);
+  --x-palette-status-caution-600: oklch(0.632 0.136 80.0);
+  --x-palette-status-caution-500: var(--x-ref-status-caution);
+  --x-palette-status-caution-400: oklch(0.807 0.132 80.0);
+  --x-palette-status-caution-300: oklch(0.855 0.112 80.0);
+  --x-palette-status-caution-200: oklch(0.903 0.086 80.0);
+  --x-palette-status-caution-100: oklch(0.951 0.055 80.0);
+  --x-palette-status-caution-50:  oklch(0.975 0.029 80.0);
+
+  /* status-negative (blood-red) */
+  --x-palette-status-negative-950: oklch(0.19 0.069 25.9);
+  --x-palette-status-negative-900: oklch(0.221 0.094 25.9);
+  --x-palette-status-negative-800: oklch(0.283 0.124 25.9);
+  --x-palette-status-negative-700: oklch(0.344 0.146 25.9);
+  --x-palette-status-negative-600: oklch(0.406 0.163 25.9);
+  --x-palette-status-negative-500: var(--x-ref-status-negative);
+  --x-palette-status-negative-400: oklch(0.581 0.158 25.9);
+  --x-palette-status-negative-300: oklch(0.693 0.134 25.9);
+  --x-palette-status-negative-200: oklch(0.806 0.103 25.9);
+  --x-palette-status-negative-100: oklch(0.919 0.065 25.9);
+  --x-palette-status-negative-50:  oklch(0.975 0.034 25.9);
+
+  /* neutral — warm void→parchment greys (1000 = page void) */
+  --x-palette-neutral-1000: var(--x-ref-neutral);        /* #0c0a0a page */
+  --x-palette-neutral-950:  oklch(0.225 0.011 80);     /* #1e1b16 panel */
+  --x-palette-neutral-900:  oklch(0.3 0.011 80);       /* #312d28 divider/container */
+  --x-palette-neutral-800:  oklch(0.375 0.011 80);     /* #44403b */
+  --x-palette-neutral-700:  oklch(0.445 0.01 80);      /* #57534e */
+  --x-palette-neutral-600:  oklch(0.515 0.01 80);      /* #6b6761 */
+  --x-palette-neutral-500:  oklch(0.585 0.01 80);      /* #7f7b75 */
+  --x-palette-neutral-400:  oklch(0.655 0.012 80);     /* #959089 body-soft */
+  --x-palette-neutral-300:  oklch(0.725 0.016 80);     /* #aba59b */
+  --x-palette-neutral-200:  oklch(0.795 0.022 80);     /* #c4bbad */
+  --x-palette-neutral-100:  oklch(0.862 0.03 80);      /* #dcd0bc */
+  --x-palette-neutral-50:   oklch(0.922 0.038 80);     /* #f3e3c9 parchment */
+  --x-palette-neutral-0:    oklch(0.972 0.03 80);      /* #fff4e0 bone/ink */
+
+  /* ── Typography ────────────────────────────────────────────────────────────
+     TT Supermolot Neue (local woff2) = heading + display; Open Sans = body.
+     3 available cuts: Regular 400 / Medium 500 / Demibold 600. Weights capped at
+     600 — no 700+ file; prevents browser bold-synthesis artifacts on headings. */
+  --x-sys-font-family-heading: 'TT Supermolot Neue', sans-serif;
+  --x-sys-font-family-body:    'Open Sans', system-ui, sans-serif;
+
+  --x-sys-weight-extra-bold: 600;   /* capped at Demibold — no heavier cut */
+  --x-sys-weight-bold:       600;
+  --x-sys-weight-semibold:   600;
+  --x-sys-weight-regular:    400;
+
+  /* Heading + body sizes (Mobile mode — the store renders in a mobile frame). */
+  --x-sys-size-h1: 28px;
+  --x-sys-size-h2: 24px;
+  --x-sys-size-h3: 22px;
+  --x-sys-size-h4: 20px;
+  --x-sys-size-h5: 18px;
+  --x-sys-size-h6: 16px;
+  --x-sys-size-h7: 14px;
+  --x-sys-size-body-l:    16px;
+  --x-sys-size-body-main: 14px;
+  --x-sys-size-body-s:    12px;
+  --x-sys-size-body-xs:   10px;
+
+  /* Letter-spacing — Oswald/Open Sans are properly proportioned, no condense
+     compensation needed (unlike COD:M's Hitmarker). Clean perceptual values. */
+  --x-sys-letter-spacing-tight:  -0.005em;
+  --x-sys-letter-spacing-narrow: -0.002em;
+  --x-sys-letter-spacing-main:    0;
+  --x-sys-letter-spacing-loose:   0.005em;
+  --x-sys-letter-spacing-wide:    0.01em;
+
+  --x-sys-line-height-main:  1;
+  --x-sys-line-height-loose: 1.2;
+  --x-sys-line-height-wide:  1.5;
+
+  /* TT Supermolot Neue is a designed condensed face — no scaleX squeeze. */
+  --x-sys-font-condense: 1;
+
+  /* ── Container surfaces (L1–L3 + status) ─────────────────────────────────
+     Moved to the html[data-theme="roguetrader"] block below — they must beat
+     the system.css :root defaults (0,1,1 > 0,1,0). Gold hue ≈ 80. */
+}
+
+/* ── Semantic / alias-role OVERRIDES ─────────────────────────────────────────
+   These tokens are also defined by a later :root tier (semantics.css /
+   system.css), so they must be set from html[data-theme] (specificity 0,1,1) to
+   beat :root (0,1,0) regardless of source order — see web-store-tokens §3. */
+html[data-theme="roguetrader"] {
+  /* ── Sharp corners — angular military aesthetic ──────────────────────────
+     All radius tokens collapsed to 0px. Full-pill badge kept at 999px so
+     status chips remain visually distinct from sharp-cornered containers. */
+  --x-radius-control-xs:   var(--x-sys-radius-0);
+  --x-radius-control-s:    var(--x-sys-radius-0);
+  --x-radius-control-full: var(--x-sys-radius-0);
+  --x-radius-input-s:      var(--x-sys-radius-0);
+  --x-radius-input-m:      var(--x-sys-radius-0);
+  --x-radius-container-xs: var(--x-sys-radius-0);
+  --x-radius-container-s:  var(--x-sys-radius-0);
+  --x-radius-container-m:  var(--x-sys-radius-0);
+  --x-radius-container-l:  var(--x-sys-radius-0);
+  --x-radius-thumbnail-xs: var(--x-sys-radius-0);
+  --x-radius-thumbnail-s:  var(--x-sys-radius-0);
+  --x-radius-thumbnail-m:  var(--x-sys-radius-0);
+  --x-radius-badge-s:      var(--x-sys-radius-0);
+
+  /* Gold hairline around cards (vs the neutral-soft default) — the ornate edge. */
+  --x-border-card-default: oklch(0.8 0.07 80 / 0.16);
+
+  /* Hyperlinks on a coloured/brand surface read gold, not cyan. */
+  --x-sys-colour-hyperlink-inverse: var(--x-sys-colour-secondary-main);
+
+  /* Dual-comet running border (.fx-glow-border--dual on HeroSkuCard): gold comet
+     at ~1 o'clock, warp-green comet at ~7 o'clock. Conic is written directly in
+     the effect class so the browser tracks --angle per frame.
+     secondary = imperial gold, tertiary = warp-green VFX. */
+  --x-fx-border-glow:   var(--x-palette-secondary-500);
+  --x-fx-border-hot:    var(--x-palette-secondary-200);
+  --x-fx-border-trail-glow: var(--x-palette-tertiary-500);
+  --x-fx-border-trail-hot:  var(--x-palette-tertiary-200);
+
+  /* Bloom halo for HeroSkuCard — gold core fading to warp-green.
+     BestSellerCard overrides --x-fx-bloom-image locally so this has no effect on it. */
+  --x-fx-bloom-image: radial-gradient(
+    ellipse 90% 70% at 15% 88%,
+    var(--x-palette-secondary-400)  0%,
+    var(--x-palette-secondary-600) 30%,
+    var(--x-palette-tertiary-600)  55%,
+    transparent                  75%
+  );
+
+  /* Story carousel logo — Rogue Trader wordmark reads better at 3× the default size. */
+  --x-story-logo-max-height: 192px;
+  --x-story-logo-max-width:  660px;
+
+  /* Carousel banner scrim — fade the key art into the void page background so the
+     banner blends seamlessly into the page and the gold wordmark reads clearly. */
+  --x-gradient-story-scrim: linear-gradient(
+    180deg,
+    transparent          30%,
+    var(--x-bg-page)       100%
+  );
+
+  /* ── Container surfaces — the gilded gold-hairline frame signature (gold hue ≈ 80).
+     Dark void fills bound by gold-tinted gradient borders. Here (not the plain
+     [data-theme] block) so they beat the system.css :root defaults. */
+  /* L1 — faint gold top-glow + gold gradient ring border (SKU card) */
+  --x-sys-colour-surface-l1-fill: radial-gradient(
+    ellipse 100% 32% at 50% 0%,
+    oklch(0.85 0.08 80 / 0.06) 0%,
+    transparent 100%
+  );
+  --x-sys-colour-surface-l1-border: linear-gradient(
+    160deg,
+    oklch(0.8 0.07 80 / 0.10) 0%,
+    oklch(0.8 0.07 80 / 0.32) 45%,
+    oklch(0.82 0.08 80 / 0.62) 100%
+  );
+  --x-sys-colour-surface-l1-border-hover: linear-gradient(
+    160deg,
+    oklch(0.84 0.08 80 / 0.16) 0%,
+    oklch(0.84 0.08 80 / 0.45) 45%,
+    oklch(0.88 0.09 80 / 0.85) 100%
+  );
+
+  /* L2 — neutral void wash + gold@0.18 border (generic cards) */
+  --x-sys-colour-surface-l2-fill: linear-gradient(0deg,
+    oklch(0.225 0.011 80 / 0.55), oklch(0.3 0.011 80 / 0.55));
+  --x-sys-colour-surface-l2-border: oklch(0.8 0.06 80 / 0.18);
+
+  /* L3 — frosted void panel + gold@0.22 border (sheet, category nav) */
+  --x-sys-colour-surface-l3-fill: linear-gradient(
+    0deg,
+    oklch(0.225 0.011 80 / 0.85) 0%,
+    oklch(0.3 0.011 80 / 0.85) 60%,
+    oklch(0.375 0.012 80 / 0.85) 100%
+  );
+  --x-sys-colour-surface-l3-border: oklch(0.82 0.07 80 / 0.22);
+
+  /* Status surfaces — top = role-700 (warning: -600), bottom = role-950 @16%. */
+  --x-sys-colour-surface-success-fill: linear-gradient(to bottom,
+    color-mix(in oklab, var(--x-palette-status-positive-700) 16%, transparent) 0%,
+    color-mix(in oklab, var(--x-palette-status-positive-950) 16%, transparent) 100%);
+  --x-sys-colour-surface-warning-fill: linear-gradient(to bottom,
+    color-mix(in oklab, var(--x-palette-status-caution-600) 16%, transparent) 0%,
+    color-mix(in oklab, var(--x-palette-status-caution-950) 16%, transparent) 100%);
+  --x-sys-colour-surface-failure-fill: linear-gradient(to bottom,
+    color-mix(in oklab, var(--x-palette-status-negative-700) 16%, transparent) 0%,
+    color-mix(in oklab, var(--x-palette-status-negative-950) 16%, transparent) 100%);
+}
+
+/* HDR — push brand hues past the sRGB ceiling on wide-gamut panels for a genuine
+   gold/warp glint. Scoped to the Rogue Trader theme. */
+@media (dynamic-range: high) {
+  /* html[data-theme] (0,1,1) so the surface-l1-border boost beats system.css :root. */
+  html[data-theme="roguetrader"] {
+    --x-ref-tertiary: oklch(0.9 0.21 133.1);   /* warp-green glow past sRGB */
+    --x-sys-colour-surface-l1-border: linear-gradient(
+      160deg,
+      oklch(0.86 0.09 80 / 0.12) 0%,
+      oklch(0.9 0.10 80 / 0.40) 45%,
+      oklch(0.95 0.11 80 / 0.70) 100%
+    );
+  }
+}

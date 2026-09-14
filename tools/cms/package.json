@@ -1,0 +1,19 @@
+{
+  "name": "coda-webstore-cms",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Store onboarding CMS for the coda-webstore-prototype repo. Self-contained (own deps, own vercel.json) so it can be deployed as its own Vercel project with Root Directory=tools/cms, per docs/Handoff's existing pattern for isolating a subproject's build/serverless functions from the storefront's. See server/writers/github.mjs for the hosted write layer this needs (CMS_WRITER=github) — the local fs writer only works when this runs via `npm run cms` at the repo root, where src/stores/ is actually on disk.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "vite": "^5.0.0"
+  }
+}

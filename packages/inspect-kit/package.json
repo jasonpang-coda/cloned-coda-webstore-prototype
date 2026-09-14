@@ -1,0 +1,40 @@
+{
+  "name": "@coda/inspect-kit",
+  "version": "0.1.0",
+  "description": "Browser-inspect-style element inspector for any front-end — hover to see specs/gaps/tokens, draw box-model spacing, and open any selected element across every interaction state next to its resolved design-token contract in a standalone page. Framework-free core with a Vue 3 adapter.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./vue": "./dist/vue.js",
+    "./vue/style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "prepare": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0"
+  },
+  "peerDependenciesMeta": {
+    "vue": { "optional": true }
+  },
+  "keywords": [
+    "inspector",
+    "design-tokens",
+    "devtools",
+    "handoff",
+    "vue",
+    "framework-agnostic"
+  ],
+  "license": "UNLICENSED",
+  "private": false
+}

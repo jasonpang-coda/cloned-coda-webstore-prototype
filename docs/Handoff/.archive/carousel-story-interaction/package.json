@@ -1,0 +1,17 @@
+{
+  "name": "carousel-story-handoff",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync-tokens": "node scripts/sync-tokens.mjs",
+    "docs:dev": "npm run sync-tokens && vitepress dev",
+    "docs:build": "npm run sync-tokens && vitepress build",
+    "docs:preview": "vitepress preview",
+    "docs:deploy": "vercel --prod"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3",
+    "vue": "^3.4.0"
+  }
+}

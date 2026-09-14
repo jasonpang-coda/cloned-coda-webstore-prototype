@@ -1,0 +1,46 @@
+{
+  "name": "@coda/tourguide-kit",
+  "version": "0.1.0",
+  "description": "Interactive autoplay tour, POI onboarding guide, and client-side WebM screen recorder for web applications and prototypes. Framework-agnostic core with a Vue 3 adapter.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./vue": "./dist/vue.js",
+    "./vue/style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "prepare": "vite build"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "vite": "^5.4.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    }
+  },
+  "keywords": [
+    "tour-guide",
+    "onboarding",
+    "walkthrough",
+    "poi",
+    "tour",
+    "screen-recorder",
+    "webm",
+    "vue",
+    "framework-agnostic"
+  ],
+  "license": "UNLICENSED",
+  "private": false
+}

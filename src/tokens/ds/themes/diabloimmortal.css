@@ -1,0 +1,258 @@
+/* ============================================================================
+   DIABLO IMMORTAL THEME  —  [data-theme="diabloimmortal"]
+   ----------------------------------------------------------------------------
+   Brand identity: ember-gold (primary) + blood-brick (secondary, the real
+   "Play Now" CTA fill on the live site) + cold arcane blue (tertiary) over a
+   near-black warm-charcoal neutral. Sourced from docs/style-guides/diablo-immortal/
+   (spec.json) — CSS-observed from diabloimmortal.blizzard.com, not guessed.
+
+   Typography: heading font is Exocet Immortal, Blizzard's licensed/self-hosted
+   display face (unicase, rune-slashed "O") — no open-licence equivalent exists,
+   so this theme proxies it with Cinzel (Google Fonts) per spec.json's
+   generic.fontAcquisition.heading. Body is Alegreya Sans — the REAL font, free
+   on Google Fonts, no proxy needed. Both linked in index.html.
+
+   Mirrors the structure of tdr.css: seeds → 50–950 spectrum ramps (500 aliases
+   the seed) → typography → semantic overrides. Colours in OKLCH.
+   ============================================================================ */
+
+[data-theme="diabloimmortal"] {
+  /* ── Seeds ──────────────────────────────────────────────────────────────
+     [observed: CSS] from --diablo-di-color-* / brick-500 CTA fill, except
+     statusCaution which is DERIVED (brand ships no native amber). */
+  --x-ref-primary:         oklch(0.768 0.095 75.1);  /* #D7AB6D — ember gold */
+  --x-ref-secondary:       oklch(0.402 0.118 33.9);  /* #7B2917 — blood brick (live CTA fill) */
+  --x-ref-tertiary:        oklch(0.458 0.089 263.5); /* #3D5689 — cold arcane blue */
+  --x-ref-status-positive: oklch(0.623 0.147 143.1); /* #499D47 — brand's own status-green-400 */
+  --x-ref-status-caution:  oklch(0.705 0.120 78.8);  /* #C8963D — DERIVED amber, no brand equivalent */
+  --x-ref-status-negative: oklch(0.593 0.151 31.8);  /* #C85541 — brand's own warning-red-400 */
+  --x-ref-neutral:         oklch(0.207 0.006 56.0);  /* #1A1715 — desert-800 page background */
+
+  /* ── Spectrums — 50-950 ramps, 500 aliases the seed ────────────────────── */
+
+  /* primary (ember gold) */
+  --x-palette-primary-950: oklch(0.140 0.017 75.1);
+  --x-palette-primary-900: oklch(0.253 0.028 75.1);
+  --x-palette-primary-800: oklch(0.379 0.047 75.1);
+  --x-palette-primary-700: oklch(0.517 0.068 75.1);
+  --x-palette-primary-600: oklch(0.655 0.087 75.1);
+  --x-palette-primary-500: var(--x-ref-primary);
+  --x-palette-primary-400: oklch(0.809 0.085 75.1);
+  --x-palette-primary-300: oklch(0.855 0.068 75.1);
+  --x-palette-primary-200: oklch(0.896 0.047 75.1);
+  --x-palette-primary-100: oklch(0.934 0.026 75.1);
+  --x-palette-primary-50:  oklch(0.965 0.011 75.1);
+
+  /* secondary (blood brick) */
+  --x-palette-secondary-950: oklch(0.140 0.021 33.9);
+  --x-palette-secondary-900: oklch(0.187 0.035 33.9);
+  --x-palette-secondary-800: oklch(0.239 0.059 33.9);
+  --x-palette-secondary-700: oklch(0.297 0.085 33.9);
+  --x-palette-secondary-600: oklch(0.355 0.109 33.9);
+  --x-palette-secondary-500: var(--x-ref-secondary);
+  --x-palette-secondary-400: oklch(0.516 0.106 33.9);
+  --x-palette-secondary-300: oklch(0.642 0.085 33.9);
+  --x-palette-secondary-200: oklch(0.757 0.059 33.9);
+  --x-palette-secondary-100: oklch(0.860 0.033 33.9);
+  --x-palette-secondary-50:  oklch(0.946 0.014 33.9);
+
+  /* tertiary (cold arcane blue) */
+  --x-palette-tertiary-950: oklch(0.140 0.016 263.5);
+  --x-palette-tertiary-900: oklch(0.197 0.027 263.5);
+  --x-palette-tertiary-800: oklch(0.261 0.044 263.5);
+  --x-palette-tertiary-700: oklch(0.331 0.064 263.5);
+  --x-palette-tertiary-600: oklch(0.400 0.082 263.5);
+  --x-palette-tertiary-500: var(--x-ref-tertiary);
+  --x-palette-tertiary-400: oklch(0.561 0.080 263.5);
+  --x-palette-tertiary-300: oklch(0.675 0.064 263.5);
+  --x-palette-tertiary-200: oklch(0.778 0.044 263.5);
+  --x-palette-tertiary-100: oklch(0.872 0.025 263.5);
+  --x-palette-tertiary-50:  oklch(0.949 0.011 263.5);
+
+  /* status-positive (brand's own status-green) */
+  --x-palette-status-positive-950: oklch(0.140 0.026 143.1);
+  --x-palette-status-positive-900: oklch(0.227 0.044 143.1);
+  --x-palette-status-positive-800: oklch(0.324 0.074 143.1);
+  --x-palette-status-positive-700: oklch(0.430 0.106 143.1);
+  --x-palette-status-positive-600: oklch(0.536 0.136 143.1);
+  --x-palette-status-positive-500: var(--x-ref-status-positive);
+  --x-palette-status-positive-400: oklch(0.694 0.133 143.1);
+  --x-palette-status-positive-300: oklch(0.771 0.106 143.1);
+  --x-palette-status-positive-200: oklch(0.841 0.074 143.1);
+  --x-palette-status-positive-100: oklch(0.905 0.041 143.1);
+  --x-palette-status-positive-50:  oklch(0.957 0.018 143.1);
+
+  /* status-caution (DERIVED amber — sits between primary/secondary) */
+  --x-palette-status-caution-950: oklch(0.140 0.022 78.8);
+  --x-palette-status-caution-900: oklch(0.242 0.036 78.8);
+  --x-palette-status-caution-800: oklch(0.355 0.060 78.8);
+  --x-palette-status-caution-700: oklch(0.479 0.087 78.8);
+  --x-palette-status-caution-600: oklch(0.603 0.111 78.8);
+  --x-palette-status-caution-500: var(--x-ref-status-caution);
+  --x-palette-status-caution-400: oklch(0.759 0.108 78.8);
+  --x-palette-status-caution-300: oklch(0.818 0.087 78.8);
+  --x-palette-status-caution-200: oklch(0.872 0.060 78.8);
+  --x-palette-status-caution-100: oklch(0.921 0.034 78.8);
+  --x-palette-status-caution-50:  oklch(0.961 0.014 78.8);
+
+  /* status-negative (brand's own warning-red) */
+  --x-palette-status-negative-950: oklch(0.140 0.027 31.8);
+  --x-palette-status-negative-900: oklch(0.222 0.045 31.8);
+  --x-palette-status-negative-800: oklch(0.312 0.076 31.8);
+  --x-palette-status-negative-700: oklch(0.412 0.109 31.8);
+  --x-palette-status-negative-600: oklch(0.512 0.139 31.8);
+  --x-palette-status-negative-500: var(--x-ref-status-negative);
+  --x-palette-status-negative-400: oklch(0.670 0.136 31.8);
+  --x-palette-status-negative-300: oklch(0.754 0.109 31.8);
+  --x-palette-status-negative-200: oklch(0.830 0.076 31.8);
+  --x-palette-status-negative-100: oklch(0.899 0.042 31.8);
+  --x-palette-status-negative-50:  oklch(0.956 0.018 31.8);
+
+  /* neutral — near-black warm charcoal (desert-800) up to near-white */
+  --x-palette-neutral-1000: var(--x-ref-neutral);
+  --x-palette-neutral-950:  oklch(0.286 0.007 56.0);
+  --x-palette-neutral-900:  oklch(0.349 0.007 56.0);
+  --x-palette-neutral-800:  oklch(0.444 0.006 56.0);
+  --x-palette-neutral-700:  oklch(0.554 0.004 56.0);
+  --x-palette-neutral-600:  oklch(0.664 0.003 56.0);
+  --x-palette-neutral-500:  oklch(0.759 0.002 56.0);
+  --x-palette-neutral-400:  oklch(0.837 0.002 56.0);
+  --x-palette-neutral-300:  oklch(0.893 0.001 56.0);
+  --x-palette-neutral-200:  oklch(0.932 0.001 56.0);
+  --x-palette-neutral-100:  oklch(0.963 0.001 56.0);
+  --x-palette-neutral-50:   oklch(0.983 0.001 56.0);
+  --x-palette-neutral-0:    oklch(0.993 0.001 56.0);
+
+  /* ── Typography ───────────────────────────────────────────────────────────
+     Heading: Cinzel proxies the licensed Exocet Immortal (see file header).
+     Body: Alegreya Sans — the real brand body font, free on Google Fonts.
+     Both linked in index.html. */
+  --x-sys-font-family-heading: 'Cinzel', Georgia, serif;
+  --x-sys-font-family-body:    'Alegreya Sans', Georgia, serif;
+
+  --x-sys-weight-extra-bold: 700; /* Cinzel/Alegreya Sans ship no true 800 */
+  --x-sys-weight-bold:       700;
+  --x-sys-weight-semibold:   600;
+  --x-sys-weight-regular:    400;
+
+  /* [observed: CSS] h1=60px desktop, h6/subheading=20px desktop on the live
+     site; remaining steps interpolated — see docs/style-guides/diablo-immortal/spec.json. */
+  --x-sys-size-h1: 32px;
+  --x-sys-size-h2: 26px;
+  --x-sys-size-h3: 22px;
+  --x-sys-size-h4: 14px; /* stepped down from 20px (via 16px) — SKU card headers (heading-sku-title's primitive) read too large */
+  --x-sys-size-h5: 18px;
+  --x-sys-size-h6: 16px;
+  --x-sys-size-h7: 14px;
+  --x-sys-size-body-l:    16px;
+  --x-sys-size-body-main: 14px;
+  --x-sys-size-body-s:    12px;
+  --x-sys-size-body-xs:   10px;
+
+  --x-sys-letter-spacing-tight:  -0.005em;
+  --x-sys-letter-spacing-narrow: -0.002em;
+  --x-sys-letter-spacing-main:    0;
+  --x-sys-letter-spacing-loose:   0.01em;
+  --x-sys-letter-spacing-wide:    0.02em;
+
+  --x-sys-line-height-main:  1.05;
+  --x-sys-line-height-loose: 1.2;
+  --x-sys-line-height-wide:  1.5;
+
+  /* Cinzel renders at its true set width — no Hitmarker-style condense. */
+  --x-sys-font-condense: 1;
+}
+
+/* ── Material — rough, gritty brick ──────────────────────────────────────────
+   Classified per the material-fx skill: a DIELECTRIC, matte, high-roughness
+   surface — no coherent specular lobe (masonry has no smoothing coat), so
+   this follows the "paper — uncoated" baseline recipe (materials.md), not a
+   metal/gloss one: near-flat diffuse fill in the body colour (brick red-
+   brown, from the secondary seed), a coarse noise/grain overlay standing in
+   for the fired-clay/mortar texture (baked once, static — never animated,
+   per css-ceiling.md), and NO sheen/highlight/comet layer of any kind — a
+   travelling highlight or gradient shine on this surface would read as
+   glazed tile, not rough brick. Corners are sharp (--x-sys-radius-0)
+   throughout, since brick has no moulded rounded edge.
+
+   Grain: a static feTurbulence data-URI (fractalNoise, baseFrequency 0.75 —
+   coarser than the skill's paper recipe, which sits in the finer 1–3%-
+   opacity range for smooth fibre; brick's aggregate texture reads bigger),
+   pre-baked to ~9% peak alpha via feComponentTransfer so it composites at
+   the right strength with a single background-image layer (a custom
+   property can't carry a per-layer CSS `opacity`). */
+html[data-theme="diabloimmortal"] {
+  --x-material-diabloimmortal-grain: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2296%22%20height%3D%2296%22%3E%3Cfilter%20id%3D%22n%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.75%22%20numOctaves%3D%222%22%20stitchTiles%3D%22stitch%22%20result%3D%22t%22/%3E%3CfeColorMatrix%20in%3D%22t%22%20type%3D%22matrix%22%20values%3D%220%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200%200%20%200.9%200.9%200.9%200%200%22/%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type%3D%22linear%22%20slope%3D%220.09%22/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url%28%23n%29%22/%3E%3C/svg%3E");
+
+  /* Sharp corners everywhere a "surface" renders — html[data-theme] (0,1,1)
+     beats space.css's :root (0,1,0), the same specificity trap as the
+     --radius-control-full case (web-store-tokens skill §3). control-full /
+     badge-full are left alone (pill chrome — icon buttons, tag pills — read
+     as interactive controls, not masonry surfaces). */
+  --x-radius-container-xs: var(--x-sys-radius-0);
+  --x-radius-container-s:  var(--x-sys-radius-0);
+  --x-radius-container-m:  var(--x-sys-radius-0);
+  --x-radius-container-l:  var(--x-sys-radius-0);
+  --x-radius-thumbnail-xs: var(--x-sys-radius-0);
+  --x-radius-thumbnail-s:  var(--x-sys-radius-0);
+  --x-radius-thumbnail-m:  var(--x-sys-radius-0);
+  --x-radius-input-s:      var(--x-sys-radius-0);
+  --x-radius-input-m:      var(--x-sys-radius-0);
+  --x-radius-control-xs:   var(--x-sys-radius-0);
+  --x-radius-control-s:    var(--x-sys-radius-0);
+  --x-radius-badge-s:      var(--x-sys-radius-0);
+
+  /* L1 — SKU cards. Flat brick-red-brown diffuse fill (no gradient sheen) +
+     grain. Border is a plain mortar-line colour, brightening slightly on
+     hover — never a shine/gloss sweep (fakes to avoid, materials.md).
+     The solid fill is expressed as a same-colour-stop linear-gradient, not a
+     bare colour — background-image (and the background shorthand's image
+     layers) only accept <image> values, and a comma-separated colour beside
+     the noise url() would invalidate the whole declaration. */
+  --x-sys-colour-surface-l1-fill: var(--x-material-diabloimmortal-grain), linear-gradient(0deg, var(--x-palette-secondary-900), var(--x-palette-secondary-900));
+  --x-sys-colour-surface-l1-border:       var(--x-palette-secondary-700);
+  --x-sys-colour-surface-l1-border-hover: var(--x-palette-secondary-600);
+
+  /* L2 — generic cards (StepCard, PcCard, checkout sheet, bottom nav). One
+     step lighter/warmer than L1 so a payment tile reads as a distinct
+     surface from the SKU card behind it, same rough grain. */
+  --x-sys-colour-surface-l2-fill:   var(--x-material-diabloimmortal-grain), linear-gradient(0deg, var(--x-palette-secondary-800), var(--x-palette-secondary-800));
+  --x-sys-colour-surface-l2-border: var(--x-palette-secondary-600);
+
+  /* L3 — sheets/overlays. Darkest step, same family. */
+  --x-sys-colour-surface-l3-fill:   var(--x-material-diabloimmortal-grain), linear-gradient(0deg, var(--x-palette-neutral-1000), var(--x-palette-neutral-1000));
+  --x-sys-colour-surface-l3-border: var(--x-palette-secondary-700);
+
+  /* Generic card border (StepCard/CategoryBanner's own --border-card-default,
+     an --x-sys-colour-neutral-soft alias elsewhere) — repointed to the same
+     brick mortar-line colour instead of the cool neutral default. */
+  --x-border-card-default: var(--x-palette-secondary-700);
+
+  /* SKU image card thumbnail spacing — 12px above (already the default
+     --x-pad-surface-m, stated explicitly here), 8px below (--x-gap-content-
+     default) instead of the default 12px --x-gap-content-loose. See
+     SkuImageCard.vue's fallback-var comments for why these are safe,
+     store-scoped overrides of an otherwise-shared component. */
+  --x-sku-image-pad-top: var(--x-pad-surface-m);
+  --x-sku-image-gap-adjust: calc(var(--x-gap-content-default) - var(--x-gap-content-loose));
+  /* The real Eternal Orb pack renders are 420×236 (16:9), not square — match
+     the panel to the art's own ratio instead of forcing 1:1 and letterboxing it. */
+  --x-sku-image-aspect: 16 / 9;
+
+  /* Category banner padding — the shared component's default (--x-pad-
+     surface-m top/bottom, -s left/right) reads cramped next to this store's
+     other card-like surfaces (StepCard uses a uniform 16px). Match that
+     instead of the tighter default; other stores keep the original. */
+  --x-category-banner-pad: var(--x-pad-surface-l);
+  /* A single border all the way around (not just a bottom divider line) —
+     same mortar-line colour as every other card border in this theme. The
+     border-bottom longhand is restated at the same value (not left at the
+     component's own divider-coloured default) so all four edges match. */
+  --x-category-banner-border: var(--border-weight-default) solid var(--x-border-card-default);
+  --x-category-banner-border-bottom: var(--border-weight-default) solid var(--x-border-card-default);
+
+  /* SkuImageList's plain-header title (the cloned Eternal Orbs section) reads
+     small at the default h6 (16px) — bump to h5 to match CategoryBanner's
+     own title size, so the two "Eternal Orbs" headers read consistently. */
+  --x-sku-image-list-title-size: var(--x-sys-size-h5);
+}

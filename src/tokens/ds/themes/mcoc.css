@@ -1,0 +1,211 @@
+/* ============================================================================
+   MARVEL CONTEST OF CHAMPIONS (MCOC) THEME  —  [data-theme="mcoc"]
+   ----------------------------------------------------------------------------
+   Generated from docs/style-guides/mcoc/spec.json (style-guide-designer), itself
+   extracted from the live site playcontestofchampions.com. This is the ONLY file
+   the reskin duplicates: colour seeds, the spectrum ramps, the typography system,
+   and the handful of semantic + surface OVERRIDES the pure alias graph cannot
+   express (the acid-green glow halo, sharp/pill mixed radius profile).
+
+   Brand: mythic comic-book realism — near-black page, acid-lime primary CTA/glow,
+   gold rarity/foil secondary, magenta rare-tier tertiary. "Electric" is expressed
+   through a lime glow-halo effect tint + pill controls/badges but sharp
+   containers/thumbnails — NOT through any component edit.
+
+   Fonts:
+     Hanzel Condensed Bold Italic — licensed local .ttf; condensed italic slab,
+                                    heading/display. No open equivalent shipped —
+                                    Figma proxy: Saira Condensed (Bold Italic).
+     Eurostile / Eurostile Bold   — licensed local .otf/.ttf; body. Figma proxy:
+                                    Titillium Web.
+     Jost                        — eyebrow/kicker labels; free on Google Fonts,
+                                    load via <link>, no proxy needed.
+
+   Colours are authored in OKLCH (perceptual, HDR headroom). The 500 step of each
+   chromatic ramp aliases its seed; the neutral ramp anchors 1000 to the page void.
+   ============================================================================ */
+
+[data-theme="mcoc"] {
+  /* ── Seeds ──────────────────────────────────────────────────────────────
+     Raw brand anchors. sRGB hex equivalents in comments (observed from site CSS). */
+  --x-ref-primary:         oklch(0.911 0.244 129.7);  /* #abff00 — acid-lime CTA/glow */
+  --x-ref-secondary:       oklch(0.829 0.171 81.0);   /* #ffb900 — gold rarity/foil */
+  --x-ref-tertiary:        oklch(0.665 0.282 345.7);  /* #ff00b8 — rare-tier magenta */
+  --x-ref-status-positive: oklch(0.911 0.244 129.7);  /* #abff00 — reuses primary */
+  --x-ref-status-caution:  oklch(0.777 0.173 66.1);   /* #ff9c00 — nav alert orange */
+  --x-ref-status-negative: oklch(0.694 0.196 23.8);   /* #ff5e5e — delete/destructive */
+  --x-ref-neutral:         oklch(0.195 0.004 264.5);  /* #141517 — the page void */
+
+  /* ── Spectrums ──────────────────────────────────────────────────────────
+     Per-role 50–950 ramps; 500 aliases the seed. */
+
+  /* primary (acid-lime) */
+  --x-palette-primary-950: oklch(0.285 0.091 129.7);  /* #1b3200 */
+  --x-palette-primary-900: oklch(0.410 0.133 129.7);  /* #315700 */
+  --x-palette-primary-800: oklch(0.535 0.167 129.7);  /* #4c7e00 */
+  --x-palette-primary-700: oklch(0.661 0.195 129.7);  /* #6aa800 */
+  --x-palette-primary-600: oklch(0.786 0.221 129.7);  /* #89d300 */
+  --x-palette-primary-500: var(--x-ref-primary);        /* #abff00 */
+  --x-palette-primary-400: oklch(0.921 0.221 129.7);  /* #b4ff47 */
+  --x-palette-primary-300: oklch(0.931 0.195 129.7);  /* #bdff68 */
+  --x-palette-primary-200: oklch(0.941 0.167 129.7);  /* #c7ff84 */
+  --x-palette-primary-100: oklch(0.950 0.133 129.7);  /* #d2ff9f */
+  --x-palette-primary-50:  oklch(0.960 0.091 129.7);  /* #deffbe */
+
+  /* secondary (gold) */
+  --x-palette-secondary-950: oklch(0.271 0.064 81.0); /* #362300 */
+  --x-palette-secondary-900: oklch(0.383 0.093 81.0); /* #5c3c00 */
+  --x-palette-secondary-800: oklch(0.494 0.117 81.0); /* #835900 */
+  --x-palette-secondary-700: oklch(0.606 0.137 81.0); /* #ab7700 */
+  --x-palette-secondary-600: oklch(0.718 0.155 81.0); /* #d59700 */
+  --x-palette-secondary-500: var(--x-ref-secondary);    /* #ffb900 */
+  --x-palette-secondary-400: oklch(0.852 0.155 81.0); /* #ffc343 */
+  --x-palette-secondary-300: oklch(0.876 0.137 81.0); /* #ffcc63 */
+  --x-palette-secondary-200: oklch(0.899 0.117 81.0); /* #ffd680 */
+  --x-palette-secondary-100: oklch(0.923 0.093 81.0); /* #ffe09d */
+  --x-palette-secondary-50:  oklch(0.947 0.064 81.0); /* #ffeabd */
+
+  /* tertiary (rare-tier magenta) */
+  --x-palette-tertiary-950: oklch(0.244 0.105 345.7); /* #3f002b */
+  --x-palette-tertiary-900: oklch(0.328 0.154 345.7); /* #650045 */
+  --x-palette-tertiary-800: oklch(0.412 0.193 345.7); /* #8b0061 */
+  --x-palette-tertiary-700: oklch(0.497 0.226 345.7); /* #b1007d */
+  --x-palette-tertiary-600: oklch(0.581 0.255 345.7); /* #d8009a */
+  --x-palette-tertiary-500: var(--x-ref-tertiary);      /* #ff00b8 */
+  --x-palette-tertiary-400: oklch(0.716 0.255 345.7); /* #ff47c5 */
+  --x-palette-tertiary-300: oklch(0.767 0.226 345.7); /* #ff74cf */
+  --x-palette-tertiary-200: oklch(0.818 0.193 345.7); /* #ff97d9 */
+  --x-palette-tertiary-100: oklch(0.868 0.154 345.7); /* #ffb4e4 */
+  --x-palette-tertiary-50:  oklch(0.919 0.105 345.7); /* #ffd0f0 */
+
+  /* status-positive (reuses primary ramp — observed "green" status state) */
+  --x-palette-status-positive-950: oklch(0.285 0.091 129.7); /* #1b3200 */
+  --x-palette-status-positive-900: oklch(0.410 0.133 129.7); /* #315700 */
+  --x-palette-status-positive-800: oklch(0.535 0.167 129.7); /* #4c7e00 */
+  --x-palette-status-positive-700: oklch(0.661 0.195 129.7); /* #6aa800 */
+  --x-palette-status-positive-600: oklch(0.786 0.221 129.7); /* #89d300 */
+  --x-palette-status-positive-500: var(--x-ref-status-positive); /* #abff00 */
+  --x-palette-status-positive-400: oklch(0.921 0.221 129.7); /* #b4ff47 */
+  --x-palette-status-positive-300: oklch(0.931 0.195 129.7); /* #bdff68 */
+  --x-palette-status-positive-200: oklch(0.941 0.167 129.7); /* #c7ff84 */
+  --x-palette-status-positive-100: oklch(0.950 0.133 129.7); /* #d2ff9f */
+  --x-palette-status-positive-50:  oklch(0.960 0.091 129.7); /* #deffbe */
+
+  /* status-caution (nav alert orange, distinct from gold secondary) */
+  --x-palette-status-caution-950: oklch(0.263 0.065 66.1); /* #391d00 */
+  --x-palette-status-caution-900: oklch(0.366 0.095 66.1); /* #5f3200 */
+  --x-palette-status-caution-800: oklch(0.469 0.118 66.1); /* #854a00 */
+  --x-palette-status-caution-700: oklch(0.571 0.138 66.1); /* #ad6300 */
+  --x-palette-status-caution-600: oklch(0.674 0.156 66.1); /* #d67f00 */
+  --x-palette-status-caution-500: var(--x-ref-status-caution); /* #ff9c00 */
+  --x-palette-status-caution-400: oklch(0.809 0.156 66.1); /* #ffaa40 */
+  --x-palette-status-caution-300: oklch(0.841 0.138 66.1); /* #ffb861 */
+  --x-palette-status-caution-200: oklch(0.873 0.118 66.1); /* #ffc67e */
+  --x-palette-status-caution-100: oklch(0.906 0.095 66.1); /* #ffd49c */
+  --x-palette-status-caution-50:  oklch(0.938 0.065 66.1); /* #ffe3bd */
+
+  /* status-negative (delete/destructive red) */
+  --x-palette-status-negative-950: oklch(0.249 0.073 23.8); /* #3e0f0f */
+  --x-palette-status-negative-900: oklch(0.338 0.107 23.8); /* #63191a */
+  --x-palette-status-negative-800: oklch(0.427 0.134 23.8); /* #892629 */
+  --x-palette-status-negative-700: oklch(0.516 0.157 23.8); /* #b03739 */
+  --x-palette-status-negative-600: oklch(0.605 0.177 23.8); /* #d74a4b */
+  --x-palette-status-negative-500: var(--x-ref-status-negative); /* #ff5e5e */
+  --x-palette-status-negative-400: oklch(0.740 0.177 23.8); /* #ff7673 */
+  --x-palette-status-negative-300: oklch(0.786 0.157 23.8); /* #ff908b */
+  --x-palette-status-negative-200: oklch(0.832 0.134 23.8); /* #ffa9a3 */
+  --x-palette-status-negative-100: oklch(0.878 0.107 23.8); /* #ffc1bb */
+  --x-palette-status-negative-50:  oklch(0.924 0.073 23.8); /* #ffd7d2 */
+
+  /* neutral — cool near-black void→white (1000 = page void, seed).
+     neutral-900 (#30343d) lands close to the site's observed structural
+     border #333540 — confirms the ramp curve against real evidence. */
+  --x-palette-neutral-1000: var(--x-ref-neutral);          /* #141517 page */
+  --x-palette-neutral-950:  oklch(0.260 0.0108 264.5);   /* #212429 panel */
+  --x-palette-neutral-900:  oklch(0.325 0.0163 264.5);   /* #30343d divider/container */
+  --x-palette-neutral-800:  oklch(0.390 0.0202 264.5);   /* #404550 */
+  --x-palette-neutral-700:  oklch(0.455 0.0220 264.5);   /* #515763 */
+  --x-palette-neutral-600:  oklch(0.520 0.0212 264.5);   /* #636976 */
+  --x-palette-neutral-500:  oklch(0.585 0.0181 264.5);   /* #767c87 */
+  --x-palette-neutral-400:  oklch(0.650 0.0131 264.5);   /* #8b8f97 body-soft */
+  --x-palette-neutral-300:  oklch(0.715 0.0069 264.5);   /* #a1a3a7 */
+  --x-palette-neutral-200:  oklch(0.780 0.0015 264.5);   /* #b7b7b8 */
+  --x-palette-neutral-100:  oklch(0.845 0.0015 264.5);   /* #cbcccd */
+  --x-palette-neutral-50:   oklch(0.910 0.0015 264.5);   /* #e1e1e2 */
+  --x-palette-neutral-0:    oklch(0.975 0.0015 264.5);   /* #f6f7f8 near-white */
+
+  /* ── Typography ────────────────────────────────────────────────────────────
+     Hanzel Condensed Bold Italic (local licensed) = heading/display;
+     Eurostile (local licensed) = body. Both ship no open equivalent — the
+     Figma tokens export substitutes the documented Google Fonts proxies
+     (Saira Condensed / Titillium Web) via --config, real names stay first here. */
+  --x-sys-font-family-heading: 'Hanzel Condensed Bold Italic', 'Saira Condensed', sans-serif;
+  --x-sys-font-family-body:    'Eurostile', 'Titillium Web', system-ui, sans-serif;
+
+  --x-sys-weight-extra-bold: 800;
+  --x-sys-weight-bold:       700;
+  --x-sys-weight-semibold:   600;
+  --x-sys-weight-regular:    400;
+
+  /* Heading + body sizes (Mobile mode — observed via the site's CSS scale). */
+  --x-sys-size-h1: 48px;
+  --x-sys-size-h2: 32px;
+  --x-sys-size-h3: 24px;
+  --x-sys-size-h4: 16px;
+  --x-sys-size-h5: 15px;
+  --x-sys-size-h6: 14px;
+  --x-sys-size-h7: 12px;
+  --x-sys-size-body-l:    16px;
+  --x-sys-size-body-main: 14px;
+  --x-sys-size-body-s:    12px;
+  --x-sys-size-body-xs:   10px;
+
+  --x-sys-letter-spacing-tight:  -0.005em;
+  --x-sys-letter-spacing-narrow: -0.002em;
+  --x-sys-letter-spacing-main:    0;
+  --x-sys-letter-spacing-loose:   0.005em;
+  --x-sys-letter-spacing-wide:    0.01em;
+
+  --x-sys-line-height-main:  1;
+  --x-sys-line-height-loose: 1.2;
+  --x-sys-line-height-wide:  1.5;
+
+  /* Hanzel is a designed condensed-italic face — no scaleX squeeze needed. */
+  --x-sys-font-condense: 1;
+}
+
+/* ── Semantic / alias-role OVERRIDES ─────────────────────────────────────────
+   These tokens are also defined by a later :root tier (semantics.css /
+   system.css), so they must be set from html[data-theme] (specificity 0,1,1) to
+   beat :root (0,1,0) regardless of source order — see web-store-tokens §3. */
+html[data-theme="mcoc"] {
+  /* ── Mixed radius profile — pill controls/badges, sharp containers/thumbnails.
+     Signature motif: angled cut-corner HUD panel frames (component-level, not
+     tokenised — see tier2SignatureSurfaces in spec.json). */
+  --x-radius-control-xs:   var(--x-sys-radius-full);
+  --x-radius-control-s:    var(--x-sys-radius-full);
+  --x-radius-control-full: var(--x-sys-radius-full);
+  --x-radius-input-s:      var(--x-sys-radius-xs);
+  --x-radius-input-m:      var(--x-sys-radius-xs);
+  --x-radius-container-xs: var(--x-sys-radius-xs);
+  --x-radius-container-s:  var(--x-sys-radius-xs);
+  --x-radius-container-m:  var(--x-sys-radius-xs);
+  --x-radius-container-l:  var(--x-sys-radius-xs);
+  --x-radius-thumbnail-xs: var(--x-sys-radius-0);
+  --x-radius-thumbnail-s:  var(--x-sys-radius-0);
+  --x-radius-thumbnail-m:  var(--x-sys-radius-0);
+  --x-radius-badge-s:      var(--x-sys-radius-full);
+
+  /* Structural border hairline (observed #333540 ≈ neutral-900). */
+  --x-border-card-default: var(--x-palette-neutral-900);
+
+  /* Hyperlinks on a coloured/brand surface read gold, not the default cyan. */
+  --x-sys-colour-hyperlink-inverse: var(--x-sys-colour-secondary-main);
+
+  /* Signature acid-green glow halo — the universal "active/selected/positive"
+     signal (observed: box-shadow 0 0 4px #ABFF00, 0 0 33px rgba(171,255,0,.3)). */
+  --x-sys-effect-glow-primary:   var(--x-ref-primary);
+  --x-sys-effect-glow-secondary: var(--x-ref-secondary);
+  --x-sys-effect-shadow-primary:   oklch(0.19 0.057 129.7 / 1);  /* #033b00 — dark-green border companion to the lime glow */
+  --x-sys-effect-shadow-secondary: var(--x-palette-secondary-950);
+}

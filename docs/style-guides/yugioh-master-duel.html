@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yu-Gi-Oh! MASTER DUEL — Style Guide v1.0</title>
+<!-- Real brand font is Yu Gothic (system font, not on Google Fonts). Noto Sans JP is loaded as the web proxy. -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1430;
+    --paper:#F5F7FF;
+    --muted:#666;
+    --accent:#E3B23C;
+    --accent2:#2E8BE6;
+    --font-display:"Yu Gothic",YuGothic,"Noto Sans JP","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+    --font-body:"Yu Gothic",YuGothic,"Noto Sans JP","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#ddd;color:var(--ink);font-family:var(--font-body);font-size:14px;line-height:1.55}
+  p{max-width:68ch}
+  h1,h2,h3{line-height:1.15}
+  .page{
+    width:210mm;min-height:297mm;margin:8mm auto;
+    padding:16mm 18mm;background:var(--paper);
+    box-shadow:0 1mm 4mm rgba(0,0,0,.18);
+    page-break-after:always;position:relative;overflow:hidden
+  }
+  .page--dark{background:var(--ink);color:var(--paper)}
+  .page--accent{background:var(--accent);color:var(--ink)}
+  h1{font-family:var(--font-display);font-size:52px;line-height:.95;letter-spacing:-.01em;margin-bottom:.3em}
+  h2{font-family:var(--font-display);font-size:28px;margin-bottom:.5em;letter-spacing:.01em}
+  h3{font-family:var(--font-display);font-size:18px;margin-bottom:.35em;letter-spacing:.02em}
+  .eyebrow{font:600 10px/1 var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .page--dark .eyebrow,.page--accent .eyebrow{color:rgba(255,255,255,.5)}
+  .page--accent .eyebrow{color:rgba(14,20,48,.55)}
+  .chip{display:inline-block;padding:2px 7px;border-radius:3px;font:700 9px/1.6 var(--font-body);
+        letter-spacing:.1em;text-transform:uppercase;margin-left:6px;vertical-align:middle}
+  .chip--locked{background:#1a1a2e;color:#fff}
+  .chip--flex{background:#2d4a22;color:#fff}
+  .chip--system{background:#7a1f1f;color:#fff}
+  .conf{display:inline-block;font:600 8px/1.4 var(--font-body);letter-spacing:.08em;text-transform:uppercase;
+        padding:1px 5px;border-radius:3px;background:rgba(0,0,0,.08);color:#555;margin-left:4px}
+  .page--dark .conf{background:rgba(255,255,255,.12);color:rgba(255,255,255,.7)}
+  table.ref{width:100%;border-collapse:collapse;margin-top:5mm;font-size:11px}
+  table.ref th,table.ref td{border:1px solid rgba(0,0,0,.12);padding:5px 7px;text-align:left;vertical-align:top}
+  table.ref th{font:700 10px/1.3 var(--font-body);letter-spacing:.04em;background:rgba(0,0,0,.04)}
+  table.ref td code,table.ref th code{font:10px/1.4 ui-monospace,monospace}
+  .page--dark table.ref th,.page--dark table.ref td{border-color:rgba(255,255,255,.18)}
+  .page--dark table.ref th{background:rgba(255,255,255,.08)}
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(42mm,1fr));gap:6mm;margin-top:6mm}
+  .swatch{border-radius:6px;overflow:hidden;border:1px solid rgba(0,0,0,.1)}
+  .swatch__chip{height:28mm}
+  .swatch__meta{padding:8px;font-size:11px;line-height:1.6}
+  .swatch__role{font-weight:700;font-size:12px;display:block;margin-bottom:2px}
+  .cascade{display:flex;flex-direction:column;gap:3mm;margin-top:5mm}
+  .tier{border-radius:6px;padding:4mm 5mm;display:flex;align-items:flex-start;gap:4mm}
+  .tier--locked{background:#1a1a2e;color:#fff}
+  .tier--flex{background:#2d4a22;color:#fff}
+  .tier__num{font:700 20px/1 var(--font-display);opacity:.4;min-width:12mm}
+  .tier__body{flex:1}
+  .tier__title{font:700 13px/1.2 var(--font-display);margin-bottom:3px}
+  .tier__tokens{font:11px/1.7 ui-monospace,monospace;opacity:.75}
+  .tier__tag{font:600 9px/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase;
+             padding:2px 6px;border-radius:3px;background:rgba(255,255,255,.15);
+             margin-left:auto;white-space:nowrap;align-self:center}
+  .anchor-rule{background:rgba(255,255,255,.08);border-radius:4px;padding:3mm 4mm;
+               font:11px/1.6 ui-monospace,monospace;margin-top:3mm}
+  .specimen{border-top:2px solid currentColor;padding-top:5mm;margin-top:5mm}
+  .specimen+.specimen{margin-top:6mm}
+  .specimen__label{font:600 10px/1 var(--font-body);letter-spacing:.15em;text-transform:uppercase;opacity:.5;margin-bottom:4px}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-top:5mm}
+  .card{border:1px solid rgba(0,0,0,.12);border-radius:8px;padding:5mm}
+  .card b{display:block;font-size:13px;margin-bottom:4px}
+  .card p,.card ul{font-size:12px;opacity:.85;line-height:1.55}
+  .card ul{padding-left:1em}
+  .dodont{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-top:5mm}
+  .do{border-left:4px solid #1b8e3a;padding-left:4mm}
+  .dont{border-left:4px solid #c0392b;padding-left:4mm}
+  .do b,.dont b{font-size:12px;font-weight:700;display:block;margin-bottom:4px}
+  .do p,.dont p,.do ul,.dont ul{font-size:11px;opacity:.85}
+  .do ul,.dont ul{padding-left:1em;line-height:1.6}
+  .intent-card{border:1px solid rgba(0,0,0,.12);border-radius:8px;padding:5mm;margin-bottom:4mm}
+  .intent-card b{font-family:var(--font-display);font-size:15px;letter-spacing:.01em}
+  .intent-card__feel{font-size:13px;font-style:italic;opacity:.7;margin:3px 0 5px}
+  .intent-card__row{display:flex;gap:4mm;align-items:baseline;flex-wrap:wrap;margin-top:3px}
+  .intent-card__label{font:600 9px/1.4 var(--font-body);letter-spacing:.1em;text-transform:uppercase;
+                       min-width:20mm;opacity:.5}
+  .intent-card__val{font-size:11px;flex:1}
+  .prompt{background:#f4f4f4;border-radius:6px;padding:5mm;
+          font:12px/1.6 ui-monospace,monospace;white-space:pre-wrap;margin-top:4mm}
+  .page--dark .prompt{background:rgba(255,255,255,.08);color:var(--paper)}
+  .appendix pre{font-size:8px;line-height:1.4;overflow:hidden;white-space:pre-wrap;word-break:break-word}
+  .gold-rule{height:3px;width:60mm;background:linear-gradient(90deg,#E3B23C,#F0D488,#E3B23C);margin:6mm 0;border-radius:2px}
+  @page{size:A4;margin:0}
+  @media print{
+    html,body{background:#fff}
+    .page{margin:0;box-shadow:none;width:100%;min-height:100vh;page-break-after:always}
+  }
+</style>
+</head>
+<body>
+
+<!-- ① COVER -->
+<section class="page page--dark" style="display:flex;flex-direction:column;justify-content:flex-end;gap:6mm;background:radial-gradient(120% 90% at 80% 10%, #1B2450 0%, #0E1430 55%, #070A1C 100%)">
+  <div class="eyebrow">Style Guide · v1.0 · 2026</div>
+  <div class="gold-rule"></div>
+  <h1 style="font-size:76px;background:linear-gradient(180deg,#F6E4A8 0%,#E3B23C 55%,#B8892A 100%);-webkit-background-clip:text;background-clip:text;color:transparent">YU-GI-OH!<br>MASTER DUEL</h1>
+  <p style="max-width:130mm;font-size:15px;opacity:.85">The definitive digital battleground for the world's most iconic Trading Card Game. A premium, high-stakes duel arena rendered in metallic gold, arcane energy, and deep-space obsidian — engineered for the webstore.</p>
+  <p style="font-size:10px;opacity:.4;margin-top:2mm">Brand-locked identity · store-flexible components · system-constant grid — for the Codashop web-store token cascade.</p>
+</section>
+
+<!-- ② BRAND ESSENCE -->
+<section class="page page--dark" style="background:radial-gradient(120% 90% at 15% 90%, #17204A 0%, #0E1430 60%)">
+  <div class="eyebrow">01 · Brand Essence</div>
+  <h1 style="color:#E3B23C">LEGENDARY · ARCANE · COMPETITIVE · PREMIUM</h1>
+  <p style="max-width:135mm;margin-bottom:8mm;opacity:.85">Master Duel positions the Yu-Gi-Oh! TCG as a serious, world-championship-grade digital arena. The identity fuses collectible-card nostalgia with a modern esports polish: metallic gold treasure, crackling duel energy, and the cool dark void of the duel field. Every surface should feel valuable, charged, and decisive.</p>
+
+  <div class="gold-rule"></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6mm;font-size:12px;opacity:.85;line-height:1.6">
+    <div><b style="color:#E3B23C;font-family:var(--font-display);font-size:16px">LEGENDARY <span class="conf">observed</span></b><br>Metallic gold logo lockup, "definitive edition" and "World Championship" copy, trophy-grade premium framing.</div>
+    <div><b style="color:#E3B23C;font-family:var(--font-display);font-size:16px">ARCANE <span class="conf">inferred: high</span></b><br>Duel energy, glow VFX, purple/blue magic accents and card-summon light are core to the TCG's visual language.</div>
+    <div><b style="color:#E3B23C;font-family:var(--font-display);font-size:16px">COMPETITIVE <span class="conf">observed</span></b><br>Multi-platform badges, ranked/esports positioning, "ultimate battle" — a serious tournament tone, not casual.</div>
+    <div><b style="color:#E3B23C;font-family:var(--font-display);font-size:16px">PREMIUM <span class="conf">observed</span></b><br>Paid+free Gem bundle economy up to $214.99; "Limited-Time" and "Store Exclusive" scarcity language rewards a lux treatment.</div>
+  </div>
+  <p style="font-size:10px;opacity:.4;margin-top:10mm">Positioning line: “Summon. Duel. Dominate.” — a premium arena where every card is a legend and every purchase powers the next victory.</p>
+</section>
+
+<!-- ②b VOICE & TONE -->
+<section class="page page--dark" style="background:radial-gradient(120% 90% at 85% 15%, #17204A 0%, #0E1430 60%)">
+  <div class="eyebrow">01·B · Brand Voice &amp; Tone <span class="conf" style="background:rgba(53,196,138,.25);color:#8ff0c4">observed · live site</span></div>
+  <h2 style="color:#E3B23C">How Master Duel Speaks</h2>
+  <p style="max-width:135mm;opacity:.85;margin-bottom:5mm">Read from the official Konami site's live copy. The voice is <b>grand, welcoming, and event-driven</b> — it treats the reader as a <b>“Duelist”</b> on a heroic path, speaks in the second person, and carries an energetic, exclamatory cadence without ever being edgy or aggressive. Heritage and authenticity are constant proof points.</p>
+
+  <div class="gold-rule"></div>
+
+  <h3 style="color:#F5F7FF">Five voice pillars</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5mm;font-size:11.5px;opacity:.88;line-height:1.55;margin-top:3mm">
+    <div><b style="color:#E3B23C">1 · Grand &amp; aspirational</b><br>Frames play as an epic ascent. Live copy: “Are you ready to enter the ultimate battle?”, “Become the top Duelist in the world”, “Road to Worlds”, “the definitive edition”.</div>
+    <div><b style="color:#E3B23C">2 · Authentic &amp; heritage-proud</b><br>Leans on 20+ years of legacy. “An authentic Yu-Gi-Oh! Digital card game”, “evolving for over 20 years”.</div>
+    <div><b style="color:#E3B23C">3 · Energetic &amp; direct</b><br>Second person, short exclamatory lines. “Download Now!!”, “Master the Summoning methods as you play!”.</div>
+    <div><b style="color:#E3B23C">4 · Welcoming to all levels</b><br>Reassures newcomers while respecting veterans. “Master the basic rules of the game as you play”, tutorials, “for everyone to enjoy”.</div>
+    <div><b style="color:#E3B23C">5 · Community &amp; event-driven</b><br>Always pointing to the next Festival, tournament, or campaign. “A lot of exciting events and tournaments”, “Take part in a variety of different Festivals!”.</div>
+    <div><b style="color:#E3B23C">Commerce voice</b><br>Value-forward and trustworthy, not pushy. Store copy: “great prices”, “better prices there than when purchasing in-game”.</div>
+  </div>
+
+  <h3 style="color:#F5F7FF;margin-top:6mm">Lexicon — say / avoid</h3>
+  <div class="dodont">
+    <div class="do" style="border-color:#35C48A"><b style="color:#8ff0c4">✓ Brand vocabulary</b><ul style="opacity:.9">
+      <li><b>Duelist</b> (the player), <b>Duel</b>, <b>Summon</b> (Synchro / Xyz / Pendulum / Link), <b>Deck</b>.</li>
+      <li><b>Gems</b> (currency), <b>Festival</b>, <b>Solo Mode</b>, <b>World Championship</b>.</li>
+      <li>Verbs: <i>Summon · Duel · Master · Build · Climb · Dominate · Enter the battle</i>.</li>
+    </ul></div>
+    <div class="dont" style="border-color:#E24141"><b style="color:#ffb3b3">✗ Off-brand</b><ul style="opacity:.9">
+      <li>Generic “gamer / user / player-1” instead of <b>Duelist</b>.</li>
+      <li>Aggressive trash-talk, slang, or meme voice — stay grand, not edgy.</li>
+      <li>Over-discounting language (“cheap”, “blowout”). Prefer “great value”, “bonus Gems”.</li>
+      <li>Cold/technical checkout copy — keep the heroic, welcoming warmth through purchase.</li>
+    </ul></div>
+  </div>
+
+  <h3 style="color:#F5F7FF;margin-top:5mm">Webstore copy examples</h3>
+  <div style="font-size:11.5px;opacity:.88;line-height:1.7">
+    <div>Hero: <b style="color:#E3B23C">“Enter the Ultimate Battle.”</b> / <span style="opacity:.7">Sub: “Top up your Gems and build the deck that conquers Worlds.”</span></div>
+    <div>SKU CTA: <b style="color:#E3B23C">“Claim Your Gems”</b> · <span style="opacity:.7">bonus badge: “+ Free Gems included”</span></div>
+    <div>Scarcity badge: <b style="color:#F5892E">“Limited-Time — ends in 33 days”</b></div>
+    <div>Empty/confirmation: <span style="opacity:.7">“Your Gems are on their way, Duelist.”</span></div>
+  </div>
+</section>
+
+<!-- ③ LOGO -->
+<section class="page">
+  <div class="eyebrow">02 · Logo &amp; Clear Space</div>
+  <h2>Logo &amp; Lockup</h2>
+  <p style="margin-bottom:5mm">The master lockup is the <b>Yu-Gi-Oh!</b> franchise wordmark stacked above the <b>MASTER DUEL</b> sub-brand. The wordmark is a metallic-gold, sharply beveled display treatment with a dark outline for separation on busy art. Observed assets: <code>/yugioh/masterduel/images/logo.png</code>, plus platform badges (PlayStation, Xbox, Steam, Switch, App Store, Google Play). <span class="conf">observed</span></p>
+
+  <div style="background:radial-gradient(120% 100% at 50% 40%,#1B2450,#0E1430);border-radius:10px;padding:16mm;text-align:center;margin:5mm 0">
+    <div style="font-family:var(--font-display);font-weight:900;font-size:30px;letter-spacing:.02em;background:linear-gradient(180deg,#F6E4A8,#E3B23C 55%,#B8892A);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 2px 0 rgba(0,0,0,.3)">YU-GI-OH!</div>
+    <div style="font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:.28em;color:#F5F7FF;margin-top:3px">MASTER DUEL</div>
+    <div style="margin-top:8mm;font:10px/1 var(--font-body);letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35)">Clear space = height of the “M” on all sides</div>
+  </div>
+
+  <h3 style="margin-top:5mm">Rules</h3>
+  <ul style="font-size:11px;padding-left:1.2em;opacity:.85;line-height:1.7">
+    <li><b>Clear space:</b> minimum margin equal to the cap-height of the “M” in MASTER on every side.</li>
+    <li><b>Minimum size:</b> 120px wide on screen (keeps the bevel + outline legible).</li>
+    <li><b>Colourways:</b> metallic gold on dark (primary), or flat gold <code>#E3B23C</code>, or mono white on dark. Never mono black on light without the outline.</li>
+    <li><b>Isolation on art:</b> always place on a darkened zone or add a subtle radial scrim behind the lockup.</li>
+  </ul>
+
+  <div class="dodont">
+    <div class="do"><b>✓ Approved</b><ul>
+      <li>Metallic gold on deep navy / obsidian.</li>
+      <li>Mono white on dark art with scrim.</li>
+      <li>Maintain the stacked wordmark + sub-brand ratio.</li>
+    </ul></div>
+    <div class="dont"><b>✗ Misuse — never</b><ul>
+      <li>Stretch, skew, or re-condense the wordmark.</li>
+      <li>Recolour to non-brand hues or add rainbow gradients.</li>
+      <li>Place gold-on-light or over busy art without isolation.</li>
+      <li>Rearrange, rotate, or add extra drop shadows.</li>
+    </ul></div>
+  </div>
+  <p style="font-size:10px;opacity:.45;margin-top:4mm">Lockup treatment inferred from the franchise's consistent metallic-gold identity; exact bevel spec not pixel-sampled. <span class="conf">inferred: high</span></p>
+</section>
+
+<!-- ④ COLOUR -->
+<section class="page">
+  <div class="eyebrow">03 · Colour System</div>
+  <h2>Palette <span class="conf">inferred: med</span></h2>
+  <p style="font-size:11px;opacity:.7;margin-bottom:2mm">Reconstructed from Master Duel's metallic-gold-on-deep-navy identity and the store's blue/purple/dark imagery (storefronts are JS SPAs — pixels were not sampled). Each role maps to a <code>--x-ref-*</code> seed; the <code>-500</code> palette step equals the seed.</p>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch__chip" style="background:#E3B23C"></div><div class="swatch__meta"><span class="swatch__role">primary · Master Gold</span>#E3B23C<br>rgb(227,178,60)<br><span style="font-size:10px;opacity:.65">Dominant brand accent · logo, premium CTAs, prices, glow</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#2E8BE6"></div><div class="swatch__meta"><span class="swatch__role">secondary · Duel Blue</span>#2E8BE6<br>rgb(46,139,230)<br><span style="font-size:10px;opacity:.65">Supporting accent · links, info, energy highlights</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#7A4DB3"></div><div class="swatch__meta"><span class="swatch__role">tertiary · Arcane Purple</span>#7A4DB3<br>rgb(122,77,179)<br><span style="font-size:10px;opacity:.65">Third accent · magic energy, gradients, epic rarity</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#0E1430"></div><div class="swatch__meta"><span class="swatch__role">neutral · Obsidian Navy</span>#0E1430<br>rgb(14,20,48)<br><span style="font-size:10px;opacity:.65">Layout / background foundation · the duel field</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#35C48A"></div><div class="swatch__meta"><span class="swatch__role">statusPositive</span>#35C48A<br>rgb(53,196,138)<br><span style="font-size:10px;opacity:.65">Success, bonus gems, positive delta (+ ✓ icon)</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#F5892E"></div><div class="swatch__meta"><span class="swatch__role">statusCaution</span>#F5892E<br>rgb(245,137,46)<br><span style="font-size:10px;opacity:.65">Warning, "Limited-Time" expiry (+ ⏱ icon)</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#E24141"></div><div class="swatch__meta"><span class="swatch__role">statusNegative</span>#E24141<br>rgb(226,65,65)<br><span style="font-size:10px;opacity:.65">Error, payment failure (+ ⚠ icon + label)</span></div></div>
+  </div>
+
+  <div style="margin-top:7mm">
+    <h3>Contrast &amp; placement rules</h3>
+    <ul style="font-size:12px;padding-left:1.2em;opacity:.85;line-height:1.7">
+      <li>Parchment text <code>#F5F7FF</code> on Obsidian Navy <code>#0E1430</code> ≈ <b>16.5:1</b> — passes AA/AAA body.</li>
+      <li>Master Gold <code>#E3B23C</code> on Obsidian Navy ≈ <b>9.2:1</b> — safe for headings, prices, and large text.</li>
+      <li>CTA text uses Obsidian Navy <code>#0E1430</code> on Master Gold fill ≈ <b>9.2:1</b> — dark-on-gold, never white-on-gold (white-on-gold ≈ 1.8:1, fails).</li>
+      <li>Duel Blue <code>#2E8BE6</code> on navy ≈ 5.1:1 (AA body OK); Arcane Purple <code>#7A4DB3</code> on navy ≈ 3.4:1 — large text / accents only.</li>
+      <li><b>Status never by colour alone</b> — positive pairs a ✓, caution a ⏱/clock, negative a ⚠ + text label.</li>
+      <li><b>Colour hierarchy:</b> gold = highest-value/primary action; blue = informational; purple = decorative energy only. Never use two accents at equal weight in one CTA cluster.</li>
+      <li>On art or hero imagery, place text only over a scrim (navy at ≥55% opacity) to hold the ratios above.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ⑤ TOKEN ARCHITECTURE -->
+<section class="page page--dark">
+  <div class="eyebrow">04 · Token Architecture — 5-Tier Cascade</div>
+  <h2>How the design system is structured</h2>
+  <p style="font-size:12px;opacity:.6;margin-bottom:5mm">
+    Every visual property resolves through this cascade. Tiers 1–3 are brand-locked.
+    Tiers 4–5 are store-flexible defaults. The <code>emitter.ts</code> only injects
+    ref seeds + optional palette ramps + font + page background — everything else resolves automatically.
+    Figma token exports drop the <code>--x-</code> prefix; the repo adds it.
+  </p>
+  <div class="cascade">
+    <div class="tier tier--locked">
+      <div class="tier__num">1</div>
+      <div class="tier__body">
+        <div class="tier__title">Type primitives + Ref seeds</div>
+        <div class="tier__tokens">
+          --x-sys-font-weight-{extra-bold|bold|semibold|regular}<br>
+          --x-text-size-{h1..h7|body-l|body-main|body-s|body-xs}<br>
+          --x-ref-{primary|secondary|tertiary|neutral|status-positive|status-caution|status-negative}
+        </div>
+      </div>
+      <div class="tier__tag">BRAND-LOCKED</div>
+    </div>
+    <div class="tier tier--locked">
+      <div class="tier__num">2</div>
+      <div class="tier__body">
+        <div class="tier__title">Palette ramps</div>
+        <div class="tier__tokens">--x-palette-{role}-{50..950} · neutral adds -0 / -1000</div>
+        <div class="anchor-rule">Anchor rule: --x-palette-{role}-500 = var(--x-ref-{role})<br>The -500 step IS the ref seed. The ramp is built around it.</div>
+      </div>
+      <div class="tier__tag">BRAND-LOCKED</div>
+    </div>
+    <div class="tier tier--locked">
+      <div class="tier__num">3</div>
+      <div class="tier__body">
+        <div class="tier__title">System — colour intensity, dimensions, effects, states</div>
+        <div class="tier__tokens">
+          --x-sys-colour-{role}-{subtle|soft|main|strong|heavy|inverse}<br>
+          --x-sys-effect-{shadow|glow}-{role} · --x-states-{hover|pressed}<br>
+          --x-sys-space-* · --x-sys-radius-* · --x-sys-stroke-{thin|medium|thick}<br>
+          --x-sys-elevation-{flat|level-1|level-2|level-3}-{main|inverse} · --x-sys-blur
+        </div>
+      </div>
+      <div class="tier__tag">BRAND-LOCKED</div>
+    </div>
+    <div class="tier tier--flex">
+      <div class="tier__num">4</div>
+      <div class="tier__body">
+        <div class="tier__title">Semantic / component — store-overridable defaults</div>
+        <div class="tier__tokens">
+          --x-bg-* · --x-text-* · --x-border-*<br>
+          --x-radius-{control|input|container|thumbnail|badge}-*<br>
+          --x-border-weight-* · --x-bg-action-*
+        </div>
+      </div>
+      <div class="tier__tag">STORE-FLEXIBLE</div>
+    </div>
+    <div class="tier tier--flex">
+      <div class="tier__num">5</div>
+      <div class="tier__body">
+        <div class="tier__title">Text-style classes — composed from Tier 1 primitives</div>
+        <div class="tier__tokens">.text-style-{heading|paragraph|utility}-*</div>
+      </div>
+      <div class="tier__tag">STORE-FLEXIBLE</div>
+    </div>
+  </div>
+  <p style="font-size:11px;opacity:.5;margin-top:5mm">
+    Per-store overrides: <code>body[data-theme='theme-preset--{id}']</code> (specificity 0,1,1)
+    beats the static mixin (0,1,0) — no <code>!important</code> needed.
+  </p>
+</section>
+
+<!-- ⑥ LAYOUT & GRID SYSTEM -->
+<section class="page">
+  <div class="eyebrow">05 · Layout &amp; Grid System <span class="chip chip--system">System Constant</span></div>
+  <h2>Non-Negotiable Layout</h2>
+  <p style="font-size:12px;opacity:.7;margin-bottom:3mm">
+    Identical in every guide. The brand never changes the grid. Responsiveness is driven by
+    CSS <code>@container</code> queries against the device-screen container — never viewport
+    <code>@media</code>. The screen sets <code>container-type: inline-size</code>; the overlay
+    deliberately does not (it would trap <code>position: fixed</code> descendants).
+  </p>
+
+  <h3 style="margin-top:4mm">Breakpoints &amp; grid</h3>
+  <table class="ref">
+    <tr><th>&nbsp;</th><th>XS &lt; 641px</th><th>S 641–800px</th><th>M 801–1279px</th><th>L ≥ 1280px</th></tr>
+    <tr><td>Columns</td><td>8</td><td>8</td><td>12</td><td>12</td></tr>
+    <tr><td>Column gap <code>--x-gap-grid-gutter</code></td><td>8px</td><td>8px</td><td>12px</td><td>16px</td></tr>
+    <tr><td>Side padding <code>--x-gap-grid-margin</code></td><td>12px</td><td>12px</td><td>12px</td><td>16px</td></tr>
+    <tr><td>Row gap <code>--x-gap-grid-row-default</code></td><td>8px</td><td>8px</td><td>8px</td><td>8px</td></tr>
+    <tr><td>Span "content"</td><td>full width</td><td>full width</td><td>cols 3–10, max 960px</td><td>cols 3–10, max 960px</td></tr>
+  </table>
+
+  <h3 style="margin-top:5mm">Span variants</h3>
+  <ul style="font-size:11px;padding-left:1.2em;opacity:.85;line-height:1.7">
+    <li><b>fluid / full</b> — <code>grid-column: 1 / -1</code> at all breakpoints (full bleed).</li>
+    <li><b>content</b> — full width on XS/S; centred cols 3–10 of 12, capped at 960px, on M/L.</li>
+    <li><b>carousel</b> — full-bleed on XS/S (negative margin cancels grid margin); same as content on M/L.</li>
+  </ul>
+
+  <h3 style="margin-top:5mm">SKU / content grid patterns <span style="font-size:10px;opacity:.5">(all <code>display:grid; gap:var(--x-gap-content-default)</code>)</span></h3>
+  <table class="ref">
+    <tr><th>Pattern</th><th>XS</th><th>≥ 641px</th><th>≥ 801px</th></tr>
+    <tr><td>SkuList / SkuImageList (Gem packs)</td><td>2 cols</td><td>4 cols</td><td>4 cols</td></tr>
+    <tr><td>BundleGrid (Limited-Time / Exclusive)</td><td>1 col</td><td>1 col</td><td>2 cols</td></tr>
+    <tr><td>GiftGrid</td><td>2 cols</td><td>variable</td><td>variable</td></tr>
+    <tr><td>StoryCarousel aspect</td><td>1/1</td><td>1/1</td><td>2.6/1</td></tr>
+  </table>
+
+  <h3 style="margin-top:5mm">Token-tier discipline</h3>
+  <p style="font-size:11px;opacity:.8">Components consume only the bottom two tiers — never reach up:</p>
+  <table class="ref">
+    <tr><th>Tier</th><th>Prefix</th><th>Consumed by</th></tr>
+    <tr><td>Seeds / Ref</td><td><code>--x-ref-*</code></td><td>theme file only</td></tr>
+    <tr><td>Palette</td><td><code>--x-palette-*</code></td><td>system tier only</td></tr>
+    <tr><td>System</td><td><code>--x-sys-*</code></td><td>semantic / spacing tier only</td></tr>
+    <tr><td><b>Semantic ✓</b></td><td><code>--x-bg-* · --x-text-* · --x-border-*</code></td><td><b>components</b></td></tr>
+    <tr><td><b>Spacing / Size ✓</b></td><td><code>--x-pad-* · --x-gap-* · --x-radius-* · --x-size-*</code></td><td><b>components</b></td></tr>
+  </table>
+  <p style="font-size:10px;opacity:.5;margin-top:3mm">
+    Mobile vs desktop values switch at the breakpoints above via the <code>-desktop-</code> token twins
+    (<code>--x-sys-space-desktop-*</code>, <code>--x-sys-radius-desktop-*</code>, <code>--x-text-size-desktop-*</code>).
+  </p>
+</section>
+
+<!-- ⑦ TYPOGRAPHY -->
+<section class="page">
+  <div class="eyebrow">06 · Typography</div>
+  <h2>Type System <span class="chip chip--system">System Constant</span> <span class="chip chip--locked">Font + Sizes Brand-Locked</span></h2>
+  <p style="font-size:11px;opacity:.7;margin-bottom:2mm">
+    Brand font: <b>Yu Gothic</b> (游ゴシック) — the typeface used on the official Konami Master Duel site <span class="conf">observed</span>. It is a modern Japanese gothic (sans-serif) with clean, humanist letterforms and excellent Latin + Kana + Kanji coverage — a single family drives both headings and body. Yu Gothic is a system font (Windows/macOS), <b>not</b> on Google Fonts, so the web proxy for this guide is <b>Noto Sans JP</b> (the real name stays first in every CSS stack). Weight note: Yu Gothic ships Light/Regular/Medium/Bold, so <code>extra-bold (800)</code> falls back to Bold (700) when Yu Gothic renders; the Noto Sans JP proxy supplies a true 900 where the render allows.
+  </p>
+
+  <h3 style="margin-top:5mm">Tier 1 — Type Primitives (Mobile / Desktop)</h3>
+  <p style="font-size:12px;opacity:.7;margin-bottom:3mm">
+    Every size step has a <code>-desktop-</code> twin. Weights:
+    <code>--x-sys-font-weight-{regular 400 · semibold 600 · bold 700 · extra-bold 800}</code>.
+    Leading: <code>--x-sys-line-height-{main 105% · loose 120% · wide 150%}</code>.
+    Tracking: <code>--x-sys-letter-spacing-{tight −0.5% · narrow −0.2% · main 0% · loose 0.5% · wide 1%}</code>.
+  </p>
+  <table class="ref">
+    <tr><th>Step</th><th>Mobile <code>--x-text-size-{step}</code></th><th>Desktop <code>--x-text-size-desktop-{step}</code></th></tr>
+    <tr><td>h1</td><td>28px</td><td>48</td></tr>
+    <tr><td>h2</td><td>24px</td><td>40</td></tr>
+    <tr><td>h3</td><td>22px</td><td>32</td></tr>
+    <tr><td>h4</td><td>20px</td><td>28</td></tr>
+    <tr><td>h5</td><td>18px</td><td>24</td></tr>
+    <tr><td>h6</td><td>16px</td><td>20</td></tr>
+    <tr><td>h7</td><td>14px</td><td>18</td></tr>
+    <tr><td>body-l</td><td>16px</td><td>18</td></tr>
+    <tr><td>body-main</td><td>14px</td><td>16</td></tr>
+    <tr><td>body-s</td><td>12px</td><td>14</td></tr>
+    <tr><td>body-xs</td><td>10px</td><td>12</td></tr>
+  </table>
+
+  <h3 style="margin-top:6mm">Tier 2 — The 27 Text-Style Classes</h3>
+  <p style="font-size:12px;opacity:.7;margin-bottom:3mm">Composition is a system constant; the brand changes only the font and the size values above.</p>
+  <table class="ref">
+    <tr><th>Class</th><th>Primitive</th><th>Weight</th><th>Leading</th><th>Tracking</th><th>Case</th></tr>
+    <tr><td><code>heading-display-hero</code></td><td>h1</td><td>extra-bold</td><td>loose</td><td>tight</td><td>UPPER</td></tr>
+    <tr><td><code>heading-page-title</code></td><td>h2</td><td>bold</td><td>loose</td><td>narrow</td><td>Title</td></tr>
+    <tr><td><code>heading-section</code></td><td>h3</td><td>bold</td><td>loose</td><td>main</td><td>Title</td></tr>
+    <tr><td><code>heading-modal</code></td><td>h4</td><td>bold</td><td>main</td><td>main</td><td>Title</td></tr>
+    <tr><td><code>heading-card</code></td><td>h5</td><td>semibold</td><td>main</td><td>main</td><td>Title</td></tr>
+    <tr><td><code>heading-banner</code></td><td>h6</td><td>bold</td><td>main</td><td>main</td><td>Title</td></tr>
+    <tr><td><code>heading-final-price</code></td><td>h6</td><td>extra-bold</td><td>main</td><td>main</td><td>Title</td></tr>
+    <tr><td><code>heading-sku-title</code></td><td>h4</td><td>semibold</td><td>main</td><td>main</td><td>Title</td></tr>
+    <tr><td><code>heading-subtitle</code></td><td>h7</td><td>semibold</td><td>main</td><td>main</td><td>Title</td></tr>
+    <tr><td><code>paragraph-lead</code></td><td>body-l</td><td>regular</td><td>wide</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>paragraph-regular</code></td><td>body-main</td><td>regular</td><td>wide</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>paragraph-small</code></td><td>body-s</td><td>regular</td><td>wide</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>paragraph-strikethrough</code></td><td>body-main</td><td>regular</td><td>wide</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-action-regular</code></td><td>body-main</td><td>semibold</td><td>main</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-action-uppercase</code></td><td>body-main</td><td>semibold</td><td>main</td><td>wide</td><td>UPPER</td></tr>
+    <tr><td><code>utility-action-strikethrough</code></td><td>body-main</td><td>semibold</td><td>main</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-default-regular</code></td><td>body-s</td><td>regular</td><td>wide</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-default-strikethrough</code></td><td>body-s</td><td>regular</td><td>wide</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-default-uppercase</code></td><td>body-s</td><td>semibold</td><td>main</td><td>wide</td><td>UPPER</td></tr>
+    <tr><td><code>utility-label-regular</code></td><td>body-s</td><td>semibold</td><td>main</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-label-uppercase</code></td><td>body-s</td><td>semibold</td><td>main</td><td>wide</td><td>UPPER</td></tr>
+    <tr><td><code>utility-label-tall</code></td><td>body-s</td><td>semibold</td><td>loose</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-label-strikethrough</code></td><td>body-s</td><td>semibold</td><td>main</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-micro-regular</code></td><td>body-xs</td><td>regular</td><td>main</td><td>main</td><td>sentence</td></tr>
+    <tr><td><code>utility-micro-bold</code></td><td>body-xs</td><td>extra-bold</td><td>main</td><td>wide</td><td>sentence</td></tr>
+    <tr><td><code>utility-micro-uppercase</code></td><td>body-xs</td><td>semibold</td><td>main</td><td>wide</td><td>UPPER</td></tr>
+    <tr><td><code>utility-micro-strikethrough</code></td><td>body-xs</td><td>regular</td><td>main</td><td>main</td><td>sentence</td></tr>
+  </table>
+
+  <h3 style="margin-top:6mm">Specimens</h3>
+  <div class="specimen">
+    <div class="specimen__label">heading-display-hero — h1 · extra-bold · UPPER · tight</div>
+    <div style="font-family:var(--font-display);font-size:48px;line-height:1.05;font-weight:900;letter-spacing:-.01em;text-transform:uppercase">Summon Your Legend</div>
+  </div>
+  <div class="specimen">
+    <div class="specimen__label">heading-section — h3 · bold · Title</div>
+    <div style="font-family:var(--font-display);font-size:28px;font-weight:700">Limited-Time Gem Packs</div>
+  </div>
+  <div class="specimen">
+    <div class="specimen__label">utility-action-uppercase — body-main · semibold · UPPER · wide</div>
+    <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.08em">Buy Now</div>
+  </div>
+  <div class="specimen">
+    <div class="specimen__label">paragraph-regular — body-main · regular · wide (150%)</div>
+    <p style="font-size:14px;line-height:1.5;max-width:110mm">Top up your Gems to build the ultimate deck, unlock legendary cards, and climb the ranked ladder. Every pack includes bonus free Gems.</p>
+  </div>
+  <p style="font-size:10px;opacity:.5;margin-top:4mm">Reversed type: on the dark navy field, bump white body one weight step (regular→medium/semibold) and prices +1–2px so gold prices hold contrast. Yu Gothic has a relatively large x-height and open apertures — good for reversed UI — but avoid its Light weight on dark backgrounds (strokes thin out). Set <code>font-feature-settings:"palt"</code> for proportional CJK spacing when Japanese copy is present.</p>
+</section>
+
+<!-- ⑧ COMPONENT STYLE DNA -->
+<section class="page">
+  <div class="eyebrow">07 · Component Style DNA</div>
+  <h2>Visual Building Blocks</h2>
+  <div class="cards">
+    <div class="card">
+      <b>Shape language <span class="chip chip--locked">Brand-Locked</span></b>
+      <p>Sharp, decisive, card-edged. Controls &amp; inputs → <code>--x-sys-radius-xs</code>; containers/cards → <code>--x-sys-radius-s</code>; thumbnails → <code>--x-sys-radius-xs</code>; badges → <code>--x-sys-radius-full</code>. Signature motif: 45° cut-corner / beveled panel frame (see Tier-2).</p>
+    </div>
+    <div class="card">
+      <b>Lighting model <span class="chip chip--locked">Brand-Locked</span></b>
+      <p>Interactive = <code>--x-sys-elevation-level-1-main</code> + gold/blue glow + higher saturation. Non-interactive = <code>--x-sys-elevation-flat</code>, no glow. Global light reads as an energy glow emanating from the CTA/price, not a physical sun.</p>
+    </div>
+    <div class="card">
+      <b>Effect tints <span class="chip chip--locked">Brand-Locked</span></b>
+      <p><code>--x-sys-effect-glow-primary</code>: #E3B23C · <code>--x-sys-effect-glow-secondary</code>: #2E8BE6 · <code>--x-sys-effect-shadow-neutral</code>: #05070F. Hover overlay #FFFFFF (≈8%); pressed overlay #000000 (≈12%).</p>
+    </div>
+    <div class="card">
+      <b>Density &amp; spacing <span class="chip chip--locked">Brand-Locked</span></b>
+      <p>Regular-to-tight rhythm on an 8px base; base gap <code>--x-sys-space-s</code>. SKU grids are border-grouped (card edges); nav/labels space-grouped. Touch target ≥ <code>--x-sys-size-control-m</code> (44px floor).</p>
+    </div>
+    <div class="card">
+      <b>Elevation <span class="chip chip--locked">Brand-Locked</span></b>
+      <p>SKU/bundle cards &amp; buttons → <code>level-1-main</code>; checkout sheet/modal → <code>level-2-main</code>; snackbar/toast → <code>level-3-main</code>; static banners → <code>flat</code>. Cards read as stacked cards on a table.</p>
+    </div>
+    <div class="card">
+      <b>Stroke weight <span class="chip chip--locked">Brand-Locked</span></b>
+      <p>Dividers → <code>--x-sys-stroke-thin</code> (navy tint). Selected/active SKU &amp; focus → <code>--x-sys-stroke-medium</code> in Master Gold. Emphasis frames → <code>--x-sys-stroke-thick</code>.</p>
+    </div>
+    <div class="card">
+      <b>Material &amp; texture <span class="chip chip--locked">Brand-Locked</span></b>
+      <p>Mostly clean flat on deep navy. Permitted accents: subtle radial energy glow behind hero art and a faint hex/foil sheen on premium cards only. Avoid heavy grain, halftone, or distress — this brand reads polished, not gritty.</p>
+    </div>
+    <div class="card">
+      <b>Motion language <span class="chip chip--locked">Brand-Locked</span></b>
+      <p>Snappy &amp; premium: 180ms ease-out for hovers, 240ms for sheets. Signatures: gold glow-pulse on primary CTA hover, scale-on-press (0.97), summon-style fade+rise on card reveal.</p>
+    </div>
+    <div class="card">
+      <b>Iconography <span class="chip chip--locked">Brand-Locked</span></b>
+      <p>Solid / semi-illustrated, medium stroke, slightly sharp corners. The Gem icon is the hero token (faceted crystal). Status icons: ✓ / ⏱ / ⚠ paired with colour, never colour alone.</p>
+    </div>
+    <div class="card">
+      <b>Semantic colour mapping <span class="chip chip--flex">Store-Flexible</span></b>
+      <p>Default: <code>--x-bg-action-primary</code> → <code>--x-sys-colour-primary-main</code>. Stores may remap to any intensity step (subtle → inverse) without touching brand tiers.</p>
+    </div>
+  </div>
+  <div style="margin-top:6mm">
+    <h3>Interactive vs non-interactive rule</h3>
+    <p style="font-size:12px">Interactive = <code>elevation-level-1</code> + <code>sys-colour-*-main</code>/gold glow + states overlay. Non-interactive = <code>elevation-flat</code> + <code>sys-colour-*-subtle</code> + no glow + no overlay.</p>
+  </div>
+</section>
+
+<!-- ⑨ ART DIRECTION -->
+<section class="page">
+  <div class="eyebrow">08 · Art Direction &amp; VFX</div>
+  <h2>Imagery System</h2>
+  <div class="cards">
+    <div class="card"><b>Framing &amp; subject</b><p>Hero: iconic monsters / signature cards at ¾ dynamic angle, mid-summon. SKU: the faceted Gem hoard, centred, denomination overlaid, camera slightly above.</p></div>
+    <div class="card"><b>Background</b><p>Deep obsidian-navy void with a radial energy bloom; optional duel-field grid perspective receding to a vanishing point.</p></div>
+    <div class="card"><b>Lighting &amp; mood</b><p>Cool overall temperature, warm gold key light on the focal subject; strong rim light to separate from the void; high-contrast, dramatic.</p></div>
+    <div class="card"><b>VFX signature</b><p>Gold/blue energy particles, card-summon light shafts, arcane glyph rings, holographic foil glints, soft motion blur on cast energy.</p></div>
+    <div class="card"><b>Figure-ground</b><p>Subject cut out on the void with rim-light + drop glow; never busy environmental clutter behind product art.</p></div>
+    <div class="card"><b>Text-over-art</b><p>Reserve the lower third or one clear corner; add a navy radial scrim (≥55%). Min body 12px; prices in Master Gold, large.</p></div>
+  </div>
+  <div class="dodont" style="margin-top:5mm">
+    <div class="do"><b>✓ Do</b><ul>
+      <li>Isolate one hero subject against the navy void with gold rim-light.</li>
+      <li>Let energy VFX radiate from the Gem / card, reinforcing value.</li>
+      <li>Keep denomination numerals huge and legible on SKU art.</li>
+    </ul></div>
+    <div class="dont"><b>✗ Don't</b><ul>
+      <li>Crowd the frame with multiple competing subjects.</li>
+      <li>Use warm/muddy backgrounds that kill the cool-void contrast.</li>
+      <li>Place white type directly on gold or on unscrimmed art.</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- ⑩ COMPONENT INTENT -->
+<section class="page">
+  <div class="eyebrow">09 · Component Intent <span class="chip chip--flex">Store-Flexible</span></div>
+  <h2>Feel, defaults, and alternatives</h2>
+  <p style="font-size:12px;opacity:.6;margin-bottom:5mm">
+    The brand communicates a visual <em>feel</em> for each component — but webstores may choose
+    any listed variant. A button need not be solid. Semantic colour mapping follows the same rule:
+    these are starting-point defaults, not a contract.
+  </p>
+  <div class="intent-card">
+    <b>Button (primary CTA)</b>
+    <div class="intent-card__feel">High-value and decisive — a "cash-in your victory" tap; the single brightest thing on the card.</div>
+    <div class="intent-card__row"><span class="intent-card__label">Default</span><span class="intent-card__val">Solid Master Gold — <code>sys-colour-primary-main</code> bg + Obsidian Navy text, subtle gold glow on hover.</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Alternatives</span><span class="intent-card__val">gold→amber gradient · ghost (gold border on navy) · glow-outline.</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Colour depth</span><span class="intent-card__val">main (rest) → strong (hover); dark text always for AA.</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Tokens</span><span class="intent-card__val">--x-bg-action-primary · --x-text-on-action-primary · --x-sys-colour-primary-*</span></div>
+  </div>
+  <div class="intent-card">
+    <b>Button (secondary)</b>
+    <div class="intent-card__feel">Supporting — present but clearly subordinate to the gold CTA.</div>
+    <div class="intent-card__row"><span class="intent-card__label">Default</span><span class="intent-card__val">Ghost — transparent bg, Duel Blue border + text.</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Alternatives</span><span class="intent-card__val">solid-soft blue · outline neutral.</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Tokens</span><span class="intent-card__val">--x-bg-action-secondary · --x-text-* · --x-sys-colour-secondary-*</span></div>
+  </div>
+  <div class="intent-card">
+    <b>Card / panel (Gem pack SKU)</b>
+    <div class="intent-card__feel">A collectible card on the duel table — premium, tappable, self-contained.</div>
+    <div class="intent-card__row"><span class="intent-card__label">Default</span><span class="intent-card__val">Elevated — <code>level-1-main</code> + <code>sys-radius-s</code> + subtle navy surface + cut-corner motif.</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Alternatives</span><span class="intent-card__val">outlined (gold hairline) · flat · frosted (backdrop-blur over hero).</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Tokens</span><span class="intent-card__val">--x-bg-* · --x-sys-elevation-* · --x-sys-radius-*</span></div>
+  </div>
+  <div class="intent-card">
+    <b>Badge / tag ("Limited-Time", "Store Exclusive")</b>
+    <div class="intent-card__feel">Compact, high-visibility scarcity flag.</div>
+    <div class="intent-card__row"><span class="intent-card__label">Default</span><span class="intent-card__val">Solid — caution orange (limited) / gold (exclusive), <code>sys-radius-full</code>, uppercase micro label.</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Alternatives</span><span class="intent-card__val">soft-tint · outline · corner ribbon.</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Tokens</span><span class="intent-card__val">--x-bg-action-* · --x-text-* · --x-sys-radius-full</span></div>
+  </div>
+  <div class="intent-card">
+    <b>Input / field</b>
+    <div class="intent-card__feel">Clean and clearly editable against the dark field.</div>
+    <div class="intent-card__row"><span class="intent-card__label">Default</span><span class="intent-card__val">Outlined — neutral border, gold <code>stroke-medium</code> on focus.</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Alternatives</span><span class="intent-card__val">filled (navy-subtle) · underline.</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Tokens</span><span class="intent-card__val">--x-border-* · --x-bg-* · --x-sys-radius-xs</span></div>
+  </div>
+  <div class="intent-card">
+    <b>Modal / checkout sheet</b>
+    <div class="intent-card__feel">Focused, elevated arena above a darkened field.</div>
+    <div class="intent-card__row"><span class="intent-card__label">Default</span><span class="intent-card__val">Surface — <code>level-2-main</code> + full-bleed navy scrim.</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Alternatives</span><span class="intent-card__val">bottom-sheet (mobile) · drawer.</span></div>
+    <div class="intent-card__row"><span class="intent-card__label">Tokens</span><span class="intent-card__val">--x-sys-elevation-level-2-main · --x-bg-* · --x-sys-radius-*</span></div>
+  </div>
+</section>
+
+<!-- ⑪ ASSET PROMPTS -->
+<section class="page page--dark">
+  <div class="eyebrow">10 · Webstore Asset Prompts</div>
+  <h2>Reusable Image-Generation Prompts</h2>
+  <p style="font-size:12px;opacity:.6;margin-bottom:5mm">Paste into an image model (Midjourney, DALL·E, Firefly, Stable Diffusion) for on-brand webstore visuals.</p>
+  <p style="font-size:11px;opacity:.5;margin-bottom:2mm">Hero banner (landscape 16:9)</p>
+  <div class="prompt">Epic Yu-Gi-Oh! Master Duel promotional hero banner, a legendary dragon monster mid-summon at a dynamic 3/4 angle, exploding with gold and electric-blue energy particles and card-summon light shafts, deep obsidian-navy void background with a receding duel-field grid, warm gold rim-light separating the subject, cinematic high-contrast lighting, holographic foil glints, premium AAA game key art, negative space in the lower-left for a logo lockup, 16:9 --style raw</div>
+  <p style="font-size:11px;opacity:.5;margin:4mm 0 2mm">SKU / pack art (portrait 2:3)</p>
+  <div class="prompt">A glowing hoard of faceted blue-and-gold crystal Gems piled on a dark reflective duel-field surface, radial gold energy bloom behind them, arcane glyph ring, cool obsidian-navy background, dramatic rim lighting, subtle particle sparkles, centred composition with clear top space for a large numeral denomination, premium mobile-game store thumbnail, 2:3 --style raw</div>
+  <p style="font-size:11px;opacity:.5;margin:4mm 0 2mm">Background / texture tile</p>
+  <div class="prompt">Seamless dark tileable background, deep obsidian-navy (#0E1430) with faint hexagonal foil sheen and a soft off-center radial energy glow in gold and arcane purple, extremely subtle, low-contrast, no subjects, no text, designed to sit behind UI cards, 4k --tile</div>
+</section>
+
+<!-- ⑫ MACHINE-READABLE APPENDIX -->
+<section class="page appendix">
+  <div class="eyebrow">11 · Machine-Readable Spec</div>
+  <h2>For downstream automation</h2>
+  <p style="font-size:12px;margin-bottom:4mm">Paste the JSON below into a coding agent to generate design-token overwrites and component intent guidance. Also embedded in <code>&lt;script id="style-guide-spec"&gt;</code>.</p>
+  <pre id="spec-render"></pre>
+</section>
+
+<script type="application/json" id="style-guide-spec">
+{
+  "meta": {
+    "brand": "Yu-Gi-Oh! MASTER DUEL",
+    "version": "1.0",
+    "sourceImageCount": 0,
+    "confidence": "med",
+    "notes": "Both reference sites (konami.com/yugioh/masterduel and yugioh-masterduel.codashop.com) are JS-rendered SPAs, so no CSS/pixels could be sampled via fetch. Observed data: product SKUs (Gem packs $1.19–$214.99 with paid+free splits; 'Limited-Time' and 'Games Store Exclusive' labels), logo/asset paths (/yugioh/masterduel/images/logo.png, platform badges), and dark navy + blue/purple imagery. Brand font confirmed by user as Yu Gothic (游ゴシック) — the official site font (observed); Noto Sans JP is the Google-Fonts web proxy since Yu Gothic is a system font. Palette reconstructed from Master Duel's metallic-gold-on-deep-navy identity (confidence med)."
+  },
+  "generic": {
+    "essence": {
+      "adjectives": ["Legendary", "Arcane", "Competitive", "Premium"],
+      "positioning": "Summon. Duel. Dominate. — a premium, world-championship-grade digital arena for the iconic Yu-Gi-Oh! TCG."
+    },
+    "voice": {
+      "confidence": "observed",
+      "source": "Live copy read from the official Konami Master Duel site + Coda Web Store product page.",
+      "summary": "Grand, welcoming, and event-driven. Addresses the reader as a 'Duelist' on a heroic path, in the second person, with an energetic exclamatory cadence — never edgy or aggressive. Heritage and authenticity are constant proof points.",
+      "pillars": [
+        { "name": "Grand & aspirational", "evidence": "Are you ready to enter the ultimate battle?; Become the top Duelist in the world; Road to Worlds; the definitive edition" },
+        { "name": "Authentic & heritage-proud", "evidence": "An authentic Yu-Gi-Oh! Digital card game; evolving for over 20 years" },
+        { "name": "Energetic & direct", "evidence": "Download Now!!; Master the Summoning methods as you play!" },
+        { "name": "Welcoming to all levels", "evidence": "Master the basic rules of the game as you play; tutorials; for everyone to enjoy" },
+        { "name": "Community & event-driven", "evidence": "A lot of exciting events and tournaments; Take part in a variety of different Festivals!" },
+        { "name": "Commerce: value-forward, trustworthy", "evidence": "great prices; better prices there than when purchasing in-game" }
+      ],
+      "person": "second person; reader addressed as 'Duelist'",
+      "lexicon": {
+        "say": ["Duelist", "Duel", "Summon", "Synchro", "Xyz", "Pendulum", "Link", "Deck", "Gems", "Festival", "Solo Mode", "World Championship", "Master", "Build", "Climb", "Dominate", "Enter the battle"],
+        "avoid": ["gamer/user/player-1 (use Duelist)", "trash-talk/meme/edgy slang", "cheap/blowout discount language (prefer 'great value', 'bonus Gems')", "cold technical checkout copy"]
+      },
+      "copyExamples": {
+        "hero": "Enter the Ultimate Battle. — Top up your Gems and build the deck that conquers Worlds.",
+        "skuCta": "Claim Your Gems",
+        "bonusBadge": "+ Free Gems included",
+        "scarcityBadge": "Limited-Time — ends in 33 days",
+        "confirmation": "Your Gems are on their way, Duelist."
+      }
+    },
+    "artStyle": {
+      "family": "3D-render / stylized-realism",
+      "subStyle": "premium anime-fantasy TCG with arcane energy VFX and metallic-gold treasure framing",
+      "renderingCues": ["dramatic rim + gold key light on a cool navy void", "energy particles and card-summon light shafts", "holographic foil glints", "high-contrast cinematic depth", "faceted crystal Gem hero token"]
+    },
+    "palette": {
+      "primary":        { "hex": "#E3B23C", "rgb": [227,178,60], "usage": "dominant brand accent — logo, premium CTAs, prices, glow" },
+      "secondary":      { "hex": "#2E8BE6", "rgb": [46,139,230], "usage": "supporting accent — links, info, energy highlights" },
+      "tertiary":       { "hex": "#7A4DB3", "rgb": [122,77,179], "usage": "third accent — magic energy, gradients, epic rarity" },
+      "neutral":        { "hex": "#0E1430", "rgb": [14,20,48], "usage": "layout/background foundation — the duel field" },
+      "statusPositive": { "hex": "#35C48A", "rgb": [53,196,138], "usage": "success, bonus gems, positive delta (+ check icon)" },
+      "statusCaution":  { "hex": "#F5892E", "rgb": [245,137,46], "usage": "warning, Limited-Time expiry (+ clock icon)" },
+      "statusNegative": { "hex": "#E24141", "rgb": [226,65,65], "usage": "error, payment failure (+ warning icon + label)" }
+    },
+    "contrastRules": [
+      "Parchment #F5F7FF on Obsidian Navy #0E1430 ~= 16.5:1 (AAA body)",
+      "Master Gold #E3B23C on Obsidian Navy ~= 9.2:1 (headings/large/price)",
+      "CTA uses Obsidian Navy text on Master Gold fill ~= 9.2:1 — never white-on-gold (~1.8:1, fails)",
+      "Arcane Purple on navy ~= 3.4:1 — large text/accents only",
+      "Status never by colour alone: positive+check, caution+clock, negative+warning label",
+      "Text over art only on a navy scrim >=55% opacity"
+    ],
+    "typography": {
+      "families": { "display": "Yu Gothic", "body": "Yu Gothic", "accent": "Yu Gothic" },
+      "scale": { "baseSizePx": 16, "ratio": 1.25, "measureCh": 65, "pairingRationale": "Single-family system: Yu Gothic (游ゴシック) — the official Konami Master Duel site font — drives both headings and body. A modern Japanese gothic with humanist letterforms and full Latin+Kana+Kanji coverage; weight contrast (Regular vs Bold) creates hierarchy instead of a second family. Noto Sans JP is the Google-Fonts web proxy (Yu Gothic is a system font, not on Google Fonts)." },
+      "typePrimitives": {
+        "weights": { "extraBold": 800, "bold": 700, "semibold": 600, "regular": 400 },
+        "headerSizes": { "h1": "28/48", "h2": "24/40", "h3": "22/32", "h4": "20/28", "h5": "18/24", "h6": "16/20", "h7": "14/18" },
+        "bodySizes": { "l": "16/18", "main": "14/16", "s": "12/14", "xs": "10/12" }
+      },
+      "textStyles": {
+        "heading-display": { "primitive": "h1", "weight": "extra-bold", "leading": 1.2, "tracking": "-0.5%", "case": "UPPER", "effect": "gradient gold fill on hero" },
+        "heading-title": { "primitive": "h2", "weight": "bold", "leading": 1.2, "tracking": "-0.2%", "case": "Title" },
+        "heading-subtitle": { "primitive": "h3", "weight": "semibold", "leading": 1.2, "tracking": "0", "case": "Title" },
+        "paragraph-l": { "primitive": "body-l", "weight": "regular", "leading": 1.5, "tracking": "0", "case": "sentence" },
+        "paragraph-main": { "primitive": "body-main", "weight": "regular", "leading": 1.5, "tracking": "0", "case": "sentence" },
+        "paragraph-s": { "primitive": "body-s", "weight": "regular", "leading": 1.5, "tracking": "0", "case": "sentence" },
+        "utility-label": { "primitive": "body-xs", "weight": "semibold", "leading": 1.05, "tracking": "+1%", "case": "UPPER" },
+        "utility-mono": { "primitive": "body-s", "weight": "regular", "leading": 1.4, "tracking": "0", "case": "sentence" }
+      },
+      "reversedTypeRule": "white-on-navy: bump body weight +1 step (regular->medium/semibold) and price size +1-2px; avoid Yu Gothic Light on dark (strokes thin out); never letterspace lowercase; letterspace CAPS/numerals +1%; set font-feature-settings:'palt' for proportional CJK spacing when Japanese copy is present"
+    },
+    "shape": { "profile": "sharp", "radiusStep": "xs", "wonky": false, "motifs": ["45-degree cut-corner beveled card frame", "hex/foil sheen on premium surfaces", "arcane glyph ring behind hero art"] },
+    "lightingModel": {
+      "interactiveElements": "elevation-level-1 + higher saturation sys step + gold/blue glow + states overlay",
+      "nonInteractiveElements": "elevation-flat + subtle/soft sys step + no shadow + no glow + no overlay",
+      "vfxSignature": "gold/blue energy particles, card-summon light shafts, glow-pulse on primary CTA"
+    },
+    "spacing": { "rhythm": "regular", "baseSysStep": "--x-sys-space-s", "touchTargetSysToken": "--x-sys-size-control-m", "grouping": "border-grouped" },
+    "states": {
+      "hover": "#FFFFFF overlay ~8% + gold glow bloom", "pressed": "#000000 overlay ~12% + scale 0.97", "focus": "gold --x-sys-stroke-medium ring, visible",
+      "disabled": "reduced opacity + desaturated; pointer-events none",
+      "primaryActionRule": "one gold primary action per view"
+    },
+    "accessibility": {
+      "bodyContrast": ">=4.5:1 — parchment on navy ~=16.5:1 (pass)",
+      "largeTextContrast": ">=3:1 — gold on navy ~=9.2:1 (pass); purple on navy ~=3.4:1 (large only)",
+      "statusNotByColourAlone": "positive=check icon, caution=clock icon, negative=warning icon + text label",
+      "focusRing": "gold stroke-medium on every focusable element",
+      "notes": "White-on-gold fails (~1.8:1) — always dark text on gold CTA. Duel Blue as body text is borderline (~5.1:1) — prefer for large/links."
+    },
+    "texture": {
+      "halftone": { "present": false, "rule": "not used — brand reads polished, not gritty" },
+      "distress": { "present": false, "rule": "not used" },
+      "noise": { "present": false, "opacityPct": 0, "blendMode": "overlay" },
+      "other": "subtle radial energy glow behind hero art; faint hex/foil sheen on premium cards only"
+    },
+    "motion": {
+      "durationMs": 180,
+      "easing": "ease-out",
+      "signatures": ["gold glow-pulse on primary CTA hover", "scale-on-press 0.97", "summon-style fade+rise on card reveal", "sheet slide-up 240ms"],
+      "interactiveFeedback": "glow-on-hover, scale-on-press, gold focus ring"
+    },
+    "assetPrompts": {
+      "heroBanner": "Epic Yu-Gi-Oh! Master Duel hero banner, legendary dragon monster mid-summon at a 3/4 angle, gold + electric-blue energy particles and card-summon light shafts, deep obsidian-navy void with receding duel-field grid, warm gold rim-light, cinematic high-contrast, holographic foil glints, negative space lower-left for logo, 16:9",
+      "skuArt": "Glowing hoard of faceted blue-and-gold crystal Gems on a dark reflective duel-field surface, radial gold energy bloom, arcane glyph ring, cool obsidian-navy background, dramatic rim lighting, clear top space for a large numeral denomination, 2:3",
+      "background": "Seamless dark tileable background, obsidian-navy #0E1430 with faint hexagonal foil sheen and a soft off-center radial gold+purple glow, very subtle, low-contrast, no subjects, no text, behind UI cards, 4k tileable"
+    }
+  },
+  "codashop": {
+    "architectureNote": "5-tier cascade: (1) type primitives + ref seeds -> (2) palette ramps (--x-palette-{role}-500 = --x-ref-{role}) -> (3) sys intensity / dimensions / effects / states -> (4) semantic defaults (--x-bg-*, --x-text-*, --x-border-*) -> (5) .text-style-* classes. Figma token exports drop the --x- prefix; repo names always include it. emitter.ts injects only Tier 1 ref seeds + optional Tier 2 ramps + font + --x-bg-page. Tiers 3-4 auto-resolve downstream and are store-overridable. THREE override layers: SYSTEM CONSTANT (layoutSystem + the 27 textStyle compositions + scales) ⊃ BRAND-LOCKED (ref seeds, font, size values, brandCharacter) ⊃ STORE-FLEXIBLE (semantic colour mapping, component variants).",
+    "layoutSystem": {
+      "mutable": false,
+      "responsiveModel": "container-query",
+      "containerRule": "device screen sets container-type:inline-size; overlay must NOT (traps position:fixed)",
+      "breakpoints": { "xs": "< 641px", "s": "641-800px", "m": "801-1279px", "l": ">= 1280px" },
+      "grid": {
+        "columns": { "xs": 8, "s": 8, "m": 12, "l": 12 },
+        "columnGap": { "token": "--x-gap-grid-gutter", "xs": "8px", "s": "8px", "m": "12px", "l": "16px" },
+        "sidePadding": { "token": "--x-gap-grid-margin", "xs": "12px", "s": "12px", "m": "12px", "l": "16px" },
+        "rowGap": { "token": "--x-gap-grid-row-default", "all": "8px" },
+        "template": "grid-template-columns: repeat(N, minmax(0, 1fr))"
+      },
+      "spanVariants": {
+        "fluid": "grid-column: 1 / -1 at all breakpoints (full bleed)",
+        "content": "full width on XS/S; centred cols 3-10 of 12, max-width 960px, on M/L",
+        "carousel": "full-bleed on XS/S (negative margin cancels grid margin); content on M/L"
+      },
+      "skuGridPatterns": {
+        "_note": "all use display:grid; gap:var(--x-gap-content-default)",
+        "skuList": { "xs": 2, "s": 4, "m": 4 },
+        "bundleGrid": { "xs": 1, "s": 1, "m": 2 },
+        "giftGrid": { "xs": 2, "s": "variable", "m": "variable" },
+        "storyCarouselAspect": { "xs": "1/1", "s": "1/1", "m": "2.6/1" }
+      },
+      "tokenTierDiscipline": "components consume ONLY semantic (--x-bg-*, --x-text-*, --x-border-*) + spacing/size (--x-pad-*, --x-gap-*, --x-radius-*, --x-size-*); NEVER --x-sys-*, --x-palette-*, or --x-ref-* directly",
+      "mobileDesktopRule": "values switch at breakpoints via -desktop- token twins: --x-sys-space-desktop-*, --x-sys-radius-desktop-*, --x-sys-size-control-desktop-*, --x-text-size-desktop-*"
+    },
+    "themePreset": {
+      "id": "store-yugioh-masterduel",
+      "name": "Yu-Gi-Oh! Master Duel",
+      "presetStyle": {
+        "seedColors": {
+          "primary": "#E3B23C",
+          "secondary": "#2E8BE6",
+          "tertiary": "#7A4DB3",
+          "neutral": "#0E1430",
+          "statusPositive": "#35C48A",
+          "statusCaution": "#F5892E",
+          "statusNegative": "#E24141"
+        },
+        "font": "Yu Gothic",
+        "borderRadius": "RADIUS_SHARP",
+        "backgroundColor": "#0A0E22",
+        "backgroundType": "TYPE_GRADIENT",
+        "backgroundGradient": "radial-gradient(120% 90% at 80% 10%, #1B2450 0%, #0E1430 55%, #070A1C 100%)"
+      }
+    },
+    "cssOverride": "body[data-theme='theme-preset--store-yugioh-masterduel'] {\n  --x-ref-primary: #E3B23C;\n  --x-ref-secondary: #2E8BE6;\n  --x-ref-tertiary: #7A4DB3;\n  --x-ref-neutral: #0E1430;\n  --x-ref-status-positive: #35C48A;\n  --x-ref-status-caution: #F5892E;\n  --x-ref-status-negative: #E24141;\n  --x-sys-font-heading: 'Yu Gothic', YuGothic, 'Noto Sans JP', sans-serif;\n  --x-sys-font-body: 'Yu Gothic', YuGothic, 'Noto Sans JP', sans-serif;\n  --x-bg-page: #0A0E22;\n}",
+    "brandLocked": {
+      "ref": {
+        "primary": "#E3B23C",
+        "secondary": "#2E8BE6",
+        "tertiary": "#7A4DB3",
+        "neutral": "#0E1430",
+        "statusPositive": "#35C48A",
+        "statusCaution": "#F5892E",
+        "statusNegative": "#E24141"
+      },
+      "palette": {
+        "anchorRule": "--x-palette-{role}-500 resolves to --x-ref-{role} — the 500 step IS the seed",
+        "strategy": "auto",
+        "manualStops": { "neutral": "extended ramp adds -0 (true black #05070F) and -1000 (true white #FFFFFF) for the deep duel-field field" }
+      },
+      "typePrimitives": {
+        "fontHeading": "'Yu Gothic', YuGothic, 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif",
+        "fontBody": "'Yu Gothic', YuGothic, 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif",
+        "weights": { "extraBold": 800, "bold": 700, "semibold": 600, "regular": 400 },
+        "headerSizes": {
+          "h1": { "mobile": "28px", "desktop": "48" },
+          "h2": { "mobile": "24px", "desktop": "40" },
+          "h3": { "mobile": "22px", "desktop": "32" },
+          "h4": { "mobile": "20px", "desktop": "28" },
+          "h5": { "mobile": "18px", "desktop": "24" },
+          "h6": { "mobile": "16px", "desktop": "20" },
+          "h7": { "mobile": "14px", "desktop": "18" }
+        },
+        "bodySizes": {
+          "l": { "mobile": "16px", "desktop": "18" },
+          "main": { "mobile": "14px", "desktop": "16" },
+          "s": { "mobile": "12px", "desktop": "14" },
+          "xs": { "mobile": "10px", "desktop": "12" }
+        },
+        "leading": { "main": "105%", "loose": "120%", "wide": "150%" },
+        "tracking": { "tight": "-0.5%", "narrow": "-0.2%", "main": "0%", "loose": "0.5%", "wide": "1%" },
+        "modularScale": { "basePx": 16, "ratio": 1.25 }
+      },
+      "textStyles": {
+        "heading-display-hero": { "primitive": "h1", "weight": "extra-bold", "leading": "loose", "tracking": "tight", "case": "UPPER" },
+        "heading-page-title": { "primitive": "h2", "weight": "bold", "leading": "loose", "tracking": "narrow", "case": "Title" },
+        "heading-section": { "primitive": "h3", "weight": "bold", "leading": "loose", "tracking": "main", "case": "Title" },
+        "heading-modal": { "primitive": "h4", "weight": "bold", "leading": "main", "tracking": "main", "case": "Title" },
+        "heading-card": { "primitive": "h5", "weight": "semibold", "leading": "main", "tracking": "main", "case": "Title" },
+        "heading-banner": { "primitive": "h6", "weight": "bold", "leading": "main", "tracking": "main", "case": "Title" },
+        "heading-final-price": { "primitive": "h6", "weight": "extra-bold", "leading": "main", "tracking": "main", "case": "Title" },
+        "heading-sku-title": { "primitive": "h4", "weight": "semibold", "leading": "main", "tracking": "main", "case": "Title" },
+        "heading-subtitle": { "primitive": "h7", "weight": "semibold", "leading": "main", "tracking": "main", "case": "Title" },
+        "paragraph-lead": { "primitive": "body-l", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-regular": { "primitive": "body-main", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-small": { "primitive": "body-s", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-strikethrough": { "primitive": "body-main", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-action-regular": { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-action-uppercase": { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-action-strikethrough": { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-default-regular": { "primitive": "body-s", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "utility-default-strikethrough": { "primitive": "body-s", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-default-uppercase": { "primitive": "body-s", "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-label-regular": { "primitive": "body-s", "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-label-uppercase": { "primitive": "body-s", "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-label-tall": { "primitive": "body-s", "weight": "semibold", "leading": "loose", "tracking": "main", "case": "sentence" },
+        "utility-label-strikethrough": { "primitive": "body-s", "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-micro-regular": { "primitive": "body-xs", "weight": "regular", "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-micro-bold": { "primitive": "body-xs", "weight": "extra-bold", "leading": "main", "tracking": "wide", "case": "sentence" },
+        "utility-micro-uppercase": { "primitive": "body-xs", "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-micro-strikethrough": { "primitive": "body-xs", "weight": "regular", "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" }
+      },
+      "brandCharacter": {
+        "radiusSteps": {
+          "control": "--x-sys-radius-xs",
+          "input": "--x-sys-radius-xs",
+          "container": "--x-sys-radius-s",
+          "thumbnail": "--x-sys-radius-xs",
+          "badge": "--x-sys-radius-full"
+        },
+        "elevationCharacter": {
+          "interactive": "--x-sys-elevation-level-1-main",
+          "modal": "--x-sys-elevation-level-2-main",
+          "toast": "--x-sys-elevation-level-3-main",
+          "nonInteractive": "--x-sys-elevation-flat"
+        },
+        "strokeWeight": {
+          "divider": "--x-sys-stroke-thin",
+          "activeBorder": "--x-sys-stroke-medium",
+          "emphasis": "--x-sys-stroke-thick"
+        },
+        "effectShadow": {
+          "primary": "#8A6410",
+          "secondary": "#0F3A66",
+          "neutral": "#05070F"
+        },
+        "effectGlow": {
+          "primary": "#E3B23C",
+          "secondary": "#2E8BE6"
+        },
+        "states": {
+          "hover": "#FFFFFF",
+          "pressed": "#000000"
+        }
+      }
+    },
+    "storeFlexible": {
+      "semanticDefaults": {
+        "_note": "Every mapping below is store-overridable. Suggestions, not requirements.",
+        "bg": {
+          "--x-bg-action-primary": "var(--x-sys-colour-primary-main) /* overridable */",
+          "--x-bg-action-primary-hover": "var(--x-sys-colour-primary-strong) /* overridable */",
+          "--x-bg-action-secondary": "var(--x-sys-colour-secondary-soft) /* overridable */",
+          "--x-bg-action-destructive": "var(--x-sys-colour-status-negative-main) /* overridable */",
+          "--x-bg-surface": "var(--x-sys-colour-neutral-subtle) /* overridable */",
+          "--x-bg-overlay": "var(--x-sys-colour-neutral-heavy) /* overridable */"
+        },
+        "text": {
+          "--x-text-primary": "var(--x-sys-colour-neutral-inverse) /* overridable */",
+          "--x-text-secondary": "var(--x-sys-colour-neutral-strong) /* overridable */",
+          "--x-text-on-action-primary": "var(--x-sys-colour-neutral-heavy) /* overridable — dark text on gold */"
+        },
+        "border": {
+          "--x-border-default": "var(--x-sys-colour-neutral-soft) /* overridable */",
+          "--x-border-emphasis": "var(--x-sys-colour-primary-main) /* overridable */",
+          "--x-border-input-focused": "var(--x-sys-colour-primary-strong) /* overridable */"
+        }
+      },
+      "componentIntent": {
+        "buttonPrimary": {
+          "feel": "high-value and decisive — the single brightest, most tappable thing on the card",
+          "defaultVariant": "solid",
+          "alternatives": ["gradient", "ghost", "glow-outline"],
+          "colourDepthNote": "main (rest) -> strong (hover); ALWAYS dark navy text on gold for AA — never white-on-gold",
+          "tokenFamilies": ["--x-bg-action-primary", "--x-text-on-action-primary", "--x-sys-colour-primary-*"]
+        },
+        "buttonSecondary": {
+          "feel": "supporting, clearly subordinate to the gold CTA",
+          "defaultVariant": "ghost",
+          "alternatives": ["solid-soft", "outline"],
+          "tokenFamilies": ["--x-bg-action-secondary", "--x-text-*", "--x-sys-colour-secondary-*"]
+        },
+        "card": {
+          "feel": "a collectible card on the duel table — premium, tappable, self-contained",
+          "defaultVariant": "elevated",
+          "alternatives": ["outlined", "flat", "frosted"],
+          "tokenFamilies": ["--x-bg-*", "--x-sys-elevation-*", "--x-sys-radius-*"]
+        },
+        "badge": {
+          "feel": "compact, high-visibility scarcity flag (Limited-Time / Store Exclusive)",
+          "defaultVariant": "solid-primary",
+          "alternatives": ["soft-tint", "outline", "corner-ribbon"],
+          "tokenFamilies": ["--x-bg-action-*", "--x-text-*", "--x-sys-radius-full"]
+        },
+        "input": {
+          "feel": "clean and clearly editable against the dark field",
+          "defaultVariant": "outlined",
+          "alternatives": ["filled", "underline"],
+          "tokenFamilies": ["--x-border-*", "--x-bg-*", "--x-sys-radius-xs"]
+        },
+        "modal": {
+          "feel": "focused, elevated arena above a darkened field",
+          "defaultVariant": "surface",
+          "alternatives": ["bottomSheet", "drawer"],
+          "tokenFamilies": ["--x-sys-elevation-level-2-main", "--x-bg-*", "--x-sys-radius-*"]
+        }
+      }
+    },
+    "tier2SignatureSurfaces": [
+      {
+        "name": "Cut-corner card frame",
+        "surface": "Gem-pack SKU card / bundle card",
+        "tokenExpressible": false,
+        "implementation": "clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px)); 1px gold hairline via border-image gradient; radius token approximated to --x-sys-radius-xs.",
+        "precedentFile": "assets/css/sitebuilder/components/home/ProductTile.scss"
+      },
+      {
+        "name": "Gold glow-pulse on primary CTA",
+        "surface": "Primary buy button hover/focus",
+        "tokenExpressible": false,
+        "implementation": "box-shadow: 0 0 0 rgba(227,178,60,0); @keyframes pulse { to { box-shadow: 0 0 16px 2px rgba(227,178,60,.55); } } animation: pulse 1.4s ease-in-out infinite alternate on :hover/:focus-visible; respects prefers-reduced-motion.",
+        "precedentFile": "assets/css/sitebuilder/components/common/Button.scss"
+      },
+      {
+        "name": "Hero radial energy bloom",
+        "surface": "Story / hero banner background",
+        "tokenExpressible": false,
+        "implementation": "::before radial-gradient(60% 60% at 50% 30%, rgba(227,178,60,.28), rgba(122,77,179,.12) 45%, transparent 70%) over #0E1430; blend-mode screen; low opacity so text scrim still holds AA.",
+        "precedentFile": "assets/css/sitebuilder/components/home/StoryCarousel.scss"
+      }
+    ]
+  }
+}
+</script>
+<script>
+  // Render the embedded spec into the appendix <pre> for print.
+  (function(){
+    var el = document.getElementById('style-guide-spec');
+    var out = document.getElementById('spec-render');
+    if (el && out) { try { out.textContent = JSON.stringify(JSON.parse(el.textContent), null, 2); } catch(e){ out.textContent = el.textContent; } }
+  })();
+</script>
+
+</body>
+</html>

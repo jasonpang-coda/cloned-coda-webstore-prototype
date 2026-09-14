@@ -1,0 +1,209 @@
+/* ============================================================================
+   SYSTEM TIER  —  theme-agnostic (:root)
+   ----------------------------------------------------------------------------
+   Role ramps that alias the spectrum (subtle→heavy), surfaces, ink, fills, and
+   effect colours. This file is STRUCTURE only — it never hardcodes a colour, it
+   only references --palette-* / --ref-* defined by the active theme. So it
+   resolves correctly under whatever [data-theme] is on <html>.
+
+   Alpha-bearing tokens use color-mix so they stay themed (the base hue comes
+   from the themes palette/seed). Components never read this tier — they read
+   semantics.css.
+   ============================================================================ */
+
+:root {
+  /* ── Surfaces ───────────────────────────────────────────────────────────*/
+  --x-sys-colour-surface-page:      var(--x-palette-neutral-1000);
+  --x-sys-colour-surface-container: var(--x-palette-neutral-900);
+  --x-sys-colour-surface-panel:     var(--x-palette-neutral-950);
+  --x-sys-colour-surface-floating:  var(--x-palette-neutral-800);
+  --x-sys-colour-surface-inverse:   var(--x-palette-neutral-0);
+  --x-sys-colour-surface-overlay:   color-mix(in oklab, var(--x-palette-neutral-1000) 60%, transparent);
+
+  /* Numbered surface scale — declared per request, placeholder mapping only
+     (aliases the named roles above 1:1 by rough elevation order). Mappings
+     are expected to be revised; nothing in this repo consumes these yet. */
+  --x-sys-surface-0: var(--x-sys-colour-surface-page);
+  --x-sys-surface-1: var(--x-sys-colour-surface-panel);
+  --x-sys-surface-2: var(--x-sys-colour-surface-container);
+  --x-sys-surface-3: var(--x-sys-colour-surface-floating);
+  --x-sys-surface-4: var(--x-sys-colour-surface-inverse);
+
+  /* ── Elevation surfaces (L1/L2/L3) — fill + gradient/flat border per level ──
+     Composite gradients (can't be Figma variables, so authored as CSS). These
+     are the REFERENCE defaults; each store overrides them from html[data-theme]
+     (specificity 0,1,1) since this :root tier loads after the theme files. A
+     store that overrides nothing inherits these. Consumed only via semantics
+     (--x-bg-sku-card-default = L1, --x-bg-card-default/--x-bg-nav/--x-bg-sheet = L2,
+     --x-border-sheet = L3 border) — components never read --sys-colour-surface-* directly. */
+  /* Hotspot at 35% 0% (not dead-centre 50% 0%) so this fill's implied light
+     azimuth (~315-320°, upper-left) agrees with this same card's own
+     l1-border gradient (160deg → azimuth 340°) instead of contradicting it
+     (a centred hotspot implies straight-overhead, ~0° — see .claude/skills/
+     material-fx §10a). Kept in the same upper-left family the bestseller-hero
+     and thumb-gloss gradients already lean toward, rather than inventing a
+     third azimuth. */
+  --x-sys-colour-surface-l1-fill: radial-gradient(
+    ellipse 100% 32% at 35% 0%,
+    oklch(0.992 0.003 286 / 0.04) 0%,
+    transparent 100%
+  );
+  --x-sys-colour-surface-l1-border: linear-gradient(
+    160deg,
+    oklch(0.99 0.004 247 / 0.04) 0%,
+    oklch(0.99 0.004 247 / 0.22) 45%,
+    oklch(0.99 0.004 247 / 0.58) 100%
+  );
+  --x-sys-colour-surface-l1-border-hover: linear-gradient(
+    160deg,
+    oklch(0.99 0.004 247 / 0.08) 0%,
+    oklch(0.99 0.004 247 / 0.35) 45%,
+    oklch(0.99 0.004 247 / 0.78) 100%
+  );
+  --x-sys-colour-surface-l2-fill: linear-gradient(0deg,
+    oklch(0.377 0.010 278 / 0.08), oklch(0.786 0.006 275 / 0.08));
+  --x-sys-colour-surface-l2-border: oklch(1 0 0 / 0.12);
+  --x-sys-colour-surface-l3-fill: linear-gradient(
+    0deg,
+    oklch(0.377 0.010 278 / 0.16) 0%,
+    oklch(0.520 0.008 278 / 0.16) 40%,
+    oklch(0.700 0.006 275 / 0.16) 60%,
+    oklch(0.992 0.003 286 / 0.16) 88%,
+    oklch(0.93 0.02 260 / 0.16) 100%
+  );
+  --x-sys-colour-surface-l3-border: oklch(1 0 0 / 0.16);
+
+  /* Status surfaces — top = role-700 (warning: -600), bottom = role-950, both
+     @16%, pulled from the active theme's --palette-status-* ramps (inherited
+     from the html[data-theme] element), so this default already retargets per
+     store. Only stores whose status treatment differs (eFootball flat-fill,
+     FCM on-brand success) override these from html[data-theme]. */
+  --x-sys-colour-surface-success-fill: linear-gradient(to bottom,
+    color-mix(in oklab, var(--x-palette-status-positive-700) 16%, transparent) 0%,
+    color-mix(in oklab, var(--x-palette-status-positive-950) 16%, transparent) 100%);
+  --x-sys-colour-surface-warning-fill: linear-gradient(to bottom,
+    color-mix(in oklab, var(--x-palette-status-caution-600) 16%, transparent) 0%,
+    color-mix(in oklab, var(--x-palette-status-caution-950) 16%, transparent) 100%);
+  --x-sys-colour-surface-failure-fill: linear-gradient(to bottom,
+    color-mix(in oklab, var(--x-palette-status-negative-700) 16%, transparent) 0%,
+    color-mix(in oklab, var(--x-palette-status-negative-950) 16%, transparent) 100%);
+
+  /* ── Primary role ramp ──────────────────────────────────────────────────*/
+  --x-sys-colour-primary-subtle:  var(--x-palette-primary-950);
+  --x-sys-colour-primary-soft:    var(--x-palette-primary-700);
+  --x-sys-colour-primary-main:    var(--x-palette-primary-500);
+  --x-sys-colour-primary-strong:  var(--x-palette-primary-400);
+  --x-sys-colour-primary-heavy:   var(--x-palette-primary-300);
+  --x-sys-colour-primary-inverse: var(--x-palette-primary-50);
+
+  /* ── Secondary role ramp ────────────────────────────────────────────────*/
+  --x-sys-colour-secondary-subtle:  var(--x-palette-secondary-950);
+  --x-sys-colour-secondary-soft:    var(--x-palette-secondary-700);
+  --x-sys-colour-secondary-main:    var(--x-palette-secondary-500);
+  --x-sys-colour-secondary-strong:  var(--x-palette-secondary-400);
+  --x-sys-colour-secondary-heavy:   var(--x-palette-secondary-300);
+  --x-sys-colour-secondary-inverse: var(--x-palette-secondary-50);
+
+  /* ── Tertiary role ramp ─────────────────────────────────────────────────*/
+  --x-sys-colour-tertiary-subtle:  var(--x-palette-tertiary-950);
+  --x-sys-colour-tertiary-soft:    var(--x-palette-tertiary-700);
+  --x-sys-colour-tertiary-main:    var(--x-palette-tertiary-500);
+  --x-sys-colour-tertiary-strong:  var(--x-palette-tertiary-400);
+  --x-sys-colour-tertiary-heavy:   var(--x-palette-tertiary-300);
+  --x-sys-colour-tertiary-inverse: var(--x-palette-tertiary-50);
+
+  /* ── Hyperlink role ramp (ALIAS role) ───────────────────────────────────
+     Points at other sys roles (not palette directly) so a theme that retunes
+     primary/secondary inherits link colours for free. The one sanctioned
+     sys→sys alias. default/hover/pressed = primary; inverse = secondary. */
+  --x-sys-colour-hyperlink-main:    var(--x-sys-colour-primary-main);
+  --x-sys-colour-hyperlink-strong:  var(--x-sys-colour-primary-strong);
+  --x-sys-colour-hyperlink-heavy:   var(--x-sys-colour-primary-heavy);
+  --x-sys-colour-hyperlink-inverse: var(--x-sys-colour-secondary-main);
+
+  /* ── Bonus role ramp (ALIAS role) — web-bonus chips + bonus amounts ──────
+     Another sys→sys alias role (defaults to primary). A theme repoints these
+     to recolour every bonus chip/amount at the system tier. */
+  --x-sys-colour-bonus-subtle:  var(--x-sys-colour-primary-subtle);   /* chip bg   (950) */
+  --x-sys-colour-bonus-strong:  var(--x-sys-colour-primary-strong);   /* +N amount (400) */
+  --x-sys-colour-bonus-inverse: var(--x-sys-colour-primary-inverse);  /* chip text (50)  */
+
+  /* ── Neutral role ramp ──────────────────────────────────────────────────*/
+  --x-sys-colour-neutral-subtle:  var(--x-palette-neutral-950);
+  --x-sys-colour-neutral-soft:    var(--x-palette-neutral-900);
+  --x-sys-colour-neutral-main:    var(--x-palette-neutral-800);
+  --x-sys-colour-neutral-strong:  var(--x-palette-neutral-700);
+  --x-sys-colour-neutral-heavy:   var(--x-palette-neutral-600);
+  --x-sys-colour-neutral-inverse: var(--x-palette-neutral-50);
+
+  /* ── Status: positive ───────────────────────────────────────────────────*/
+  --x-sys-colour-positive-subtle:  var(--x-palette-status-positive-950);
+  --x-sys-colour-positive-soft:    var(--x-palette-status-positive-700);
+  --x-sys-colour-positive-main:    var(--x-palette-status-positive-500);
+  --x-sys-colour-positive-strong:  var(--x-palette-status-positive-400);
+  --x-sys-colour-positive-heavy:   var(--x-palette-status-positive-300);
+  --x-sys-colour-positive-inverse: var(--x-palette-status-positive-50);
+
+  /* ── Status: caution ────────────────────────────────────────────────────*/
+  --x-sys-colour-caution-subtle:  var(--x-palette-status-caution-950);
+  --x-sys-colour-caution-soft:    var(--x-palette-status-caution-700);
+  --x-sys-colour-caution-main:    var(--x-palette-status-caution-500);
+  --x-sys-colour-caution-strong:  var(--x-palette-status-caution-400);
+  --x-sys-colour-caution-heavy:   var(--x-palette-status-caution-300);
+  --x-sys-colour-caution-inverse: var(--x-palette-status-caution-50);
+
+  /* ── Status: negative ───────────────────────────────────────────────────*/
+  --x-sys-colour-negative-subtle:  var(--x-palette-status-negative-950);
+  --x-sys-colour-negative-soft:    var(--x-palette-status-negative-700);
+  --x-sys-colour-negative-main:    var(--x-palette-status-negative-500);
+  --x-sys-colour-negative-strong:  var(--x-palette-status-negative-400);
+  --x-sys-colour-negative-heavy:   var(--x-palette-status-negative-300);
+  --x-sys-colour-negative-inverse: var(--x-palette-status-negative-50);
+
+  /* ── Fills (overlay tints) ──────────────────────────────────────────────*/
+  --x-sys-colour-fill-main-subtle:    oklch(0 0 0 / 0.10);
+  --x-sys-colour-fill-main-strong:    oklch(0 0 0 / 0.20);
+  --x-sys-colour-fill-inverse-subtle: oklch(1 0 0 / 0.10);
+  --x-sys-colour-fill-inverse-strong: oklch(1 0 0 / 0.20);
+
+  /* ── Ink (text) ramp ────────────────────────────────────────────────────*/
+  --x-sys-colour-ink-subtle:  var(--x-palette-neutral-500);
+  --x-sys-colour-ink-soft:    var(--x-palette-neutral-300);
+  --x-sys-colour-ink-main:    var(--x-palette-neutral-0);
+  --x-sys-colour-ink-strong:  var(--x-palette-neutral-0);
+  --x-sys-colour-ink-heavy:   var(--x-palette-neutral-0);
+  --x-sys-colour-ink-inverse: var(--x-palette-neutral-950);
+
+  /* ── Effect colours (shadow tints + glows) ──────────────────────────────
+     Shadow = roles darkest step @30%; glow = seed hue @25%. Themed via the
+     palette/seed refs. These are colour values only — composed box-shadows that
+     consume them live with the elevation scale in space.css / extensions.css. */
+  --x-sys-effect-shadow-primary:   color-mix(in oklab, var(--x-palette-primary-950) 30%, transparent);
+  --x-sys-effect-shadow-secondary: color-mix(in oklab, var(--x-palette-secondary-950) 30%, transparent);
+  --x-sys-effect-shadow-tertiary:  color-mix(in oklab, var(--x-palette-tertiary-950) 30%, transparent);
+  --x-sys-effect-shadow-neutral:   color-mix(in oklab, var(--x-palette-neutral-1000) 30%, transparent);
+  --x-sys-effect-shadow-positive:  color-mix(in oklab, var(--x-palette-status-positive-950) 30%, transparent);
+  --x-sys-effect-shadow-caution:   color-mix(in oklab, var(--x-palette-status-caution-950) 30%, transparent);
+  --x-sys-effect-shadow-negative:  color-mix(in oklab, var(--x-palette-status-negative-950) 30%, transparent);
+
+  --x-sys-effect-glow-primary:   color-mix(in oklab, var(--x-ref-primary) 25%, transparent);
+  --x-sys-effect-glow-secondary: color-mix(in oklab, var(--x-ref-secondary) 25%, transparent);
+  --x-sys-effect-glow-tertiary:  color-mix(in oklab, var(--x-ref-tertiary) 25%, transparent);
+  --x-sys-effect-glow-neutral:   oklch(0 0 0 / 0.25);
+  --x-sys-effect-glow-positive:  color-mix(in oklab, var(--x-ref-status-positive) 25%, transparent);
+  --x-sys-effect-glow-caution:   color-mix(in oklab, var(--x-ref-status-caution) 25%, transparent);
+  --x-sys-effect-glow-negative:  color-mix(in oklab, var(--x-ref-status-negative) 25%, transparent);
+
+  /* ── Accent / brand-secondary / shadow-colour roles — reconciled from prod.
+     Prod points these straight at a palette step (the alpha-generating
+     formula this repo ignores); mapped here onto existing sys roles instead
+     so they still respect "alias only the tier directly above." ──────────*/
+  --x-sys-surface-accent-main:    var(--x-sys-colour-tertiary-subtle);
+  --x-sys-surface-accent-inverse: var(--x-sys-colour-tertiary-strong);
+  --x-sys-border-accent:          var(--x-sys-colour-tertiary-heavy);
+  --x-sys-brand-secondary-main:   var(--x-sys-colour-secondary-main);
+  --x-sys-brand-secondary-strong: var(--x-sys-colour-secondary-strong);
+  --x-sys-shadow-color-brand:   var(--x-sys-effect-shadow-primary);
+  --x-sys-shadow-color-neutral: var(--x-sys-effect-shadow-neutral);
+  --x-sys-shadow-color-dark:    color-mix(in oklab, var(--x-palette-neutral-1000) 60%, transparent);
+}

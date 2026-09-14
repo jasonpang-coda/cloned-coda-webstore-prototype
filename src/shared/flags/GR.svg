@@ -1,0 +1,21 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1_19339)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H128V14.25H0V0Z" fill="#0D5EAF" style="fill:#0D5EAF;fill:color(display-p3 0.0510 0.3686 0.6863);fill-opacity:1;"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 14.25H128V28.5H0V14.25Z" fill="white" style="fill:white;fill-opacity:1;"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 28.5H128V42.75H0V28.5Z" fill="#0D5EAF" style="fill:#0D5EAF;fill:color(display-p3 0.0510 0.3686 0.6863);fill-opacity:1;"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 42.75H128V57H0V42.75Z" fill="white" style="fill:white;fill-opacity:1;"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 57H128V71.225H0V57Z" fill="#0D5EAF" style="fill:#0D5EAF;fill:color(display-p3 0.0510 0.3686 0.6863);fill-opacity:1;"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 71.2251H128V85.4751H0V71.2251Z" fill="white" style="fill:white;fill-opacity:1;"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 85.4751H128V99.7251H0V85.4751Z" fill="#0D5EAF" style="fill:#0D5EAF;fill:color(display-p3 0.0510 0.3686 0.6863);fill-opacity:1;"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 99.7251H128V113.975H0V99.7251Z" fill="white" style="fill:white;fill-opacity:1;"/>
+<path d="M0 0H71.225V71.225H0V0Z" fill="#0D5EAF" style="fill:#0D5EAF;fill:color(display-p3 0.0510 0.3686 0.6863);fill-opacity:1;"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M28.5 0H42.75V71.225H28.5V0Z" fill="white" style="fill:white;fill-opacity:1;"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 28.5H71.225V42.75H0V28.5Z" fill="white" style="fill:white;fill-opacity:1;"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 113.75H128V128H0V113.75Z" fill="#0D5EAF" style="fill:#0D5EAF;fill:color(display-p3 0.0510 0.3686 0.6863);fill-opacity:1;"/>
+</g>
+<defs>
+<clipPath id="clip0_1_19339">
+<rect width="128" height="128" fill="white" style="fill:white;fill-opacity:1;"/>
+</clipPath>
+</defs>
+</svg>

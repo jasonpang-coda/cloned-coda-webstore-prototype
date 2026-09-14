@@ -1,0 +1,16 @@
+{
+  "fontFamily": "Saira Condensed",
+  "desktopSizes": {
+    "size/header/H1": 72,
+    "size/header/H2": 48,
+    "size/header/H3": 32,
+    "size/header/H4": 20,
+    "size/header/H5": 18,
+    "size/header/H6": 16,
+    "size/header/H7": 14,
+    "size/body/l": 18,
+    "size/body/main": 14,
+    "size/body/s": 14,
+    "size/body/xs": 12
+  }
+}

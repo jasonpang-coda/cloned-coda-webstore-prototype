@@ -1,0 +1,23 @@
+:root {
+  --cms-bg: #111114;
+  --cms-fg: #e8e8ea;
+  --cms-border: #2a2a2e;
+  --cms-input-bg: #1a1a1e;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--cms-bg);
+  color: var(--cms-fg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+}
+
+button { font-family: inherit; }

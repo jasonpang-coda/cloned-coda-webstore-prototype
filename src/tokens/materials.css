@@ -1,0 +1,118 @@
+/* ============================================================================
+   Material tokens — flexible, composable axes describing how a surface should
+   render under the shared scene light (src/tokens/light.css). See
+   .claude/skills/material-fx for the full physics; this file is the repo-side
+   codification the skill's SKILL.md §12/§13 discusses.
+
+   DESIGN: each material below exposes the SAME fixed axis names as standalone
+   custom properties (--x-material-<name>-f0, -diffuse-albedo, -shimmer-*,
+   -ambient-color). A component consumes exactly the axis it needs — e.g. just
+   -f0 for a border tint — rather than being forced through one opaque
+   "apply this whole material" switch. The composed *-shimmer-gradient tokens
+   are a convenience default; nothing stops a component from ignoring them and
+   composing its own gradient from the same -core/-rim/-angle sub-tokens, or
+   overriding just one axis locally.
+
+   DEFERRED, not built here: Fresnel-rim-strength and shadow-contact-hardness
+   axes (physics.md/fx-catalogue.md cover both) — no component in this repo
+   consumes a material-driven border-rim or shadow yet, so adding those axes
+   now would be speculative tokens with no consumer. Add them once a real
+   component needs them (e.g. reworking --x-sys-colour-surface-l1-border).
+   ============================================================================ */
+
+:root {
+  /* ── metal / gloss ───────────────────────────────────────────────────────
+     No diffuse term (metals: a metal's colour IS its specular colour, see
+     physics.md §1) — a component overrides -f0 and -shimmer-core to its own
+     brand fill to get a real F0 tint-shift instead of a generic white sweep. */
+  --x-material-metal-gloss-f0: oklch(1 0 0);
+  --x-material-metal-gloss-diffuse-albedo: 0;
+  --x-material-metal-gloss-shimmer-angle: var(--x-light-gradient-angle);
+  --x-material-metal-gloss-shimmer-core: var(--x-light-color);
+  --x-material-metal-gloss-shimmer-rim: var(--x-light-color);
+  /* Asymmetric: long dim trailing tail (0%-26%: transparent -> just-visible),
+     short sharp leading edge (54%-61%: full -> transparent). Confirmed against
+     @keyframes shimmer-loop: translateX increases low%->high%, so the LOW-%
+     end of this gradient is what's left behind (trailing) as the band sweeps,
+     and the HIGH-% end is the leading edge — see fx-catalogue.md's
+     Highlight-animation-physics ("the tail trails BEHIND the direction of
+     travel"). Core (F0 tint) sits at the peak; rim (light colour) flanks it
+     on both sides, matching Fresnel desaturation-to-white just off the hot
+     core, before the tail fades to nothing on the long trailing side. */
+  --x-material-metal-gloss-shimmer-gradient: linear-gradient(
+    var(--x-material-metal-gloss-shimmer-angle),
+    transparent 0%,
+    transparent 26%,
+    var(--x-material-metal-gloss-shimmer-rim) 46%,
+    var(--x-material-metal-gloss-shimmer-core) 50%,
+    var(--x-material-metal-gloss-shimmer-rim) 54%,
+    transparent 61%,
+    transparent 100%
+  );
+
+  /* ── metal / matte ───────────────────────────────────────────────────────
+     Same F0/no-diffuse story as gloss metal, but roughness blurs the
+     reflection into a broad, low-contrast field with no discrete travelling
+     highlight (fx-catalogue.md). Consumed by .fx-ambient-swell--metal-matte,
+     NOT by any .fx-shimmer--* variant — there is deliberately no sweep here. */
+  --x-material-metal-matte-f0: oklch(1 0 0);
+  --x-material-metal-matte-diffuse-albedo: 0;
+  --x-material-metal-matte-ambient-color: var(--x-light-color);
+
+  /* ── glass / clear ───────────────────────────────────────────────────────
+     ~4-6% neutral Fresnel front reflection (physics.md §3) — weak, broad,
+     hue-neutral (dielectrics don't tint their specular). Peak alpha is scaled
+     up slightly from the literal 4-6% for on-screen legibility; documented
+     here rather than left as an unexplained "why is this brighter than the
+     physics number" gap. */
+  --x-material-glass-clear-f0: oklch(1 0 0 / 0.05);
+  --x-material-glass-clear-diffuse-albedo: 0.04;
+  --x-material-glass-shimmer-angle: var(--x-light-gradient-angle);
+  --x-material-glass-shimmer-core: oklch(1 0 0 / 0.16);
+  --x-material-glass-shimmer-rim: oklch(1 0 0 / 0.16);
+  /* Roughly symmetric — glass's real asymmetry exists but is negligible at
+     this low a peak opacity; a deliberate simplification, not an oversight. */
+  --x-material-glass-shimmer-gradient: linear-gradient(
+    var(--x-material-glass-shimmer-angle),
+    transparent 0%,
+    transparent 18%,
+    var(--x-material-glass-shimmer-rim) 46%,
+    var(--x-material-glass-shimmer-rim) 54%,
+    transparent 82%,
+    transparent 100%
+  );
+
+  /* ── glass / frost ───────────────────────────────────────────────────────
+     Shares glass-clear's shimmer mechanism/angle; differs on f0/diffuse and
+     (separately, not here) its own backdrop-filter blur depth — not on sweep
+     shape. See materials.md's Glass chapter for the frosted-blur-depth rule. */
+  --x-material-glass-frost-f0: oklch(1 0 0 / 0.04);
+  --x-material-glass-frost-diffuse-albedo: 0.06;
+
+  /* ── paper / coated ──────────────────────────────────────────────────────
+     Real paper albedo (physics.md §4: 0.79-0.88, here 0.82) with a broad,
+     weak, grazing-angle-only sheen — the broadest/weakest of the three sweep-
+     capable materials, matching materials.md's "swells and fades" character. */
+  --x-material-paper-coated-f0: oklch(1 0 0 / 0.05);
+  --x-material-paper-coated-diffuse-albedo: 0.82;
+  --x-material-paper-coated-shimmer-angle: var(--x-light-gradient-angle);
+  --x-material-paper-coated-shimmer-core: oklch(1 0 0 / 0.14);
+  --x-material-paper-coated-shimmer-rim: oklch(1 0 0 / 0.14);
+  --x-material-paper-coated-shimmer-gradient: linear-gradient(
+    var(--x-material-paper-coated-shimmer-angle),
+    transparent 0%,
+    transparent 15%,
+    var(--x-material-paper-coated-shimmer-rim) 45%,
+    var(--x-material-paper-coated-shimmer-rim) 55%,
+    transparent 85%,
+    transparent 100%
+  );
+
+  /* ── paper / uncoated ────────────────────────────────────────────────────
+     No shimmer or ambient token defined — deliberately. Per fx-catalogue.md,
+     uncoated paper has no coherent specular lobe to animate at all; adding
+     one here would be codifying the wrong material, not filling a gap. If a
+     surface wants a sheen, it isn't uncoated paper. */
+  --x-material-paper-uncoated-f0: oklch(1 0 0 / 0.02);
+  --x-material-paper-uncoated-diffuse-albedo: 0.75;
+}

@@ -1,0 +1,179 @@
+/**
+ * Keyframe presets
+ * ----------------
+ * Named, reusable @keyframes built on the motion tokens.
+ * Only `transform` and `opacity` are animated — GPU compositing, 60fps.
+ */
+
+/* Fades --------------------------------------------------------------------- */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Slides (entrances) — travel uses --x-motion-sys-distance-lg ---------------------- */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(var(--x-motion-sys-distance-lg)); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(calc(-1 * var(--x-motion-sys-distance-lg))); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-left {
+  from { opacity: 0; transform: translateX(var(--x-motion-sys-distance-lg)); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slide-right {
+  from { opacity: 0; transform: translateX(calc(-1 * var(--x-motion-sys-distance-lg))); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* SKU Card entrance — fade-forward: opacity leads, slide is a gentle nudge.
+   Travel reduced to 6px so the fade is the dominant effect, not the translate. */
+@keyframes sku-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Scale / pop --------------------------------------------------------------- */
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* Inline error -------------------------------------------------------------- */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%      { transform: translateX(-6px); }
+  40%      { transform: translateX(6px); }
+  60%      { transform: translateX(-4px); }
+  80%      { transform: translateX(4px); }
+}
+
+/* Continuous / status ------------------------------------------------------- */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}
+/* Breathe-dim — a slower sibling of `pulse` for "calm/stealthy" status rings
+   (fx-glow-border--camo-breathe). Deliberately no transform: the point is
+   stillness (no rotation/scale). A wide, dramatic swing — nearly gone at rest,
+   fully lit at the peak — reads as a slow breath rather than a flat, barely-
+   there line. "Calm" comes from the slow period and the resting dimness, not
+   from a shallow, hard-to-notice range. See src/tokens/effects.css. */
+@keyframes breathe-dim {
+  0%, 100% { opacity: 0.1; }
+  50%      { opacity: 0.95; }
+}
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+
+/* Loader — indeterminate bar sweeping across its track (continuous status
+   motion → steady/linear, no easing). Track clips it; bar is ~40% width. */
+@keyframes loading-indeterminate {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+
+/* Snackbar exit — playful drop: a small anticipation hop up, then accelerate
+   down off the bottom edge. (Entrance bounce is the spring-eased transition
+   in Snackbar.vue; only the exit needs a keyframe for the wind-up beat.) */
+@keyframes snackbar-drop {
+  /* Must carry translateX(-50%) in every step — the snackbar is centered via
+     transform, and a keyframe overwrites the entire property, so omitting it
+     would cause a rightward jump to the element's natural left:50% anchor. */
+  0%   { transform: translateX(-50%) translateY(0);     opacity: 1; }
+  18%  { transform: translateX(-50%) translateY(-12%);  opacity: 1; }
+  100% { transform: translateX(-50%) translateY(120%);  opacity: 0; }
+}
+
+/* Ripple -------------------------------------------------------------------- */
+@keyframes ripple {
+  from { opacity: 0.4; transform: scale(0); }
+  to   { opacity: 0;   transform: scale(2.5); }
+}
+
+/* Gloss sweep --------------------------------------------------------------- */
+/* translate3d, not translateX — forces a promoted compositor layer so the
+   sweep stays transform/opacity-only regardless of surface size (see
+   .claude/skills/material-fx/css-ceiling.md's @property/perf guidance). */
+@keyframes gloss-sweep {
+  from { transform: translate3d(-150%, 0, 0) skewX(-20deg); }
+  to   { transform: translate3d(150%, 0, 0) skewX(-20deg); }
+}
+
+/* Shimmer loop -------------------------------------------------------------- */
+@keyframes shimmer-loop {
+  0%   { transform: translate3d(-150%, 0, 0) skewX(-20deg); }
+  45%  { transform: translate3d(150%, 0, 0) skewX(-20deg); }
+  100% { transform: translate3d(150%, 0, 0) skewX(-20deg); }
+}
+
+/* EXPERIMENTAL — glow-then-shimmer choreography for metal-gloss CTAs only
+   (see effects.css's .fx-shimmer--metal-gloss overrides). Just testing —
+   safe to delete alongside those overrides to fully revert. The streak
+   waits (held off-screen) while the button-glow-choreo bloom below ramps
+   up, sweeps once the bloom is lit, then both fade out together — "glow,
+   shimmer, unglow" as one calm ~3s breath instead of a bare perpetual
+   streak. */
+@keyframes shimmer-loop-metal-gloss {
+  0%, 12% { transform: translate3d(-150%, 0, 0) skewX(-20deg); }
+  55%     { transform: translate3d(150%, 0, 0) skewX(-20deg); }
+  100%    { transform: translate3d(150%, 0, 0) skewX(-20deg); }
+}
+@keyframes button-glow-choreo {
+  0%, 100% { opacity: 0; }
+  12%      { opacity: 0.05; }
+  55%      { opacity: 0.05; }
+  72%      { opacity: 0; }
+}
+
+/* Bloom — barely-there light-bleed halo breathing behind a hero card -------- */
+@keyframes bloom-pulse {
+  0%, 100% { opacity: 0.12; transform: scale(1); }
+  50%      { opacity: 0.22; transform: scale(1.015); }
+}
+
+/* Story slide change uses a Vue <Transition> crossfade (opacity tween on the
+   .story__slide layers), not a keyframe — see StoryCarousel.vue `story-fade`. */
+
+/* Story progress — segmented top bar fills left→right over a slide's duration */
+@keyframes story-progress {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* Running conic border ------------------------------------------------------ */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes border-spin {
+  to { --angle: 360deg; }
+}
+
+/* Draw-on border trace — animates how far around the ring the lit arc extends */
+@property --arc {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes border-trace {
+  to { --arc: 360deg; }
+}

@@ -1,0 +1,468 @@
+{
+  "meta": {
+    "brand": "Diablo Immortal",
+    "version": "1.0",
+    "sourceImageCount": 7,
+    "confidence": "high",
+    "notes": "Colour and typography roles are grounded in the site's own compiled CSS custom-property namespace (--diablo-di-*), which is stronger evidence than pixel sampling. statusCaution has no native brand equivalent (the brand only ships a warning-red and a status-green) and was derived as a warm amber sitting between the primary gold and secondary brick — flagged here per rule 15. No isolated transparent logo/wordmark file was harvested; the 'DIABLO IMMORTAL' lockup exists only baked into hero key art. Voice section is grounded in live copy read from the rendered homepage and its 404 page; deeper pages (Promotions/News/Classes detail) resolve client-side routes that did not return distinct content in this session, so commerce-specific copy (SKU/cart strings) is [inferred] from the brand voice rather than [observed]."
+  },
+
+  "generic": {
+    "essence": {
+      "adjectives": ["Brutal", "Gothic", "Relentless", "Epic", "Demonic"],
+      "positioning": "A free-to-play, fast-paced action RPG set between Diablo II and Diablo III — fight across a hell-scorched world as one of ten classes, solo or in a Warband, with new challenges every two weeks."
+    },
+    "voice": {
+      "confidence": "observed",
+      "source": "live copy read from https://diabloimmortal.blizzard.com/en-us via browser (hero, latest-updates rail, class blurbs, 404 page)",
+      "summary": "Grand and commanding, second-person and imperative; addresses the player as someone who already wields power, not someone being onboarded.",
+      "pillars": [
+        { "name": "Imperative & commanding", "evidence": "Hell Obeys Me / Become the Warlock" },
+        { "name": "Ominous, mythic scale", "evidence": "Face the fury of the Lord of Terror himself in a massive campaign with over 30 hours of story." },
+        { "name": "Class copy as character, not stat sheet", "evidence": "Demon summoners who wield hazardous infernal magic and sacrifice their minions for even greater power and control." },
+        { "name": "Flavour even in dead ends", "evidence": "What you saw was not meant for mortal eyes..." },
+        { "name": "Plain, low-friction call to action", "evidence": "Download now for FREE!" }
+      ],
+      "person": "second person imperative for CTAs (\"Become the Warlock\", \"Play Now\"); third person for lore/class copy; never calls the player a pet name like \"Nephalem\" on this surface — stays in the grammar of command.",
+      "cadence": "Short imperative headlines (2–4 words) over long, subordinate-clause lore sentences. Sparse ALL-CAPS — reserved for eyebrow labels (\"NEW CLASS\", \"ARPG · FREE TO PLAY\") and buttons, never for body copy or the unicase display font (which already reads as capital-height).",
+      "lexicon": {
+        "say": ["Sanctuary", "Hell", "Warband", "class", "Immortal", "hell-scorched", "demonic hordes", "the Lord of Terror"],
+        "avoid": ["casual slang", "discount-y exclamation stacks (\"SALE!!!\")", "cutesy diminutives for the player", "corporate SaaS phrasing (\"seamless experience\", \"solutions\")"]
+      },
+      "commerceVoice": "[inferred] Promotions copy on this surface stays in the same commanding register rather than dropping into bargain-bin urgency — scarcity is framed as opportunity (\"Exclusive discounts await\") not countdown panic.",
+      "copyExamples": {
+        "hero": "The Gates Do Not Wait — Answer the Call",
+        "skuCta": "Claim the Relic",
+        "bonusBadge": "Relics of Power Included",
+        "scarcityBadge": "Offer Ends With the Season",
+        "confirmation": "The Pact Is Sealed",
+        "navLabels": ["Overview", "Classes", "Promotions", "News"],
+        "emptyState": "The vault stands empty — for now.",
+        "errorState": "Something in the dark interrupted this. Try again.",
+        "checkoutCta": "Seal the Bargain"
+      }
+    },
+    "artStyle": {
+      "family": "stylized-realism",
+      "subStyle": "dark-fantasy military-grit character rendering with painterly hellscape backdrops — 3D character renders (armour, skin, VFX) composited over 2D matte/painted environment art",
+      "renderingCues": ["high-contrast rim lighting from fire/magic sources", "physically-modelled armour and skin with painted-texture backdrops behind it", "particle VFX (embers, smoke, arcane glow) layered over the composite", "carved-stone and worn-leather surface detailing on UI chrome to match the in-fiction material world"]
+    },
+    "palette": {
+      "primary":        { "hex": "#D7AB6D", "rgb": [215,171,109], "usage": "ember-gold accent — headline gradients, class-card highlights, primary brand accent (highest-frequency hex in the compiled CSS)" },
+      "secondary":       { "hex": "#7B2917", "rgb": [123,41,23],  "usage": "blood-brick — primary CTA button fill (observed on the live \"Play Now\" control), second most-frequent hex" },
+      "tertiary":        { "hex": "#3D5689", "rgb": [61,86,137],  "usage": "cold arcane blue — \"notation-blue\" token family, sparing use for arcane/cold contrast against the dominant warm palette" },
+      "neutral":         { "hex": "#1A1715", "rgb": [26,23,21],  "usage": "near-black warm charcoal — page background foundation (\"desert-800\" token)" },
+      "statusPositive":  { "hex": "#499D47", "rgb": [73,157,71], "usage": "brand's own \"status-green-400\" — success / positive delta, lightened for legibility on the dark neutral" },
+      "statusCaution":   { "hex": "#C8963D", "rgb": [200,150,61],"usage": "DERIVED — the brand ships no native amber; this sits between primary gold (#D7AB6D) and secondary brick (#7B2917) at matching saturation/mood for warning/caution use" },
+      "statusNegative":  { "hex": "#C85541", "rgb": [200,85,65], "usage": "brand's own \"warning-red-400\" token — error / negative delta, lightened variant for dark-background contrast" }
+    },
+    "contrastRules": [
+      "White body text on the neutral #1A1715 background ≈ 17.9:1 — far exceeds AA.",
+      "Primary #D7AB6D on neutral #1A1715 ≈ 8.5:1 — passes AA for body and large text; safe for headline gradients and labels.",
+      "White text on the secondary #7B2917 CTA fill ≈ 9.7:1 — passes AA comfortably even at button-label sizes.",
+      "Never place primary gold text directly on the tertiary blue or on light art without a scrim — the pairing was not observed anywhere on the live site and is likely below AA.",
+      "Status colours always pair with a shape/label cue (badge shape, +/− sign, icon) — none were observed used as the sole signal of state."
+    ],
+    "typography": {
+      "families": { "display": "Exocet Immortal", "body": "Alegreya Sans", "accent": "Archivo" },
+      "scale": { "baseSizePx": 16, "ratio": 1.25, "measureCh": 65, "pairingRationale": "A unicase, rune-marked display face (Exocet Immortal) for hero/section titles reads as ancient and inscribed; a humanist sans body (Alegreya Sans) keeps long-form lore and UI copy legible; Archivo (grotesque sans, semibold) is reserved for nav and button chrome so interactive controls feel modern/tappable against the otherwise engraved brand voice." },
+      "typePrimitives": {
+        "weights": { "extraBold": 700, "bold": 700, "semibold": 600, "regular": 400 },
+        "headerSizes": { "h1": "60px desktop / ~36px mobile [inferred mobile]", "h2": "48px desktop / ~28px mobile [inferred mobile]", "h3": "~28px [inferred]", "h4": "~24px [inferred]", "h5": "~20px [inferred]", "h6": "20px [observed: CSS, subheading/eyebrow]", "h7": "~16px [inferred]" },
+        "bodySizes": { "l": "~18px [inferred]", "main": "16px [inferred, standard body]", "s": "~14px [inferred]", "xs": "~12px [inferred]" }
+      },
+      "textStyles": {
+        "heading-display":  { "primitive": "h1", "weight": "regular (400 — the licensed face's display weight)", "leading": 1.05, "tracking": "0", "case": "unicase (font-inherent — never manually uppercased)", "effect": "occasionally rendered with the gold gilded-gradient fill (see tier2SignatureSurfaces)" },
+        "heading-title":     { "primitive": "h2", "weight": "regular (400)", "leading": 1.1, "tracking": "0", "case": "unicase" },
+        "heading-subtitle":  { "primitive": "h6", "weight": "semibold (600)", "leading": 1.2, "tracking": "0.02em", "case": "Title", "effect": "gilded gold vertical gradient text-fill, #9B7644 → #D7AB6D" },
+        "paragraph-l":       { "primitive": "body-l", "weight": "regular", "leading": 1.55, "tracking": "0", "case": "sentence" },
+        "paragraph-main":    { "primitive": "body-main", "weight": "regular", "leading": 1.5, "tracking": "0", "case": "sentence" },
+        "paragraph-s":       { "primitive": "body-s", "weight": "regular", "leading": 1.45, "tracking": "0", "case": "sentence" },
+        "utility-label":     { "primitive": "body-s", "weight": "semibold (600, Archivo)", "leading": 1.1, "tracking": "+0.04em", "case": "sentence-in-pill (site does not force UPPER on nav labels)" },
+        "utility-mono":      { "primitive": "body-s", "weight": "regular", "leading": 1.4, "tracking": "0", "case": "sentence" }
+      },
+      "reversedTypeRule": "The whole site is reversed (light text on near-black); no further weight/size bump was observed beyond the brand's own defaults — treat the dark backdrop as the default ground, not an exception."
+    },
+    "observedCss": [
+      {
+        "selector": ":root [--diablo-di-typography-heading-font-family]",
+        "fontFamily": "Exocet Immortal",
+        "fontSizeMobile": "n/a (token defines family/weight only)",
+        "fontSizeDesktop": "n/a",
+        "weight": 500,
+        "lineHeight": null,
+        "letterSpacing": "0px",
+        "color": null,
+        "textShadow": null,
+        "source": "compiled Next.js bundle CSS (eac42c39936b9244.css)"
+      },
+      {
+        "selector": "h2 (hero / section title, rendered)",
+        "fontFamily": "\"Exocet Immortal\"",
+        "fontSizeMobile": "unresolved at 1280px viewport [inferred smaller on mobile]",
+        "fontSizeDesktop": "60px",
+        "weight": 400,
+        "lineHeight": "normal",
+        "letterSpacing": "normal",
+        "color": "#ffffff",
+        "textShadow": null,
+        "source": "getComputedStyle on live DOM"
+      },
+      {
+        "selector": "h3 (subheading/eyebrow, rendered — e.g. \"What's New in Diablo Immortal\")",
+        "fontFamily": "Alegreya",
+        "fontSizeMobile": "unresolved [inferred]",
+        "fontSizeDesktop": "20px",
+        "weight": 600,
+        "lineHeight": "normal",
+        "letterSpacing": "normal",
+        "color": "transparent — background-clip:text over linear-gradient(rgb(155,118,68), rgb(215,171,109))",
+        "textShadow": null,
+        "source": "getComputedStyle on live DOM"
+      },
+      {
+        "selector": ".nav-link-content / button (Archivo UI chrome)",
+        "fontFamily": "Archivo, helvetica, arial, sans-serif",
+        "fontSizeMobile": "16px",
+        "fontSizeDesktop": "16px",
+        "weight": 600,
+        "lineHeight": null,
+        "letterSpacing": "normal",
+        "color": "#ffffff",
+        "textShadow": null,
+        "source": "getComputedStyle on live DOM; background #7b2917 confirmed as the brick-500 token"
+      }
+    ],
+    "fontAcquisition": {
+      "heading": {
+        "family": "Exocet Immortal",
+        "source": "licensed-local-woff2",
+        "proxyFamily": "Cinzel",
+        "proxyRationale": "Exocet Immortal is Blizzard's self-hosted, licensed display face (served from blz-contentstack-assets.akamaized.net, no public licence). Its signature unicase letterforms and rune-slashed 'O' glyph are unique and cannot be proxied visually — Cinzel is used only as this guide's nearest openly-licensed gothic-serif display stand-in. Production use requires sourcing the real Exocet Immortal woff2 files (or a properly licensed equivalent) and writing @font-face in the theme CSS."
+      },
+      "body": {
+        "family": "Alegreya Sans",
+        "source": "google-fonts",
+        "proxyFamily": null,
+        "proxyRationale": "Already freely available — use directly, no proxy needed."
+      }
+    },
+    "shape": {
+      "profile": "sharp",
+      "radiusStep": "s",
+      "wonky": false,
+      "motifs": ["rectangular content panels", "softly rounded (≈8px) pill buttons and nav chrome", "carved-stone ornamental dividers between sections (not a token — a texture image)"]
+    },
+    "lightingModel": {
+      "interactiveElements": "flat brick-500 fill + white label, textured with a baked highlight/gradient button-texture image rather than a CSS box-shadow — reads as forged metal/stone, not flat material UI",
+      "nonInteractiveElements": "flat dark neutral panels with painterly key-art backdrops; no drop shadow on static content blocks",
+      "vfxSignature": "ember/fire particles, arcane glow rim-lighting on character renders, smoke and blood-red highlights tied to each class's theme"
+    },
+    "spacing": {
+      "rhythm": "airy",
+      "baseSysStep": "--x-sys-space-l",
+      "touchTargetSysToken": "--x-sys-size-control-m",
+      "grouping": "space-grouped"
+    },
+    "states": {
+      "hover": "[inferred] baked highlight state via a second button-texture image swap rather than a simple overlay tint",
+      "pressed": "[inferred] darker/desaturated texture swap, consistent with the hover pattern",
+      "focus": "visible focus ring required (not directly observed — accessibility floor)",
+      "disabled": "reduced opacity + desaturated; pointer-events none",
+      "primaryActionRule": "one primary action per view — the hero, each promo card, and the footer each carry exactly one dominant CTA (\"Play Now\")"
+    },
+    "accessibility": {
+      "bodyContrast": "≥ 4.5:1 — white-on-neutral measured at ≈17.9:1",
+      "largeTextContrast": "≥ 3:1 — primary-on-neutral measured at ≈8.5:1",
+      "statusNotByColourAlone": "no status-colour-only usage was observed on this marketing surface; carry the rule forward for cart/checkout surfaces — pair statusPositive/Negative with an icon or label",
+      "focusRing": "present on every focusable element (not directly verifiable via static capture — treat as a floor requirement)",
+      "notes": "No failing pairing was found among the sampled combinations; avoid untested gold-on-blue or gold-on-light-art pairings without a scrim."
+    },
+    "texture": {
+      "halftone": { "present": false, "rule": "not observed — brand uses photographic/painted texture, not halftone dot patterns" },
+      "distress":  { "present": true, "rule": "baked into imagery only (carved-stone edges, worn leather, aged parchment) — never a CSS distress filter; do not add a CSS distress effect, source or commission textured art instead" },
+      "noise":     { "present": false, "opacityPct": 0, "blendMode": "n/a" },
+      "other": "carved stone-relief and leather/desert surface texture across backgrounds, dividers, and button chrome — the dominant material language beyond flat colour"
+    },
+    "motion": {
+      "durationMs": 250,
+      "easing": "ease-out",
+      "signatures": ["[inferred] card hover lift/brighten", "[inferred] hero art parallax-style layering"],
+      "interactiveFeedback": "[inferred] brightness/texture-swap on hover for CTAs, consistent with the baked-texture button system"
+    },
+    "assetPrompts": {
+      "heroBanner": "Dark fantasy action-RPG hero banner, 16:9. A battle-scarred demon-hunting character mid-action against a hell-scorched ruined landscape, dramatic ember-orange rim light from distant fires, deep near-black shadow tones, painterly stylized-realism rendering, carved stone and molten rock texture in the environment, smoke and floating embers, cinematic low camera angle, colour palette anchored on ember gold (#D7AB6D) and blood-brick red-brown (#7B2917) against near-black (#1A1715), no text overlay.",
+      "skuArt": "Character bust portrait, 2:3 portrait crop, three-quarter angle, dramatic single-source fire/arcane rim light separating the figure from a dark carved-stone backdrop, ornate demon-forged armour or infernal magic effects appropriate to the class, painterly stylized-realism rendering matching AAA dark-fantasy ARPG key art, ember-gold and blood-brick accent lighting, no text.",
+      "background": "Seamless tileable dark stone-relief texture with faint carved rune details, near-black base (#1A1715) with subtle warm ember-gold (#D7AB6D) highlight catching the carved edges, very low contrast so UI content stays legible on top, no characters, no text."
+    }
+  },
+
+  "codashop": {
+    "architectureNote": "5-tier cascade: (1) type primitives + ref seeds → (2) palette ramps (--x-palette-{role}-500 = --x-ref-{role}) → (3) sys intensity / dimensions / effects / states → (4) semantic defaults (--x-bg-*, --x-text-*, --x-border-*) → (5) .text-style-* classes. Figma token exports drop the --x- prefix; repo names always include it. emitter.ts injects only Tier 1 ref seeds + optional Tier 2 ramps + font + --x-bg-page. Tiers 3-4 auto-resolve downstream and are store-overridable. THREE override layers: SYSTEM CONSTANT (layoutSystem + the 27 textStyle compositions + scales — never change) ⊃ BRAND-LOCKED (ref seeds, font, size values, brandCharacter) ⊃ STORE-FLEXIBLE (semantic colour mapping, component variants).",
+
+    "layoutSystem": {
+      "mutable": false,
+      "responsiveModel": "container-query",
+      "containerRule": "device screen sets container-type:inline-size; overlay must NOT (traps position:fixed)",
+      "breakpoints": { "xs": "< 641px", "s": "641–800px", "m": "801–1279px", "l": "≥ 1280px" },
+      "grid": {
+        "columns": { "xs": 8, "s": 8, "m": 12, "l": 12 },
+        "columnGap": { "token": "--x-gap-grid-gutter", "xs": "8px", "s": "8px", "m": "12px", "l": "16px" },
+        "sidePadding": { "token": "--x-gap-grid-margin", "xs": "12px", "s": "12px", "m": "12px", "l": "16px" },
+        "rowGap": { "token": "--x-gap-grid-row-default", "all": "8px" },
+        "template": "grid-template-columns: repeat(N, minmax(0, 1fr))"
+      },
+      "spanVariants": {
+        "fluid": "grid-column: 1 / -1 at all breakpoints (full bleed)",
+        "content": "full width on XS/S; centred cols 3–10 of 12, max-width 960px, on M/L",
+        "carousel": "full-bleed on XS/S (negative margin cancels grid margin); content on M/L"
+      },
+      "skuGridPatterns": {
+        "_note": "all use display:grid; gap:var(--x-gap-content-default)",
+        "skuList": { "xs": 2, "s": 4, "m": 4 },
+        "bundleGrid": { "xs": 1, "s": 1, "m": 2 },
+        "giftGrid": { "xs": 2, "s": "variable", "m": "variable" },
+        "storyCarouselAspect": { "xs": "1/1", "s": "1/1", "m": "2.6/1" }
+      },
+      "tokenTierDiscipline": "components consume ONLY semantic (--x-bg-*, --x-text-*, --x-border-*) + spacing/size (--x-pad-*, --x-gap-*, --x-radius-*, --x-size-*); NEVER --x-sys-*, --x-palette-*, or --x-ref-* directly",
+      "mobileDesktopRule": "values switch at breakpoints via -desktop- token twins: --x-sys-space-desktop-*, --x-sys-radius-desktop-*, --x-sys-size-control-desktop-*, --x-text-size-desktop-*"
+    },
+
+    "themePreset": {
+      "id": "store-diablo-immortal",
+      "name": "Diablo Immortal",
+      "presetStyle": {
+        "seedColors": {
+          "primary": "#D7AB6D",
+          "secondary": "#7B2917",
+          "tertiary": "#3D5689",
+          "neutral": "#1A1715",
+          "statusPositive": "#499D47",
+          "statusCaution": "#C8963D",
+          "statusNegative": "#C85541"
+        },
+        "font": "Exocet Immortal",
+        "borderRadius": "RADIUS_SOFT",
+        "backgroundColor": "#1A1715",
+        "backgroundType": "TYPE_SOLID"
+      }
+    },
+
+    "cssOverride": "body[data-theme='theme-preset--store-diablo-immortal'] {\n  --x-ref-primary: #D7AB6D;\n  --x-ref-secondary: #7B2917;\n  --x-ref-tertiary: #3D5689;\n  --x-ref-neutral: #1A1715;\n  --x-ref-status-positive: #499D47;\n  --x-ref-status-caution: #C8963D;\n  --x-ref-status-negative: #C85541;\n  --x-sys-font-heading: 'Exocet Immortal', 'Cinzel', serif;\n  --x-sys-font-body: 'Alegreya Sans', 'Alegreya', serif;\n  --x-bg-page: #1A1715;\n}",
+
+    "brandLocked": {
+      "ref": {
+        "primary": "#D7AB6D",
+        "secondary": "#7B2917",
+        "tertiary": "#3D5689",
+        "neutral": "#1A1715",
+        "statusPositive": "#499D47",
+        "statusCaution": "#C8963D",
+        "statusNegative": "#C85541"
+      },
+      "palette": {
+        "anchorRule": "--x-palette-{role}-500 resolves to --x-ref-{role} — the 500 step IS the seed",
+        "strategy": "auto",
+        "manualStops": {}
+      },
+      "typePrimitives": {
+        "fontHeading": "'Exocet Immortal', 'Cinzel', serif",
+        "fontBody": "'Alegreya Sans', 'Alegreya', serif",
+        "weights": { "extraBold": 700, "bold": 700, "semibold": 600, "regular": 400 },
+        "headerSizes": {
+          "h1": { "mobile": "36px", "desktop": "60px" },
+          "h2": { "mobile": "28px", "desktop": "48px" },
+          "h3": { "mobile": "22px", "desktop": "32px" },
+          "h4": { "mobile": "20px", "desktop": "28px" },
+          "h5": { "mobile": "18px", "desktop": "24px" },
+          "h6": { "mobile": "16px", "desktop": "20px" },
+          "h7": { "mobile": "14px", "desktop": "18px" }
+        },
+        "bodySizes": {
+          "l":    { "mobile": "16px", "desktop": "18px" },
+          "main": { "mobile": "14px", "desktop": "16px" },
+          "s":    { "mobile": "12px", "desktop": "14px" },
+          "xs":   { "mobile": "10px", "desktop": "12px" }
+        },
+        "leading": { "main": "105%", "loose": "120%", "wide": "150%" },
+        "tracking": { "tight": "-0.5%", "narrow": "-0.2%", "main": "0%", "loose": "0.5%", "wide": "1%" },
+        "modularScale": { "basePx": 16, "ratio": 1.25 }
+      },
+      "textStyles": {
+        "heading-display-hero":   { "primitive": "h1", "weight": "extra-bold", "leading": "loose", "tracking": "tight",  "case": "UPPER" },
+        "heading-page-title":     { "primitive": "h2", "weight": "bold",       "leading": "loose", "tracking": "narrow", "case": "Title" },
+        "heading-section":        { "primitive": "h3", "weight": "bold",       "leading": "loose", "tracking": "main",   "case": "Title" },
+        "heading-modal":          { "primitive": "h4", "weight": "bold",       "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-card":           { "primitive": "h5", "weight": "semibold",   "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-banner":         { "primitive": "h6", "weight": "bold",       "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-final-price":    { "primitive": "h6", "weight": "extra-bold", "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-sku-title":      { "primitive": "h4", "weight": "semibold",   "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-subtitle":       { "primitive": "h7", "weight": "semibold",   "leading": "main",  "tracking": "main",   "case": "Title" },
+        "paragraph-lead":          { "primitive": "body-l",    "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-regular":       { "primitive": "body-main", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-small":         { "primitive": "body-s",    "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-strikethrough": { "primitive": "body-main", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-action-regular":         { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-action-uppercase":       { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-action-strikethrough":   { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-default-regular":        { "primitive": "body-s",    "weight": "regular",  "leading": "wide", "tracking": "main", "case": "sentence" },
+        "utility-default-strikethrough":  { "primitive": "body-s",    "weight": "regular",  "leading": "wide", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-default-uppercase":      { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-label-regular":          { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-label-uppercase":        { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-label-tall":             { "primitive": "body-s",    "weight": "semibold", "leading": "loose","tracking": "main", "case": "sentence" },
+        "utility-label-strikethrough":    { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-micro-regular":          { "primitive": "body-xs",   "weight": "regular",  "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-micro-bold":             { "primitive": "body-xs",   "weight": "extra-bold","leading": "main","tracking": "wide", "case": "sentence" },
+        "utility-micro-uppercase":        { "primitive": "body-xs",   "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-micro-strikethrough":    { "primitive": "body-xs",   "weight": "regular",  "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" }
+      },
+      "brandCharacter": {
+        "radiusSteps": {
+          "control": "--x-sys-radius-s",
+          "input": "--x-sys-radius-s",
+          "container": "--x-sys-radius-0",
+          "thumbnail": "--x-sys-radius-0",
+          "badge": "--x-sys-radius-full"
+        },
+        "elevationCharacter": {
+          "interactive": "--x-sys-elevation-flat",
+          "modal": "--x-sys-elevation-level-2-main",
+          "toast": "--x-sys-elevation-level-3-main",
+          "nonInteractive": "--x-sys-elevation-flat"
+        },
+        "strokeWeight": {
+          "divider": "--x-sys-stroke-thin",
+          "activeBorder": "--x-sys-stroke-medium",
+          "emphasis": "--x-sys-stroke-thick"
+        },
+        "effectShadow": {
+          "primary": "#141313",
+          "secondary": "#0A0805",
+          "neutral": "#000000"
+        },
+        "effectGlow": {
+          "primary": "#D7AB6D",
+          "secondary": "#C85541"
+        },
+        "states": {
+          "hover": "#EAC98F",
+          "pressed": "#5C4340"
+        }
+      }
+    },
+
+    "storeFlexible": {
+      "semanticDefaults": {
+        "_note": "Every mapping below is store-overridable. Tag them as suggestions, not requirements.",
+        "bg": {
+          "--x-bg-action-primary":       "var(--x-sys-colour-secondary-main)   /* overridable — brand uses brick, not gold, for the physical CTA fill */",
+          "--x-bg-action-primary-hover": "var(--x-sys-colour-secondary-strong) /* overridable */",
+          "--x-bg-action-secondary":     "var(--x-sys-colour-primary-soft)     /* overridable */",
+          "--x-bg-action-destructive":   "var(--x-sys-colour-status-negative-main) /* overridable */",
+          "--x-bg-surface":              "var(--x-sys-colour-neutral-subtle)   /* overridable */",
+          "--x-bg-overlay":              "var(--x-sys-colour-neutral-heavy)    /* overridable */"
+        },
+        "text": {
+          "--x-text-primary":            "var(--x-sys-colour-neutral-inverse)  /* overridable */",
+          "--x-text-secondary":          "var(--x-sys-colour-primary-main)     /* overridable — gilded gold for eyebrow/label text */",
+          "--x-text-on-action-primary":  "var(--x-sys-colour-secondary-inverse)/* overridable */"
+        },
+        "border": {
+          "--x-border-default":          "var(--x-sys-colour-neutral-soft)     /* overridable */",
+          "--x-border-emphasis":         "var(--x-sys-colour-primary-main)     /* overridable */",
+          "--x-border-input-focused":    "var(--x-sys-colour-primary-strong)   /* overridable */"
+        }
+      },
+      "componentIntent": {
+        "buttonPrimary": {
+          "feel": "forged, weighty, unmistakably a physical object to press — not a flat UI chip",
+          "defaultVariant": "solid-textured",
+          "alternatives": ["solid flat", "outline", "ghost"],
+          "colourDepthNote": "brick-500 (secondary seed) at 'main' step is the observed default, not the gold primary — gold is reserved for text/labels, brick for the physical button fill",
+          "tokenFamilies": ["--x-bg-action-primary", "--x-text-on-action-primary", "--x-sys-colour-secondary-*"]
+        },
+        "buttonSecondary": {
+          "feel": "supporting, quieter than the CTA, still reads as brand",
+          "defaultVariant": "ghost",
+          "alternatives": ["outline", "solid-soft"],
+          "tokenFamilies": ["--x-bg-action-secondary", "--x-text-*", "--x-sys-colour-primary-*"]
+        },
+        "card": {
+          "feel": "a framed relic or carved panel, not a soft rounded material-design card",
+          "defaultVariant": "flat with sharp/near-sharp corners",
+          "alternatives": ["outlined", "elevated", "frosted"],
+          "tokenFamilies": ["--x-bg-*", "--x-sys-elevation-*", "--x-sys-radius-*"]
+        },
+        "badge": {
+          "feel": "compact status callout (e.g. \"New Class\"), high-visibility",
+          "defaultVariant": "solid-primary",
+          "alternatives": ["outline", "soft-tint", "neutral"],
+          "tokenFamilies": ["--x-bg-action-*", "--x-text-*", "--x-sys-radius-full"]
+        },
+        "input": {
+          "feel": "[inferred — no forms observed on this marketing surface] clean, clearly editable, staying dark and unobtrusive",
+          "defaultVariant": "outlined",
+          "alternatives": ["filled", "underline"],
+          "tokenFamilies": ["--x-border-*", "--x-bg-*", "--x-sys-radius-*"]
+        },
+        "modal": {
+          "feel": "[inferred] focused, elevated, dark scrim consistent with the rest of the site's near-black grounding",
+          "defaultVariant": "surface",
+          "alternatives": ["drawer", "bottomSheet"],
+          "tokenFamilies": ["--x-sys-elevation-level-2-main", "--x-bg-*", "--x-sys-radius-*"]
+        }
+      }
+    },
+
+    "assetManifest": [
+      { "name": "hero_og", "sourceUrl": "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt47deaa9e2be4b752/6a1f4beaeb54a6907d694fb8/DI_Warlock_OG-Image@2x_enUS.jpg", "localPath": "refs/hero_og_small.jpg", "kind": "keyart", "intendedUse": "cover backdrop, hero banner reference — also the only place the DIABLO IMMORTAL wordmark lockup was harvested", "licence": "© Blizzard Entertainment, Inc. — internal design-reference only, not for redistribution" },
+      { "name": "class_warlock", "sourceUrl": "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt074ccd8419189a0d/6a186ef269d5c3a1b3963220/ClassImage_Warlock_1920.png", "localPath": "refs/class_warlock_small.jpg", "kind": "character", "intendedUse": "class portrait reference for SKU/character-art direction", "licence": "© Blizzard Entertainment, Inc. — internal design-reference only, not for redistribution" },
+      { "name": "class_barbarian", "sourceUrl": "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/bltd636be308f9e58e8/69c1cc5d042ec800089de808/ClassImage_Barb_1920.png", "localPath": "refs/class_barb_small.jpg", "kind": "character", "intendedUse": "second class portrait reference, contrast case against the Warlock render", "licence": "© Blizzard Entertainment, Inc. — internal design-reference only, not for redistribution" },
+      { "name": "class_bg", "sourceUrl": "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/bltc42cffe61d39aec3/69c3029101bc870008d77da6/ClassBG_1920.png", "localPath": "refs/class_bg_small.jpg", "kind": "environment", "intendedUse": "class-select backdrop texture reference", "licence": "© Blizzard Entertainment, Inc. — internal design-reference only, not for redistribution" },
+      { "name": "stone_bg", "sourceUrl": "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt70308ec2c6cc1ba8/69c2fd70cdcff400083fd142/stone-bg-2600.jpg", "localPath": "refs/stone_bg_small.jpg", "kind": "texture", "intendedUse": "carved-stone section background texture reference", "licence": "© Blizzard Entertainment, Inc. — internal design-reference only, not for redistribution" },
+      { "name": "button_texture_primary", "sourceUrl": "https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blt7af3343a9099e0fc/67e5af5d9b2819e2819bc3fd/DI_Button-Textures_Primary-400_001.webp", "localPath": "refs/button_texture_small.jpg", "kind": "texture", "intendedUse": "reference for the baked-highlight CTA button texture signature surface", "licence": "© Blizzard Entertainment, Inc. — internal design-reference only, not for redistribution" },
+      { "name": "footer_bg", "sourceUrl": "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt16d343e2f9ef578f/69c307fefa418b0008e9614d/footer-background.jpg", "localPath": "refs/footer_bg_small.png", "kind": "environment", "intendedUse": "footer backdrop texture reference", "licence": "© Blizzard Entertainment, Inc. — internal design-reference only, not for redistribution" }
+    ],
+
+    "downstreamHandoff": [
+      { "from": "codashop.themePreset.presetStyle.seedColors + codashop.cssOverride", "to": "src/tokens/ds/themes/diablo-immortal.css", "action": "write the theme scope block: ref seeds, font vars, bg-page, plus any surface overrides the alias graph cannot express" },
+      { "from": "generic.fontAcquisition", "to": "src/tokens/ds/themes/diablo-immortal.css (+ store fonts folder when licensed-local-woff2)", "action": "acquire font files if needed and write @font-face; else add the Google Fonts <link> for the proxy" },
+      { "from": "codashop.assetManifest", "to": "src/stores/diablo-immortal/store.js (imagery registry)", "action": "copy refs/ assets into the store assets folder and register each by intendedUse" },
+      { "from": "generic.voice.copyExamples + generic.voice.lexicon", "to": "src/stores/diablo-immortal/store.js (strings)", "action": "seed user-visible copy in the extracted brand voice; obey the avoid-list" },
+      { "from": "codashop.storeFlexible.componentIntent + codashop.brandLocked.brandCharacter", "to": "src/stores/diablo-immortal/store.js (config capabilities)", "action": "choose component variants and capability flags that realise the stated feel" },
+      { "from": "codashop.tier2SignatureSurfaces", "to": "component-level CSS (per precedentFile)", "action": "implement each signature surface as scoped CSS/component work — these are NOT expressible as tokens" }
+    ],
+
+    "tier2SignatureSurfaces": [
+      {
+        "name": "Gilded gradient text-fill on subheadings/eyebrows",
+        "surface": "H3-tier subheading/eyebrow labels (e.g. \"What's New in Diablo Immortal\")",
+        "tokenExpressible": false,
+        "implementation": "background: linear-gradient(180deg, #9B7644 0%, #D7AB6D 100%); -webkit-background-clip: text; background-clip: text; color: transparent;",
+        "precedentFile": "observed via getComputedStyle on the live homepage — no local file, document as a component-level CSS pattern"
+      },
+      {
+        "name": "Carved-stone ornamental section dividers",
+        "surface": "boundaries between homepage sections",
+        "tokenExpressible": false,
+        "implementation": "full-bleed <img>/background-image using a bespoke carved-stone divider graphic (fancy-divider-top/bottom.jpeg, stone-divider-top/bottom.jpeg) rather than a CSS border or rule",
+        "precedentFile": "refs/stone_bg_small.jpg (representative texture)"
+      },
+      {
+        "name": "Baked-texture CTA button states",
+        "surface": "primary/secondary buttons (\"Play Now\" and similar)",
+        "tokenExpressible": false,
+        "implementation": "background is a layered stack of colour-tint gradients over a baked highlight-texture image (DI_Button-Textures_Primary/Secondary-400) rather than a flat fill + CSS box-shadow; hover/pressed states are expected to swap to sibling texture assets, not a simple overlay tint",
+        "precedentFile": "refs/button_texture_small.jpg"
+      },
+      {
+        "name": "Exocet Immortal unicase + rune-slashed 'O'",
+        "surface": "all h1/h2 display headings",
+        "tokenExpressible": false,
+        "implementation": "the licensed display face itself renders unicase letterforms with a distinctive rune-like diagonal slash through the 'O' — no font substitution reproduces this; treat it as an irreplaceable brand asset, not a styleable property",
+        "precedentFile": "n/a — typeface-level signature, source the real Exocet Immortal font files for production"
+      }
+    ]
+  }
+}

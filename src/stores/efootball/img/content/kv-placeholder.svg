@@ -1,0 +1,18 @@
+<!-- placeholder — eFootball™ key-visual hero (16:9). Swap for the real KV webp. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 576" width="1024" height="576">
+  <defs>
+    <linearGradient id="kv" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0aa0"/>
+      <stop offset="1" stop-color="#000180"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="576" fill="url(#kv)"/>
+  <g fill="#ffff00" opacity="0.9" transform="translate(512 288)">
+    <circle cx="0" cy="0" r="44" fill="none" stroke="#ffff00" stroke-width="10"/>
+    <rect x="-58" y="-5" width="116" height="10"/>
+  </g>
+  <text x="512" y="380" fill="#ffff00" font-family="Arial, sans-serif" font-size="40"
+        font-weight="700" letter-spacing="6" text-anchor="middle">eFOOTBALL</text>
+  <text x="512" y="430" fill="#a9b0ff" font-family="Arial, sans-serif" font-size="18"
+        text-anchor="middle">KEY VISUAL — PLACEHOLDER 16:9</text>
+</svg>

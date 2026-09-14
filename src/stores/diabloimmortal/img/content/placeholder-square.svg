@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" fill="none" role="img" aria-label="Placeholder art — Eternal Orb SKU art pending">
+  <rect width="400" height="400" fill="#1A1715"/>
+  <rect x="0.5" y="0.5" width="399" height="399" fill="none" stroke="#342E29" stroke-width="1"/>
+  <circle cx="200" cy="188" r="58" fill="none" stroke="#D7AB6D" stroke-width="4"/>
+  <circle cx="200" cy="188" r="14" fill="#D7AB6D"/>
+  <text x="200" y="300" text-anchor="middle" font-family="Alegreya Sans, Georgia, serif" font-size="16" font-weight="700" letter-spacing="0.18em" fill="#9B7644">PLACEHOLDER</text>
+</svg>

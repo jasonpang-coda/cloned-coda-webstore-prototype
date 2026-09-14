@@ -1,0 +1,361 @@
+{
+  "meta": {
+    "brand": "Warhammer 40,000: Rogue Trader",
+    "version": "1.0",
+    "sourceImageCount": 7,
+    "confidence": "high",
+    "notes": "Built from the live production site roguetrader.owlcat.games. Fonts and colours are [observed] — extracted directly from the site's stylesheets (main-landing.css, variables.css) rather than browser screenshots (the Chrome capture path was unavailable, so static assets were pulled instead — arguably higher fidelity: real font names + real pixel hex values). Logo, gilded frame, dividers, weapon SKU art and the companions key-art were downloaded as images. Real type: Stevens Titling Pro Badger Brush (display gold caps), TT Supermolot Neue Reg/Med/Demibold (condensed grotesque UI), Open Sans (body). Google-Fonts proxies chosen for the webstore (licensed faces unavailable): Cinzel <- Stevens Titling Pro (imperial Roman titling), Oswald <- TT Supermolot Neue (condensed grotesque), Open Sans is on Google Fonts directly. Primary green (#72a846/#548031) is the site's preorder CTA colour; gold/parchment and warp-green are observed accents. Status colours are [inferred]: statusPositive is shifted lime to stay distinguishable from the green primary (primary is also greenish) and MUST carry a non-colour cue; statusNegative blood-red is 40K-canonical but not used on the marketing site."
+  },
+
+  "generic": {
+    "essence": {
+      "adjectives": ["GRIMDARK", "IMPERIAL", "ORNATE", "BAROQUE", "COMMANDING"],
+      "positioning": "Command your dynasty across the Koronus Expanse — gilded authority and gothic grandeur in the unending war of the 41st Millennium."
+    },
+    "artStyle": {
+      "family": "painterly stylized-realism",
+      "subStyle": "grimdark gothic sci-fi (grim-baroque) with gilded metallic ornament",
+      "renderingCues": [
+        "dramatic chiaroscuro; cool desaturated environments with warm rim-lit characters",
+        "warp-green energy VFX (lightning arcs, glowing orbs, xenos haze)",
+        "gilded / bronze metallic ornament and inscriptional titling",
+        "atmospheric depth, cathedral-of-the-void backdrops, painterly brushwork"
+      ]
+    },
+    "palette": {
+      "primary":        { "hex": "#72a846", "rgb": [114,168,70],  "usage": "Military-green primary CTA (site preorder colour); buttons, active states" },
+      "secondary":      { "hex": "#d1a974", "rgb": [209,169,116], "usage": "Imperial gold — ornament, hairline frames, accents, badges" },
+      "tertiary":       { "hex": "#a1e967", "rgb": [161,233,103], "usage": "Warp-green VFX glow accent — highlights, glows, energy" },
+      "neutral":        { "hex": "#9a8f7d", "rgb": [154,143,125], "usage": "Warm taupe foundation seed; ramp yields bone/parchment lights and void-brown shadows" },
+      "statusPositive": { "hex": "#8fd14f", "rgb": [143,209,79],  "usage": "Success / confirmed — MUST also carry icon+label (primary is also greenish)" },
+      "statusCaution":  { "hex": "#e0a52e", "rgb": [224,165,46],  "usage": "Caution / warning — amber" },
+      "statusNegative": { "hex": "#a51c20", "rgb": [165,28,32],   "usage": "Error / destructive — Imperial blood-red" }
+    },
+    "contrastRules": [
+      "Light-on-dark is the default: parchment/bone (#e8dd9c) or pure white on void-black (#0c0a0a) — ~14–19:1.",
+      "Gold #d1a974 on void-black ≈ 8.4:1 — safe for large text and ornament; acceptable for body but prefer parchment for long copy.",
+      "Primary green buttons use near-black text (#0c0a0a) on #72a846 ≈ 7.4:1 — never white-on-green (fails).",
+      "Place the logo/type only inside a darkened scrim or isolation panel when over busy key-art — never directly on high-detail painterly backgrounds.",
+      "Gold hairline frames separate content from art; never let parchment text touch un-scrimmed illustration."
+    ],
+    "typography": {
+      "families": { "display": "Cinzel (proxy for Stevens Titling Pro)", "body": "Open Sans", "accent": "Oswald (proxy for TT Supermolot Neue)" },
+      "scale": { "baseSizePx": 16, "ratio": 1.25, "measureCh": 65, "pairingRationale": "Oswald's condensed militaristic grotesque carries UI headings/SKU titles/prices (matches the site's TT Supermolot Neue); Open Sans gives neutral, legible body (the site's real body face); Cinzel reserves imperial Roman gold-titling grandeur for hero/wordmark moments." },
+      "typePrimitives": {
+        "weights": { "extraBold": 800, "bold": 700, "semibold": 600, "regular": 400 },
+        "headerSizes": { "h1": "28px", "h2": "24px", "h3": "22px", "h4": "20px", "h5": "18px", "h6": "16px", "h7": "14px" },
+        "bodySizes": { "l": "16px", "main": "14px", "s": "12px", "xs": "10px" }
+      },
+      "textStyles": {
+        "heading-display":  { "primitive": "h1", "weight": "extra-bold", "leading": 1.1,  "tracking": "0.02em",  "case": "UPPER", "effect": "gold metallic gradient fill on hero (Cinzel)" },
+        "heading-title":    { "primitive": "h2", "weight": "bold",       "leading": 1.15, "tracking": "0.01em",  "case": "UPPER" },
+        "heading-subtitle": { "primitive": "h3", "weight": "semibold",   "leading": 1.2,  "tracking": "0",       "case": "Title" },
+        "paragraph-l":      { "primitive": "body-l",    "weight": "regular", "leading": 1.55, "tracking": "0", "case": "sentence" },
+        "paragraph-main":   { "primitive": "body-main", "weight": "regular", "leading": 1.5,  "tracking": "0", "case": "sentence" },
+        "paragraph-s":      { "primitive": "body-s",    "weight": "regular", "leading": 1.45, "tracking": "0", "case": "sentence" },
+        "utility-label":    { "primitive": "body-xs",   "weight": "semibold","leading": 1.1,  "tracking": "0.1em", "case": "UPPER" },
+        "utility-mono":     { "primitive": "body-s",    "weight": "regular", "leading": 1.4,  "tracking": "0", "case": "sentence" }
+      },
+      "reversedTypeRule": "Default is reversed (light-on-dark): headings sit at bold+; for parchment body on void-black keep regular but never below 14px. Letterspace CAPS labels +0.08–0.1em; never letterspace lowercase."
+    },
+    "shape": {
+      "profile": "soft",
+      "radiusStep": "xs",
+      "wonky": false,
+      "motifs": ["thin gold double-hairline frames", "corner ornament fittings", "centre-medallion dividers", "angular militaristic panels", "aquila / sunburst emblem"]
+    },
+    "lightingModel": {
+      "interactiveElements": "elevation-level-1 + gold hairline border + higher saturation; warm rim/sheen on hover",
+      "nonInteractiveElements": "elevation-flat + subtle parchment/void fill + no shadow + no overlay",
+      "vfxSignature": "warp-green energy glow (radial), gilded edge-light, lightning arcs, atmospheric void haze"
+    },
+    "spacing": {
+      "rhythm": "regular",
+      "baseSysStep": "--x-sys-space-s",
+      "touchTargetSysToken": "--x-sys-size-control-m",
+      "grouping": "border-grouped"
+    },
+    "states": {
+      "hover": "gold sheen overlay (#e5c994 low-alpha)",
+      "pressed": "deep-green press (#548031)",
+      "focus": "visible gold focus ring required",
+      "disabled": "reduced opacity + desaturated; pointer-events none",
+      "primaryActionRule": "one primary action per view"
+    },
+    "accessibility": {
+      "bodyContrast": "parchment #e8dd9c on void-black #0c0a0a ≈ 14:1 (pass); gold #d1a974 on #0c0a0a ≈ 8.4:1 (pass)",
+      "largeTextContrast": "primary green #72a846 with near-black text ≈ 7.4:1 (pass)",
+      "statusNotByColourAlone": "positive=check icon+label, caution=triangle icon, negative=cross/skull icon — required because primary and statusPositive are both greenish",
+      "focusRing": "gold ring on every focusable element",
+      "notes": "Avoid white-on-green (fails ~2:1). Use near-black text on green CTAs."
+    },
+    "texture": {
+      "halftone": { "present": false, "rule": "n/a — not a halftone brand" },
+      "distress":  { "present": true, "rule": "subtle metallic wear on gold ornament/edges only; never on body text; low-contrast value change" },
+      "noise":     { "present": true, "opacityPct": 4, "blendMode": "overlay" },
+      "other": "parchment-grain on light panels; gilded filigree frames + corner fittings as the signature ornament layer"
+    },
+    "motion": {
+      "durationMs": 200,
+      "easing": "cubic-bezier(0.2, 0, 0, 1)",
+      "signatures": ["gilded sheen sweep on hover", "slow fade-up reveals", "weighty, ceremonial — never bouncy"],
+      "interactiveFeedback": "scale 0.98 on press; gold-glow on hover; warp-green pulse behind featured CTAs"
+    },
+    "assetPrompts": {
+      "heroBanner": "Grimdark Warhammer 40,000 painterly key art, 16:9 cinematic banner: a Rogue Trader noble in an ornate black-and-gold longcoat commanding a retinue (space marine, psyker with warp-lightning, xenos foes) aboard a gothic void-ship bridge; cool desaturated cathedral environment, warm rim-light on heroes, glowing warp-green energy orb, atmospheric haze; dramatic chiaroscuro, gilded ornament, painterly digital illustration; leave a darker scrim zone on the left third for the gold inscriptional logo.",
+      "skuArt": "Single Warhammer 40,000 item render on transparent/void background, portrait 2:3: ornate gilded bolt weapon / relic / supply crate with Imperial aquila engraving, battle-worn metal, bronze and gold trim, subtle warp-green glow rim-light, painterly stylized-realism, centred, dramatic top-right key light.",
+      "background": "Seamless dark gothic-tech texture tile: near-black void (#0c0a0a) with faint engraved gold filigree, rivets and aquila motifs at very low contrast, subtle parchment grain and 4% noise; must not compete with foreground content."
+    }
+  },
+
+  "codashop": {
+    "architectureNote": "5-tier cascade: (1) type primitives + ref seeds -> (2) palette ramps (--x-palette-{role}-500 = --x-ref-{role}) -> (3) sys intensity / dimensions / effects / states -> (4) semantic defaults (--x-bg-*, --x-text-*, --x-border-*) -> (5) .text-style-* classes. Figma token exports drop the --x- prefix; repo names always include it. emitter.ts injects only Tier 1 ref seeds + optional Tier 2 ramps + font + --x-bg-page. Tiers 3-4 auto-resolve downstream and are store-overridable. THREE override layers: SYSTEM CONSTANT (layoutSystem + the 27 textStyle compositions + scales — never change) > BRAND-LOCKED (ref seeds, font, size values, brandCharacter) > STORE-FLEXIBLE (semantic colour mapping, component variants). NOTE for this repo: the live token vars use the NON-prefixed form (--ref-*, --sys-*, --palette-*, --bg-*, --text-*, --border-*, --gap-*, --radius-*) — strip the --x- when writing src/tokens/ds/themes/roguetrader.css.",
+
+    "layoutSystem": {
+      "mutable": false,
+      "responsiveModel": "container-query",
+      "containerRule": "device screen sets container-type:inline-size; overlay must NOT (traps position:fixed)",
+      "breakpoints": { "xs": "< 641px", "s": "641-800px", "m": "801-1279px", "l": ">= 1280px" },
+      "grid": {
+        "columns":     { "xs": 8, "s": 8, "m": 12, "l": 12 },
+        "columnGap":   { "token": "--x-gap-grid-gutter", "xs": "8px", "s": "8px", "m": "12px", "l": "16px" },
+        "sidePadding": { "token": "--x-gap-grid-margin", "xs": "12px", "s": "12px", "m": "12px", "l": "16px" },
+        "rowGap":      { "token": "--x-gap-grid-row-default", "all": "8px" },
+        "template":    "grid-template-columns: repeat(N, minmax(0, 1fr))"
+      },
+      "spanVariants": {
+        "fluid":    "grid-column: 1 / -1 at all breakpoints (full bleed)",
+        "content":  "full width on XS/S; centred cols 3-10 of 12, max-width 960px, on M/L",
+        "carousel": "full-bleed on XS/S (negative margin cancels grid margin); content on M/L"
+      },
+      "skuGridPatterns": {
+        "_note": "all use display:grid; gap:var(--x-gap-content-default)",
+        "skuList":    { "xs": 2, "s": 4, "m": 4 },
+        "bundleGrid": { "xs": 1, "s": 1, "m": 2 },
+        "giftGrid":   { "xs": 2, "s": "variable", "m": "variable" },
+        "storyCarouselAspect": { "xs": "1/1", "s": "1/1", "m": "2.6/1" }
+      },
+      "tokenTierDiscipline": "components consume ONLY semantic (--x-bg-*, --x-text-*, --x-border-*) + spacing/size (--x-pad-*, --x-gap-*, --x-radius-*, --x-size-*); NEVER --x-sys-*, --x-palette-*, or --x-ref-* directly",
+      "mobileDesktopRule": "values switch at breakpoints via -desktop- token twins: --x-sys-space-desktop-*, --x-sys-radius-desktop-*, --x-sys-size-control-desktop-*, --x-text-size-desktop-*"
+    },
+
+    "themePreset": {
+      "id": "store-roguetrader",
+      "name": "Warhammer 40K: Rogue Trader",
+      "presetStyle": {
+        "seedColors": {
+          "primary":        "#72a846",
+          "secondary":      "#d1a974",
+          "tertiary":       "#a1e967",
+          "neutral":        "#9a8f7d",
+          "statusPositive": "#8fd14f",
+          "statusCaution":  "#e0a52e",
+          "statusNegative": "#a51c20"
+        },
+        "font": "Oswald",
+        "borderRadius": "RADIUS_SOFT",
+        "backgroundColor": "#0c0a0a",
+        "backgroundType": "TYPE_GRADIENT",
+        "backgroundGradient": "linear-gradient(180deg, #0c0a0a 0%, #141213 60%, #19191b 100%)"
+      }
+    },
+
+    "cssOverride": "body[data-theme='theme-preset--store-roguetrader'] {\n  --x-ref-primary: #72a846;\n  --x-ref-secondary: #d1a974;\n  --x-ref-tertiary: #a1e967;\n  --x-ref-neutral: #9a8f7d;\n  --x-ref-status-positive: #8fd14f;\n  --x-ref-status-caution: #e0a52e;\n  --x-ref-status-negative: #a51c20;\n  --x-sys-font-heading: 'Oswald', 'Cinzel', sans-serif;\n  --x-sys-font-body: 'Open Sans', system-ui, sans-serif;\n  --x-bg-page: #0c0a0a;\n}",
+
+    "brandLocked": {
+      "ref": {
+        "primary":        "#72a846",
+        "secondary":      "#d1a974",
+        "tertiary":       "#a1e967",
+        "neutral":        "#9a8f7d",
+        "statusPositive": "#8fd14f",
+        "statusCaution":  "#e0a52e",
+        "statusNegative": "#a51c20"
+      },
+      "palette": {
+        "anchorRule": "--x-palette-{role}-500 resolves to --x-ref-{role} — the 500 step IS the seed",
+        "strategy": "auto",
+        "manualStops": { "neutral": "extended ramp adds -0 (true void #060605) and -1000 (parchment #f3ead0)" }
+      },
+      "typePrimitives": {
+        "fontHeading": "'Oswald', 'Cinzel', sans-serif",
+        "fontBody": "'Open Sans', system-ui, sans-serif",
+        "weights": { "extraBold": 800, "bold": 700, "semibold": 600, "regular": 400 },
+        "headerSizes": {
+          "h1": { "mobile": "28px", "desktop": "48" },
+          "h2": { "mobile": "24px", "desktop": "40" },
+          "h3": { "mobile": "22px", "desktop": "32" },
+          "h4": { "mobile": "20px", "desktop": "28" },
+          "h5": { "mobile": "18px", "desktop": "24" },
+          "h6": { "mobile": "16px", "desktop": "20" },
+          "h7": { "mobile": "14px", "desktop": "18" }
+        },
+        "bodySizes": {
+          "l":    { "mobile": "16px", "desktop": "18" },
+          "main": { "mobile": "14px", "desktop": "16" },
+          "s":    { "mobile": "12px", "desktop": "14" },
+          "xs":   { "mobile": "10px", "desktop": "12" }
+        },
+        "leading": { "main": "105%", "loose": "120%", "wide": "150%" },
+        "tracking": { "tight": "-0.5%", "narrow": "-0.2%", "main": "0%", "loose": "0.5%", "wide": "1%" },
+        "modularScale": { "basePx": 16, "ratio": 1.25 }
+      },
+      "textStyles": {
+        "heading-display-hero":   { "primitive": "h1", "weight": "extra-bold", "leading": "loose", "tracking": "loose", "case": "UPPER" },
+        "heading-page-title":     { "primitive": "h2", "weight": "bold",       "leading": "loose", "tracking": "main",  "case": "UPPER" },
+        "heading-section":        { "primitive": "h3", "weight": "bold",       "leading": "loose", "tracking": "main",  "case": "UPPER" },
+        "heading-modal":          { "primitive": "h4", "weight": "bold",       "leading": "main",  "tracking": "main",  "case": "Title" },
+        "heading-card":           { "primitive": "h5", "weight": "semibold",   "leading": "main",  "tracking": "main",  "case": "Title" },
+        "heading-banner":         { "primitive": "h6", "weight": "bold",       "leading": "main",  "tracking": "main",  "case": "UPPER" },
+        "heading-final-price":    { "primitive": "h6", "weight": "extra-bold", "leading": "main",  "tracking": "main",  "case": "Title" },
+        "heading-sku-title":      { "primitive": "h4", "weight": "semibold",   "leading": "main",  "tracking": "main",  "case": "Title" },
+        "heading-subtitle":       { "primitive": "h7", "weight": "semibold",   "leading": "main",  "tracking": "main",  "case": "Title" },
+        "paragraph-lead":          { "primitive": "body-l",    "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-regular":       { "primitive": "body-main", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-small":         { "primitive": "body-s",    "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-strikethrough": { "primitive": "body-main", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-action-regular":         { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-action-uppercase":       { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-action-strikethrough":   { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-default-regular":        { "primitive": "body-s",    "weight": "regular",  "leading": "wide", "tracking": "main", "case": "sentence" },
+        "utility-default-strikethrough":  { "primitive": "body-s",    "weight": "regular",  "leading": "wide", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-default-uppercase":      { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-label-regular":          { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-label-uppercase":        { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-label-tall":             { "primitive": "body-s",    "weight": "semibold", "leading": "loose","tracking": "main", "case": "sentence" },
+        "utility-label-strikethrough":    { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-micro-regular":          { "primitive": "body-xs",   "weight": "regular",  "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-micro-bold":             { "primitive": "body-xs",   "weight": "extra-bold","leading": "main","tracking": "wide", "case": "sentence" },
+        "utility-micro-uppercase":        { "primitive": "body-xs",   "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-micro-strikethrough":    { "primitive": "body-xs",   "weight": "regular",  "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" }
+      },
+      "brandCharacter": {
+        "radiusSteps": {
+          "control":   "--x-sys-radius-xs",
+          "input":     "--x-sys-radius-xs",
+          "container": "--x-sys-radius-s",
+          "thumbnail": "--x-sys-radius-xs",
+          "badge":     "--x-sys-radius-xs"
+        },
+        "elevationCharacter": {
+          "interactive":    "--x-sys-elevation-level-1-main",
+          "modal":          "--x-sys-elevation-level-2-main",
+          "toast":          "--x-sys-elevation-level-3-main",
+          "nonInteractive": "--x-sys-elevation-flat"
+        },
+        "strokeWeight": {
+          "divider":      "--x-sys-stroke-thin",
+          "activeBorder": "--x-sys-stroke-medium",
+          "emphasis":     "--x-sys-stroke-thick"
+        },
+        "effectShadow": {
+          "primary":   "#0c0a0a",
+          "secondary": "#6d5d3f",
+          "neutral":   "#000000"
+        },
+        "effectGlow": {
+          "primary":   "#a1e967",
+          "secondary": "#e5c994"
+        },
+        "states": {
+          "hover":   "#e5c994",
+          "pressed": "#548031"
+        }
+      }
+    },
+
+    "storeFlexible": {
+      "semanticDefaults": {
+        "_note": "Every mapping below is store-overridable. Tag them as suggestions, not requirements.",
+        "bg": {
+          "--x-bg-action-primary":       "var(--x-sys-colour-primary-main)    /* overridable */",
+          "--x-bg-action-primary-hover": "var(--x-sys-colour-primary-strong)  /* overridable */",
+          "--x-bg-action-secondary":     "var(--x-sys-colour-secondary-soft)  /* overridable */",
+          "--x-bg-action-destructive":   "var(--x-sys-colour-status-negative-main) /* overridable */",
+          "--x-bg-surface":              "var(--x-sys-colour-neutral-subtle)  /* overridable */",
+          "--x-bg-overlay":              "var(--x-sys-colour-neutral-heavy)   /* overridable */"
+        },
+        "text": {
+          "--x-text-primary":           "var(--x-sys-colour-neutral-inverse) /* overridable — parchment/bone */",
+          "--x-text-secondary":         "var(--x-sys-colour-neutral-strong)  /* overridable */",
+          "--x-text-on-action-primary": "var(--x-sys-colour-neutral-heavy)   /* overridable — near-black on green */"
+        },
+        "border": {
+          "--x-border-default":       "var(--x-sys-colour-secondary-soft)  /* overridable — gold hairline */",
+          "--x-border-emphasis":      "var(--x-sys-colour-secondary-main)  /* overridable — gold */",
+          "--x-border-input-focused": "var(--x-sys-colour-secondary-strong) /* overridable */"
+        }
+      },
+      "componentIntent": {
+        "buttonPrimary": {
+          "feel": "imperial command — solid, weighty, gilded-edged; unmistakably the primary action",
+          "defaultVariant": "solid",
+          "alternatives": ["gold-outline", "ghost", "gradient", "glow"],
+          "colourDepthNote": "primary-main green bg + near-black text; optional gold hairline border; stores may invert to gold-on-dark",
+          "tokenFamilies": ["--x-bg-action-primary", "--x-text-on-action-primary", "--x-sys-colour-primary-*", "--x-border-emphasis"]
+        },
+        "buttonSecondary": {
+          "feel": "supporting, restrained — a gilded outline that defers to the primary",
+          "defaultVariant": "gold-outline",
+          "alternatives": ["ghost", "solid-soft"],
+          "tokenFamilies": ["--x-bg-action-secondary", "--x-border-emphasis", "--x-sys-colour-secondary-*"]
+        },
+        "card": {
+          "feel": "gilded reliquary panel — dark surface bound by a thin gold hairline",
+          "defaultVariant": "outlined",
+          "alternatives": ["elevated", "flat", "frosted"],
+          "tokenFamilies": ["--x-bg-surface", "--x-border-default", "--x-sys-elevation-*", "--x-sys-radius-*"]
+        },
+        "badge": {
+          "feel": "imperial seal / purity stamp — compact, angular, high-visibility",
+          "defaultVariant": "solid-gold",
+          "alternatives": ["outline", "soft-tint", "neutral"],
+          "tokenFamilies": ["--x-bg-action-*", "--x-text-*", "--x-sys-radius-xs"]
+        },
+        "input": {
+          "feel": "engraved field — clearly editable, gold hairline on dark",
+          "defaultVariant": "outlined",
+          "alternatives": ["filled", "underline"],
+          "tokenFamilies": ["--x-border-default", "--x-border-input-focused", "--x-bg-surface", "--x-sys-radius-xs"]
+        },
+        "modal": {
+          "feel": "a sealed council chamber — focused, elevated, gold-framed over a void scrim",
+          "defaultVariant": "surface",
+          "alternatives": ["drawer", "bottomSheet"],
+          "tokenFamilies": ["--x-sys-elevation-level-2-main", "--x-bg-surface", "--x-border-emphasis", "--x-sys-radius-s"]
+        }
+      }
+    },
+
+    "tier2SignatureSurfaces": [
+      {
+        "name": "Gilded filigree frame",
+        "surface": "Featured/hero panels, SKU cards, section containers",
+        "tokenExpressible": false,
+        "implementation": "Thin gold double-hairline border (1px outer + 1px inner inset via box-shadow) with small corner ornament fittings. Use border:1px solid var(--border-default) + box-shadow: inset 0 0 0 2px rgba(209,169,116,0.18); optional corner SVG/border-image from the site's frame.png motif. Radius --sys-radius-s.",
+        "precedentFile": "src/components/**/SkuCard.vue, SectionHeader.vue (apply via theme tokens only — no per-store component branch)"
+      },
+      {
+        "name": "Warp-green VFX glow",
+        "surface": "Behind featured key-art, best-seller hero, primary CTAs on hover",
+        "tokenExpressible": false,
+        "implementation": "Radial green glow: radial-gradient(circle, rgba(161,233,103,0.35), transparent 70%) as a ::before layer, or box-shadow: 0 0 32px rgba(161,233,103,0.4). Drives the --x-sys-effect-glow-primary tint.",
+        "precedentFile": "theme css --shadow-glow-* / featured section background"
+      },
+      {
+        "name": "Inscriptional gold-gradient title",
+        "surface": "Hero display heading / wordmark contexts",
+        "tokenExpressible": false,
+        "implementation": "Cinzel caps with metallic gold gradient fill: background: linear-gradient(180deg,#f3e3b0,#d1a974 45%,#8a6e3f); -webkit-background-clip:text; color:transparent; subtle text-shadow for bevel. Reserve for heading-display-hero only.",
+        "precedentFile": "hero heading override"
+      },
+      {
+        "name": "Centre-medallion divider",
+        "surface": "Between page sections",
+        "tokenExpressible": false,
+        "implementation": "Horizontal gold hairline rules flanking a central aquila/sunburst medallion (the site's main-line-left/right.png + emblem). 1px gradient rule fading to transparent at the medallion. Decorative only.",
+        "precedentFile": "section separator"
+      }
+    ]
+  }
+}

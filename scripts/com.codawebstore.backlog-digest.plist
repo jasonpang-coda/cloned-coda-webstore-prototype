@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.codawebstore.backlog-digest</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/yiwei/Desktop/Development/nvm/versions/node/v24.13.0/bin/node</string>
+    <string>scripts/backlog-digest-notify.mjs</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/yiwei/Desktop/Work/CODM/Proj/coda-webstore-prototype</string>
+
+  <!-- Mon-Fri at 7:00am local time. StartCalendarInterval entries are OR'd
+       together (each dict = one fire time), so one entry per weekday. -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>7</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>7</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>7</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>7</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>7</integer><key>Minute</key><integer>0</integer></dict>
+  </array>
+
+  <!-- If the Mac was asleep at 7am, launchd runs it as soon as it wakes,
+       rather than skipping the day entirely. -->
+  <key>StandardOutPath</key>
+  <string>/Users/yiwei/Library/Logs/CodaWebstoreBacklog/launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/yiwei/Library/Logs/CodaWebstoreBacklog/launchd.err.log</string>
+</dict>
+</plist>

@@ -1,0 +1,35 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Profit Factor seal">
+  <defs>
+    <radialGradient id="pfGlow" cx="0.5" cy="0.42" r="0.6">
+      <stop offset="0" stop-color="#a1e967" stop-opacity="0.28"/>
+      <stop offset="0.7" stop-color="#a1e967" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pfCoin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6e7bb"/>
+      <stop offset="0.42" stop-color="#d1a974"/>
+      <stop offset="1" stop-color="#7d5f34"/>
+    </linearGradient>
+    <linearGradient id="pfRim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff4d8"/>
+      <stop offset="1" stop-color="#8a6e3f"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" fill="url(#pfGlow)"/>
+  <circle cx="120" cy="120" r="86" fill="#15100a" stroke="url(#pfRim)" stroke-width="6"/>
+  <circle cx="120" cy="120" r="74" fill="none" stroke="#6d5d3f" stroke-width="2"/>
+  <circle cx="120" cy="120" r="70" fill="none" stroke="url(#pfCoin)" stroke-width="1" opacity="0.6"/>
+  <!-- sunburst star -->
+  <g fill="url(#pfCoin)">
+    <path d="M120 44 L129 116 L120 120 L111 116 Z"/>
+    <path d="M120 196 L129 124 L120 120 L111 124 Z"/>
+    <path d="M44 120 L116 111 L120 120 L116 129 Z"/>
+    <path d="M196 120 L124 111 L120 120 L124 129 Z"/>
+    <path d="M66 66 L115 115 L120 120 L115 125 Z" opacity="0.88"/>
+    <path d="M174 174 L125 125 L120 120 L125 115 Z" opacity="0.88"/>
+    <path d="M174 66 L125 115 L120 120 L115 115 Z" opacity="0.88"/>
+    <path d="M66 174 L115 125 L120 120 L125 125 Z" opacity="0.88"/>
+  </g>
+  <circle cx="120" cy="120" r="13" fill="#0c0a0a"/>
+  <circle cx="120" cy="120" r="13" fill="none" stroke="url(#pfRim)" stroke-width="3"/>
+  <circle cx="120" cy="120" r="6" fill="#a1e967"/>
+</svg>

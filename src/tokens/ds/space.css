@@ -1,0 +1,194 @@
+/* ============================================================================
+   SPACING TIER  —  theme-agnostic (:root)
+   ----------------------------------------------------------------------------
+   System primitives (sys-space, sys-radius, sys-size, sys-stroke,
+   sys-elevation) + the semantic spacing layer (pad-, gap-, radius-, size-)
+   that aliases them. Values are the Figma "Mobile" mode — the store renders in a
+   mobile device frame, and these match the prototypes prior pad / gap / radius
+   scale exactly (8/12/16/24 spacing; 2/4/8 radius), so the migration is
+   pixel-neutral.
+
+   Grid-dimension tokens (col widths) are intentionally omitted — the
+   container-query Grid/Span system owns responsive width. Only the height/width
+   percentages the semantic layer references are defined below.
+   ============================================================================ */
+
+:root {
+  /* ── Space scale ────────────────────────────────────────────────────────*/
+  --x-sys-space-0:    0px;
+  --x-sys-space-xxxs: 1px;
+  --x-sys-space-xxs:  2px;
+  --x-sys-space-xs:   4px;
+  --x-sys-space-s:    8px;
+  --x-sys-space-main: 12px;
+  --x-sys-space-l:    16px;
+  --x-sys-space-xl:   24px;
+  --x-sys-space-xxl:  32px;
+  --x-sys-space-xxxl: 48px;
+
+  /* ── Radius scale ───────────────────────────────────────────────────────*/
+  --x-sys-radius-0:    0px;
+  --x-sys-radius-xxs:  2px;
+  --x-sys-radius-xs:   4px;
+  --x-sys-radius-s:    8px;
+  --x-sys-radius-m:    12px;
+  --x-sys-radius-l:    12px;
+  --x-sys-radius-xl:   12px;
+  --x-sys-radius-xxl:  12px;
+  --x-sys-radius-full: 999px;
+
+  /* ── Control sizes ──────────────────────────────────────────────────────*/
+  --x-sys-size-control-xxxs: 16px;
+  --x-sys-size-control-xxs:  24px;
+  --x-sys-size-control-xs:   32px;
+  --x-sys-size-control-s:    40px;
+  --x-sys-size-control-m:    48px;
+  --x-sys-size-control-l:    56px;
+  --x-sys-size-control-xl:   64px;
+  --x-sys-size-control-xxl:  72px;
+
+  /* ── Generic sizes ──────────────────────────────────────────────────────*/
+  --x-sys-size-xxxxs: 8px;
+  --x-sys-size-xxxs:  12px;
+  --x-sys-size-xxs:   16px;
+  --x-sys-size-xs:    20px;
+  --x-sys-size-s:     24px;
+  --x-sys-size-m:     32px;
+  --x-sys-size-l:     48px;
+  --x-sys-size-xl:    64px;
+  --x-sys-size-xxl:   96px;
+  --x-sys-size-xxxl:  128px;
+
+  /* ── Strokes ────────────────────────────────────────────────────────────*/
+  --x-sys-stroke-thin:   1px;
+  --x-sys-stroke-medium: 2px;
+  --x-sys-stroke-thick:  4px;
+
+  /* ── Elevation (blur-radius scalars, NOT composed shadows) ──────────────
+     The composed box-shadow effects that USE these live in extensions.css. */
+  --x-sys-elevation-flat:            0px;
+  --x-sys-elevation-level-1-main:    2px;
+  --x-sys-elevation-level-1-inverse: -2px;
+  --x-sys-elevation-level-2-main:    4px;
+  --x-sys-elevation-level-2-inverse: -4px;
+  --x-sys-elevation-level-3-main:    8px;
+  --x-sys-elevation-level-3-inverse: -8px;
+  --x-sys-blur: 16px;
+
+  /* ── Dimension percentages (col widths omitted — Grid/Span owns those) ───*/
+  --x-sys-dimension-height-100:     100%;
+  --x-sys-dimension-height-85:      85%;
+  --x-sys-dimension-width-full-width: 100%;
+
+  /* ════ SEMANTIC SPACING — alias the primitives above ════════════════════ */
+
+  /* Radius by context */
+  --x-radius-control-xs:   var(--x-sys-radius-xxs);
+  --x-radius-control-s:    var(--x-sys-radius-xs);
+  --x-radius-control-full: var(--x-radius-control-xs); /* default: 2px angular — FCM overrides to 999px via html[data-theme="fcm"] */
+  --x-radius-input-s:      var(--x-sys-radius-xs);
+  --x-radius-input-m:      var(--x-sys-radius-s);
+  --x-radius-container-xs: var(--x-sys-radius-xs);
+  --x-radius-container-s:  var(--x-sys-radius-s);
+  --x-radius-container-m:  var(--x-sys-radius-m);
+  --x-radius-container-l:  var(--x-sys-radius-l);
+  --x-radius-thumbnail-xs: var(--x-sys-radius-xs);
+  --x-radius-thumbnail-s:  var(--x-sys-radius-s);
+  --x-radius-thumbnail-m:  var(--x-sys-radius-m);
+  --x-radius-badge-s:      var(--x-sys-radius-xs);
+  --x-radius-badge-full:   var(--x-sys-radius-full);
+
+  /* Padding by context */
+  --x-pad-surface-xxs: var(--x-sys-space-xxs);
+  --x-pad-surface-xs:  var(--x-sys-space-xs);
+  --x-pad-surface-s:   var(--x-sys-space-s);
+  --x-pad-surface-m:   var(--x-sys-space-main);
+  --x-pad-surface-l:   var(--x-sys-space-l);
+  --x-pad-surface-xl:  var(--x-sys-space-xl);
+  --x-pad-surface-xxl: var(--x-sys-space-xxl);
+  --x-pad-inset-s:     var(--x-sys-space-s);
+  --x-pad-inset-m:     var(--x-sys-space-main);
+  --x-pad-inset-l:     var(--x-sys-space-l);
+
+  /* Gaps by context */
+  --x-gap-content-tight:      var(--x-sys-space-xxs);
+  --x-gap-content-narrow:     var(--x-sys-space-xs);
+  --x-gap-content-default:    var(--x-sys-space-s);
+  --x-gap-content-loose:      var(--x-sys-space-main);
+  --x-gap-content-separation: var(--x-sys-space-l);
+  --x-gap-control-xs: var(--x-sys-space-xxs);
+  --x-gap-control-s:  var(--x-sys-space-xs);
+  --x-gap-control-m:  var(--x-sys-space-s);
+  --x-gap-control-l:  var(--x-sys-space-main);
+  --x-gap-control-xl: var(--x-sys-space-l);
+  --x-gap-section-default:    var(--x-sys-space-main);
+  --x-gap-section-loose:      var(--x-sys-space-l);
+  --x-gap-section-separation: var(--x-sys-space-xl);
+  --x-gap-grid-gutter:        var(--x-sys-space-s);
+  --x-gap-grid-margin:        var(--x-sys-space-main);
+  /* M/L grid gutter + margin — consumed by Grid.vue's @container (min-width:
+     801px)/(min-width: 1280px) rules. Defaults match the values those rules
+     hardcoded pre-tokenisation (12px M, 16px/16px L) — a pure refactor for
+     every existing store. Codashop overrides --x-gap-grid-gutter-l to 12px to
+     land on its own derived 1280px/12-col/12px-gutter/16px-margin grid. */
+  --x-gap-grid-gutter-m: var(--x-sys-space-main);
+  --x-gap-grid-gutter-l: var(--x-sys-space-l);
+  --x-gap-grid-margin-l: var(--x-sys-space-l);
+  --x-gap-grid-row-default:    var(--x-sys-space-main);
+  --x-gap-grid-row-loose:      var(--x-sys-space-xl);
+  --x-gap-grid-row-separation: var(--x-sys-space-xxl);
+  --x-gap-nav-narrow:  var(--x-sys-space-xs);
+  --x-gap-nav-default: var(--x-sys-space-s);
+  --x-gap-nav-loose:   var(--x-sys-space-main);
+  --x-gap-form-label: var(--x-sys-space-xs);
+  --x-gap-form-row:   var(--x-sys-space-s);
+  --x-gap-form-col:   var(--x-sys-space-s);
+  --x-gap-form-group: var(--x-sys-space-l);
+
+  /* Sizes by context */
+  --x-size-control-xxs: var(--x-sys-size-control-xxxs);
+  --x-size-control-xs:  var(--x-sys-size-control-xxs);
+  --x-size-control-s:   var(--x-sys-size-control-xs);
+  --x-size-control-m:   var(--x-sys-size-control-s);
+  /* --x-size-control-xl was referenced (CategoryNav.vue's L2/L3 row min-width)
+     but never aliased here — the rule silently fell back to `auto`. Fixed,
+     plus one more step (--xxl) for the L3 prominence bump. */
+  --x-size-control-xl:  var(--x-sys-size-control-xl);
+  --x-size-control-xxl: var(--x-sys-size-control-xxl);
+  --x-size-chip-height: var(--x-sys-size-control-xxs);
+  --x-size-input-m:     var(--x-sys-size-control-s);
+  --x-size-icon-xxs: var(--x-sys-size-xxxxs);
+  --x-size-icon-xs:  var(--x-sys-size-xxxs);
+  --x-size-icon-s:   var(--x-sys-size-xxs);
+  --x-size-icon-m:   var(--x-sys-size-xs);
+  --x-size-icon-l:   var(--x-sys-size-s);
+  --x-size-icon-xl:  var(--x-sys-size-m);
+  --x-size-img-xs:  var(--x-sys-size-xs);
+  --x-size-img-s:   var(--x-sys-size-s);
+  --x-size-img-m:   var(--x-sys-size-m);
+  --x-size-img-l:   var(--x-sys-size-l);
+  --x-size-img-xl:  var(--x-sys-size-xl);
+  --x-size-img-xxl: var(--x-sys-size-xxl);
+  --x-size-overlay-height:     var(--x-sys-dimension-height-100);
+  --x-size-drawer-menu-height: var(--x-sys-dimension-height-100);
+  --x-size-sheet-height:       var(--x-sys-dimension-height-85);
+  --x-size-viewport-height:    var(--x-sys-dimension-height-100);
+  --x-size-viewport-width:     var(--x-sys-dimension-width-full-width);
+  --x-size-sheet-width:        var(--x-sys-dimension-width-full-width);
+  --x-size-overlay-width:      var(--x-sys-dimension-width-full-width);
+
+  /* Border weights */
+  --border-weight-default:  var(--x-sys-stroke-thin);
+  --border-weight-action:   var(--x-sys-stroke-medium);
+  --border-weight-selected: var(--x-sys-stroke-medium);
+  --border-weight-pressed:  var(--x-sys-stroke-medium);
+
+  /* ── Overlay wash states — reconciled from prod ──────────────────────────
+     Generic hover/pressed darken washes for surfaces with no dedicated
+     bg-*-hover/-pressed pair of their own. Haptics are NOT reconciled here:
+     this repo's haptic feedback is JS-driven (src/tokens/haptics.js +
+     useHaptics), not CSS custom properties — prod's --x-haptic-* tokens have
+     no consumer in this codebase and would be dead weight. */
+  --x-states-hover:   color-mix(in oklab, var(--x-palette-neutral-1000) 90%, transparent);
+  --x-states-pressed: color-mix(in oklab, var(--x-palette-neutral-1000) 80%, transparent);
+}

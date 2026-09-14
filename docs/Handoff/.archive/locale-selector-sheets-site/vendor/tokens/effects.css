@@ -1,0 +1,491 @@
+/**
+ * Decorative interaction effects — opt-in button accents.
+ * -------------------------------------------------------
+ *   <button class="fx-shimmer">                    perpetual gloss sweep, unmigrated/generic (primary CTA)
+ *   <button class="fx-shimmer fx-shimmer--metal-gloss">   sweep shaped for a gloss-metal surface (asymmetric, F0 hue-shift)
+ *   <button class="fx-shimmer fx-shimmer--glass">         sweep shaped for glass (broad, weak, hue-neutral)
+ *   <button class="fx-shimmer fx-shimmer--paper-coated">  sweep shaped for coated paper (broadest, weakest)
+ *   <button class="fx-shimmer--hover">   one-shot gloss sweep on hover only
+ *   <div class="fx-ambient-swell fx-ambient-swell--metal-matte"> non-travelling opacity breathe (matte metal — NO sweep, see materials.md)
+ *   <button class="fx-ripple" @click>    click-point ripple (pair with ripple.js)
+ *   <div class="fx-glow-border">         running conic border comet (single)
+ *   <div class="fx-glow-border--hdr">    running conic border comet (single, HDR)
+ *   <div class="fx-glow-border--dual">   running conic border (TWO comets, 180° apart)
+ *   <div class="fx-glow-border--rotate"> gapless tri-tone ring, slowly rotating
+ *   <div class="fx-glow-border--pulse">  static ring, opacity breathes in/out
+ *   <div class="fx-glow-border--camo-breathe"> static ring, DIM + SLOW breathe (calm/stealth)
+ *   <div class="fx-glow-border--hud">    four L-shaped corner brackets (HUD frame)
+ *   <div class="fx-glow-border--trace">  border draws itself 0→360° (reveal/loader)
+ *
+ * All fx-glow-border-* classes:
+ *   • require position:relative on the root (set by the class)
+ *   • require NO overflow:hidden on the root (move it to an inner wrapper)
+ *   • read --x-fx-border-glow/hot (and --x-fx-border-trail-glow/hot for dual/rotate)
+ *     which default to --x-hdr-glow/hot — every store theme already defines those
+ */
+
+/* Gloss shimmer ------------------------------------------------------------- */
+.fx-shimmer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.fx-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* Lower alpha (was 0.50, then 0.25) for a glass-pane highlight rather than
+     a bright gloss streak. The band is a wide flat plateau (45%–55%) with
+     long fades either side (15%→45%, 55%→85%) rather than a single-point
+     apex — a single color stop makes the gradient ramp up and immediately
+     back down at the same spot, which reads as a harsh thin line; a plateau
+     gives the reflection actual width, like light crossing real glass. */
+  background: linear-gradient(
+    100deg,
+    transparent 15%,
+    var(--x-fx-shimmer-color, oklch(1 0 0 / 0.24)) 45%,
+    var(--x-fx-shimmer-color, oklch(1 0 0 / 0.24)) 55%,
+    transparent 85%
+  );
+  transform: translate3d(-150%, 0, 0) skewX(-20deg);
+  pointer-events: none;
+  /* linear, not -ease-standard: a perpetually-looping sweep is continuous
+     motion, and per the motion-design skill (and this project's own
+     motion.css header comment) linear is reserved for exactly that case —
+     a real light reflection crossing glass travels at constant speed, not
+     one that eases in/out on every pass. */
+  animation: shimmer-loop var(--x-motion-shimmer-sweep) var(--x-motion-sys-ease-linear) infinite;
+}
+
+.fx-shimmer--hover::after { animation: none; }
+.fx-shimmer--hover:hover::after,
+.fx-shimmer--hover:focus-visible::after {
+  animation: gloss-sweep var(--x-motion-shimmer-sweep) var(--x-motion-sys-ease-decelerate);
+}
+
+/* Material-shaped shimmer variants ------------------------------------------
+   Override ONLY the ::after background — position/overflow/isolation/the
+   pseudo-element/the animation timing all stay on the shared .fx-shimmer
+   base above. Each reads its shape from src/tokens/materials.css, which in
+   turn sources its angle/colour from src/tokens/light.css, so every material
+   agrees with the page's one light instead of each guessing its own 100deg.
+   No variant exists for matte metal or uncoated paper — see .fx-ambient-swell
+   below and materials.css's own comments for why that's correct, not missing. */
+.fx-shimmer--metal-gloss::after  {
+  background: var(--x-material-metal-gloss-shimmer-gradient);
+  /* EXPERIMENTAL choreography override — see the ::before glow layer below.
+     Delete this animation-name line to fall back to the shared perpetual
+     .fx-shimmer streak (shimmer-loop). */
+  animation-name: shimmer-loop-metal-gloss;
+}
+.fx-shimmer--glass::after        { background: var(--x-material-glass-shimmer-gradient); }
+.fx-shimmer--paper-coated::after { background: var(--x-material-paper-coated-shimmer-gradient); }
+
+/* EXPERIMENTAL — whole-button glow choreography, metal-gloss only ----------
+   Bloom is physically valid for gloss metal but NOT for glass/paper-coated
+   (see .claude/skills/material-fx's FX-validity table), so this is scoped
+   to the --metal-gloss modifier rather than the shared .fx-shimmer base.
+   Sequence per loop: the whole surface blooms first (a metal catching more
+   of the scene light), THEN the existing gloss streak crosses it once lit,
+   THEN both fade — "glow, shimmer, unglow". Tints from the same
+   --x-material-metal-gloss-shimmer-core the streak itself uses, so the two
+   layers agree on one light/colour instead of a generic white flash.
+   `plus-lighter` because a bloom is added light (physics.md §7's
+   specular-adds rule), never overlay/soft-light. Eased, not linear, and a
+   full 3s period — deliberately calm/slow, not an alert. Just testing —
+   delete this block + the animation-name override above to revert. */
+.fx-shimmer--metal-gloss::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* NOT --x-material-metal-gloss-shimmer-core — components override that to
+     their own fill colour (e.g. BuyNowBar's --x-bg-action-primary) for the
+     travelling streak's tint, so blending it here would be the backdrop
+     plus-lighter'd with itself: nearly invisible, which is why the first
+     pass of this experiment didn't read as a glow. A broad ambient bloom
+     skews toward the scene's actual light colour instead (Fresnel: only the
+     tight specular core tints to the material; a wide wash reads as ambient
+     light), so this uses --x-light-color (already a translucent white,
+     oklch(1 0 0 / 0.70)) — visibly brightens any fill it sits on. */
+  background: var(--x-light-color);
+  mix-blend-mode: plus-lighter;
+  opacity: 0;
+  pointer-events: none;
+  animation: button-glow-choreo var(--x-motion-shimmer-sweep) var(--x-motion-sys-ease-standard) infinite;
+}
+
+/* Ambient swell --------------------------------------------------------------
+   The matte-metal counterpart to .fx-shimmer: a full-surface tint whose
+   OPACITY breathes (no transform, nothing travels across the surface) —
+   per fx-catalogue.md, matte metal shows "no travelling highlight at all,
+   only a broad low-contrast gradient shifting slowly." Reuses the existing
+   `pulse` keyframe rather than inventing a new one. */
+.fx-ambient-swell {
+  position: relative;
+  isolation: isolate;
+}
+.fx-ambient-swell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--x-fx-ambient-swell-color, oklch(1 0 0 / 0.06));
+  animation: pulse var(--x-motion-shimmer-sweep) var(--x-motion-sys-ease-standard) infinite;
+  pointer-events: none;
+}
+.fx-ambient-swell--metal-matte {
+  --x-fx-ambient-swell-color: var(--x-material-metal-matte-ambient-color);
+}
+
+/* Skeleton loader ----------------------------------------------------------- */
+/* A muted placeholder block with a light sheen sweeping across — shown while
+   slow async media (e.g. a heavy .webp) loads, then swapped for the real thing.
+   Reuses @keyframes shimmer. Tunable via --fx-skeleton-base / --fx-skeleton-sheen
+   and the --x-motion-sku-skeleton duration. */
+.fx-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--fx-skeleton-base, oklch(1 0 0 / 0.06));
+}
+.fx-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--fx-skeleton-sheen, oklch(1 0 0 / 0.12)) 50%,
+    transparent 100%
+  );
+  animation: shimmer var(--x-motion-sku-skeleton, 1400ms) var(--x-motion-sys-ease-standard) infinite;
+  pointer-events: none;
+}
+
+/* Ripple -------------------------------------------------------------------- */
+.fx-ripple {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.fx-ripple .fx-ripple__wave {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--x-fx-ripple-color, oklch(1 0 0 / 0.50));
+  transform: scale(0);
+  opacity: 0.4;
+  pointer-events: none;
+  animation: ripple var(--x-motion-ripple) var(--x-motion-sys-ease-decelerate) forwards;
+}
+
+/* Glow border --------------------------------------------------------------- */
+.fx-glow-border {
+  position: relative;
+  border: var(--fx-border-width, 2px) solid var(--x-fx-border-track, #4e3c00);
+  border-radius: var(--fx-border-radius, 8px);
+}
+.fx-glow-border::before {
+  content: "";
+  position: absolute;
+  inset: calc(-1 * var(--fx-border-width, 2px));
+  border-radius: inherit;
+  padding: var(--fx-border-width, 2px);
+  background: conic-gradient(
+    from var(--angle),
+    transparent 0deg,
+    var(--x-fx-border-glow, #ffc700) 20deg,
+    var(--x-fx-border-hot, #fff8e0) 32deg,
+    transparent 90deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  animation: border-spin var(--x-motion-border-spin) var(--x-motion-sys-ease-linear) infinite;
+  pointer-events: none;
+}
+
+/* ===========================================================================
+   4. HDR glow border — OKLCH variant of the running conic border for the
+   best-seller hero. Vivid, wide-gamut colours + an outer glow make it pop.
+   =========================================================================== */
+.fx-glow-border--hdr {
+  position: relative;
+  border: 0; /* the conic ring below provides the visible edge */
+  border-radius: var(--radius-xs, 4px);
+  /* No outer box-shadow glow — the running conic border is the only effect */
+}
+.fx-glow-border--hdr::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--angle),
+    transparent 0deg,
+    var(--x-hdr-glow) 24deg,
+    var(--x-hdr-hot) 38deg,
+    var(--x-hdr-glow) 52deg,
+    transparent 110deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  animation: border-spin var(--x-motion-border-spin) var(--x-motion-sys-ease-linear) infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ===========================================================================
+   4b. Dual-comet running border — TWO comets orbiting 180° apart, for the
+   full-bleed HeroSkuCard. Uses HeroSkuCard's proven mask recipe (NOT the --hdr
+   recipe): inset:0 + --border-weight-default padding, #fff luminance mask on
+   BOTH -webkit-mask and standard mask, destination-out / exclude.
+
+   The conic-gradient(from var(--angle), …) MUST be written inline here, not
+   wrapped in a custom-property token — Chrome does not re-evaluate a nested
+   var(--angle) inside another custom property per animation frame, so the conic
+   freezes. Written directly in `background`, --angle is read live every frame.
+
+   Comet 1 reuses the shared --x-fx-border-glow/hot; comet 2 (trail) adds --x-fx-border-trail-glow/hot.
+   =========================================================================== */
+.fx-glow-border--dual {
+  position: relative;
+}
+.fx-glow-border--dual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--border-weight-default);
+  background: conic-gradient(
+    from var(--angle),
+    transparent              0deg,
+    transparent             30deg,
+    var(--x-fx-border-glow)    40deg,
+    var(--x-fx-border-hot)     55deg,
+    var(--x-fx-border-glow)    72deg,
+    transparent             88deg,
+    transparent            210deg,
+    var(--x-fx-border-trail-glow) 220deg,
+    var(--x-fx-border-trail-hot)  236deg,
+    var(--x-fx-border-trail-glow) 252deg,
+    transparent            268deg,
+    transparent            360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  animation: border-spin var(--x-motion-border-spin) var(--x-motion-sys-ease-linear) infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ===========================================================================
+   4c. Rotate — gapless tri-tone ring, slowly rotating. Premium / "charged" feel.
+   First stop === last stop so the gradient wraps seamlessly. Uses trail tokens
+   for the third colour step; stores that only override glow/hot get a monochrome
+   gradient (graceful degradation).
+   =========================================================================== */
+.fx-glow-border--rotate {
+  position: relative;
+}
+.fx-glow-border--rotate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--border-weight-default);
+  background: conic-gradient(
+    from var(--angle),
+    var(--x-fx-border-glow)        0deg,
+    var(--x-fx-border-hot)        90deg,
+    var(--x-fx-border-trail-glow) 180deg,
+    var(--x-fx-border-trail-hot)  270deg,
+    var(--x-fx-border-glow)       360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  animation: border-spin var(--x-motion-border-spin) var(--x-motion-sys-ease-linear) infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ===========================================================================
+   4d. Pulse — static soft ring whose opacity breathes. "Live / new / unread."
+   A drop-shadow bleeds the glow colour outward; the mask-composite ring gives
+   it a clean edge. No rotation — calm enough for persistent status indicators.
+   =========================================================================== */
+.fx-glow-border--pulse {
+  position: relative;
+}
+.fx-glow-border--pulse::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--border-weight-default);
+  background: conic-gradient(
+    from 135deg,
+    var(--x-fx-border-glow)  0deg,
+    var(--x-fx-border-hot)  90deg,
+    var(--x-fx-border-glow) 180deg,
+    var(--x-fx-border-hot)  270deg,
+    var(--x-fx-border-glow) 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  filter: drop-shadow(0 0 5px var(--x-fx-border-glow));
+  animation: pulse var(--x-motion-border-pulse) var(--x-motion-sys-ease-standard) infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ===========================================================================
+   4d-2. Camo Breathe — static ring, SLOW opacity breathe with a soft glow
+   bleed. "Calm and stealthy" comes from the slow period and the absence of
+   rotation/scale — NOT from being hard to see; a ring nobody notices doesn't
+   read as an effect at all. Wider opacity swing than --pulse's brighter range
+   would suggest is needed here because there's no spin to catch the eye, and
+   a moderate drop-shadow (softer/larger than --pulse's) helps it hold
+   attention during a multi-second cycle. Thicker ring (--x-fx-camo-border-width)
+   than the shared --border-weight-default for the same reason. Tune the
+   period via --x-motion-border-camo per theme.
+   =========================================================================== */
+.fx-glow-border--camo-breathe {
+  position: relative;
+}
+.fx-glow-border--camo-breathe::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--x-fx-camo-border-width, 3px);
+  background: conic-gradient(
+    from 135deg,
+    var(--x-fx-border-glow)  0deg,
+    var(--x-fx-border-hot)  90deg,
+    var(--x-fx-border-glow) 180deg,
+    var(--x-fx-border-hot)  270deg,
+    var(--x-fx-border-glow) 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  filter: drop-shadow(0 0 10px var(--x-fx-border-glow));
+  animation: breathe-dim var(--x-motion-border-camo, 5500ms) var(--x-motion-sys-ease-standard) infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ===========================================================================
+   4e. HUD — four L-shaped corner brackets, no full ring. Sci-fi targeting /
+   reticle frame. Static. Arm length and stroke weight are tokens.
+   Background layers: two bars per corner (horizontal + vertical), 8 total.
+   Colours come from --x-fx-border-hot; override --x-fx-hud-corner-length and
+   --x-fx-hud-weight in scoped CSS to resize for different card scales.
+   =========================================================================== */
+.fx-glow-border--hud {
+  position: relative;
+}
+.fx-glow-border--hud::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    /* Top-left corner */
+    linear-gradient(var(--x-fx-border-hot) 0 0) top    left  / var(--x-fx-hud-corner-length) var(--x-fx-hud-weight),
+    linear-gradient(var(--x-fx-border-hot) 0 0) top    left  / var(--x-fx-hud-weight) var(--x-fx-hud-corner-length),
+    /* Top-right corner */
+    linear-gradient(var(--x-fx-border-hot) 0 0) top    right / var(--x-fx-hud-corner-length) var(--x-fx-hud-weight),
+    linear-gradient(var(--x-fx-border-hot) 0 0) top    right / var(--x-fx-hud-weight) var(--x-fx-hud-corner-length),
+    /* Bottom-left corner */
+    linear-gradient(var(--x-fx-border-hot) 0 0) bottom left  / var(--x-fx-hud-corner-length) var(--x-fx-hud-weight),
+    linear-gradient(var(--x-fx-border-hot) 0 0) bottom left  / var(--x-fx-hud-weight) var(--x-fx-hud-corner-length),
+    /* Bottom-right corner */
+    linear-gradient(var(--x-fx-border-hot) 0 0) bottom right / var(--x-fx-hud-corner-length) var(--x-fx-hud-weight),
+    linear-gradient(var(--x-fx-border-hot) 0 0) bottom right / var(--x-fx-hud-weight) var(--x-fx-hud-corner-length);
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ===========================================================================
+   4f. Trace — the border draws itself around the perimeter (0→360°), then
+   rests. Use as a reveal flourish on mount (animation-fill-mode: forwards,
+   plays once) or a loading indicator (animation-iteration-count: infinite +
+   linear easing). --arc is a registered @property so it can be interpolated.
+
+   Reduced-motion fallback: set --arc: 360deg on the element so the ring
+   appears complete without playing (handled in the reduced-motion block below).
+   =========================================================================== */
+.fx-glow-border--trace {
+  position: relative;
+}
+.fx-glow-border--trace::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--border-weight-default);
+  background: conic-gradient(
+    from 270deg,
+    var(--x-fx-border-hot)  0deg,
+    var(--x-fx-border-glow) var(--arc),
+    transparent           var(--arc)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  animation: border-trace var(--x-motion-border-trace) var(--x-motion-sys-ease-decelerate) forwards;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ===========================================================================
+   5. Bloom — soft, blurred light-bleed halo painted BEHIND a hero card.
+   Set --x-fx-bloom-image to the card's background gradient. Gently breathes.
+   =========================================================================== */
+.fx-bloom {
+  position: relative;
+  isolation: isolate;
+}
+.fx-bloom::after {
+  content: "";
+  position: absolute;
+  /* Very gentle halo — heavy blur, no brightness boost, low opacity */
+  inset: -2%;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--x-fx-bloom-image, radial-gradient(circle, var(--x-hdr-bloom), transparent 70%));
+  filter: blur(46px) brightness(1) saturate(1);
+  animation: bloom-pulse var(--x-motion-sku-bloom) var(--x-motion-sys-ease-standard) infinite;
+  pointer-events: none;
+}
+
+/* Reduced motion ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .fx-glow-border::before { animation: none; }
+  .fx-glow-border--hdr::before { animation: none; }
+  .fx-glow-border--dual::before { animation: none; }
+  .fx-glow-border--rotate::before { animation: none; }
+  .fx-glow-border--pulse::before { animation: none; }
+  .fx-glow-border--camo-breathe::before { animation: none; }
+  /* trace: freeze with full ring visible (not frozen empty at --arc: 0deg) */
+  .fx-glow-border--trace { --arc: 360deg; }
+  .fx-glow-border--trace::before { animation: none; }
+  .fx-bloom::after { animation: none; }
+  .fx-shimmer::after,
+  .fx-shimmer--hover:hover::after,
+  .fx-shimmer--hover:focus-visible::after { animation: none; }
+  .fx-ambient-swell::after { animation: none; }
+}

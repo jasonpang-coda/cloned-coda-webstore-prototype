@@ -1,0 +1,19 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rogue Trader seal">
+  <defs>
+    <linearGradient id="avGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3e3b0"/>
+      <stop offset="1" stop-color="#8a6e3f"/>
+    </linearGradient>
+  </defs>
+  <circle cx="48" cy="48" r="46" fill="#12100c"/>
+  <circle cx="48" cy="48" r="44" fill="none" stroke="url(#avGold)" stroke-width="2"/>
+  <!-- stylised double-headed aquila -->
+  <g fill="url(#avGold)">
+    <path d="M48 26 c-4 0 -7 3 -7 7 c0 3 2 5 4 6 l-3 22 h12 l-3 -22 c2 -1 4 -3 4 -6 c0 -4 -3 -7 -7 -7 z"/>
+    <path d="M41 36 c-9 -2 -18 1 -24 8 c8 -2 14 -1 19 3 z"/>
+    <path d="M55 36 c9 -2 18 1 24 8 c-8 -2 -14 -1 -19 3 z"/>
+    <path d="M40 34 c-3 -4 -8 -6 -13 -6 c4 3 6 6 7 10 z"/>
+    <path d="M56 34 c3 -4 8 -6 13 -6 c-4 3 -6 6 -7 10 z"/>
+  </g>
+  <rect x="44" y="62" width="8" height="10" fill="url(#avGold)"/>
+</svg>

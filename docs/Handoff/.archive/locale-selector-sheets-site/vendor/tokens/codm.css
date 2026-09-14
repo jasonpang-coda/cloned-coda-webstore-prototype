@@ -1,0 +1,323 @@
+/* ── Hitmarker Text VF — static normal-width cuts ────────────────────────────
+   The variable font renders too wide; static cuts + scaleX condense (0.82)
+   match the Figma design. Family name kept as "Hitmarker Text VF" so all
+   component CSS and --sys-font-family-* references need no changes.
+   Paths relative to this file: ../fonts/ */
+@font-face {
+  font-family: 'Hitmarker Text VF';
+  src: url('../fonts/HitmarkerNormal-Light.woff2') format('woff2'),
+       url('../fonts/HitmarkerNormal-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hitmarker Text VF';
+  src: url('../fonts/HitmarkerNormal-Regular.woff2') format('woff2'),
+       url('../fonts/HitmarkerNormal-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hitmarker Text VF';
+  src: url('../fonts/HitmarkerNormal-Medium.woff2') format('woff2'),
+       url('../fonts/HitmarkerNormal-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hitmarker Text VF';
+  src: url('../fonts/HitmarkerNormal-Bold.woff2') format('woff2'),
+       url('../fonts/HitmarkerNormal-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hitmarker Text VF';
+  src: url('../fonts/HitmarkerNormal-Black.woff2') format('woff2'),
+       url('../fonts/HitmarkerNormal-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================================
+   COD:M THEME  —  [data-theme="codm"]
+   ----------------------------------------------------------------------------
+   This is the ONLY file a reskin duplicates. It carries every value that is
+   brand/store-specific: colour seeds, the spectrum ramps, the typography system
+   (family / size / weight / tracking / condense), and the handful of COD:M
+   semantic + effect OVERRIDES that the pure alias graph cannot express
+   (gradients — Figma cannot store them — plus brand bonus colours and scrims).
+
+   Structure (system.css / semantics.css / space.css / text-styles.css) lives in
+   :root and is theme-agnostic; it only aliases the values defined here, so this
+   block cascades to every consumer. To add store-b: copy this file, change the
+   selector to [data-theme="store-b"], and retune the values below.
+
+   Colours are authored in OKLCH (perceptual, HDR headroom). Vivid seeds carry
+   chroma beyond sRGB and render on P3/wide-gamut panels; the @media
+   (dynamic-range: high) block at the foot pushes the brand hues past the sRGB
+   ceiling for a genuine glint.
+   ============================================================================ */
+
+[data-theme="codm"] {
+  /* ── Seeds ──────────────────────────────────────────────────────────────
+     Raw brand anchors. sRGB hex equivalents in comments. */
+  --x-ref-primary:         oklch(0.919 0.192 101.8);  /* #FFE700 */
+  --x-ref-secondary:       oklch(0.916 0.115 196.7);  /* #79FBFD */
+  --x-ref-tertiary:        oklch(0.680 0.289 324.1);  /* #E834F9 */
+  --x-ref-status-positive: oklch(0.880 0.246 138.2);  /* #79FB40 */
+  --x-ref-status-caution:  oklch(0.743 0.142 66.8);   /* #E79839 */
+  --x-ref-status-negative: oklch(0.619 0.209 28.5);   /* #E93E33 */
+  --x-ref-neutral:         oklch(0.166 0.017 273.5);  /* #0C0E16 — the page colour */
+
+  /* ── Spectrums ──────────────────────────────────────────────────────────
+     Per-role 50–950 ramps. The 500 step aliases the seed so a seed change
+     re-anchors the ramp mid-point. Neutral ramp == the prototypes real greys. */
+
+  /* primary (yellow) */
+  --x-palette-primary-950: oklch(0.217 0.027 98.3);
+  --x-palette-primary-900: oklch(0.295 0.043 99.0);
+  --x-palette-primary-800: oklch(0.450 0.081 99.9);
+  --x-palette-primary-700: oklch(0.606 0.119 100.6);
+  --x-palette-primary-600: oklch(0.763 0.156 101.5);
+  --x-palette-primary-500: var(--x-ref-primary);
+  --x-palette-primary-400: oklch(0.930 0.164 101.5);
+  --x-palette-primary-300: oklch(0.945 0.129 101.4);
+  --x-palette-primary-200: oklch(0.962 0.089 101.0);
+  --x-palette-primary-100: oklch(0.980 0.046 100.5);
+  --x-palette-primary-50:  oklch(0.989 0.022 98.6);
+
+  /* secondary (cyan) */
+  --x-palette-secondary-950: oklch(0.215 0.010 196.4);
+  --x-palette-secondary-900: oklch(0.294 0.024 195.9);
+  --x-palette-secondary-800: oklch(0.449 0.046 197.7);
+  --x-palette-secondary-700: oklch(0.606 0.069 195.5);
+  --x-palette-secondary-600: oklch(0.759 0.091 197.2);
+  --x-palette-secondary-500: var(--x-ref-secondary);
+  --x-palette-secondary-400: oklch(0.932 0.092 196.5);
+  --x-palette-secondary-300: oklch(0.949 0.068 197.2);
+  --x-palette-secondary-200: oklch(0.966 0.046 196.4);
+  --x-palette-secondary-100: oklch(0.984 0.023 196.8);
+  --x-palette-secondary-50:  oklch(0.992 0.012 197.0);
+
+  /* tertiary (magenta) */
+  --x-palette-tertiary-950: oklch(0.191 0.030 326.7);
+  --x-palette-tertiary-900: oklch(0.246 0.058 324.3);
+  --x-palette-tertiary-800: oklch(0.354 0.117 324.3);
+  --x-palette-tertiary-700: oklch(0.463 0.174 324.1);
+  --x-palette-tertiary-600: oklch(0.571 0.231 324.0);
+  --x-palette-tertiary-500: var(--x-ref-tertiary);
+  --x-palette-tertiary-400: oklch(0.743 0.232 324.8);
+  --x-palette-tertiary-300: oklch(0.806 0.174 325.0);
+  --x-palette-tertiary-200: oklch(0.871 0.116 325.5);
+  --x-palette-tertiary-100: oklch(0.936 0.058 326.0);
+  --x-palette-tertiary-50:  oklch(0.967 0.029 325.8);
+
+  /* neutral (== prototype greys) */
+  --x-palette-neutral-1000: var(--x-ref-neutral);            /* #0C0E16 page */
+  --x-palette-neutral-950:  oklch(0.241 0.012 278.0);      /* #1E1F25 panel */
+  --x-palette-neutral-900:  oklch(0.310 0.011 271.0);      /* #2E3036 divider/container */
+  --x-palette-neutral-800:  oklch(0.377 0.010 278.3);      /* #404147 floating/indicator */
+  --x-palette-neutral-700:  oklch(0.447 0.008 277.0);      /* #535459 */
+  --x-palette-neutral-600:  oklch(0.515 0.008 277.0);      /* #66676C */
+  --x-palette-neutral-500:  oklch(0.584 0.008 277.1);      /* #7A7B80 */
+  --x-palette-neutral-400:  oklch(0.651 0.007 277.1);      /* #8E8F94 */
+  --x-palette-neutral-300:  oklch(0.719 0.006 274.9);      /* #A3A4A8 body-soft */
+  --x-palette-neutral-200:  oklch(0.786 0.006 274.9);      /* #B8B9BD */
+  --x-palette-neutral-100:  oklch(0.855 0.004 271.4);      /* #CECFD2 */
+  --x-palette-neutral-50:   oklch(0.923 0.004 286.3);      /* #E5E5E8 */
+  --x-palette-neutral-0:    oklch(0.992 0.003 286.4);      /* #FCFCFE header/ink */
+
+  /* status-positive (green) */
+  --x-palette-status-positive-950: oklch(0.211 0.027 131.4);
+  --x-palette-status-positive-900: oklch(0.286 0.050 135.6);
+  --x-palette-status-positive-800: oklch(0.434 0.100 136.6);
+  --x-palette-status-positive-700: oklch(0.584 0.150 137.5);
+  --x-palette-status-positive-600: oklch(0.731 0.197 137.8);
+  --x-palette-status-positive-500: var(--x-ref-status-positive);
+  --x-palette-status-positive-400: oklch(0.904 0.201 136.8);
+  --x-palette-status-positive-300: oklch(0.927 0.153 135.4);
+  --x-palette-status-positive-200: oklch(0.951 0.104 134.4);
+  --x-palette-status-positive-100: oklch(0.976 0.051 132.8);
+  --x-palette-status-positive-50:  oklch(0.987 0.026 133.0);  /* #F4FFED snackbar copy */
+
+  /* status-caution (amber) */
+  --x-palette-status-caution-950: oklch(0.199 0.021 69.4);
+  --x-palette-status-caution-900: oklch(0.259 0.031 67.8);
+  --x-palette-status-caution-800: oklch(0.381 0.060 67.1);
+  --x-palette-status-caution-700: oklch(0.502 0.088 67.2);
+  --x-palette-status-caution-600: oklch(0.623 0.115 66.9);
+  --x-palette-status-caution-500: var(--x-ref-status-caution);
+  --x-palette-status-caution-400: oklch(0.794 0.121 66.9);
+  --x-palette-status-caution-300: oklch(0.846 0.096 65.4);
+  --x-palette-status-caution-200: oklch(0.898 0.067 65.3);
+  --x-palette-status-caution-100: oklch(0.949 0.034 64.6);
+  --x-palette-status-caution-50:  oklch(0.973 0.017 62.0);
+
+  /* status-negative (red) */
+  --x-palette-status-negative-950: oklch(0.184 0.029 42.9);   /* #1D0E08 ≈ tag bg */
+  --x-palette-status-negative-900: oklch(0.234 0.045 31.7);
+  --x-palette-status-negative-800: oklch(0.332 0.086 30.3);
+  --x-palette-status-negative-700: oklch(0.427 0.127 29.0);   /* #872B22 bonus/loyalty pill */
+  --x-palette-status-negative-600: oklch(0.524 0.168 29.0);
+  --x-palette-status-negative-500: var(--x-ref-status-negative);
+  --x-palette-status-negative-400: oklch(0.695 0.172 30.0);
+  --x-palette-status-negative-300: oklch(0.771 0.134 30.4);
+  --x-palette-status-negative-200: oklch(0.843 0.087 31.3);
+  --x-palette-status-negative-100: oklch(0.919 0.042 32.6);
+  --x-palette-status-negative-50:  oklch(0.959 0.020 32.5);   /* #FFEDE9 pill text */
+
+  /* ── Typography (themed — fonts differ per store) ─────────────────────────
+     Hitmarker static cuts. See text-styles.css for the .text-style-* classes. */
+  --x-sys-font-family-heading: 'Hitmarker Text VF', sans-serif;
+  --x-sys-font-family-body:    'Hitmarker Text VF', sans-serif;
+
+  --x-sys-weight-extra-bold: 800;
+  --x-sys-weight-bold:       700;
+  --x-sys-weight-semibold:   600;
+  --x-sys-weight-regular:    400;
+
+  /* Heading + body sizes (Mobile mode — the store renders in a mobile frame). */
+  --x-sys-size-h1: 28px;
+  --x-sys-size-h2: 24px;
+  --x-sys-size-h3: 22px;
+  --x-sys-size-h4: 20px;
+  --x-sys-size-h5: 18px;
+  --x-sys-size-h6: 16px;
+  --x-sys-size-h7: 18px;
+  --x-sys-size-body-l:    16px;
+  --x-sys-size-body-main: 14px;
+  --x-sys-size-body-s:    12px;
+  --x-sys-size-body-xs:   10px;
+
+  /* Letter-spacing — authored in em (CSS letter-spacing rejects %). The loose/
+     wide values carry the Hitmarker +5% tracking compensation (static cut sits
+     tighter than the Figma VF). A non-Hitmarker store overrides these. */
+  --x-sys-letter-spacing-tight:  -0.005em;   /* -0.5% */
+  --x-sys-letter-spacing-narrow: -0.002em;   /* -0.2% */
+  --x-sys-letter-spacing-main:    0;         /*  0%   */
+  --x-sys-letter-spacing-loose:   0.00525em; /*  0.5% + Hitmarker comp */
+  --x-sys-letter-spacing-wide:    0.0105em;  /*  1%   + Hitmarker comp */
+
+  /* Line-height — unitless so it inherits correctly. */
+  --x-sys-line-height-main:  1;
+  --x-sys-line-height-loose: 1.2;
+  --x-sys-line-height-wide:  1.5;
+
+  /* Horizontal condense — the static Hitmarker cut renders ~18% too wide, so
+     display text is squeezed on the X axis. A store with a properly condensed
+     face sets this to 1. NOTE: scaleX also compresses letter-spacing by this
+     factor — the tracking tokens above are authored pre-scale. */
+  --x-sys-font-condense: 0.82;
+
+  /* ── COD:M semantic + effect OVERRIDES ───────────────────────────────────
+     These override the structural aliases in semantics.css for slots the
+     prototype renders as gradients / bespoke values. A store overrides its own.
+     Gradients cannot be Figma variables, so they live here as real CSS. */
+
+  /* HDR glow trio (drives the best-seller card running border + bloom) —
+     previously undefined here, so BestSellerCard fell through to the
+     store-agnostic default in motion-sku.css (an arbitrary gold with no
+     relation to COD:M's own yellow seed). Aliased to the primary ramp instead
+     of a hardcoded literal so retuning --x-ref-primary retunes the glow too.
+     HDR-boosted variant lives in the @media block below. */
+  --x-hdr-glow:  var(--x-palette-primary-500);  /* = --x-ref-primary, #FFE700 */
+  --x-hdr-hot:   var(--x-palette-primary-200);  /* lighter core, near-white yellow */
+  --x-hdr-bloom: var(--x-palette-primary-600);  /* deeper glow behind the card */
+
+  /* ── Container surfaces (L1–L3 + status) ─────────────────────────────────
+     COD:M is the REFERENCE surface set — its values ARE the --sys-colour-surface-*
+     :root defaults in system.css, so they are NOT re-declared here (no override
+     needed). Edit system.css to change the COD:M/base surfaces. The HDR
+     wide-gamut border boost is the one genuine override — see the
+     html[data-theme="codm"] @media block below. */
+
+  /* Pixel-parity overrides — slots whose accurate COD:M value differs from the
+     pure cascade. Components use the DS name; these keep the prior look exact. */
+  --x-border-card-default: oklch(0.992 0.003 286 / 0.08); /* translucent white hairline */
+  --x-bg-action-signin:    oklch(0 0 0);                  /* #000 — "Sign in with COD:M" button fill */
+
+  /* Brand bonus text (no clean DS slot — codashop purple, cp blue) */
+  --x-text-web-bonus-codashop: oklch(0.78 0.155 297);
+  --x-text-web-bonus-cp:       oklch(0.78 0.135 260);
+
+  /* Tag BONUS fill + label + bonus amount inherit the base sys bonus role
+     (--sys-colour-bonus-* = primary), which reproduces the prior
+     primary-950 / primary-50 / primary-400 values exactly. */
+
+  /* Category banner — a single border all the way around (not just the
+     component's own default bottom divider line), same neutral card-border
+     colour as every other flat surface in this theme. The border-bottom
+     longhand is restated at the same value so all four edges match, same
+     precedent as diabloimmortal.css/zzz.css. */
+  --x-category-banner-border: var(--border-weight-default) solid var(--x-border-card-default);
+  --x-category-banner-border-bottom: var(--border-weight-default) solid var(--x-border-card-default);
+
+  /* Download banner — same treatment, all four edges (App.vue's own
+     .download-banner has no border by default for any other store — this
+     token is the sanctioned escape hatch added there, same precedent as
+     zzz.css). */
+  --x-download-banner-border: var(--border-weight-default) solid var(--x-border-card-default);
+}
+
+/* HDR — push OKLCH L past the sRGB ceiling on wide-gamut panels so the brand
+   hues + gradient border genuinely glint. Overrides the values above for every
+   consumer for free. Scoped to the COD:M theme. */
+/* Hyperlink family — default/hover/pressed inherit the global hyperlink ramp
+   (= primary = brand yellow). Only inverse differs: near-white for links on a
+   coloured/brand surface. Overriding the sys alias-role (not the semantic) at
+   html[data-theme] (0,1,1) beats system.css :root (0,1,0), which is imported
+   after this file and would otherwise win by source order. */
+html[data-theme="codm"] {
+  --x-sys-colour-hyperlink-inverse: var(--x-sys-colour-neutral-inverse); /* near-white */
+}
+
+/* HDR — push OKLCH L past the sRGB ceiling on wide-gamut panels so the brand
+   hues + gradient border genuinely glint. Overrides the values above for every
+   consumer for free. Scoped to the COD:M theme. */
+@media (dynamic-range: high) {
+  /* html[data-theme] (0,1,1) so the surface-l1-border boost beats system.css
+     :root (0,1,0), which loads after this theme file. */
+  html[data-theme="codm"] {
+    /* HDR glow trio — derived via relative colour syntax from the SAME source
+       token aliased in the SDR block above (--palette-primary-*), never from
+       --x-hdr-glow/-hot/-bloom themselves (that would be a self-reference cycle
+       and resolve to nothing). First-pass multipliers, not a measured target —
+       there's no prior boosted value to preserve here since COD:M never had
+       an --hdr-* override before this. Flag for a design pass if the punch
+       needs tuning; retune the ratios below, not the SDR aliases above. */
+    --x-hdr-glow:  oklch(from var(--x-palette-primary-500) calc(l * 1.03) calc(c * 1.2) h);
+    --x-hdr-hot:   oklch(from var(--x-palette-primary-200) calc(l * 1.01) calc(c * 1.3) h);
+    --x-hdr-bloom: oklch(from var(--x-palette-primary-600) calc(l * 1.05) calc(c * 1.2) h);
+
+    --x-sys-colour-surface-l1-border: linear-gradient(
+      160deg,
+      oklch(1.0 0.006 247 / 0.06) 0%,
+      oklch(1.1 0.008 247 / 0.30) 45%,
+      oklch(1.2 0.010 247 / 0.65) 100%
+    );
+    --x-sys-colour-surface-l1-border-hover: linear-gradient(
+      160deg,
+      oklch(1.0 0.006 247 / 0.10) 0%,
+      oklch(1.1 0.008 247 / 0.45) 45%,
+      oklch(1.3 0.010 247 / 0.85) 100%
+    );
+    --x-text-web-bonus-codashop: oklch(0.85 0.17 297);
+    --x-text-web-bonus-cp:       oklch(0.85 0.15 260);
+  }
+}
+
+/* Body pairing: Inter for body text, Hitmarker stays for headings/display.
+   Uncondenses body text (--x-sys-font-condense-body — headings keep
+   --x-sys-font-condense) and zeroes the global body tracking baseline (the
+   Hitmarker +5% comp). Font loads from Google Fonts in index.html. */
+[data-theme="codm"] {
+  --x-sys-font-family-body: 'Inter', sans-serif;
+  --x-sys-font-condense-body: 1;
+  --x-sys-letter-spacing-body-base: 0;
+}

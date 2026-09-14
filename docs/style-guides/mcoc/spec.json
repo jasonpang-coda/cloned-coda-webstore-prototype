@@ -1,0 +1,531 @@
+{
+  "meta": {
+    "brand": "Marvel Contest of Champions (MCOC)",
+    "version": "1.0",
+    "sourceImageCount": 5,
+    "confidence": "high",
+    "notes": "Derived from the live official marketing site (playcontestofchampions.com), its compiled CSS bundle (app.fc742dcb7e631b3dc407.css), and 5 harvested reference images (logo, hero banner, 2 character takeovers, 1 background texture). Colour roles and fonts are CSS-observed (highest evidence tier), not pixel-sampled. This is a marketing/portal site, not the in-game store or a webstore checkout flow, so commerceVoice and checkout-specific copy examples are inferred by extension of the observed lore/event voice, not directly observed. tertiary and statusCaution/statusNegative were derived from the fullest available UI evidence (nav alert gradient, delete-action red) rather than a single dominant swatch, since the site uses many decorative rarity colours (purple, cyan, additional pinks) beyond a strict 3-accent system — the ones chosen are the highest-frequency, most systemic instances of each role. Hanzel Condensed Bold Italic and Eurostile are licensed local fonts with no open equivalent; Google Fonts proxies are stated below with rationale. Jost is used self-hosted here but is itself a free Google Fonts family, so no proxy substitution is needed for it."
+  },
+
+  "generic": {
+    "essence": {
+      "adjectives": ["Mythic", "Combative", "Electric", "Relentless", "Ensemble"],
+      "positioning": "The greatest battles in Marvel history are in your hands."
+    },
+    "voice": {
+      "confidence": "observed",
+      "source": "live copy read from https://playcontestofchampions.com/ via browser (homepage, event cards, character bios, footer tagline)",
+      "summary": "Grand, mythic, and lore-forward; talks to the player as a 'Summoner' commanding Champions through an ongoing saga, not a customer browsing a shop.",
+      "pillars": [
+        { "name": "Mythic scale", "evidence": "THE GREATEST BATTLES IN MARVEL HISTORY ARE IN YOUR HANDS" },
+        { "name": "Ongoing saga, not a one-off event", "evidence": "This Battlerealm isn't always a friendly place, the name itself is hardly welcoming. Behind every dark corner is another thing waiting to change you, and another mystery waiting to be solved. Get your notebook ready and start putting the clues together as we seek to untangle this wicked web of crime, magic, symbiotes, and corruption!" },
+        { "name": "Player as commander, addressed by rank", "evidence": "THE WEB OF CORRUPTION IS HERE, SUMMONERS! SEE ALL EVENTS" },
+        { "name": "Earned prestige / endgame stakes", "evidence": "A challenge for those who have become ELDER. This multi-month conclusion to the epic story of Acts 8 and 9 kicks off in July as we will once again rush to face corrupted Bosses in an attempt to piece together a 7-STAR CARINA TIVAN and banish the last shadows of the Chronoserpent once and for all." },
+        { "name": "Playful collection-building", "evidence": "Gather the Symbiotes from across the realm and see if you can assemble the perfect team! The SQUAD BUILDER returns! Now better than ever as we have tuned and improved Squad sizes to better let you build that PERFECT Squad to maximize rewards." }
+      ],
+      "person": "Second person direct address, using the in-fiction rank 'Summoner'; third person for character lore/bios (e.g. 'Phil Urich became Hobgoblin...').",
+      "cadence": "Exclamatory hooks on event/hero copy (short, punchy, ALL-CAPS titles) paired with denser, measured lore paragraphs underneath. Heavy use of ALL-CAPS for event names, ranks, and rarity call-outs (ELDER, 7-STAR, CARINA TIVAN).",
+      "lexicon": {
+        "say": ["Summoner", "Champion(s)", "Battlerealm", "The Contest", "Roster", "Saga", "Side Quest", "Act", "Boss(es)", "Alliance", "Rank/Star rating (e.g. 7-Star)", "Untangle / unravel (mystery framing)"],
+        "avoid": ["generic retail words (sale, discount, deal)", "casual filler slang that breaks the comic-mythic register", "flattening a Champion to 'character' or 'item'", "addressing the player as 'user' or 'player' instead of 'Summoner'"]
+      },
+      "commerceVoice": "[inferred] Not observed directly (this site is the marketing portal, not the storefront) — but by extension of the lore-forward, rank-driven voice, purchase/store copy would likely frame offers as roster growth and rank progression ('unlock', 'claim', 'add to your Roster') rather than discount language, and use event/saga urgency ('before the Saga ends') rather than generic countdown timers.",
+      "copyExamples": {
+        "hero": "ASSEMBLE YOUR ROSTER. RULE THE BATTLEREALM.",
+        "skuCta": "CLAIM YOUR CHAMPION",
+        "bonusBadge": "SUMMONER BONUS INCLUDED",
+        "scarcityBadge": "VAULT CLOSES SOON, SUMMONER",
+        "confirmation": "CHAMPION ACQUIRED. THE CONTEST AWAITS.",
+        "navLabels": ["ROSTER", "EVENTS", "STORE", "ALLIANCE"],
+        "emptyState": "Your Roster is empty, Summoner. The Battlerealm is waiting.",
+        "errorState": "The Contest couldn't process that, Summoner — try again.",
+        "checkoutCta": "CONFIRM ACQUISITION"
+      }
+    },
+    "artStyle": {
+      "family": "stylized-realism",
+      "subStyle": "Comic-book-realism 3D character renders (dynamic action poses, dramatic rim lighting) composited over painted/atmospheric environment art, finished with graphic comic-style typography (heavy outline strokes, foil-gradient fills) laid directly over the key art.",
+      "renderingCues": [
+        "High-detail, semi-photoreal 3D character sculpts with cel-adjacent but not flat shading",
+        "Dramatic single-source rim/key lighting per character, strong value contrast against dark backdrops",
+        "Atmospheric smoke/web/silhouette framing devices at image edges",
+        "Display type gets a 1px outline stroke + gradient or foil fill, sitting on top of the art rather than in a safe text zone"
+      ]
+    },
+    "palette": {
+      "primary":        { "hex": "#ABFF00", "rgb": [171,255,0], "usage": "signature acid-green accent: CTA glow, active/hover nav state, positive status, portrait-frame halo" },
+      "secondary":      { "hex": "#FFB900", "rgb": [255,185,0], "usage": "gold/premium accent: 'golden-header' rarity treatment, read-more links, foil-gradient hero titles" },
+      "tertiary":       { "hex": "#FF00B8", "rgb": [255,0,184], "usage": "rare-tier magenta accent, paired with deep magenta #A50879 on elevated/rare content tiles" },
+      "neutral":        { "hex": "#141517", "rgb": [20,21,23], "usage": "primary layout/background foundation, paired with #333540 (structural borders) and #0B0B0D (deepest panel bg)" },
+      "statusPositive": { "hex": "#ABFF00", "rgb": [171,255,0], "usage": "reuses brand primary — observed directly as the 'green' status-box state" },
+      "statusCaution":  { "hex": "#FF9C00", "rgb": [255,156,0], "usage": "orange, observed in the nav alert-badge radial gradient (#FF9C00 → #BA0000) — distinct from the gold/secondary rarity accent" },
+      "statusNegative": { "hex": "#FF5E5E", "rgb": [255,94,94], "usage": "destructive/delete action colour (observed on champion-removal control); pairs with deep red #BA0000 used for decorative gradient stops and borders only, never as text" }
+    },
+    "contrastRules": [
+      "White (#FFFFFF) on neutral bg (#141517): 18.27:1 — body text default",
+      "Primary lime (#ABFF00) on neutral bg (#141517): 14.82:1 — safe for large glow/label text",
+      "Secondary gold (#FFB900) on neutral bg (#141517): 10.61:1 — safe for large text and links",
+      "Tertiary magenta (#FF00B8) on neutral bg (#141517): 5.17:1 — passes AA body text, reserve for accents not dense paragraphs",
+      "Caution orange (#FF9C00) on neutral bg (#141517): 8.71:1 — safe for text and icons",
+      "Negative red (#FF5E5E) on neutral bg (#141517): 6.10:1 — safe for text; deep red (#BA0000) only reaches 2.69:1 and must stay decorative (borders/gradient stops), never body text"
+    ],
+    "typography": {
+      "families": { "display": "Hanzel Condensed Bold Italic", "body": "Eurostile / Eurostile Bold", "accent": "Jost" },
+      "scale": { "baseSizePx": 14, "ratio": 1.4, "measureCh": 65, "pairingRationale": "A hyper-condensed, permanently-italicised comic-slab display face (Hanzel) reads as motion and impact for hero titles and CTAs; a squared, geometric grotesque (Eurostile) carries body copy with a technical/HUD feel that matches the game's sci-fi-meets-mythology tone; Jost (a Futura-style geometric sans) is reserved for wide-tracked eyebrow/kicker labels above headlines." },
+      "typePrimitives": {
+        "weights": { "extraBold": 800, "bold": 700, "semibold": 600, "regular": 400 },
+        "headerSizes": { "h1": "48/72", "h2": "32/48", "h3": "24/32", "h4": "16/20", "h5": "15/18", "h6": "14/16", "h7": "12/14" },
+        "bodySizes":   { "l": "16/18", "main": "14/14", "s": "12/14", "xs": "10/12" }
+      },
+      "textStyles": {
+        "heading-display":   { "primitive": "h1", "weight": "extra-bold", "leading": 1.0, "tracking": "0", "case": "UPPER", "effect": "1px outline stroke + repeating gold foil gradient fill on hero titles (observed: repeating-linear-gradient(171deg,#e68515 36px,#eebe0d 82px,#ffe472 100px,#efc90b 120px,#eca903 166px))" },
+        "heading-title":     { "primitive": "h2", "weight": "extra-bold", "leading": 1.0, "tracking": "0.5px", "case": "UPPER" },
+        "heading-subtitle":  { "primitive": "h3", "weight": "extra-bold", "leading": 1.0, "tracking": "1px",   "case": "UPPER" },
+        "paragraph-l":       { "primitive": "body-l",    "weight": "regular",  "leading": 1.3, "tracking": "0", "case": "sentence" },
+        "paragraph-main":    { "primitive": "body-main", "weight": "regular",  "leading": 1.5, "tracking": "0", "case": "sentence" },
+        "paragraph-s":       { "primitive": "body-s",    "weight": "regular",  "leading": 1.45,"tracking": "0", "case": "sentence" },
+        "utility-label":     { "primitive": "body-xs",   "weight": "bold",     "leading": 1.1, "tracking": "4.26px (observed, Jost eyebrow)", "case": "UPPER" },
+        "utility-mono":      { "primitive": "body-s",    "weight": "regular",  "leading": 1.4, "tracking": "0", "case": "sentence" }
+      },
+      "reversedTypeRule": "Site is dark-native (near-black neutral bg throughout) — white/lime/gold text is the default, not a reversed exception. When placing dark text on the rare light surface, bump weight +1 step to preserve the same visual density."
+    },
+    "observedCss": [
+      {
+        "selector": ".XXL / #view-spotlight h2 / .golden-header h1 (hero display)",
+        "fontFamily": "hanzel-condensedbolditalic",
+        "fontSizeMobile": "48px",
+        "fontSizeDesktop": "72px",
+        "weight": 400,
+        "lineHeight": "1 (equal to font-size)",
+        "letterSpacing": "normal",
+        "color": "#ffffff (or gold-foil gradient via .gradient-gold)",
+        "textShadow": null,
+        "source": "app.fc742dcb7e631b3dc407.css"
+      },
+      {
+        "selector": ".golden-header p:first-child (eyebrow/kicker)",
+        "fontFamily": "jost-regular",
+        "fontSizeMobile": "19px",
+        "fontSizeDesktop": "19px",
+        "weight": 400,
+        "lineHeight": "1.3",
+        "letterSpacing": "4.26px",
+        "color": "#ffffff",
+        "textShadow": null,
+        "source": "app.fc742dcb7e631b3dc407.css"
+      },
+      {
+        "selector": ".XS / .S (body copy, event/table/list text)",
+        "fontFamily": "eurostile",
+        "fontSizeMobile": "14px",
+        "fontSizeDesktop": "14px",
+        "weight": 400,
+        "lineHeight": "normal",
+        "letterSpacing": "normal",
+        "color": "inherit",
+        "textShadow": null,
+        "source": "app.fc742dcb7e631b3dc407.css"
+      },
+      {
+        "selector": ".C-XXL / .golden-header.C-XXL (large condensed title, mobile variant)",
+        "fontFamily": "hanzel-condensedbolditalic",
+        "fontSizeMobile": "64px",
+        "fontSizeDesktop": "n/a (mobile-only breakpoint rule observed)",
+        "weight": 400,
+        "lineHeight": "64px",
+        "letterSpacing": "2px",
+        "color": "#ffffff",
+        "textShadow": "1px webkit-text-stroke (outline, not shadow)",
+        "source": "app.fc742dcb7e631b3dc407.css"
+      }
+    ],
+    "fontAcquisition": {
+      "heading": {
+        "family": "hanzel-condensedbolditalic",
+        "source": "licensed-local-woff2",
+        "proxyFamily": "Saira Condensed (Bold Italic)",
+        "proxyRationale": "Hanzel Condensed Bold Italic is a bespoke licensed condensed-italic slab shipped as a local .ttf (@font-face, no Google Fonts or Typekit link present). Saira Condensed is the closest openly-licensed condensed sans with a true bold italic cut; the real family name stays first in the CSS font-family stack, proxy is a visual stand-in only for guide/demo purposes."
+      },
+      "body": {
+        "family": "eurostile / eurostile-bol",
+        "source": "licensed-local-woff2",
+        "proxyFamily": "Titillium Web",
+        "proxyRationale": "Eurostile is a licensed geometric/squared grotesque shipped as local .otf/.ttf files. Titillium Web is the most common openly-licensed substitute for Eurostile's squared, technical letterforms and is available free on Google Fonts."
+      },
+      "accent": {
+        "family": "jost-regular",
+        "source": "licensed-local-woff2",
+        "proxyFamily": "Jost",
+        "proxyRationale": "Jost is shipped self-hosted here via @font-face, but the same family is also freely distributed on Google Fonts — no visual substitution needed, just switch the source to a Google Fonts <link> if self-hosting isn't desired."
+      }
+    },
+    "shape": {
+      "profile": "wonky",
+      "radiusStep": "xs",
+      "wonky": true,
+      "motifs": [
+        "Angled/cut-corner octagonal panel frames (SVG-clipped, sci-fi HUD feel) around accordions and hub sections",
+        "Small 8px rounding on standard content tiles and cards",
+        "True pill/circle shapes (border-radius:50% / 60px) reserved for avatars, status pips, and rank badges",
+        "Sharp 0px corners on structural dividers and full-bleed frames"
+      ]
+    },
+    "lightingModel": {
+      "interactiveElements": "elevation-level-1 + lime-green glow halo (box-shadow: 0 0 4px #ABFF00, 0 0 33px rgba(171,255,0,.3)) on hover/active states — portrait frames, active nav items, selected tiles",
+      "nonInteractiveElements": "elevation-flat, near-black fill with a thin #333540 structural border, no glow",
+      "vfxSignature": "Acid-green rim glow as the universal 'this is active/selected/positive' signal; gold foil gradient + outline stroke reserved for hero/event titles; atmospheric smoke and web silhouettes frame key art edges"
+    },
+    "spacing": {
+      "rhythm": "regular",
+      "baseSysStep": "--x-sys-space-s",
+      "touchTargetSysToken": "--x-sys-size-control-m",
+      "grouping": "border-grouped"
+    },
+    "states": {
+      "hover": "Lime-green (#ABFF00) glow halo + underline reveal on nav/menu items",
+      "pressed": "Deepens toward the olive shade #568000 (observed on the active/pressed 'green' status fill, paired with a lime top/bottom hairline)",
+      "focus": "visible focus ring required (site itself shows a blue #00BBFF focus outline on carousel arrows — a good accessible default to keep)",
+      "disabled": "reduced opacity + desaturated; pointer-events none",
+      "primaryActionRule": "one primary action per view (PLAY NOW is the single dominant CTA on the homepage hero; secondary actions are visually smaller pill buttons below it)"
+    },
+    "accessibility": {
+      "bodyContrast": "White on neutral bg (#141517) ≈ 18.27:1 — far exceeds the 4.5:1 floor",
+      "largeTextContrast": "Gold secondary on neutral bg ≈ 10.61:1; magenta tertiary ≈ 5.17:1 — both clear the 3:1 floor comfortably",
+      "statusNotByColourAlone": "Positive/caution/negative states are paired with icon glyphs or explicit label text in the observed UI (e.g. status-box components carry both a colour fill and a text label), not colour alone",
+      "focusRing": "present on interactive controls (observed: 3px solid #00BBFF outline on carousel arrows)",
+      "notes": "Deep red #BA0000 (2.69:1 on neutral bg) fails AA for text and is correctly used only for borders/gradient stops in the source site, not for text — keep that restriction in the token system."
+    },
+    "texture": {
+      "halftone": { "present": false, "rule": "not observed — site uses smooth gradients and painterly key art rather than halftone dot textures" },
+      "distress":  { "present": false, "rule": "not observed" },
+      "noise":     { "present": true, "opacityPct": 15, "blendMode": "screen/overlay (observed: a tiled starfield/particle PNG texture used as an ambient background layer behind event tiles)" },
+      "other": "Carbon-fibre background texture used behind the mobile category-nav flyout (background-image: background-carbonfiber.png)"
+    },
+    "motion": {
+      "durationMs": 200,
+      "easing": "ease-in-out",
+      "signatures": ["0.2s ease-in-out for hover/active transforms", "0.3s ease-in-out for opacity/accordion reveals", "0.5s linear for nav show/hide slide"],
+      "interactiveFeedback": "Glow-halo fade-in on hover; accordion/expand panels animate opacity+max-height together"
+    },
+    "assetPrompts": {
+      "heroBanner": "Cinematic 3/4-angle 3D render of a Marvel-style superhero mid-action-pose, dramatic single-source rim lighting, dark atmospheric smoke and web-silhouette framing at the edges, deep near-black background fading to a faint acid-green glow at the horizon, comic-book-realistic skin/costume shading, hyper-condensed italic display wordmark in gold foil gradient with a 1px white outline stroke overlaid top-left, 16:9, ultra-detailed, dramatic contrast",
+      "skuArt": "Bust-to-¾ portrait of a Marvel-style Champion character, dynamic ¾ camera angle, dramatic rim light, isolated on a near-black radial-gradient backdrop, thin acid-green glow halo framing the figure (box-shadow style rim glow), small rank/rarity badge in the corner, comic-book-realistic 3D render, 2:3 portrait",
+      "background": "Dark near-black tileable starfield/particle texture with faint acid-green and gold specks, subtle vignette, sci-fi HUD panel accents with angled cut-corner frame edges, extremely subtle noise grain, seamless tile"
+    }
+  },
+
+  "codashop": {
+    "architectureNote": "5-tier cascade: (1) type primitives + ref seeds → (2) palette ramps (--x-palette-{role}-500 = --x-ref-{role}) → (3) sys intensity / dimensions / effects / states → (4) semantic defaults (--x-bg-*, --x-text-*, --x-border-*) → (5) .text-style-* classes. Figma token exports drop the --x- prefix; repo names always include it. emitter.ts injects only Tier 1 ref seeds + optional Tier 2 ramps + font + --x-bg-page. Tiers 3-4 auto-resolve downstream and are store-overridable. THREE override layers: SYSTEM CONSTANT (layoutSystem + the 27 textStyle compositions + scales — never change) ⊃ BRAND-LOCKED (ref seeds, font, size values, brandCharacter) ⊃ STORE-FLEXIBLE (semantic colour mapping, component variants).",
+
+    "layoutSystem": {
+      "mutable": false,
+      "responsiveModel": "container-query",
+      "containerRule": "device screen sets container-type:inline-size; overlay must NOT (traps position:fixed)",
+      "breakpoints": { "xs": "< 641px", "s": "641–800px", "m": "801–1279px", "l": "≥ 1280px" },
+      "grid": {
+        "columns":     { "xs": 8, "s": 8, "m": 12, "l": 12 },
+        "columnGap":   { "token": "--x-gap-grid-gutter", "xs": "8px", "s": "8px", "m": "12px", "l": "16px" },
+        "sidePadding": { "token": "--x-gap-grid-margin", "xs": "12px", "s": "12px", "m": "12px", "l": "16px" },
+        "rowGap":      { "token": "--x-gap-grid-row-default", "all": "8px" },
+        "template":    "grid-template-columns: repeat(N, minmax(0, 1fr))"
+      },
+      "spanVariants": {
+        "fluid":    "grid-column: 1 / -1 at all breakpoints (full bleed)",
+        "content":  "full width on XS/S; centred cols 3–10 of 12, max-width 960px, on M/L",
+        "carousel": "full-bleed on XS/S (negative margin cancels grid margin); content on M/L"
+      },
+      "skuGridPatterns": {
+        "_note": "all use display:grid; gap:var(--x-gap-content-default)",
+        "skuList":        { "xs": 2, "s": 4, "m": 4 },
+        "bundleGrid":     { "xs": 1, "s": 1, "m": 2 },
+        "giftGrid":       { "xs": 2, "s": "variable", "m": "variable" },
+        "storyCarouselAspect": { "xs": "1/1", "s": "1/1", "m": "2.6/1" }
+      },
+      "tokenTierDiscipline": "components consume ONLY semantic (--x-bg-*, --x-text-*, --x-border-*) + spacing/size (--x-pad-*, --x-gap-*, --x-radius-*, --x-size-*); NEVER --x-sys-*, --x-palette-*, or --x-ref-* directly",
+      "mobileDesktopRule": "values switch at breakpoints via -desktop- token twins: --x-sys-space-desktop-*, --x-sys-radius-desktop-*, --x-sys-size-control-desktop-*, --x-text-size-desktop-*"
+    },
+
+    "themePreset": {
+      "id": "store-mcoc",
+      "name": "Marvel Contest of Champions",
+      "presetStyle": {
+        "seedColors": {
+          "primary":        "#ABFF00",
+          "secondary":      "#FFB900",
+          "tertiary":       "#FF00B8",
+          "neutral":        "#141517",
+          "statusPositive": "#ABFF00",
+          "statusCaution":  "#FF9C00",
+          "statusNegative": "#FF5E5E"
+        },
+        "font": "Hanzel Condensed Bold Italic (heading) / Titillium Web (body, Eurostile proxy)",
+        "borderRadius": "RADIUS_SOFT",
+        "backgroundColor": "#141517",
+        "backgroundType": "TYPE_SOLID",
+        "backgroundGradient": null
+      }
+    },
+
+    "cssOverride": "body[data-theme='theme-preset--store-mcoc'] {\n  --x-ref-primary: #ABFF00;\n  --x-ref-secondary: #FFB900;\n  --x-ref-tertiary: #FF00B8;\n  --x-ref-neutral: #141517;\n  --x-ref-status-positive: #ABFF00;\n  --x-ref-status-caution: #FF9C00;\n  --x-ref-status-negative: #FF5E5E;\n  --x-sys-font-heading: 'Saira Condensed', sans-serif;\n  --x-sys-font-body: 'Titillium Web', sans-serif;\n  --x-bg-page: #141517;\n}",
+
+    "brandLocked": {
+      "ref": {
+        "primary":        "#ABFF00",
+        "secondary":      "#FFB900",
+        "tertiary":       "#FF00B8",
+        "neutral":        "#141517",
+        "statusPositive": "#ABFF00",
+        "statusCaution":  "#FF9C00",
+        "statusNegative": "#FF5E5E"
+      },
+      "palette": {
+        "anchorRule": "--x-palette-{role}-500 resolves to --x-ref-{role} — the 500 step IS the seed",
+        "strategy": "auto",
+        "manualStops": { "neutral": "extended ramp adds -0 (true black, matches observed #0B0B0D deep panel bg) and -1000 (true white)" }
+      },
+      "typePrimitives": {
+        "fontHeading": "'Hanzel Condensed Bold Italic', 'Saira Condensed', sans-serif",
+        "fontBody": "'Eurostile', 'Titillium Web', sans-serif",
+        "weights": { "extraBold": 800, "bold": 700, "semibold": 600, "regular": 400 },
+        "headerSizes": {
+          "h1": { "mobile": "48px", "desktop": "72" },
+          "h2": { "mobile": "32px", "desktop": "48" },
+          "h3": { "mobile": "24px", "desktop": "32" },
+          "h4": { "mobile": "16px", "desktop": "20" },
+          "h5": { "mobile": "15px", "desktop": "18" },
+          "h6": { "mobile": "14px", "desktop": "16" },
+          "h7": { "mobile": "12px", "desktop": "14" }
+        },
+        "bodySizes": {
+          "l":    { "mobile": "16px", "desktop": "18" },
+          "main": { "mobile": "14px", "desktop": "14" },
+          "s":    { "mobile": "12px", "desktop": "14" },
+          "xs":   { "mobile": "10px", "desktop": "12" }
+        },
+        "leading": { "main": "105%", "loose": "120%", "wide": "150%" },
+        "tracking": { "tight": "-0.5%", "narrow": "-0.2%", "main": "0%", "loose": "0.5%", "wide": "1%" },
+        "modularScale": { "basePx": 14, "ratio": 1.4 }
+      },
+      "textStyles": {
+        "heading-display-hero":   { "primitive": "h1", "weight": "extra-bold", "leading": "loose", "tracking": "tight",  "case": "UPPER" },
+        "heading-page-title":     { "primitive": "h2", "weight": "bold",       "leading": "loose", "tracking": "narrow", "case": "Title" },
+        "heading-section":        { "primitive": "h3", "weight": "bold",       "leading": "loose", "tracking": "main",   "case": "Title" },
+        "heading-modal":          { "primitive": "h4", "weight": "bold",       "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-card":           { "primitive": "h5", "weight": "semibold",   "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-banner":         { "primitive": "h6", "weight": "bold",       "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-final-price":    { "primitive": "h6", "weight": "extra-bold", "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-sku-title":      { "primitive": "h4", "weight": "semibold",   "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-subtitle":       { "primitive": "h7", "weight": "semibold",   "leading": "main",  "tracking": "main",   "case": "Title" },
+        "paragraph-lead":          { "primitive": "body-l",    "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-regular":       { "primitive": "body-main", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-small":         { "primitive": "body-s",    "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-strikethrough": { "primitive": "body-main", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-action-regular":         { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-action-uppercase":       { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-action-strikethrough":   { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-default-regular":        { "primitive": "body-s",    "weight": "regular",  "leading": "wide", "tracking": "main", "case": "sentence" },
+        "utility-default-strikethrough":  { "primitive": "body-s",    "weight": "regular",  "leading": "wide", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-default-uppercase":      { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-label-regular":          { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-label-uppercase":        { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-label-tall":             { "primitive": "body-s",    "weight": "semibold", "leading": "loose","tracking": "main", "case": "sentence" },
+        "utility-label-strikethrough":    { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-micro-regular":          { "primitive": "body-xs",   "weight": "regular",  "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-micro-bold":             { "primitive": "body-xs",   "weight": "extra-bold","leading": "main","tracking": "wide", "case": "sentence" },
+        "utility-micro-uppercase":        { "primitive": "body-xs",   "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-micro-strikethrough":    { "primitive": "body-xs",   "weight": "regular",  "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" }
+      },
+      "brandCharacter": {
+        "radiusSteps": {
+          "control":   "--x-sys-radius-full",
+          "input":     "--x-sys-radius-xs",
+          "container": "--x-sys-radius-xs",
+          "thumbnail": "--x-sys-radius-0",
+          "badge":     "--x-sys-radius-full"
+        },
+        "elevationCharacter": {
+          "interactive":    "--x-sys-elevation-level-1-main",
+          "modal":          "--x-sys-elevation-level-2-main",
+          "toast":          "--x-sys-elevation-level-3-main",
+          "nonInteractive": "--x-sys-elevation-flat"
+        },
+        "strokeWeight": {
+          "divider":      "--x-sys-stroke-thin",
+          "activeBorder": "--x-sys-stroke-medium",
+          "emphasis":     "--x-sys-stroke-thick"
+        },
+        "effectShadow": {
+          "primary":   "#033B00",
+          "secondary": "#8A6608",
+          "neutral":   "#000000"
+        },
+        "effectGlow": {
+          "primary":   "#ABFF00",
+          "secondary": "#FFB900"
+        },
+        "states": {
+          "hover":   "#ABFF00",
+          "pressed": "#568000"
+        }
+      }
+    },
+
+    "storeFlexible": {
+      "semanticDefaults": {
+        "_note": "Every mapping below is store-overridable. Tag them as suggestions, not requirements.",
+        "bg": {
+          "--x-bg-action-primary":       "var(--x-sys-colour-primary-main)    /* overridable */",
+          "--x-bg-action-primary-hover": "var(--x-sys-colour-primary-strong)  /* overridable */",
+          "--x-bg-action-secondary":     "var(--x-sys-colour-secondary-soft)  /* overridable */",
+          "--x-bg-action-destructive":   "var(--x-sys-colour-status-negative-main) /* overridable */",
+          "--x-bg-surface":              "var(--x-sys-colour-neutral-subtle)  /* overridable */",
+          "--x-bg-overlay":              "var(--x-sys-colour-neutral-heavy)   /* overridable */"
+        },
+        "text": {
+          "--x-text-primary":           "var(--x-sys-colour-neutral-inverse) /* overridable */",
+          "--x-text-secondary":         "var(--x-sys-colour-neutral-strong)  /* overridable */",
+          "--x-text-on-action-primary": "var(--x-sys-colour-primary-inverse) /* overridable */"
+        },
+        "border": {
+          "--x-border-default":         "var(--x-sys-colour-neutral-soft)    /* overridable */",
+          "--x-border-emphasis":        "var(--x-sys-colour-primary-main)    /* overridable */",
+          "--x-border-input-focused":   "var(--x-sys-colour-primary-strong)  /* overridable */"
+        }
+      },
+      "componentIntent": {
+        "buttonPrimary": {
+          "feel": "high-contrast pill CTA that reads as an acid-green 'go' signal, unmistakably the single dominant action on the view",
+          "defaultVariant": "solid-pill",
+          "alternatives": ["ghost", "outline", "glow"],
+          "colourDepthNote": "main or strong sys intensity step for the default; stores may choose subtle for a softer feel",
+          "tokenFamilies": ["--x-bg-action-primary", "--x-text-on-action-primary", "--x-sys-colour-primary-*"]
+        },
+        "buttonSecondary": {
+          "feel": "clearly subordinate to the primary CTA — smaller pill, gold or neutral, used for secondary platform/download links",
+          "defaultVariant": "outline-pill",
+          "alternatives": ["ghost", "solid-soft"],
+          "tokenFamilies": ["--x-bg-action-secondary", "--x-text-*", "--x-sys-colour-secondary-*"]
+        },
+        "card": {
+          "feel": "angled-frame HUD panel — near-black fill, thin structural border, occasional acid-green glow when active/selected",
+          "defaultVariant": "outlined",
+          "alternatives": ["elevated", "flat", "frosted"],
+          "tokenFamilies": ["--x-bg-*", "--x-sys-elevation-*", "--x-sys-radius-*"]
+        },
+        "badge": {
+          "feel": "compact rank/rarity pill — high-visibility, foil or solid fill",
+          "defaultVariant": "solid-primary",
+          "alternatives": ["outline", "soft-tint", "neutral"],
+          "tokenFamilies": ["--x-bg-action-*", "--x-text-*", "--x-sys-radius-full"]
+        },
+        "input": {
+          "feel": "clean HUD field, sharp corners, thin border that glows lime on focus",
+          "defaultVariant": "outlined",
+          "alternatives": ["filled", "underline"],
+          "tokenFamilies": ["--x-border-*", "--x-bg-*", "--x-sys-radius-*"]
+        },
+        "modal": {
+          "feel": "focused dialog over a dark scrim, sharp-cornered HUD panel with structural border",
+          "defaultVariant": "surface",
+          "alternatives": ["drawer", "bottomSheet"],
+          "tokenFamilies": ["--x-sys-elevation-level-2-main", "--x-bg-*", "--x-sys-radius-*"]
+        }
+      }
+    },
+
+    "assetManifest": [
+      {
+        "name": "logo",
+        "sourceUrl": "https://playcontestofchampions.com/wp-content/themes/mcoc/dist/assets/logo-mcoc.png",
+        "localPath": "refs/logo-mcoc-final.png",
+        "kind": "logo",
+        "intendedUse": "hero lockup, nav brand mark",
+        "licence": "© 2026 MARVEL. MARVEL CONTEST OF CHAMPIONS SOFTWARE © 2026 KABAM GAMES, INC., A NETMARBLE COMPANY. Reproduced at reduced resolution for internal design-reference use only, not for redistribution."
+      },
+      {
+        "name": "hero-keyart-july-banner",
+        "sourceUrl": "https://playcontestofchampions.com/wp-content/uploads/2026/06/july-banner.webp",
+        "localPath": "refs/july-banner.jpg",
+        "kind": "keyart",
+        "intendedUse": "homepage/hero backdrop reference — establishes the dark atmospheric background + character silhouette framing convention",
+        "licence": "© 2026 MARVEL / KABAM GAMES, INC. Reproduced at reduced resolution for internal design-reference use only, not for redistribution."
+      },
+      {
+        "name": "character-hobgoblin",
+        "sourceUrl": "https://playcontestofchampions.com/wp-content/uploads/2026/07/takeover-hobgoblin.webp",
+        "localPath": "refs/takeover-hobgoblin.jpg",
+        "kind": "character",
+        "intendedUse": "reference for character-render art direction (pose, lighting, comic-realism finish)",
+        "licence": "© 2026 MARVEL / KABAM GAMES, INC. Reproduced at reduced resolution for internal design-reference use only, not for redistribution."
+      },
+      {
+        "name": "character-black-tarantula",
+        "sourceUrl": "https://playcontestofchampions.com/wp-content/uploads/2026/06/takeover-black-tarantula.webp",
+        "localPath": "refs/takeover-black-tarantula.jpg",
+        "kind": "character",
+        "intendedUse": "reference for character-render art direction (pose, lighting, comic-realism finish)",
+        "licence": "© 2026 MARVEL / KABAM GAMES, INC. Reproduced at reduced resolution for internal design-reference use only, not for redistribution."
+      },
+      {
+        "name": "texture-stardust",
+        "sourceUrl": "https://playcontestofchampions.com/wp-content/themes/mcoc/dist/assets/background-stardust.png",
+        "localPath": "refs/background-stardust.png",
+        "kind": "texture",
+        "intendedUse": "reference for the ambient starfield/particle background texture used behind event tiles",
+        "licence": "© 2026 MARVEL / KABAM GAMES, INC. Reproduced at reduced resolution for internal design-reference use only, not for redistribution."
+      }
+    ],
+
+    "downstreamHandoff": [
+      { "from": "codashop.themePreset.presetStyle.seedColors + codashop.cssOverride",
+        "to": "src/tokens/ds/themes/mcoc.css",
+        "action": "write the theme scope block: ref seeds, font vars, bg-page, plus any surface overrides the alias graph cannot express" },
+      { "from": "generic.fontAcquisition",
+        "to": "src/tokens/ds/themes/mcoc.css (+ store fonts folder, since both fonts are licensed-local-woff2)",
+        "action": "obtain Hanzel Condensed Bold Italic and Eurostile licence files if pursuing pixel-exact reproduction, else ship the Saira Condensed / Titillium Web Google Fonts proxies and write @font-face / <link> accordingly" },
+      { "from": "codashop.assetManifest",
+        "to": "src/stores/mcoc/store.js (imagery registry)",
+        "action": "copy refs/ assets into the store assets folder and register each by intendedUse" },
+      { "from": "generic.voice.copyExamples + generic.voice.lexicon",
+        "to": "src/stores/mcoc/store.js (strings)",
+        "action": "seed user-visible copy in the extracted brand voice; obey the avoid-list" },
+      { "from": "codashop.storeFlexible.componentIntent + codashop.brandLocked.brandCharacter",
+        "to": "src/stores/mcoc/store.js (config capabilities)",
+        "action": "choose component variants and capability flags that realise the stated feel" },
+      { "from": "codashop.tier2SignatureSurfaces",
+        "to": "component-level CSS (per precedentFile)",
+        "action": "implement each signature surface as scoped CSS/component work — these are NOT expressible as tokens" }
+    ],
+
+    "tier2SignatureSurfaces": [
+      {
+        "name": "Acid-green portrait glow halo",
+        "surface": "Champion portrait frames / active nav items / selected tiles",
+        "tokenExpressible": false,
+        "implementation": "border: 1px solid #033B00; box-shadow: 0 0 4px 0 #ABFF00, 0 0 33px 0 rgba(171,255,0,.3);",
+        "precedentFile": "app.fc742dcb7e631b3dc407.css — .framed-square-media .framed-square-media-content img"
+      },
+      {
+        "name": "Gold foil gradient hero title",
+        "surface": "Large event/hero titles ('golden-header' class)",
+        "tokenExpressible": false,
+        "implementation": "background-image: repeating-linear-gradient(171deg,#e68515 36px,#eebe0d 82px,#ffe472 100px,#efc90b 120px,#eca903 166px); -webkit-background-clip: text; background-clip: text; color: transparent; combined with -webkit-text-stroke-width: 1px on large mobile sizes.",
+        "precedentFile": "app.fc742dcb7e631b3dc407.css — .gradient-gold, .golden-header h1"
+      },
+      {
+        "name": "Angled cut-corner HUD panel frame",
+        "surface": "Accordion / hub section frames",
+        "tokenExpressible": false,
+        "implementation": "SVG-clipped octagonal frame (all four corners chamfered) drawn as a repeating background-image data URI with a #333540 stroke over a #141517 fill, tiled along top/bottom edges of the panel.",
+        "precedentFile": "app.fc742dcb7e631b3dc407.css — .accordian .accordian-frame"
+      },
+      {
+        "name": "Radial alert badge gradient",
+        "surface": "Nav notification/alert pill",
+        "tokenExpressible": false,
+        "implementation": "background-image: radial-gradient(circle at 50% 53%, #ff9c00, #ba0000 170%); border: 1px solid #ffb900; box-shadow: inset 0 0 0 1px #000;",
+        "precedentFile": "app.fc742dcb7e631b3dc407.css — #global-nav .navigation .mobile-menu .tertiary-button"
+      }
+    ]
+  }
+}

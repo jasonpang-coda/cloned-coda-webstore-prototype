@@ -1,0 +1,326 @@
+/* ============================================================================
+   SEMANTIC TIER  —  theme-agnostic structure (:root)
+   ----------------------------------------------------------------------------
+   THE layer components consume. Every token aliases the system tier, so it
+   resolves through whatever theme is active. This file is the structural alias
+   graph (mirrors the Figma "Colours - Semantics" collection 1:1).
+
+   Brand-specific OVERRIDES (gradients, bonus colours) live in
+   themes/<store>.css and win by selector specificity ([data-theme] > :root).
+   Components must reference ONLY this tier (and .text-style-* / space tokens) —
+   never the system/spectrum/seed tiers, never a raw literal.
+   ============================================================================ */
+
+:root {
+  /* ── Card backgrounds ───────────────────────────────────────────────────*/
+  --x-bg-card-default:     var(--x-sys-colour-surface-l2-fill);
+  --x-bg-card-subtle:      var(--x-sys-colour-neutral-subtle);
+  --x-bg-card-selected:    var(--x-sys-colour-primary-subtle);
+  --x-bg-card-highlighted: var(--x-sys-colour-tertiary-subtle);
+  --x-bg-card-inverse:     var(--x-sys-colour-neutral-inverse);
+  --x-bg-card-success:     var(--x-sys-colour-surface-success-fill);
+
+  /* ── Hyperlink text ─────────────────────────────────────────────────────*/
+  --x-text-hyperlink-default: var(--x-sys-colour-hyperlink-main);
+  --x-text-hyperlink-hover:   var(--x-sys-colour-hyperlink-strong);
+  --x-text-hyperlink-focused: var(--x-sys-colour-hyperlink-strong);
+  --x-text-hyperlink-pressed: var(--x-sys-colour-hyperlink-heavy);
+  --x-text-hyperlink-inverse: var(--x-sys-colour-hyperlink-inverse);
+
+  /* ── Headers & body text ────────────────────────────────────────────────*/
+  --x-text-header-default: var(--x-sys-colour-ink-heavy);
+  --x-text-header-inverse: var(--x-sys-colour-ink-inverse);
+  --x-text-body-default:   var(--x-sys-colour-ink-main);
+  --x-text-body-soft:      var(--x-sys-colour-ink-soft);
+  --x-text-body-subtle:    var(--x-sys-colour-ink-subtle);
+  --x-text-body-inverse:   var(--x-sys-colour-ink-inverse);
+
+  /* ── Status text ────────────────────────────────────────────────────────*/
+  --x-text-success-default:  var(--x-sys-colour-positive-main);
+  --x-text-success-subtitle: var(--x-sys-colour-positive-soft);
+  --x-text-success-inverse:  var(--x-sys-colour-positive-inverse);
+  --x-text-warning-default:  var(--x-sys-colour-caution-main);
+  --x-text-warning-subtitle: var(--x-sys-colour-caution-soft);
+  --x-text-warning-inverse:  var(--x-sys-colour-caution-inverse);
+  --x-text-error-default:    var(--x-sys-colour-negative-main);
+  --x-text-error-subtitle:   var(--x-sys-colour-negative-soft);
+  --x-text-error-inverse:    var(--x-sys-colour-negative-inverse);
+
+  /* ── Misc text ──────────────────────────────────────────────────────────*/
+  --x-text-on-primary:        var(--x-sys-colour-ink-inverse); /* dark charcoal — text on primary (bright) button surface */
+  --x-text-on-action-secondary:  var(--x-sys-colour-ink-main);   /* near-white — text on secondary/frosted button surface */
+  --x-text-on-action-tertiary:   var(--x-sys-colour-ink-main);   /* near-white — text on tertiary/ghost button on dark surface */
+  --x-text-final-price:          var(--x-sys-colour-primary-main);
+  --x-text-placeholder:          var(--x-sys-colour-ink-subtle);
+
+  /* ── Bonus (web-bonus chips + bonus amounts) — alias the sys bonus role ──*/
+  --x-text-tag-bonus:    var(--x-sys-colour-bonus-inverse);
+  --x-text-bonus-amount: var(--x-sys-colour-bonus-strong);
+
+  /* ── Action backgrounds ─────────────────────────────────────────────────*/
+  --x-bg-action-primary:     var(--x-sys-colour-primary-main);
+  --x-bg-action-secondary:   var(--x-sys-colour-primary-subtle);
+  --x-bg-action-tertiary:    var(--x-sys-colour-fill-inverse-subtle);
+  --x-bg-action-destructive: var(--x-sys-colour-negative-strong);
+  --x-bg-action-subtle:      var(--x-sys-colour-primary-soft);
+  --x-bg-action-inverse:     var(--x-sys-colour-secondary-main);
+  --x-bg-action-caution:     var(--x-sys-colour-caution-soft);
+  --x-bg-action-positive:    var(--x-sys-colour-positive-strong);
+  /* Solid white/near-white CTA fill (Order Complete's "Back to Game" button —
+     Figma's white secondary action, distinct from --x-bg-action-secondary's
+     pale-yellow tint and --x-bg-action-tertiary's translucent frost). Pair
+     with --x-text-on-primary (dark ink) for contrast, same as the primary
+     (bright) button's text. */
+  --x-bg-action-neutral:     var(--x-sys-colour-surface-inverse);
+
+  /* ── Action background states (hover/pressed) — reconciled from prod ────
+     Every action variant darkens on hover (90%→#000) and pressed (80%→#000),
+     mirroring prod's --x-bg-action-*-hover/-pressed recipe. Lives at the
+     semantic tier (not a raw literal in components) — components read
+     e.g. --x-bg-action-primary-hover directly on :hover/:active. */
+  --x-bg-action-primary-hover:      color-mix(in oklab, var(--x-bg-action-primary) 90%, #000);
+  --x-bg-action-primary-pressed:    color-mix(in oklab, var(--x-bg-action-primary) 80%, #000);
+  --x-bg-action-secondary-hover:    color-mix(in oklab, var(--x-bg-action-secondary) 90%, #000);
+  --x-bg-action-secondary-pressed:  color-mix(in oklab, var(--x-bg-action-secondary) 80%, #000);
+  --x-bg-action-tertiary-hover:     color-mix(in oklab, var(--x-bg-action-tertiary) 90%, #000);
+  --x-bg-action-tertiary-pressed:   color-mix(in oklab, var(--x-bg-action-tertiary) 80%, #000);
+  --x-bg-action-subtle-hover:       color-mix(in oklab, var(--x-bg-action-subtle) 90%, #000);
+  --x-bg-action-subtle-pressed:     color-mix(in oklab, var(--x-bg-action-subtle) 80%, #000);
+  --x-bg-action-inverse-hover:      color-mix(in oklab, var(--x-bg-action-inverse) 90%, #000);
+  --x-bg-action-inverse-pressed:    color-mix(in oklab, var(--x-bg-action-inverse) 80%, #000);
+  --x-bg-action-caution-hover:      color-mix(in oklab, var(--x-bg-action-caution) 90%, #000);
+  --x-bg-action-caution-pressed:    color-mix(in oklab, var(--x-bg-action-caution) 80%, #000);
+  --x-bg-action-destructive-hover:  color-mix(in oklab, var(--x-bg-action-destructive) 90%, #000);
+  --x-bg-action-destructive-pressed: color-mix(in oklab, var(--x-bg-action-destructive) 80%, #000);
+  --x-bg-action-positive-hover:     color-mix(in oklab, var(--x-bg-action-positive) 90%, #000);
+  --x-bg-action-positive-pressed:   color-mix(in oklab, var(--x-bg-action-positive) 80%, #000);
+  --x-bg-action-neutral-hover:      color-mix(in oklab, var(--x-bg-action-neutral) 90%, #000);
+  --x-bg-action-neutral-pressed:    color-mix(in oklab, var(--x-bg-action-neutral) 80%, #000);
+
+  /* ── Page / chrome backgrounds ──────────────────────────────────────────*/
+  --x-bg-page:    var(--x-sys-colour-surface-page);
+  --x-bg-navbar:  var(--x-sys-colour-surface-panel);
+  --x-bg-nav:     var(--x-sys-colour-surface-l2-fill);    /* bottom category nav — L2 */
+  --x-bg-sheet:        var(--x-sys-colour-surface-l2-fill);   /* checkout sheet — L2 */
+  --x-bg-sheet-footer: var(--x-sys-colour-surface-l2-fill);
+  --x-bg-overlay: var(--x-sys-colour-surface-overlay);
+  --x-bg-info:    var(--x-sys-colour-fill-inverse-subtle);
+  /* Selected-tab background for the L1/L2/L3 nav (NavBar's .navbar__intent,
+     CategoryNav's .cat-nav__item), consumed via `background-image` (not
+     `background-color`) so a store can put a gradient here — `none` is the
+     background-image equivalent of a no-op, layered on top of those items'
+     own `background: transparent`, inert everywhere except a store that
+     overrides it (see fcm.css); every other store's selected tab keeps its
+     current plain text/border treatment. */
+  --x-bg-nav-selected: none;
+  /* Selected-tab TEXT colour for the same L1/L2/L3 nav — defaults to the
+     existing hyperlink treatment (byte-for-byte unchanged for every store
+     that doesn't override it) so only a store overriding --x-bg-nav-selected
+     to something solid/saturated needs to also override this for contrast
+     (see fcm.css: hyperlink colour reads poorly on a solid success-green fill). */
+  --x-text-nav-selected: var(--x-text-hyperlink-default);
+  /* Selected-tab underline BORDER colour for the same L1/L2/L3 nav — defaults
+     to the existing hyperlink treatment (a plain solid border-color, exactly
+     what every store already had). A gradient can't be expressed as a CSS
+     border-color at all, so a store wanting one instead sets this to
+     `transparent` (hides the solid border) and provides
+     --x-gradient-nav-selected-stroke below, which paints via a pseudo-element. */
+  --x-border-nav-selected: var(--x-text-hyperlink-default);
+  /* The pseudo-element gradient-stroke sliver itself (see NavBar.vue /
+     CategoryNav.vue's `.is-active::after`) — `none` is inert (invisible)
+     everywhere a store hasn't set --x-border-nav-selected to transparent. */
+  --x-gradient-nav-selected-stroke: none;
+  /* Thickness of that sliver — defaults to the solid border's own thickness
+     so sizing stays sensible even if some other store ever turns this on;
+     FCM overrides it to 4px (--x-sys-stroke-thick) to match its Figma spec. */
+  --border-weight-nav-selected-stroke: var(--border-weight-selected);
+
+  /* ── Snackbars ──────────────────────────────────────────────────────────*/
+  --x-bg-snackbar-neutral:   var(--x-sys-colour-surface-floating);
+  --x-bg-snackbar-success:   var(--x-sys-colour-surface-success-fill);
+  --x-bg-snackbar-warning:   var(--x-sys-colour-surface-warning-fill);
+  --x-bg-snackbar-error:     var(--x-sys-colour-surface-failure-fill);
+  --x-bg-snackbar-highlight: var(--x-sys-colour-secondary-subtle);
+
+  /* ── Tags ───────────────────────────────────────────────────────────────*/
+  --x-bg-tag-neutral: var(--x-sys-colour-fill-main-subtle);
+  --x-bg-tag-success: var(--x-sys-colour-positive-subtle);
+  --x-bg-tag-warning: var(--x-sys-colour-caution-subtle);
+  --x-bg-tag-error:   var(--x-sys-colour-negative-subtle);
+  --x-bg-tag-inverse: var(--x-sys-colour-fill-inverse-subtle);
+  --x-bg-tag-bonus:   var(--x-sys-colour-bonus-subtle);
+
+  /* ── Info banners ───────────────────────────────────────────────────────*/
+  --x-bg-info-banner-neutral:     var(--x-sys-colour-neutral-subtle);
+  --x-bg-info-banner-success:     var(--x-sys-colour-positive-subtle);
+  --x-bg-info-banner-warning:     var(--x-sys-colour-caution-subtle);
+  --x-bg-info-banner-error:       var(--x-sys-colour-negative-subtle);
+  --x-bg-info-banner-highlighted: var(--x-sys-colour-secondary-main);
+
+  /* ── Indicators (pills / badges / dots) ─────────────────────────────────*/
+  --x-bg-indicator-prominent-default:   var(--x-sys-colour-negative-main);
+  --x-bg-indicator-prominent-subtle:    var(--x-sys-colour-negative-soft);
+  --x-bg-indicator-brand-default:       var(--x-sys-colour-primary-main);
+  --x-bg-indicator-brand-subtle:        var(--x-sys-colour-primary-soft);
+  --x-bg-indicator-neutral-default:     var(--x-sys-colour-neutral-main);
+  --x-bg-indicator-neutral-subtle:      var(--x-sys-colour-neutral-soft);
+  --x-bg-indicator-success-default:     var(--x-sys-colour-positive-main);
+  --x-bg-indicator-success-subtle:      var(--x-sys-colour-positive-soft);
+  --x-bg-indicator-warning-default:     var(--x-sys-colour-caution-main);
+  --x-bg-indicator-warning-subtle:      var(--x-sys-colour-caution-soft);
+  --x-bg-indicator-selected-default:    var(--x-sys-colour-secondary-main);
+  --x-bg-indicator-selected-subtle:     var(--x-sys-colour-secondary-soft);
+  --x-bg-indicator-highlighted-default: var(--x-sys-colour-tertiary-main);
+  --x-bg-indicator-highlighted-subtle:  var(--x-sys-colour-tertiary-soft);
+  --x-bg-indicator-error-default:       var(--x-sys-colour-negative-main);
+  --x-bg-indicator-error-subtle:        var(--x-sys-colour-negative-soft);
+
+  /* ── Controls ───────────────────────────────────────────────────────────*/
+  --x-bg-control-default:   var(--x-sys-colour-neutral-subtle);
+  --x-bg-control-secondary: var(--x-sys-colour-fill-main-subtle);
+  --x-bg-control-active:    var(--x-bg-action-primary);
+
+  /* ── Sections ───────────────────────────────────────────────────────────*/
+  --x-bg-section-alt:         var(--x-sys-colour-neutral-subtle);
+  --x-bg-section-default:     var(--x-sys-colour-surface-container);
+  --x-bg-section-subtle:      var(--x-sys-colour-primary-subtle);
+  --x-bg-section-brand:       var(--x-sys-colour-primary-main);
+  --x-bg-section-inverse:     var(--x-sys-colour-neutral-inverse);
+  --x-bg-section-success:     var(--x-sys-colour-positive-main);
+  --x-bg-section-warning:     var(--x-sys-colour-caution-main);
+  --x-bg-section-error:       var(--x-sys-colour-negative-main);
+  --x-bg-section-highlighted: var(--x-sys-colour-secondary-main);
+
+  /* ── Inputs ─────────────────────────────────────────────────────────────*/
+  --x-bg-input-default:  var(--x-sys-colour-fill-main-subtle);
+  --x-bg-input-inverse:  var(--x-sys-colour-fill-inverse-subtle);
+  --x-bg-input-success:  var(--x-sys-colour-positive-subtle);
+  --x-bg-input-warning:  var(--x-sys-colour-caution-subtle);
+  --x-bg-input-error:    var(--x-sys-colour-negative-subtle);
+  --x-bg-input-disabled: var(--x-sys-colour-neutral-subtle);
+
+  /* ── SKU card (surface = L1; status fills = container status surfaces) ────*/
+  --x-bg-sku-card-default:        var(--x-sys-colour-surface-l1-fill);
+  --x-bg-sku-card-price-default:  var(--x-sys-colour-primary-subtle);
+  --x-bg-sku-card-price-selected: var(--x-sys-colour-primary-soft);
+  --x-bg-sku-card-success:        var(--x-sys-colour-surface-success-fill);
+  --x-bg-sku-card-warning:        var(--x-sys-colour-surface-warning-fill);
+  --x-bg-sku-card-error:          var(--x-sys-colour-surface-failure-fill);
+  --x-bg-sku-card-selected:       var(--x-sys-colour-primary-subtle);
+  --x-bg-sku-card-highlighted:    var(--x-sys-colour-tertiary-subtle);
+  /* Reconciled from prod (bg-level hover/pressed/focused, distinct from the
+     existing L1 border-level hover/focused/pressed below). */
+  --x-bg-sku-card-hover:   var(--x-sys-colour-neutral-subtle);
+  --x-bg-sku-card-pressed: var(--x-sys-colour-neutral-soft);
+  --x-bg-sku-card-focused: var(--x-sys-colour-neutral-subtle);
+
+  /* ── Borders: card ──────────────────────────────────────────────────────*/
+  --x-border-card-default:     var(--x-sys-colour-neutral-soft);
+  --x-border-card-hover:       var(--x-sys-colour-neutral-main);
+  --x-border-card-focused:     var(--x-sys-colour-neutral-main);
+  --x-border-card-pressed:     var(--x-sys-colour-neutral-strong);
+  --x-border-card-selected:    var(--x-sys-colour-primary-main);
+  --x-border-card-highlighted: var(--x-sys-colour-tertiary-main);
+
+  /* ── Borders: SKU card (= L1 border — the gradient ring) ─────────────────*/
+  --x-border-sku-card-default:     var(--x-sys-colour-surface-l1-border);
+  --x-border-sku-card-hover:       var(--x-sys-colour-surface-l1-border-hover);
+  --x-border-sku-card-focused:     var(--x-sys-colour-neutral-strong);
+  --x-border-sku-card-pressed:     var(--x-sys-colour-neutral-heavy);
+  --x-border-sku-card-success:     var(--x-sys-colour-positive-main);
+  --x-border-sku-card-warning:     var(--x-sys-colour-caution-main);
+  --x-border-sku-card-error:       var(--x-sys-colour-negative-main);
+  --x-border-sku-card-selected:    var(--x-sys-colour-primary-main);
+  --x-border-sku-card-highlighted: var(--x-sys-colour-tertiary-main);
+
+  /* ── Production SKU card design pilot (FCM only, fcmSkuCardModel flag) ────
+     Every value here is inert (invisible) by default — the components that
+     consume them only ever render at all behind the FCM-gated flag, but this
+     keeps the same defence-in-depth convention as --x-bg-nav-selected etc.:
+     no other store is affected even if something were mis-wired. Real values
+     live in themes/fcm.css. */
+  --x-bg-image-sku-card-prod:           none;         /* regular card's own background image */
+  --x-border-sku-card-prod:             transparent; /* regular card's outside hairline */
+  --x-gradient-sku-card-prod-price:     none;         /* regular card's champagne price bar */
+  --x-bg-sku-card-prod-reward:          transparent; /* regular card's reward strip */
+  --x-border-sku-card-prod-highlighted: transparent; /* highlighted card's 2px border */
+  --x-bg-image-sku-card-prod-highlighted: none;       /* highlighted card's own background image */
+  --x-gradient-sku-card-prod-gold:      none;         /* highlighted card's CTA + tag fill (shared stops) */
+  --x-gradient-sku-card-prod-gold-angle: 0deg;        /* shared light angle for CTA, tag, and the champagne price bar */
+  --x-text-sku-tag-popular:             transparent; /* "RECOMMENDED" tag text */
+  --x-bg-loyalty-badge-prod:            transparent; /* highlighted card's MP badge disc */
+
+  /* ── Borders: action ────────────────────────────────────────────────────*/
+  --x-border-action-default:     var(--x-sys-colour-primary-main);
+  --x-border-action-tertiary:    var(--x-sys-colour-fill-inverse-strong);
+  --x-border-action-destructive: var(--x-sys-colour-negative-subtle);
+  --x-border-action-inverse:     var(--x-sys-colour-secondary-main);
+  /* Reconciled from prod. */
+  --x-border-action-hover:   var(--x-sys-colour-primary-strong);
+  --x-border-action-focused: var(--x-sys-colour-primary-strong);
+  --x-border-action-pressed: var(--x-sys-colour-primary-heavy);
+
+  /* ── Borders: chrome / structure ────────────────────────────────────────*/
+  --x-border-divider: var(--x-sys-colour-neutral-soft);
+  --x-border-navbar:  var(--x-sys-colour-neutral-soft);
+  --x-border-nav:     var(--x-sys-colour-surface-l2-border);   /* bottom category nav — L2 */
+  --x-border-sheet:   var(--x-sys-colour-surface-l3-border);
+
+  /* ── Borders: control ───────────────────────────────────────────────────*/
+  --x-border-control-default:   var(--x-sys-colour-neutral-main);
+  --x-border-control-secondary: var(--x-sys-colour-fill-main-strong);
+  --x-border-control-active:    var(--x-sys-colour-primary-main);
+
+  /* ── Borders: input ─────────────────────────────────────────────────────*/
+  --x-border-input-default: var(--x-sys-colour-neutral-main);
+  --x-border-input-hover:   var(--x-sys-colour-primary-main);
+  --x-border-input-focused: var(--x-sys-colour-primary-main);
+  --x-border-input-pressed: var(--x-sys-colour-primary-soft);
+  --x-border-input-success: var(--x-sys-colour-positive-main);
+  --x-border-input-warning: var(--x-sys-colour-caution-main);
+  --x-border-input-error:    var(--x-sys-colour-negative-main);
+  --x-border-input-inverse:  var(--x-sys-colour-fill-inverse-strong);
+  --x-border-input-selected: var(--x-border-input-focused);
+  --x-border-input-disabled: var(--x-sys-colour-neutral-soft);
+
+  /* ── Borders: tag ───────────────────────────────────────────────────────*/
+  --x-border-tag-neutral:     var(--x-sys-colour-fill-main-strong);
+  --x-border-tag-success:     var(--x-sys-colour-positive-soft);
+  --x-border-tag-warning:     var(--x-sys-colour-caution-soft);
+  --x-border-tag-error:       var(--x-sys-colour-negative-soft);
+  --x-border-tag-highlighted: var(--x-sys-colour-tertiary-soft);
+  --x-border-tag-inverse:     var(--x-sys-colour-fill-inverse-strong);
+
+  /* ── Borders: snackbar ──────────────────────────────────────────────────*/
+  --x-border-snackbar-neutral:     var(--x-sys-colour-neutral-soft);
+  --x-border-snackbar-success:     var(--x-sys-colour-positive-main);
+  --x-border-snackbar-warning:     var(--x-sys-colour-caution-main);
+  --x-border-snackbar-error:       var(--x-sys-colour-negative-main);
+  --x-border-snackbar-highlighted: var(--x-sys-colour-tertiary-main);
+
+  /* ── Borders: info banner ───────────────────────────────────────────────*/
+  --x-border-info-banner-neutral:     var(--x-sys-colour-secondary-subtle);
+  --x-border-info-banner-success:     var(--x-sys-colour-positive-subtle);
+  --x-border-info-banner-warning:     var(--x-sys-colour-caution-subtle);
+  --x-border-info-banner-error:       var(--x-sys-colour-negative-subtle);
+  --x-border-info-banner-highlighted: var(--x-sys-colour-tertiary-subtle);
+
+  /* ── Borders: indicator ─────────────────────────────────────────────────*/
+  --x-border-indicator-prominent:   var(--x-sys-colour-negative-subtle);
+  --x-border-indicator-brand:       var(--x-sys-colour-primary-subtle);
+  --x-border-indicator-neutral:     var(--x-sys-colour-neutral-subtle);
+  --x-border-indicator-success:     var(--x-sys-colour-positive-subtle);
+  --x-border-indicator-warning:     var(--x-sys-colour-caution-subtle);
+  --x-border-indicator-selected:    var(--x-sys-colour-primary-subtle);
+  --x-border-indicator-highlighted: var(--x-sys-colour-secondary-subtle);
+  --x-border-indicator-error:       var(--x-sys-colour-negative-subtle);
+
+  /* ── Popover / player card / focused input text — reconciled from prod ───*/
+  --x-border-popover:      var(--x-border-divider);
+  --x-border-player-card:  var(--x-border-divider);
+  --x-text-input-focused:  var(--x-sys-colour-primary-main);
+
+  /* ── Callout (in-tier via tertiary — no palette-direct bypass) ───────────*/
+  --x-bg-callout-1: var(--x-sys-colour-tertiary-subtle);
+  --x-bg-callout-2: var(--x-sys-colour-tertiary-main);
+}

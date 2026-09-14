@@ -1,0 +1,382 @@
+/* ── eFootball Sans — KONAMI brand face ───────────────────────────────────────
+   Three cuts supplied: Light 300, Regular 400, Bold 700. No Medium (500) or
+   Semibold (600) file — weight tokens below remap those roles onto Light/Regular
+   to avoid faux-bold synthesis (same pattern as FCM's Cruyff Sans).
+   Paths relative to this file: ../../../stores/efootball/fonts/ */
+@font-face {
+  font-family: 'eFootball Sans';
+  src: url('../../../stores/efootball/fonts/eFootballSans-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'eFootball Sans';
+  src: url('../../../stores/efootball/fonts/eFootballSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'eFootball Sans';
+  src: url('../../../stores/efootball/fonts/eFootballSans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================================
+   EFOOTBALL THEME  —  eFootball™  —  [data-theme="efootball"]
+   ----------------------------------------------------------------------------
+   KONAMI's eFootball™ web store theme. Deep-blue brand (#000096) with a yellow
+   (#FFFF00) primary, magenta (#FF0082) secondary, indigo (#3132FE) tertiary,
+   and a fixed full-cover page background image.
+
+   Coexists with codm and fcm — switch via <html data-theme="efootball">.
+   The structural tiers (system.css / semantics.css / space.css /
+   text-styles.css) live in :root and are theme-agnostic; this block
+   cascades on top of them.
+
+   Colour: OKLCH, converted 1:1 from the KONAMI Figma hex export
+   (`eFootball tokens.css`); HDR-boosted past the sRGB ceiling on P3 panels in
+   the @media (dynamic-range: high) block below. Original hex kept in trailing
+   inline comments for traceability.
+
+   Card-surface model: the export ships LIGHT (#F0F0FA) cards, but we keep the
+   prototype's DARK translucent card surfaces here (re-tinted deep blue) so the
+   existing white-on-card component text stays legible without per-component
+   overrides. Light-card values are a deferred follow-up.
+   ============================================================================ */
+
+[data-theme="efootball"] {
+
+  /* ── Seeds (Figma --ref-*) ────────────────────────────────────────────────*/
+  --x-ref-primary:         oklch(0.968 0.211 109.8);  /* #FFFF00 yellow */
+  --x-ref-secondary:       oklch(0.646 0.261 1.8);    /* #FF0082 magenta */
+  --x-ref-tertiary:        oklch(0.494 0.283 269.5);  /* #3132FE indigo */
+  --x-ref-status-positive: oklch(0.593 0.189 144.4);  /* #039923 */
+  --x-ref-status-caution:  oklch(0.618 0.149 57.5);   /* #C66A00 */
+  --x-ref-status-negative: oklch(0.635 0.251 21.6);   /* #FF113F */
+  --x-ref-neutral:         oklch(0.304 0.211 264.1);  /* #000096 deep blue */
+
+  /* ── Spectrums (converted from Figma hex) ─────────────────────────────────*/
+
+  /* primary (yellow) — seed at 300; ramp darkens to orange/brown (the amber
+     mids feed the best-seller hero + HDR glow), lightens to pale at 50 */
+  --x-palette-primary-950: oklch(0.380 0.092 56.8);   /* #663300 */
+  --x-palette-primary-900: oklch(0.503 0.126 54.2);   /* #994C00 */
+  --x-palette-primary-800: oklch(0.620 0.156 53.5);   /* #CC6600 */
+  --x-palette-primary-700: oklch(0.744 0.181 56.5);   /* #FF8800 */
+  --x-palette-primary-600: oklch(0.802 0.171 73.3);   /* #FFAA00 */
+  --x-palette-primary-500: oklch(0.865 0.177 90.4);   /* #FFCC00 */
+  --x-palette-primary-400: oklch(0.887 0.182 95.3);   /* #FFD700 */
+  --x-palette-primary-300: var(--x-ref-primary);        /* #FFFF00 seed */
+  --x-palette-primary-200: oklch(0.975 0.149 108.9);  /* #FFFF80 */
+  --x-palette-primary-100: oklch(0.983 0.095 108.0);  /* #FFFFB3 */
+  --x-palette-primary-50:  oklch(0.993 0.034 107.0);  /* #FFFFE5 */
+
+  /* secondary (magenta) — seed at 500 */
+  --x-palette-secondary-950: oklch(0.143 0.060 350.4); /* #1A000D */
+  --x-palette-secondary-900: oklch(0.210 0.086 355.2); /* #33001A */
+  --x-palette-secondary-800: oklch(0.331 0.134 359.0); /* #660034 */
+  --x-palette-secondary-700: oklch(0.442 0.179 0.5);   /* #99004E */
+  --x-palette-secondary-600: oklch(0.546 0.221 1.3);   /* #CC0068 */
+  --x-palette-secondary-500: var(--x-ref-secondary);     /* #FF0082 seed */
+  --x-palette-secondary-400: oklch(0.659 0.236 9.1);   /* #FF3373 */
+  --x-palette-secondary-300: oklch(0.715 0.190 3.7);   /* #FF6696 */
+  --x-palette-secondary-200: oklch(0.797 0.127 0.2);   /* #FF99B9 */
+  --x-palette-secondary-100: oklch(0.894 0.061 357.7); /* #FFCCDC */
+  --x-palette-secondary-50:  oklch(0.948 0.030 351.5); /* #FFE6F0 */
+
+  /* tertiary (indigo) — seed at 700 */
+  --x-palette-tertiary-950: oklch(0.195 0.061 291.2);  /* #160E2E */
+  --x-palette-tertiary-900: oklch(0.288 0.137 278.2);  /* #21186C */
+  --x-palette-tertiary-800: oklch(0.378 0.206 272.2);  /* #2722AC */
+  --x-palette-tertiary-700: var(--x-ref-tertiary);       /* #3132FE seed */
+  --x-palette-tertiary-600: oklch(0.555 0.251 279.7);  /* #614CFF */
+  --x-palette-tertiary-500: oklch(0.638 0.206 288.0);  /* #8A6EFF */
+  --x-palette-tertiary-400: oklch(0.717 0.163 293.2);  /* #A98DFF */
+  --x-palette-tertiary-300: oklch(0.804 0.112 296.6);  /* #C6B0FF */
+  --x-palette-tertiary-200: oklch(0.886 0.064 298.0);  /* #DED1FF */
+  --x-palette-tertiary-100: oklch(0.943 0.030 300.3);  /* #EFE8FE */
+  --x-palette-tertiary-50:  oklch(0.975 0.014 299.8);  /* #F8F5FF */
+
+  /* neutral (blue ramp) — seed at 950; page = 1000 (#000066 deep blue) */
+  --x-palette-neutral-1000: oklch(0.231 0.160 264.1); /* #000066 */
+  --x-palette-neutral-950:  var(--x-ref-neutral);       /* #000096 seed */
+  --x-palette-neutral-900:  oklch(0.335 0.216 266.4); /* #0D0DA3 */
+  --x-palette-neutral-800:  oklch(0.364 0.217 268.7); /* #1A1AAD */
+  --x-palette-neutral-700:  oklch(0.421 0.202 273.5); /* #3333B8 */
+  --x-palette-neutral-600:  oklch(0.490 0.178 277.6); /* #4D4DC2 */
+  --x-palette-neutral-500:  oklch(0.561 0.154 280.2); /* #6666CC */
+  --x-palette-neutral-400:  oklch(0.651 0.120 282.6); /* #8585D6 */
+  --x-palette-neutral-300:  oklch(0.738 0.088 284.0); /* #A3A3E0 */
+  --x-palette-neutral-200:  oklch(0.828 0.057 285.1); /* #C2C2EB */
+  --x-palette-neutral-100:  oklch(0.913 0.028 285.8); /* #E0E0F5 */
+  --x-palette-neutral-50:   oklch(0.958 0.013 286.1); /* #F0F0FA */
+  --x-palette-neutral-0:    oklch(1 0 0);             /* #FFFFFF */
+
+  /* status-positive (green) — seed at 500 */
+  --x-palette-status-positive-950: oklch(0.182 0.053 138.3); /* #051701 */
+  --x-palette-status-positive-900: oklch(0.258 0.085 142.2); /* #022D01 */
+  --x-palette-status-positive-800: oklch(0.333 0.105 144.6); /* #01430B */
+  --x-palette-status-positive-700: oklch(0.419 0.133 144.3); /* #025E12 */
+  --x-palette-status-positive-600: oklch(0.500 0.160 144.4); /* #007919 */
+  --x-palette-status-positive-500: var(--x-ref-status-positive); /* #039923 */
+  --x-palette-status-positive-400: oklch(0.677 0.216 144.5); /* #01B72C */
+  --x-palette-status-positive-300: oklch(0.769 0.246 144.5); /* #02D936 */
+  --x-palette-status-positive-200: oklch(0.860 0.198 143.2); /* #77F174 */
+  --x-palette-status-positive-100: oklch(0.925 0.145 142.3); /* #ACFFA4 */
+  --x-palette-status-positive-50:  oklch(0.968 0.057 141.3); /* #E0FFDB */
+
+  /* status-caution (amber) — seed at 500 */
+  --x-palette-status-caution-950: oklch(0.187 0.039 75.2);  /* #1D1000 */
+  --x-palette-status-caution-900: oklch(0.270 0.060 64.2);  /* #3A1F01 */
+  --x-palette-status-caution-800: oklch(0.347 0.082 59.0);  /* #582D00 */
+  --x-palette-status-caution-700: oklch(0.437 0.105 57.9);  /* #7B4000 */
+  --x-palette-status-caution-600: oklch(0.522 0.126 57.1);  /* #9E5301 */
+  --x-palette-status-caution-500: var(--x-ref-status-caution); /* #C66A00 */
+  --x-palette-status-caution-400: oklch(0.706 0.169 57.6);  /* #EC8002 */
+  --x-palette-status-caution-300: oklch(0.797 0.142 59.7);  /* #FFA556 */
+  --x-palette-status-caution-200: oklch(0.880 0.078 59.6);  /* #FFCCA4 */
+  --x-palette-status-caution-100: oklch(0.940 0.036 59.2);  /* #FEE6D4 */
+  --x-palette-status-caution-50:  oklch(0.974 0.015 54.9);  /* #FFF4ED */
+
+  /* status-negative (red) — seed at 500 */
+  --x-palette-status-negative-950: oklch(0.191 0.061 39.4); /* #290700 */
+  --x-palette-status-negative-900: oklch(0.278 0.111 23.5); /* #52010A */
+  --x-palette-status-negative-800: oklch(0.358 0.143 21.6); /* #760117 */
+  --x-palette-status-negative-700: oklch(0.447 0.179 21.5); /* #A00223 */
+  --x-palette-status-negative-600: oklch(0.536 0.215 21.6); /* #CD012F */
+  --x-palette-status-negative-500: var(--x-ref-status-negative); /* #FF113F */
+  --x-palette-status-negative-400: oklch(0.714 0.179 23.5); /* #FF6D6B */
+  --x-palette-status-negative-300: oklch(0.802 0.113 24.5); /* #FFA19A */
+  --x-palette-status-negative-200: oklch(0.884 0.061 24.6); /* #FFCAC5 */
+  --x-palette-status-negative-100: oklch(0.941 0.028 25.9); /* #FEE5E2 */
+  --x-palette-status-negative-50:  oklch(0.975 0.011 24.3); /* #FEF4F3 */
+
+  /* ── Typography (eFootball Sans) ────────────────────────────────────────── */
+  --x-sys-font-family-heading: 'eFootball Sans', sans-serif;
+  --x-sys-font-family-body:    'eFootball Sans', sans-serif;
+
+  /* Figma intends regular 400 / semibold 600 / bold 700 / extra-bold 800, but
+     only Light 300 / Regular 400 / Bold 700 cuts are supplied. Map to those:
+     regular → Regular 400, semibold → 400, bold/extra-bold → Bold 700. */
+  --x-sys-weight-extra-bold: 700;
+  --x-sys-weight-bold:       700;
+  --x-sys-weight-semibold:   400;
+  --x-sys-weight-regular:    400;
+
+  --x-sys-size-h1: 28px;
+  --x-sys-size-h2: 24px;
+  --x-sys-size-h3: 22px;
+  --x-sys-size-h4: 20px;
+  --x-sys-size-h5: 18px;
+  --x-sys-size-h6: 16px;
+  --x-sys-size-h7: 18px;
+  --x-sys-size-body-l:    18px;   /* Figma body-l */
+  --x-sys-size-body-main: 16px;   /* Figma body-main */
+  --x-sys-size-body-s:    14px;   /* Figma body-s */
+  --x-sys-size-body-xs:   10px;   /* Figma body-xs */
+
+  --x-sys-letter-spacing-tight:  -0.005em;
+  --x-sys-letter-spacing-narrow: -0.002em;
+  --x-sys-letter-spacing-main:    0;
+  --x-sys-letter-spacing-loose:   0.005em;
+  --x-sys-letter-spacing-wide:    0.01em;
+
+  --x-sys-line-height-main:  1;
+  --x-sys-line-height-loose: 1.2;
+  --x-sys-line-height-wide:  1.5;
+
+  /* No condense — eFootball Sans renders at its true width */
+  --x-sys-font-condense: 1;
+
+  /* ── Container surfaces (L1–L3 + status) ─────────────────────────────────
+     Moved to the html[data-theme="efootball"] block below — they must beat the
+     system.css :root defaults (0,1,1 > 0,1,0). */
+
+  /* Container blur — 16px for all L1/L2/L3 and status surfaces in eFootball.
+     Components use blur(var(--x-blur-container, 32px)); the 32px fallback keeps
+     CODM/FCM visuals unchanged. */
+  --x-blur-container: 16px;
+
+  /* Primary sign-in action — yellow. Text on these CTAs must use
+     --x-text-on-primary (indigo on yellow) for accessible contrast. */
+  --x-bg-action-signin: var(--x-bg-action-primary);
+  /* BONUS / BEST VALUE tag fill + label inherit the base sys bonus role
+     (--sys-colour-bonus-* = primary) → reproduces primary-950 / primary-50. */
+}
+
+/* ── Specificity-safe overrides — html[data-theme="efootball"] (0,1,1) beats
+   :root (0,1,0) in the structural tiers imported AFTER this theme file (see
+   main.js: stores import first). Tokens redefined in a later :root (the
+   --sys-colour-x role steps, semantic --text-x and --border-x, --radius-x and
+   --hdr-x) MUST live here, not in the plain [data-theme] block above, or they lose.
+   This also beats scoped component rules (0,2,0): html[data-theme]+class = (0,2,1). */
+html[data-theme="efootball"] {
+
+  /* ── Container surfaces — Figma L1/L2/L3 spec (node 2703:38794–38808).
+     html[data-theme] (0,1,1) so these beat the system.css :root defaults (0,1,0).
+     L1: transparent glass — no fill, blur alone separates. L2: #000096 @60%
+     (SKU cards). L3: #000096 @88% (sheets/modals/popovers). Wrapped in
+     linear-gradient() so valid for both `background` and `background-image`. */
+  --x-sys-colour-surface-l1-fill: linear-gradient(to bottom, transparent, transparent);
+  --x-sys-colour-surface-l1-border:       oklch(0.95 0 0 / 0.10);
+  --x-sys-colour-surface-l1-border-hover: oklch(0.95 0 0 / 0.22);
+  --x-sys-colour-surface-l2-fill: linear-gradient(
+    oklch(0.304 0.211 264.1 / 0.60),
+    oklch(0.304 0.211 264.1 / 0.60)
+  );  /* rgba(0,0,150,0.60) — #000096 */
+  --x-sys-colour-surface-l2-border: oklch(0.95 0 0 / 0.10);
+  --x-sys-colour-surface-l3-fill: linear-gradient(
+    oklch(0.304 0.211 264.1 / 0.88),
+    oklch(0.304 0.211 264.1 / 0.88)
+  );  /* rgba(0,0,150,0.88) — #000096 */
+  --x-sys-colour-surface-l3-border: oklch(0.95 0 0 / 0.12);
+  /* Status — 700 palette step @60%, matching L2's weight while signalling hue. */
+  --x-sys-colour-surface-success-fill: linear-gradient(
+    oklch(0.419 0.133 144.3 / 0.60),
+    oklch(0.419 0.133 144.3 / 0.60)
+  );  /* positive-700 #025E12 at 60% */
+  --x-sys-colour-surface-warning-fill: linear-gradient(
+    oklch(0.437 0.105 57.9 / 0.60),
+    oklch(0.437 0.105 57.9 / 0.60)
+  );  /* caution-700 #7B4000 at 60% */
+  --x-sys-colour-surface-failure-fill: linear-gradient(
+    oklch(0.447 0.179 21.5 / 0.60),
+    oklch(0.447 0.179 21.5 / 0.60)
+  );  /* negative-700 #A00223 at 60% */
+
+  /* ─── Fixed page background image ─────────────────────────────────────────
+     App.vue injects --page-bg-image when assets.brand.bg is defined. The
+     html[data-theme] selector (0,2,1) beats DeviceFrame's scoped .device__screen
+     (0,2,0). background-attachment:fixed keeps the art in place while scrolling.
+     (In framed prototype mode the parent transform:scale() limits true viewport
+     fixing; it anchors to the local stacking context — correct in responsive.) */
+  .device__screen {
+    background-image:    var(--page-bg-image, none);
+    background-size:     cover;
+    background-position: center top;
+    background-attachment: fixed;
+  }
+
+  /* ── Role-step remap (override system.css :root) ──────────────────────────
+     Yellow emphasizes by LIGHTENING, so the primary ramp shifts toward lighter
+     steps (seed #FFFF00 sits at 300). Tertiary is centred on its indigo 700
+     seed. Secondary already matches system.css. Neutral + ink are deliberately
+     left at the dark-tuned system.css defaults so dividers stay visible and
+     card text stays white. */
+  --x-sys-colour-primary-soft:   var(--x-palette-primary-900);
+  --x-sys-colour-primary-main:   var(--x-palette-primary-300);  /* #FFFF00 */
+  --x-sys-colour-primary-strong: var(--x-palette-primary-200);
+  --x-sys-colour-primary-heavy:  var(--x-palette-primary-100);
+
+  --x-sys-colour-tertiary-soft:   var(--x-palette-tertiary-900);
+  --x-sys-colour-tertiary-main:   var(--x-palette-tertiary-700); /* #3132FE */
+  --x-sys-colour-tertiary-strong: var(--x-palette-tertiary-600);
+  --x-sys-colour-tertiary-heavy:  var(--x-palette-tertiary-500);
+
+  /* Dark indigo text on the bright yellow primary CTA (Figma text-on-brand). */
+  --x-text-on-primary: var(--x-sys-colour-tertiary-main);
+
+  --x-border-card-default: oklch(0.95 0 0);
+
+  /* Rarity gradients — eFootball has no rarity system; normalize to L2 surface. */
+  --x-rarity-gradient-mythic:    var(--x-sys-colour-surface-l2-fill);
+  --x-rarity-gradient-legendary: var(--x-sys-colour-surface-l2-fill);
+  --x-rarity-gradient-epic:      var(--x-sys-colour-surface-l2-fill);
+  --x-rarity-gradient-rare:      var(--x-sys-colour-surface-l2-fill);
+  --x-rarity-gradient-neutral:   var(--x-sys-colour-surface-l2-fill);
+
+  /* Scroll-fade edges — anchor to the deep-blue page so the carousel fade blends. */
+  --x-gradient-scroll-fade-left:  linear-gradient(to right, oklch(0.231 0.160 264) 0%, transparent 100%);
+  --x-gradient-scroll-fade-right: linear-gradient(to left,  oklch(0.231 0.160 264) 0%, transparent 100%);
+
+  /* Controls — 8px rounded rectangle (Figma radius-control-full = radius-s). */
+  --x-radius-control-full: var(--x-sys-radius-s);
+
+  /* Sign-in button border — yellow */
+  --x-border-signin-btn: var(--x-sys-colour-primary-main);
+
+  /* Hyperlink family — default/hover/pressed inherit the global hyperlink ramp
+     (= primary = yellow on the dark-blue page). Only inverse differs: near-white. */
+  --x-sys-colour-hyperlink-inverse: var(--x-sys-colour-neutral-inverse);
+
+  /* HDR glow trio (drives the best-seller card glow) — bright yellow lead/trail,
+     golden yellow peak, warm amber bloom. Boosted past sRGB in the @media block.
+     --x-hdr-bloom now aliases --x-palette-primary-800 (the "amber mids" the comment
+     below already pointed at) instead of a hardcoded literal that merely
+     matched it — same visual value, now a real alias. */
+  --x-hdr-glow:  var(--x-ref-primary);              /* #FFFF00 bright yellow */
+  --x-hdr-hot:   var(--x-palette-primary-500);      /* #FFCC00 golden yellow */
+  --x-hdr-bloom: var(--x-palette-primary-800);      /* warm amber — the ramp's amber mids */
+
+  /* ── SKU card surface → L2 ─────────────────────────────────────────────────
+     semantics.css :root maps --x-bg-sku-card-default to L1; eFootball uses L2.
+     html[data-theme] (0,1,1) beats the :root default (0,1,0). */
+  --x-bg-sku-card-default: var(--x-sys-colour-surface-l2-fill);
+
+  /* ── Navbar ─────────────────────────────────────────────────────────────────
+     Dedicated token so the navbar can be styled independently of --x-bg-page.
+     Transparent glass over the fixed background image; NavBar.vue applies
+     backdrop-filter: blur(8px) to complete the frosted-glass effect. */
+  --x-bg-navbar: transparent;
+
+  /* ── KONAMI ID sign-in button ───────────────────────────────────────────────
+     Brand/KONAMI Red — converted from the official Figma gradient token
+     (var(--Brand-KONAMI-Red)). Original was a 16-stop sRGB ramp from #BF0019
+     to #980115; collapsed to 2 stops in OKLCH (perceptually uniform, so the
+     intermediate steps are redundant). Hue stays pinned at 25-26° throughout. */
+  --x-bg-action-mykonami: linear-gradient(180deg, oklch(0.506 0.207 26), oklch(0.428 0.175 25));
+
+}
+
+/* ── HDR ─────────────────────────────────────────────────────────────────────
+   Push the brand chroma past the sRGB ceiling on P3/wide-gamut panels. Most
+   visible on the best-seller card's glow/shimmer (the --hdr-* trio). Degrades
+   gracefully to the in-gamut brand hues on sRGB. */
+@media (dynamic-range: high) {
+  html[data-theme="efootball"] {
+    --x-ref-primary:   oklch(0.97 0.23 110);  /* hotter yellow */
+    --x-ref-secondary: oklch(0.65 0.32 2);    /* hotter magenta */
+    --x-ref-tertiary:  oklch(0.50 0.33 270);  /* hotter indigo */
+
+    /* --x-hdr-glow needs no override here — it aliases --x-ref-primary above,
+       which this block already boosts; the boost cascades through for free.
+       --x-hdr-hot/--x-hdr-bloom alias mid-ramp palette steps with no boosted
+       ancestor, so they're derived via relative colour syntax — multipliers
+       reverse-engineered from the previous hardcoded boosted values against
+       the new SDR aliases, so the rendered colour is unchanged. */
+    --x-hdr-hot:   oklch(from var(--x-palette-primary-500) calc(l * 1.04) calc(c * 1.24) h);
+    --x-hdr-bloom: oklch(from var(--x-palette-primary-800) calc(l * 0.935) calc(c * 1.28) h);
+
+    --x-sys-colour-surface-l1-border:       oklch(1.1 0 0 / 0.10);
+    --x-sys-colour-surface-l1-border-hover: oklch(1.1 0 0 / 0.22);
+    --x-sys-colour-surface-l2-border:       oklch(1.1 0 0 / 0.10);
+    --x-sys-colour-surface-l3-border:       oklch(1.1 0 0 / 0.12);
+  }
+}
+
+/* ── KONAMI ID sign-in page — eFootball store-specific brand palette ──────────
+   Relocated from extensions.css. KonamiSignInPage is only mounted in the
+   eFootball flow so these tokens are scoped to this theme. */
+[data-theme="efootball"] {
+  --x-konami-page-bg:            oklch(0.93 0.005 255);  /* light gray page */
+  --x-konami-card-bg:            oklch(1 0 0);
+  --x-konami-card-border:        oklch(0.85 0 0);
+  --x-konami-header-bg:          oklch(1 0 0);
+  --x-konami-red:                oklch(0.46 0.21 25);    /* KONAMI brand red */
+  --x-konami-red-hover:          oklch(0.40 0.19 25);
+  --x-konami-notice-border:      oklch(0.52 0.22 25);
+  --x-konami-notice-bg:          oklch(1 0 0);
+  --x-konami-passkey-bg:         oklch(0.20 0.03 255);
+  --x-konami-passkey-hover:      oklch(0.26 0.03 255);
+  --x-konami-link:               oklch(0.48 0.18 258);   /* blue link */
+  --x-konami-input-border:       oklch(0.72 0 0);
+  --x-konami-input-border-focus: oklch(0.50 0.18 258);
+  --x-konami-input-bg:           oklch(1 0 0);
+  --x-konami-text-dark:          oklch(0.22 0 0);
+  --x-konami-text-muted:         oklch(0.45 0 0);
+  --x-konami-separator:          oklch(0.78 0 0);
+}

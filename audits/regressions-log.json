@@ -1,0 +1,82 @@
+[
+  {
+    "id": "REG-RETRO01",
+    "timestamp": "2026-09-03T00:00:00.000Z",
+    "component": "StoryStage",
+    "rule": "packages/harness-kit's extracted StoryStage.vue referenced `theme.value` in its renderKey computed, a binding that existed only on the pre-extraction host component and not in the kit — a ReferenceError on every render. No static tool (preflight/vue-slice/harness test/vite build) instantiates a component, so this shipped undetected until opened in a real browser. Always run `npm run harness:render` (SSR smoke test through StoryStage) before considering a component-library refactor done.",
+    "variant": null,
+    "store": "all"
+  },
+  {
+    "id": "REG-RETRO02",
+    "timestamp": "2026-09-03T00:00:01.000Z",
+    "component": "vue-slice.mjs",
+    "rule": "tools/vue-slice.mjs's --json contract output silently capped tokens at 15 (a \"compact preview\" truncation) even though tokensCount correctly reported the true total — any consumer reading the JSON got an incomplete list with no signal anything was missing. Machine-readable output must never apply a display-only shortcut; --json mode now asserts tokens.length === tokensCount and throws if they diverge.",
+    "variant": null,
+    "store": "all"
+  },
+  {
+    "id": "REG-RETRO03",
+    "timestamp": "2026-09-03T00:00:02.000Z",
+    "component": "export-handoff.mjs",
+    "rule": "scripts/export-handoff.mjs's --verify mode originally checked only that a spec.md file existed, never comparing its content against freshly rendered output — it could never detect real drift and always printed \"in sync\" once a spec's content diverged from its story. A verify step that structurally cannot fail is worse than no verify step: it manufactures false confidence. Fixed to do a real content comparison (readFileSync vs re-rendered expected content).",
+    "variant": null,
+    "store": "all"
+  },
+  {
+    "id": "REG-RETRO04",
+    "timestamp": "2026-09-03T00:00:03.000Z",
+    "component": "export-handoff.mjs",
+    "rule": "`--story <id>` filtered PascalCase filenames (\"SkuTag.stories.js\") by substring-matching the kebab-case story id (\"sku-tag\") directly — \"skutag.stories.js\".includes(\"sku-tag\") is always false because of the hyphen, so the filter matched zero files, the export loop silently did nothing, and the command exited 0. Any name-based CLI filter in this harness must fail loudly on zero matches (listing available names) rather than silently no-op; token-cli's informational `search` is the one deliberate exception.",
+    "variant": null,
+    "store": "all"
+  },
+  {
+    "id": "REG-MTLE46R0",
+    "timestamp": "2026-09-03T10:36:37.548Z",
+    "component": "SkuCard",
+    "rule": "The metal/plastic/carbonFibre material variants read --x-fx-metal/plastic/carbon-* tokens defined only in themes/codashop.css (the sole store with skuCard.materialExploration enabled); with no var() fallback, harness test all fails UNRESOLVED_MANDATORY_TOKEN in every other store even though the modifier classes never actually apply there. Fix: fall back to the card's own --x-bg-sku-card-default/--x-border-sku-card-default for fill/edge and transparent for sheen layers, so any theme resolves safely without diluting Codashop's authored values.",
+    "variant": null,
+    "store": "all non-codashop stores (mgsse, pvz3, ygomd, diabloimmortal, zzz, codm, fcm, efootball, tdr, ygodl, roguetrader)"
+  },
+  {
+    "id": "REG-RETRO05",
+    "timestamp": "2026-09-03T15:22:58.040Z",
+    "component": "harness-cli.mjs",
+    "rule": "loadAllStories() extracted a story's id/title with a first-match regex scanning the ENTIRE .stories.js source, not scoped to the defineStory({...}) call. A file that builds demo-card data with its own title:/id: object-literal keys ABOVE the defineStory() call (Grid/BundleGrid/GiftGrid wrapper stories composing real SkuCard/BundleSkuCard/GiftSkuCard children) had those literal values misattributed as the story's own id/title, producing wrong harness test labels like '[PASS] BUNDLE OFFER 1' instead of '[PASS] Bundle Grid'. Same class as REG-RETRO02/REG-RETRO04 (regex-based static scanners keep getting reintroduced/relocated). Fixed by adding extractBalancedCallBlock() (paren-depth tracking, mirroring the existing extractBalancedArrayBlock() used for variants:) and scoping id/title/group matches to the defineStory(...) argument block only.",
+    "variant": null,
+    "store": "all"
+  },
+  {
+    "id": "REG-MTMDWW1L",
+    "timestamp": "2026-09-04T03:18:43.257Z",
+    "component": "InfoStepBody",
+    "rule": "A live countdown (bundle.endsAt set) used to hang npm run harness:render forever: composables/useCountdown.js's watch(...,{immediate:true}) started a real setInterval during setup(), which Vue SSR's renderToString() also executes (unlike onMounted, which SSR skips) — the pending timer kept the Node process alive indefinitely. Fixed in useCountdown.js by guarding start() with '!import.meta.env.SSR'. Any future composable starting a timer/interval from an immediate watch or top-level setup code (not onMounted) needs the same guard.",
+    "variant": "With countdown + rewards (FCM Buy Now, compact)",
+    "store": "all"
+  },
+  {
+    "id": "REG-MTPTNN40",
+    "timestamp": "2026-09-06T13:02:44.160Z",
+    "component": "SkuCard",
+    "rule": "BundleItem's tag pill straddles -8px above its tile; .sku-card__breakdown must keep padding-top: var(--x-pad-surface-s) (8px) in BOTH column and row layouts so the pill has clearance above the bonus/subtitle sibling above it — a positioned box (position:relative) always paints over a non-positioned in-flow sibling it visually overlaps, so shrinking this padding back toward the bare flex gap (4px/2px) silently reintroduces the pill overlapping that text.",
+    "variant": null,
+    "store": "all"
+  },
+  {
+    "id": "REG-MTX2QQCJ",
+    "timestamp": "2026-09-11T14:51:28.099Z",
+    "component": "BaseSheet",
+    "rule": "When overriding this shared chrome for a new layout mode (e.g. .sheet__header padding), check whether ANY ancestor (e.g. DeviceFrame's overlay) applies a competing rounded-corner clip at a different radius before removing padding as 'redundant' — it may be the only thing keeping content out of that clip zone. Happened twice: diagnosing the landscape corner-square fix, then a regression (missing close button) from stripping this exact padding.",
+    "variant": null,
+    "store": "all"
+  },
+  {
+    "id": "REG-MTZKPK9C",
+    "timestamp": "2026-09-13T08:49:58.992Z",
+    "component": "FilterDropdown",
+    "rule": "A consumer's scoped CSS ':deep(.child-class)' override stops working the moment that child element is later made to render via <Teleport> — Teleport physically moves the DOM node out of the scoping ancestor, so Vue's scoped data-v attribute matching no longer applies, and the override silently no-ops with no warning. Style teleported content via explicit props (panelBlur/panelOpaque) instead.",
+    "variant": null,
+    "store": "all"
+  }
+]

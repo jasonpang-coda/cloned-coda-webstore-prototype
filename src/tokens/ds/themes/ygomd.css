@@ -1,0 +1,346 @@
+/* ============================================================================
+   YU-GI-OH! MASTER DUEL THEME  —  [data-theme="ygomd"]   (publisher: KONAMI)
+   ----------------------------------------------------------------------------
+   Generated from docs/style-guides/yugioh-masterduel/spec.json (style-guide-
+   designer), itself extracted from the live site
+   konami.com/yugioh/masterduel/us/en. This is the ONLY file the reskin
+   duplicates: colour seeds, the spectrum ramps, the typography system, and the
+   handful of semantic + surface OVERRIDES that the pure alias graph cannot
+   express (mixed pill/sharp radius profile, gold+violet glow effects).
+
+   Brand: arcane / competitive / legendary — near-black starfield page, gold
+   Millennium-relic primary accent, Yu-Gi-Oh! ribbon-red secondary, arcane
+   violet-blue tertiary. "Arcane duel-field" is expressed through a MIXED
+   radius profile (pill controls + pill badges, near-zero-radius cards/
+   thumbnails, tiny-radius inputs — see brandCharacter.radiusSteps in
+   spec.json) and a gold/violet dual-glow ring on the flagship hero SKU —
+   NOT through any component edit.
+
+   Fonts:
+     Yu Gothic — the real body/UI face, overriding the style guide's own
+                 Rajdhani/Noto Sans Google-Fonts-proxy recommendation per
+                 explicit store-owner instruction (Yu Gothic is also the one
+                 real webfont actually observed in the live site's own CSS:
+                 style.css declares font-family: "Yu Gothic","游ゴシック"
+                 !important). Three licensed weights supplied by the user —
+                 Light/Medium/Bold — served locally from
+                 src/stores/ygomd/fonts/yu-gothic-{light,medium,bold}.woff2.
+                 Yu Gothic's true "Regular" cut reads heavier than most Latin
+                 regular weights, so Light is mapped to --x-sys-weight-regular
+                 (matching how Yu Gothic is conventionally used for JP body
+                 text); Medium gets its own accurate --x-sys-weight-semibold
+                 (unlike mgsse's reuse-Bold compromise, a real Medium cut
+                 exists here); Bold covers both --x-sys-weight-bold and
+                 --x-sys-weight-extra-bold (no separate Black/ExtraBold cut
+                 supplied). Meiryo / Hiragino Kaku Gothic ProN / Hiragino Sans
+                 stay as the fallback stack (same convention as the sibling
+                 ygodl.css) in case a woff2 fails to load.
+
+   Colours are authored in OKLCH (perceptual, HDR headroom), matching
+   Rogue Trader / MGSΔ / YGO:DL precision. The 500 step of each chromatic
+   ramp aliases its seed. The neutral seed (#0B0C1C) carries a real violet
+   tint (H≈279°, C≈0.033) rather than true achromatic grey — a deliberate,
+   observed brand trait (the starfield backdrop reads cool-violet, not flat
+   black) — preserved through the whole neutral ramp rather than smoothed
+   into grey. Primary (gold) and status-caution (amber) light-end steps
+   (50–200-ish) are hand-tuned rather than pure formula: the generic
+   mid-tone taper curve washes both hues to indistinguishable white before
+   reaching the lightest steps, so the last 2–3 steps use a gentler,
+   hand-picked taper instead (same rationale as MGSΔ's hand-tuned pale-lime
+   secondary ramp).
+   ============================================================================ */
+
+@font-face {
+  font-family: 'Yu Gothic';
+  src: url('../../../stores/ygomd/fonts/yu-gothic-light.woff2') format('woff2');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Yu Gothic';
+  src: url('../../../stores/ygomd/fonts/yu-gothic-medium.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Yu Gothic';
+  src: url('../../../stores/ygomd/fonts/yu-gothic-bold.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+[data-theme="ygomd"] {
+  /* ── Seeds ──────────────────────────────────────────────────────────────
+     Raw brand anchors. sRGB hex equivalents in comments (observed: pixel
+     sample on the site's own 4th-Anniversary key art + logo lockup — CSS
+     census found only Konami's shared corporate-template colours, not
+     Master Duel brand colour — see spec.json meta.notes). */
+  --x-ref-primary:         oklch(0.843 0.106 88.3);   /* #E8C878 — Millennium gold */
+  --x-ref-secondary:       oklch(0.586 0.238 26.4);   /* #E8001E — Yu-Gi-Oh! ribbon red */
+  --x-ref-tertiary:        oklch(0.508 0.180 282.4);  /* #5B4FC7 — arcane violet-blue */
+  --x-ref-status-positive: oklch(0.722 0.132 164.1);  /* #3FBF8F — derived, brand has no native green */
+  --x-ref-status-caution:  oklch(0.763 0.140 72.5);   /* #E8A23C — derived amber, kept distinct from primary gold */
+  --x-ref-status-negative: oklch(0.655 0.231 26.4);   /* #FF3B3B — brighter alert red ≠ brand secondary #E8001E */
+  --x-ref-neutral:         oklch(0.163 0.033 279.3);  /* #0B0C1C — violet-tinted near-black starfield */
+
+  /* ── Spectrums ──────────────────────────────────────────────────────────
+     Per-role 50–950 ramps; 500 aliases the seed. */
+
+  /* primary (Millennium gold) — light end (300–50) hand-tuned; the generic
+     taper curve washes to indistinguishable white before reaching 50. */
+  --x-palette-primary-950: oklch(0.425 0.042 88.3);
+  --x-palette-primary-900: oklch(0.472 0.058 88.3);
+  --x-palette-primary-800: oklch(0.565 0.076 88.3);
+  --x-palette-primary-700: oklch(0.657 0.090 88.3);
+  --x-palette-primary-600: oklch(0.750 0.100 88.3);
+  --x-palette-primary-500: var(--x-ref-primary);
+  --x-palette-primary-400: oklch(0.902 0.098 88.3);
+  --x-palette-primary-300: oklch(0.920 0.075 88.3);
+  --x-palette-primary-200: oklch(0.945 0.055 88.3);
+  --x-palette-primary-100: oklch(0.965 0.035 88.3);
+  --x-palette-primary-50:  oklch(0.980 0.018 88.3);
+
+  /* secondary (Yu-Gi-Oh! ribbon red) */
+  --x-palette-secondary-950: oklch(0.181 0.074 29.2);
+  --x-palette-secondary-900: oklch(0.228 0.094 29.2);
+  --x-palette-secondary-800: oklch(0.321 0.132 29.2);
+  --x-palette-secondary-700: oklch(0.413 0.169 29.2);
+  --x-palette-secondary-600: oklch(0.505 0.207 29.0);
+  --x-palette-secondary-500: var(--x-ref-secondary);
+  --x-palette-secondary-400: oklch(0.645 0.220 26.4);
+  --x-palette-secondary-300: oklch(0.703 0.187 26.4);
+  --x-palette-secondary-200: oklch(0.760 0.143 26.4);
+  --x-palette-secondary-100: oklch(0.819 0.090 26.4);
+  --x-palette-secondary-50:  oklch(0.849 0.047 26.4);
+
+  /* tertiary (arcane violet-blue) */
+  --x-palette-tertiary-950: oklch(0.103 0.062 280.0);
+  --x-palette-tertiary-900: oklch(0.149 0.090 280.6);
+  --x-palette-tertiary-800: oklch(0.230 0.129 282.4);
+  --x-palette-tertiary-700: oklch(0.322 0.153 282.4);
+  --x-palette-tertiary-600: oklch(0.415 0.171 282.4);
+  --x-palette-tertiary-500: var(--x-ref-tertiary);
+  --x-palette-tertiary-400: oklch(0.567 0.166 282.4);
+  --x-palette-tertiary-300: oklch(0.625 0.141 282.4);
+  --x-palette-tertiary-200: oklch(0.683 0.108 282.4);
+  --x-palette-tertiary-100: oklch(0.741 0.068 282.4);
+  --x-palette-tertiary-50:  oklch(0.771 0.035 282.4);
+
+  /* status-positive (derived — brand has no native green) */
+  --x-palette-status-positive-950: oklch(0.304 0.053 164.1);
+  --x-palette-status-positive-900: oklch(0.351 0.073 164.1);
+  --x-palette-status-positive-800: oklch(0.444 0.095 164.0);
+  --x-palette-status-positive-700: oklch(0.536 0.113 164.1);
+  --x-palette-status-positive-600: oklch(0.629 0.126 164.1);
+  --x-palette-status-positive-500: var(--x-ref-status-positive);
+  --x-palette-status-positive-400: oklch(0.781 0.122 164.1);
+  --x-palette-status-positive-300: oklch(0.839 0.104 164.1);
+  --x-palette-status-positive-200: oklch(0.897 0.080 164.1);
+  --x-palette-status-positive-100: oklch(0.955 0.050 164.1);
+  --x-palette-status-positive-50:  oklch(0.983 0.024 164.1);
+
+  /* status-caution (derived amber) — light end (100/50) hand-tuned, same
+     white-wash rationale as primary. */
+  --x-palette-status-caution-950: oklch(0.345 0.056 72.5);
+  --x-palette-status-caution-900: oklch(0.392 0.077 72.5);
+  --x-palette-status-caution-800: oklch(0.485 0.101 72.5);
+  --x-palette-status-caution-700: oklch(0.577 0.120 72.5);
+  --x-palette-status-caution-600: oklch(0.670 0.133 72.5);
+  --x-palette-status-caution-500: var(--x-ref-status-caution);
+  --x-palette-status-caution-400: oklch(0.822 0.130 72.5);
+  --x-palette-status-caution-300: oklch(0.875 0.107 72.5);
+  --x-palette-status-caution-200: oklch(0.926 0.074 72.5);
+  --x-palette-status-caution-100: oklch(0.950 0.045 72.5);
+  --x-palette-status-caution-50:  oklch(0.975 0.022 72.5);
+
+  /* status-negative (derived — brighter than brand secondary red so an error
+     is never mistaken for the logo mark) */
+  --x-palette-status-negative-950: oklch(0.237 0.092 26.4);
+  --x-palette-status-negative-900: oklch(0.292 0.120 29.1);
+  --x-palette-status-negative-800: oklch(0.385 0.158 28.6);
+  --x-palette-status-negative-700: oklch(0.473 0.193 27.4);
+  --x-palette-status-negative-600: oklch(0.562 0.219 26.4);
+  --x-palette-status-negative-500: var(--x-ref-status-negative);
+  --x-palette-status-negative-400: oklch(0.698 0.193 26.3);
+  --x-palette-status-negative-300: oklch(0.757 0.145 26.6);
+  --x-palette-status-negative-200: oklch(0.816 0.104 27.1);
+  --x-palette-status-negative-100: oklch(0.875 0.067 27.9);
+  --x-palette-status-negative-50:  oklch(0.916 0.043 26.8);
+
+  /* neutral 0-1000 — violet-tinted near-black (H≈279°); 1000 = page seed.
+     Chroma tapers toward 0 (but never fully achromatic) at the light end —
+     preserving the cool-violet starfield tint rather than smoothing to grey. */
+  --x-palette-neutral-0:    oklch(0.995 0.0024 279.3);
+  --x-palette-neutral-50:   oklch(0.926 0.0067 279.3);
+  --x-palette-neutral-100:  oklch(0.858 0.0084 279.3);
+  --x-palette-neutral-200:  oklch(0.793 0.0100 279.3);
+  --x-palette-neutral-300:  oklch(0.723 0.0117 279.3);
+  --x-palette-neutral-400:  oklch(0.653 0.0134 279.3);
+  --x-palette-neutral-500:  oklch(0.583 0.0167 279.3);
+  --x-palette-neutral-600:  oklch(0.503 0.0184 279.3);
+  --x-palette-neutral-700:  oklch(0.433 0.0201 279.3);
+  --x-palette-neutral-800:  oklch(0.363 0.0234 279.3);
+  --x-palette-neutral-900:  oklch(0.293 0.0268 279.3);
+  --x-palette-neutral-950:  oklch(0.228 0.0301 279.3);
+  --x-palette-neutral-1000: var(--x-ref-neutral);
+
+  /* ── Typography ────────────────────────────────────────────────────────────
+     Yu Gothic (licensed, local woff2 — see header comment and the @font-face
+     block above); Meiryo / Hiragino Kaku Gothic ProN / Hiragino Sans stay as
+     the fallback stack if a woff2 fails to load — same convention as the
+     sibling ygodl.css. */
+  --x-sys-font-family-heading: 'Yu Gothic', 'YuGothic', 'Meiryo', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+  --x-sys-font-family-body:    'Yu Gothic', 'YuGothic', 'Meiryo', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+
+  /* Three real cuts loaded — Light 300 / Medium 500 / Bold 700. Regular maps
+     to Light (Yu Gothic's true Regular reads heavier than most Latin
+     "regular" weights); semibold gets its own accurate Medium cut (unlike
+     MGSΔ's reuse-Bold 2-cut compromise); extra-bold reuses Bold — no
+     separate Black/ExtraBold cut was supplied. */
+  --x-sys-weight-extra-bold: 700;
+  --x-sys-weight-bold:       700;
+  --x-sys-weight-semibold:   500;
+  --x-sys-weight-regular:    300;
+
+  /* Heading + body sizes — from spec.json typePrimitives.headerSizes/bodySizes
+     (mobile values; this repo's real theme files don't carry -desktop- token
+     twins yet, matching the mgsse.css / ygodl.css precedent). */
+  --x-sys-size-h1: 30px;
+  --x-sys-size-h2: 24px;
+  --x-sys-size-h3: 22px;
+  --x-sys-size-h4: 20px;
+  --x-sys-size-h5: 18px;
+  --x-sys-size-h6: 16px;
+  --x-sys-size-h7: 14px;
+  --x-sys-size-body-l:    16px;
+  --x-sys-size-body-main: 14px;
+  --x-sys-size-body-s:    12px;
+  --x-sys-size-body-xs:   10px;
+
+  /* Letter-spacing / line-height — from spec.json typePrimitives (tracking:
+     tight -0.5%, narrow -0.2%, main 0%, loose 0.5%, wide 1%; leading: main
+     105%, loose 120%, wide 150%). */
+  --x-sys-letter-spacing-tight:  -0.005em;
+  --x-sys-letter-spacing-narrow: -0.002em;
+  --x-sys-letter-spacing-main:    0;
+  --x-sys-letter-spacing-loose:   0.005em;
+  --x-sys-letter-spacing-wide:    0.01em;
+
+  --x-sys-line-height-main:  1.05;
+  --x-sys-line-height-loose: 1.2;
+  --x-sys-line-height-wide:  1.5;
+
+  /* Yu Gothic renders at true width, like Meiryo — no scaleX condense needed. */
+  --x-sys-font-condense: 1;
+}
+
+/* ── Semantic / alias-role OVERRIDES ─────────────────────────────────────────
+   These tokens are also defined by a later :root tier (semantics.css /
+   system.css), so they must be set from html[data-theme] (specificity 0,1,1)
+   to beat :root (0,1,0) regardless of source order — see web-store-tokens §3. */
+html[data-theme="ygomd"] {
+  /* ── Mixed radius profile — spec.json brandCharacter.radiusSteps: pill
+     controls + pill badges ("activated relic" CTAs, rarity-tag badges),
+     near-zero-radius containers/thumbnails ("crisp duel-field cards"),
+     tiny-radius inputs. NOT collapsed to one value like MGSΔ's all-sharp
+     military profile — this is a genuinely mixed brand trait. */
+  --x-radius-control-xs:   var(--x-sys-radius-full);
+  --x-radius-control-s:    var(--x-sys-radius-full);
+  --x-radius-control-full: var(--x-sys-radius-full);
+  --x-radius-input-s:      var(--x-sys-radius-xs);
+  --x-radius-input-m:      var(--x-sys-radius-xs);
+  --x-radius-container-xs: var(--x-sys-radius-0);
+  --x-radius-container-s:  var(--x-sys-radius-0);
+  --x-radius-container-m:  var(--x-sys-radius-0);
+  --x-radius-container-l:  var(--x-sys-radius-0);
+  --x-radius-thumbnail-xs: var(--x-sys-radius-0);
+  --x-radius-thumbnail-s:  var(--x-sys-radius-0);
+  --x-radius-thumbnail-m:  var(--x-sys-radius-0);
+  --x-radius-badge-s:      var(--x-sys-radius-full);
+  --x-radius-badge-full:   var(--x-sys-radius-full);
+
+  /* Thin gold hairline around cards (rarity-tag / duel-field read). */
+  --x-border-card-default: oklch(0.843 0.106 88.3 / 0.18);
+
+  /* Hyperlinks on a brand surface read Millennium gold. */
+  --x-sys-colour-hyperlink-inverse: var(--x-sys-colour-primary-main);
+
+  /* KONAMI ID (myKONAMI) sign-in CTA — deliberately the actual KONAMI
+     corporate red (#B60014), the exact seed + 700-step ygodl.css uses for
+     its own --x-bg-action-mykonami, NOT this store's own Yu-Gi-Oh! ribbon-red
+     secondary (#E8001E). The myKONAMI button is a KONAMI-brand element
+     that should read identically across every KONAMI store, independent of
+     each game's own palette — reskins the shared
+     PageSignInSection.vue/.page-signin__btn--mykonami via tokens only, no
+     component edit. */
+  --x-bg-action-mykonami: linear-gradient(180deg,
+    oklch(0.460 0.195 27), oklch(0.400 0.165 27));  /* #B60014 KONAMI red */
+  --x-bg-action-signin:   var(--x-bg-action-mykonami);
+
+  /* Ring colour tokens shared by every fx-glow-border-* variant — gold lead
+     with a violet trail, driving config.sku.heroRingEffect in store.js
+     ("dual" spinning comet = "activated relic / premium drop"). */
+  --x-fx-border-glow:       var(--x-palette-primary-500);
+  --x-fx-border-hot:        var(--x-palette-primary-200);
+  --x-fx-border-trail-glow: var(--x-palette-tertiary-500);
+  --x-fx-border-trail-hot:  var(--x-palette-tertiary-200);
+
+  /* Bloom halo for HeroSkuCard — gold core fading to violet, echoing the
+     4th-Anniversary key art's own gold-magic-circle / violet-energy VFX. */
+  --x-fx-bloom-image: radial-gradient(
+    ellipse 90% 70% at 15% 88%,
+    var(--x-palette-primary-200)   0%,
+    var(--x-palette-primary-400)  30%,
+    var(--x-palette-tertiary-400) 55%,
+    transparent                  75%
+  );
+
+  /* Effect tints — spec.json brandCharacter.effectShadow/effectGlow. Overrides
+     the generic 30%/25% color-mix formula in system.css for primary/secondary
+     only; tertiary/positive/caution/negative fall through to that formula
+     (spec.json's brandCharacter didn't specify custom tints for those roles).
+     spec.json's states.hover/pressed (#7A6FDD / #4A3FA0) have no single
+     matching repo token — hover/pressed here are expressed per-component-role
+     (--x-border-card-hover, --x-border-sku-card-pressed, etc. in semantics.css)
+     and already auto-resolve correctly from the sys-colour cascade above. */
+  --x-sys-effect-shadow-primary:   oklch(0.529 0.104 80.9);   /* #8A6410 */
+  --x-sys-effect-shadow-secondary: oklch(0.365 0.148 24.7);   /* #7A0010 */
+  --x-sys-effect-glow-primary:     oklch(0.907 0.084 91.1);   /* #F5DFA0 */
+  --x-sys-effect-glow-secondary:   var(--x-palette-tertiary-500); /* #5B4FC7 */
+
+  /* ── Container surfaces — flat, near-black; a thin gold hairline is the
+     only ornament (no gilded gradient border — that's Rogue Trader's
+     signature, not this brand's). */
+  --x-sys-colour-surface-l1-fill:   var(--x-palette-neutral-1000);
+  --x-sys-colour-surface-l1-border: oklch(0.843 0.106 88.3 / 0.22);
+  --x-sys-colour-surface-l1-border-hover: oklch(0.843 0.106 88.3 / 0.45);
+
+  --x-sys-colour-surface-l2-fill:   var(--x-palette-neutral-950);
+  --x-sys-colour-surface-l2-border: oklch(0.843 0.106 88.3 / 0.14);
+
+  --x-sys-colour-surface-l3-fill:   var(--x-palette-neutral-900);
+  --x-sys-colour-surface-l3-border: oklch(0.843 0.106 88.3 / 0.18);
+
+  /* Status surfaces — top = role-700, bottom = role-950 @16%. */
+  --x-sys-colour-surface-success-fill: linear-gradient(to bottom,
+    color-mix(in oklab, var(--x-palette-status-positive-700) 16%, transparent) 0%,
+    color-mix(in oklab, var(--x-palette-status-positive-950) 16%, transparent) 100%);
+  --x-sys-colour-surface-warning-fill: linear-gradient(to bottom,
+    color-mix(in oklab, var(--x-palette-status-caution-600) 16%, transparent) 0%,
+    color-mix(in oklab, var(--x-palette-status-caution-950) 16%, transparent) 100%);
+  --x-sys-colour-surface-failure-fill: linear-gradient(to bottom,
+    color-mix(in oklab, var(--x-palette-status-negative-700) 16%, transparent) 0%,
+    color-mix(in oklab, var(--x-palette-status-negative-950) 16%, transparent) 100%);
+
+  /* Page background — no reusable copyrighted key art (see spec.json
+     meta.notes on the refs/ licence restriction), so the arcane backdrop is
+     a hardcoded CSS gradient, not an image asset. Kept off --x-bg-page (which
+     is consumed as a plain background-color, not gradient-capable — see
+     ygodl.css's own --page-bg-image precedent) and applied directly to
+     .device__screen instead, matching ygodl.css's structural placement. */
+  --x-bg-page: var(--x-palette-neutral-1000);
+}
+
+html[data-theme="ygomd"] .device__screen {
+  background-image: radial-gradient(120% 100% at 15% 0%, #1C1440 0%, #0B0C1C 55%, #050509 100%);
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+}

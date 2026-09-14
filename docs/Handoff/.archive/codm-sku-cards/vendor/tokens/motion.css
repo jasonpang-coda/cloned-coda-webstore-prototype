@@ -1,0 +1,101 @@
+/**
+ * Motion Design Tokens — source of truth
+ * ---------------------------------------
+ * Every duration, easing curve, delay and displacement used for motion in the
+ * product is defined here as a CSS custom property. Consume them directly
+ * (`transition: transform var(--x-motion-sys-duration-fast) var(--x-motion-sys-ease-standard)`)
+ * or via the Tailwind utilities that map to these same variables.
+ *
+ * Values follow the motion-design guidance: most UI motion lives in 150–400ms,
+ * entrances ease-OUT (decelerate), permanent exits ease-IN (accelerate),
+ * on-screen moves use the standard curve, and `linear` is reserved for loops.
+ */
+
+:root {
+  /* ----------------------------------------------------------------------- */
+  /* 1. Durations                                                            */
+  /* ----------------------------------------------------------------------- */
+  --x-motion-sys-duration-instant: 0ms;   /* disabled / reduced-motion             */
+  --x-motion-sys-duration-fast: 150ms;    /* micro-feedback: hover, ripple, toggle */
+  --x-motion-sys-duration-base: 250ms;    /* default transition / entrance         */
+  --x-motion-sys-duration-slow: 350ms;    /* large or complex surface moves        */
+  --x-motion-sys-duration-slower:  500ms;  /* scroll reveals / hero moments         */
+  --x-motion-sys-duration-slowest: 1800ms; /* extended delight animations           */
+  --x-motion-sys-duration-exit: 200ms;     /* elements leaving (shorter)            */
+
+  /* ----------------------------------------------------------------------- */
+  /* 2. Easing curves                                                        */
+  /* ----------------------------------------------------------------------- */
+  --x-motion-sys-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);   /* on-screen moves (default)     */
+  --x-motion-sys-ease-decelerate: cubic-bezier(0, 0, 0.2, 1);   /* entrances (ease-out)          */
+  --x-motion-sys-ease-accelerate: cubic-bezier(0.4, 0, 1, 1);   /* permanent exits (ease-in)     */
+  --x-motion-sys-ease-sharp: cubic-bezier(0.4, 0, 0.6, 1);      /* exit that may return          */
+  --x-motion-sys-ease-emphasized: cubic-bezier(0.2, 0, 0, 1);   /* expressive large transitions  */
+  --x-motion-sys-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);/* playful overshoot (sparingly) */
+  --x-motion-sys-ease-linear: linear;                           /* continuous loops only         */
+
+  /* ----------------------------------------------------------------------- */
+  /* 3. Delay / stagger — incremental delay between sequenced items          */
+  /* ----------------------------------------------------------------------- */
+  --x-motion-sys-stagger-xs: 30ms;
+  --x-motion-sys-stagger-sm: 50ms;
+  --x-motion-sys-stagger-md: 80ms;
+
+  /* ----------------------------------------------------------------------- */
+  /* 4. Displacement — standard slide-in / slide-out travel distances        */
+  /* ----------------------------------------------------------------------- */
+  --x-motion-sys-distance-sm: 4px;
+  --x-motion-sys-distance-md: 8px;
+  --x-motion-sys-distance-lg: 16px;
+  --x-motion-sys-distance-xl: 24px;
+
+  /* ----------------------------------------------------------------------- */
+  /* 5. Semantic / composite tokens                                          */
+  /*    Ready-to-apply `transition` shorthands pairing the correct duration  */
+  /*    and easing for each interaction. Apply the value to `transition`.    */
+  /* ----------------------------------------------------------------------- */
+  --x-motion-hover: var(--x-motion-sys-duration-fast) var(--x-motion-sys-ease-standard);
+  --x-motion-press: 100ms var(--x-motion-sys-ease-standard);
+  /* Generic press-scale for plain controls (buttons, dropdown triggers) —
+     the SKU-card press-scale (--x-motion-sku-press-scale, motion-sku.css) is
+     scoped to that component family by name; this is its non-SKU equivalent,
+     same magnitude, for everything else that wants a tactile press. */
+  --x-motion-control-press-scale: 0.98;
+  /* Button unlock — disabled → enabled: opacity lifts + scale settles (ease-out, 250ms) */
+  --x-motion-btn-activate: var(--x-motion-sys-duration-base) var(--x-motion-sys-ease-decelerate);
+  --x-motion-toggle: var(--x-motion-sys-duration-exit) var(--x-motion-sys-ease-standard);
+  --x-motion-dropdown: var(--x-motion-sys-duration-exit) var(--x-motion-sys-ease-decelerate);
+  --x-motion-modal-enter: var(--x-motion-sys-duration-slow) var(--x-motion-sys-ease-decelerate);
+  --x-motion-modal-exit: var(--x-motion-sys-duration-exit) var(--x-motion-sys-ease-accelerate);
+  /* Sheet sticky footer — trails the panel by a beat on both enter and exit
+     (same transform/opacity as the panel, just delayed), so the footer
+     doesn't move as one rigid block with it. */
+  --x-motion-sys-duration-footer-delay: 100ms;
+  /* Scrim/panel pairs (bottom sheets, nested modals like the promo T&Cs) —
+     panel settles a beat after the scrim on enter, and the scrim trails a
+     beat behind the panel on exit. Same layered-follow-through idea as the
+     sheet footer above. */
+  --x-motion-sys-duration-modal-panel-delay: 60ms;
+  --x-motion-drawer: var(--x-motion-sys-duration-slow) var(--x-motion-sys-ease-sharp);
+  --x-motion-toast-enter: var(--x-motion-sys-duration-base) var(--x-motion-sys-ease-decelerate);
+  /* Snackbar — playful delight moment (success sign-in). Entrance overshoots
+     with the spring curve and settles; exit drops off the bottom edge. */
+  --x-motion-snackbar-enter: var(--x-motion-sys-duration-slow) var(--x-motion-sys-ease-spring);
+  --x-motion-snackbar-exit: var(--x-motion-sys-duration-base) var(--x-motion-sys-ease-accelerate);
+  --x-motion-tab-indicator: var(--x-motion-sys-duration-base) var(--x-motion-sys-ease-standard);
+  /* Category nav — persistent bottom bar slides up + settles on page load.
+     Ease-out (decelerate), no spring: utilitarian nav must stop precisely. */
+  --x-motion-nav-enter: var(--x-motion-sys-duration-slow) var(--x-motion-sys-ease-decelerate);
+  --x-motion-accordion: var(--x-motion-sys-duration-slow) var(--x-motion-sys-ease-standard);
+  --x-motion-page: var(--x-motion-sys-duration-slow) var(--x-motion-sys-ease-standard);
+
+  /* ----------------------------------------------------------------------- */
+  /* 6. Decorative interaction effects (opt-in button accents)               */
+  /* ----------------------------------------------------------------------- */
+  --x-motion-shimmer-sweep: 3000ms; /* shimmer loop period (sweep + pause)       */
+  --x-motion-ripple: var(--x-motion-sys-duration-slow);  /* click-point ripple expand */
+  --x-motion-border-spin:  3200ms;  /* running conic border rotation period     */
+  --x-motion-border-pulse: 2400ms;  /* breathing border opacity period          */
+  --x-motion-border-trace: 1600ms;  /* draw-on border sweep period              */
+  --x-motion-spinner: 700ms;        /* donut/status loader rotation period      */
+}

@@ -1,0 +1,194 @@
+/**
+ * trust-bar — four-card trust-signal row (publisher partnerships, gamer
+ * count, delivery speed, payment methods) that sits directly under the
+ * compact hero on Codashop's store page, at every breakpoint, sharing the
+ * sticky lead rail with CompactHero. Own orchestrator (no external
+ * composable owns its timing) — owns the active-card index, drag position,
+ * publisher-rotator index, and reduced-motion flag; two independent
+ * setInterval timers (carousel auto-advance, publisher-logo rotator) plus
+ * one requestAnimationFrame tween (useCountUp, ×2 instances) run
+ * concurrently and are NOT synchronised with each other, deliberately.
+ *
+ * Re-traced 2026-09-12 against current src/ (superseding the retired
+ * docs/Handoff/trust-bar/README.md, dated 2026-07-30 / v0.49.1, status
+ * `draft`, 2 blocking_questions). TOKEN DRIFT FOUND AND FIXED: every token
+ * name in the legacy doc predates the repo-wide `--x-` prefix rename
+ * (`--bg-navbar` → `--x-bg-navbar`, etc.) — current source
+ * (TrustBar.vue/InfoTag.vue) confirms every token below now carries the
+ * prefix EXCEPT `--border-weight-default`, which genuinely has none (a
+ * verified, deliberate exception, not a missed rename — same in
+ * effects.css). No structural/behavioural drift found otherwise: component
+ * logic, timers, drag threshold, and both reference gaps (dot hover/focus,
+ * payment-icon/string fallback) all still match the legacy doc's account
+ * verbatim. One doc GAP found and closed: InfoTag's own `--x-pad-surface-xs`
+ * padding was never tabled in the legacy §3 — added below.
+ *
+ * The 2 blocking questions from the legacy doc are STILL OPEN in current
+ * code (verified, not assumed) — see notes.openQuestions. These are
+ * design/PM calls, not something a re-trace can resolve; carried forward
+ * faithfully rather than decided unilaterally.
+ *
+ * Traced from: src/components/TrustBar.vue (full file), src/components/
+ * InfoTag.vue (full file), src/composables/useCountUp.js (full file),
+ * src/composables/useCssTimeMs.js, src/App.vue:873-890 (mount gate),
+ * src/App.vue's `.trust-bar-section` wrapper (host-side side-inset).
+ */
+import { defineFlow } from '../flow.js'
+
+export default defineFlow({
+  slug: 'trust-bar',
+  title: 'Trust Bar — Codashop Trust Carousel Card',
+  summary: 'Four-card trust-signal row (partnerships, gamer count, delivery speed, payment methods). Codashop only. Self-scoped container query, drag-to-swipe carousel, publisher-logo crossfade rotator, count-up stats.',
+  stores: ['codashop'],
+
+  components: [
+    {
+      id: 'TrustBar — responsive layout',
+      source: 'src/components/TrustBar.vue:255-256,447,474 (self-scoped @container trust-bar rules)',
+      notes: 'Driven entirely by CSS @container queries against .trust-bar\'s OWN rendered width — TrustBar names itself as a query container (container-type: inline-size; container-name: trust-bar), not this repo\'s usual anonymous-binding-to-.device__screen convention. Deliberate: TrustBar mounts in App.vue\'s sticky lead rail (~4/12 columns, ~400px at a 1280px frame) alongside CompactHero, not the full-width main column — an anonymous rule would still fire off SCREEN width even though .trust-bar\'s own box never reaches 801px there. Practical consequence: layout-grid-2x2/-4up are part of the general contract and MUST still be implemented/verified, but are not reachable via window resize in the shipped page today — verify by widening .trust-bar\'s own box directly.',
+      tokens: ['--x-gap-content-default', '--x-gap-content-loose', '--x-border-navbar', '--border-weight-default'],
+    },
+    {
+      id: 'TrustBar — carousel interaction (XS/S)',
+      source: 'src/components/TrustBar.vue:64-122 (drag/timer logic), :156-234 (template/dots)',
+      notes: 'Drag-to-swipe (pointerdown/move/up, 15% of track clientWidth threshold) + dot pagination + auto-advance timer, all independent of the publisher-logo rotator\'s own timer. Auto-advance WRAPS (modulo); manual drag/dot-click CLAMPS to [0, cardCount-1] — asymmetric by design (autoplay loops to stay alive; drag past an end is the user testing the boundary). Every path that changes activeCard also calls resetCarouselTimer(), which clears any existing timer before arming a new one — no duplicate timers can accumulate.',
+      tokens: ['--x-motion-trust-slide', '--x-motion-sys-duration-fast', '--x-bg-indicator-neutral-default', '--x-bg-indicator-selected-default', '--x-radius-badge-full', '--x-radius-container-xs'],
+    },
+    {
+      id: 'TrustBar — publisher-logo rotator (card 1)',
+      source: 'src/components/TrustBar.vue:35-61,173-185,400-407',
+      notes: 'Chunks assets.content.publisherLogos into pairs; crossfades on a timer using Transition mode="out-in" — a REAL unmount gap, not mode="default", chosen to fix a confirmed bug where both pairs present briefly caused the card\'s height to jiggle (combined heights briefly exceeding either alone). Costs a doubled 350ms fade (leave then enter) in exchange. Every logo gets a solid light tile behind it (--x-bg-card-default) regardless of its own source colour, since real third-party logos aren\'t guaranteed light-on-dark polarity the way this repo\'s own first-party assets are.',
+      tokens: ['--x-motion-trust-rotate-interval', '--x-motion-trust-rotate-fade', '--x-bg-card-default', '--x-pad-surface-xxs', '--x-pad-surface-s', '--x-radius-container-xs', '--x-gap-content-default', '--x-size-icon-m'],
+    },
+    {
+      id: 'TrustBar — count-up stats (cards 2 & 3)',
+      source: 'src/composables/useCountUp.js (full file); called at TrustBar.vue:31-32',
+      notes: 'useCountUp(target, duration=2800) — a composable, not a component prop; framework-agnostic requestAnimationFrame tween, not CSS-token-driven (easeOutCubic is a hand-rolled JS formula, no --motion-sys-ease-* token applies here). Rapid re-trigger is NOT a smooth reroute: watch(target, run) restarts the eased curve from 0→newTarget regardless of the currently-displayed value, causing a visible snap-to-0-then-recount rather than a continuation. Displayed value is always Math.round()\'d, never fractional.',
+      tokens: [],
+    },
+    {
+      id: 'TrustBar — payment icons row (card 4)',
+      source: 'src/components/TrustBar.vue:147-152,213-217',
+      notes: 'Renders unconditionally (no v-if gate, no empty state) — 4 hardcoded icon slots, only the logo URLs are sourced from assets.pc.*. No guard at all on a missing asset.pc.* entry — renders a broken <img> icon. This is a REAL REFERENCE GAP, not a designed state — carried forward as an open question, not silently fixed (see notes.openQuestions and the MUST-harden note).',
+      tokens: ['--x-size-icon-m'],
+    },
+    {
+      id: 'InfoTag — success variant (delivery badge, card 3)',
+      source: 'src/components/InfoTag.vue (full file); used at TrustBar.vue:206',
+      notes: 'Small, stateless presentational component — no interaction states. TrustBar usage: <InfoTag icon="verified_user" variant="success" :label="t.deliveryBadge" />. The neutral variant (used by CompactHero) is out of scope for this flow. Doc gap closed on re-trace: InfoTag\'s own padding (--x-pad-surface-xs) was never tabled in the legacy spec — added here.',
+      tokens: ['--x-bg-tag-success', '--x-border-tag-success', '--x-text-success-default', '--border-weight-default', '--x-pad-surface-xs', '--x-radius-badge-s', '--x-gap-content-narrow', '--x-sys-weight-bold'],
+    },
+  ],
+
+  states: [
+    // §2.1 — responsive layout (3 states)
+    { id: 'layout_carousel', desc: 'One full-width card visible, flex track, dot nav visible, no dividers. The only state reachable via the shipped page\'s own layout (see components note above).', entry: 'container width < 801px', exit: 'width ≥ 801px' },
+    { id: 'layout_grid_2x2', desc: 'display: grid, repeat(2,1fr), dot nav hidden, right-divider on odd cards, bottom-divider on the top row, opacity:1 !important forces every card visible.', entry: '801px ≤ width < 1280px', exit: 'width leaves that range' },
+    { id: 'layout_grid_4up', desc: 'repeat(4,1fr), left-divider on every card but the first, no bottom-divider.', entry: 'width ≥ 1280px', exit: 'width < 1280px' },
+    // §2.2 — carousel interaction (5 states)
+    { id: 'idle', desc: 'Track sits at translateX(-activeCard * 100%).', entry: 'default, no pointer down, no timer firing', exit: 'drag starts / auto-advance fires' },
+    { id: 'dragging', desc: 'Track transition disabled, follows the pointer 1:1 via a --drag px offset.', entry: 'pointerdown on the track', exit: 'pointerup / pointercancel' },
+    { id: 'settling', desc: 'Track animates from the drag-released position to the next/previous card\'s resting position.', entry: 'pointerup after a drag that crossed the 15% threshold', exit: 'the slide transition completes' },
+    { id: 'snap_back', desc: 'Track animates back to the current card\'s resting position.', entry: 'pointerup after a drag that did NOT cross the 15% threshold', exit: 'transition completes' },
+    { id: 'forced_visible', desc: 'Not a carousel state, a cross-cutting override — every card\'s opacity is pinned to 1 regardless of activeCard.', entry: 'container enters layout_grid_2x2/-4up', exit: 'container returns to layout_carousel' },
+    // §2.3 — publisher-logo rotator (4 states)
+    { id: 'logos_empty', desc: 'The entire logo row is absent — title/sub still render.', entry: 'assets.content.publisherLogos is absent or []', exit: 'logos become available (theoretical — not reachable via any in-app control)' },
+    { id: 'logos_static', desc: 'One pair renders, no rotation, no timer armed.', entry: 'exactly one logo pair (1 or 2 logos total)', exit: 'a second pair becomes available' },
+    { id: 'logos_rotating', desc: 'Pairs crossfade on a timer.', entry: '≥2 logo pairs (4+ logos) and motion not reduced', exit: 'reduceMotion becomes true, or unmount' },
+    { id: 'logos_crossfading', desc: 'Outgoing pair fades out fully, THEN incoming pair fades in (mode="out-in") — sub-state of logos_rotating.', entry: 'the rotator timer fires while logos_rotating', exit: 'the Transition\'s after-leave/after-enter completes' },
+    // §2.4 — count-up stats (3 states)
+    { id: 'counting', desc: 'Displayed integer climbs from 0 toward the target via easeOutCubic.', entry: 'component mount, or the watched target ref changes', exit: 'p >= 1 (elapsed ≥ duration)' },
+    { id: 'settled', desc: 'Displayed integer equals the target exactly.', entry: 'counting completes', exit: 'target changes again' },
+    { id: 'reduced_motion_countup', desc: 'Value jumps straight to target, no animation frames scheduled.', entry: 'matchMedia reduce is true at run-time', exit: 'media query no longer matches (live change listener)' },
+    // §2.5 — payment icons (2 states)
+    { id: 'payments_default', desc: '4 icons in a wrapping row.', entry: 'always — the row renders unconditionally, no v-if gate', exit: 'never (no empty state exists)' },
+    { id: 'payments_asset_missing', desc: 'Gap, not a designed state — broken-image icon renders in that slot.', entry: 'any of assets.pc.{googleApple,creditCard,paypalVenmo,cashApp} is undefined/null', exit: 'asset becomes available' },
+    // §2.6 — InfoTag success (1 state)
+    { id: 'infotag_success', desc: 'Bordered pill with a checkmark icon + bold label.', entry: 'always, given variant="success"', exit: 'N/A (single state)' },
+  ],
+
+  transitions: [
+    { from: 'layout_carousel', to: 'layout_grid_2x2', trigger: 'container width crosses 801px', motion: [] },
+    { from: 'layout_grid_2x2', to: 'layout_grid_4up', trigger: 'container width crosses 1280px', motion: [] },
+    { from: 'idle', to: 'dragging', trigger: 'pointerdown (any pointer type; e.button check excludes non-primary mouse buttons)' },
+    { from: 'dragging', to: 'settling', trigger: 'pointerup, |dragPx| > 0.15 * trackRef.clientWidth', motion: ['--x-motion-trust-slide'] },
+    { from: 'dragging', to: 'snap_back', trigger: 'pointerup, |dragPx| ≤ 0.15 * trackRef.clientWidth', motion: ['--x-motion-trust-slide'] },
+    { from: 'idle', to: 'settling', trigger: 'carousel timer fires (nextCard), auto-advance', motion: ['--x-motion-trust-slide'] },
+    { from: 'logos_rotating', to: 'logos_crossfading', trigger: 'rotator timer tick', motion: ['--x-motion-trust-rotate-fade'] },
+    { from: 'logos_crossfading', to: 'logos_rotating', trigger: 'Transition leave-then-enter completes', motion: ['--x-motion-trust-rotate-fade'] },
+    { from: 'counting', to: 'settled', trigger: 'requestAnimationFrame loop reaches p >= 1' },
+    { from: 'idle', to: 'reduced_motion_countup', trigger: 'prefers-reduced-motion: reduce matches at mount' },
+  ],
+
+  choreography: [
+    { beat: 'Count-up starts for both stat cards', delayMs: 0, duration: '', easing: '', target: 'requestAnimationFrame loop, no CSS token — useCountUp.js' },
+    { beat: 'Publisher-rotator timer arms (if ≥2 logo pairs and motion not reduced)', delayMs: 0, duration: '', easing: '', target: '--x-motion-trust-rotate-interval (2600ms hold)' },
+    { beat: 'Carousel auto-advance timer arms (if motion not reduced)', delayMs: 0, duration: '', easing: '', target: '--x-motion-trust-carousel-interval (5000ms hold)' },
+    { beat: 'Stat values tween 0 → target, easeOutCubic', delayMs: 0, duration: '2800', easing: 'easeOutCubic (hand-rolled JS)', target: 'both stat cards, independent instances' },
+    { beat: 'Publisher logo pair crossfades to the next pair', delayMs: 2600, duration: '--x-motion-trust-rotate-fade', easing: 'default CSS ease (no token specified)', target: 'card 1 logo row' },
+    { beat: 'Carousel auto-advances to the next card (XS/S only — inert at M/L)', delayMs: 5000, duration: '--x-motion-trust-slide', easing: '', target: 'track transform + card opacity crossfade' },
+    { beat: 'On drag release: snaps to nearest card if drag exceeded 15% of track width, else snaps back', delayMs: 0, duration: '--x-motion-trust-slide', easing: '', target: '15% threshold has no token (see notes.gotchas)' },
+  ],
+
+  flowChart: `flowchart TD
+    mount["App.vue: config.trustBar present? mounts <TrustBar /> with zero props"]
+    mount --> layoutGate{"container width (.trust-bar's own box)"}
+    layoutGate -- "<801px" --> carousel["layout_carousel — dot nav, drag, auto-advance"]
+    layoutGate -- "801-1279px" --> grid2["layout_grid_2x2 — forced_visible override"]
+    layoutGate -- ">=1280px" --> grid4["layout_grid_4up — forced_visible override"]
+    mount --> countup["useCountUp x2 (gamers, deliveryRate) — independent RAF tweens"]
+    mount --> rotatorGate{">=2 logo pairs AND !reduceMotion?"}
+    rotatorGate -- yes --> rotating["logos_rotating — 2600ms hold, out-in crossfade"]
+    rotatorGate -- no --> staticLogos["logos_static or logos_empty"]`,
+
+  stateChart: `stateDiagram-v2
+    [*] --> layout_carousel
+    layout_carousel --> layout_grid_2x2: width crosses 801px
+    layout_grid_2x2 --> layout_grid_4up: width crosses 1280px
+    [*] --> idle
+    idle --> dragging: pointerdown
+    dragging --> settling: drag > 15% threshold
+    dragging --> snap_back: drag <= 15% threshold
+    idle --> settling: auto-advance timer fires
+    [*] --> logos_rotating
+    logos_rotating --> logos_crossfading: rotator timer tick
+    logos_crossfading --> logos_rotating: leave-then-enter completes
+    [*] --> counting
+    counting --> settled: p >= 1`,
+
+  notes: {
+    rationale: 'Migrated from the hand-written docs/Handoff/trust-bar/ (status: draft, re-traced 2026-09-12 — token names updated to the --x- prefix, structure/behaviour otherwise unchanged from the legacy doc\'s account). TrustBar is its own orchestrator — all state and timing live in the component itself, not an external composable. Two independent, deliberately non-synchronised timers (carousel 5000ms, publisher rotator 2600ms) plus two independent useCountUp RAF tweens run concurrently.',
+    gotchas: [
+      'The card track MUST be display:flex, not display:grid, even though grid seems the more natural fit for "N equal-width slides" — a grid container\'s own box stays block-width regardless of percentage track sizes, forcing an earlier draft into width:max-content, which then made percentage tracks resolve circularly against their own now-intrinsic width, breaking text wrapping. Flex sidesteps this: its box stays a definite 100% of the parent regardless of children.',
+      'Column dividers default to content:none (off) and are turned ON per @container query, never the reverse — an earlier "on by default, off per breakpoint" draft lost the CSS specificity cascade (a :not(:first-child)::before selector beats a plain ::before one) and dividers leaked into the mobile carousel.',
+      'Publisher logo tiles always get a solid light backing (--x-bg-card-default) regardless of the logo\'s own source colour — required for any third-party/user-supplied logo row on a dark surface, since (unlike this repo\'s own pre-selected light/dark payment icons) third-party logos aren\'t guaranteed to be polarity-matched.',
+      'TrustBar names its OWN query container (container-type: inline-size; container-name: trust-bar) rather than using this repo\'s usual anonymous-binding-to-.device__screen convention — required because it mounts in a rail (~400px) reliably narrower than the screen at every breakpoint. Give an equivalent component the same self-scoped container ONLY when its placement can no longer guarantee near-full-screen width.',
+      'The 12px side inset at S-and-smaller lives in the HOST (App.vue\'s .trust-bar-section wrapper), not inside TrustBar itself — the component takes no side-inset prop and applies no horizontal margin/padding of its own; it fills whatever box its host gives it.',
+      'Never parse a computed <time> value with bare parseInt — getComputedStyle normalizes whole-second values to "s" units (a 5000ms token computes back as "5s"), and parseInt("5s",10) returns a truthy 5, silently defeating a `|| fallback`. A previously-shipped bug from exactly this caused both timers to fire ~1000x too fast. Fixed via useCssTimeMs.js\'s cssTimeToMs helper (unit-aware) — reproduce the same conversion, never assume getComputedStyle returns the token\'s authored unit.',
+      'Auto-advance WRAPS (modulo cardCount); manual drag/dot-click CLAMPS to [0, cardCount-1] — this asymmetry is intentional, not a bug to unify.',
+      'prefers-reduced-motion is handled at TWO independent levels: the global CSS collapse (reduced-motion.css) for the two CSS transitions, AND explicit matchMedia JS guards in TrustBar.vue and useCountUp.js for the two setInterval timers plus the RAF loop. A rebuild handling only one half leaves the other running under reduced motion.',
+      'Never use the transition/animation SHORTHAND with a comma-bearing easing token inline — safe here only because --x-motion-trust-slide already bundles duration+easing space-separated as one custom property, not because the shorthand itself is safe with cubic-bezier(...) literals.',
+    ],
+    openQuestions: [
+      'BLOCKING — Is "0" an acceptable rendered value for a stat card when config.trustBar.stats.gamers/.deliveryRate is missing, or should the whole stat card hide itself (matching the publisher-logo row\'s graceful-absent pattern)? STILL UNRESOLVED in current code — verified on re-trace, Number(target.value) || 0 still renders "0" unconditionally. Owner: design/PM.',
+      'BLOCKING — Should the dot pagination get a designed hover/focus-visible treatment, and should the payment-icon row gracefully hide a missing icon instead of rendering a broken <img>? Both are gaps in the reference, not deliberate omissions. STILL UNRESOLVED in current code — verified on re-trace, neither .trust-bar__dot nor the payment <img> tags have any such handling. Owner: design/PM.',
+      'Non-blocking: --x-border-navbar\'s resolved value on Codashop may diverge from a comment in the theme file describing a different intended role-ramp step — flagged as a probable pre-existing theme-file bug outside this feature\'s own code, not something this flow can verify without re-auditing codashop.css directly.',
+      'Non-blocking: layout_grid_2x2/layout_grid_4up stay part of the contract even though the shipped page\'s current placement never reaches them — a future placement or different store could still need them; treat dropping them as an explicit design/PM scope-narrowing decision, not something to infer from one integration\'s layout choice.',
+    ],
+    buildOrder: [
+      'Static structure, 4-up layout, and token wiring — all 4 cards in a static row, icon bubble/title/description/card-specific content, no rotation/count-up/carousel yet.',
+      'Responsive layout switch (2×2 and carousel breakpoints) — driven by the component\'s own rendered width via a self-scoped/named container query, not viewport/screen width.',
+      'Carousel interaction: dots, drag, auto-advance — the full XS/S interaction model plus the forced_visible override at M/L.',
+      'Publisher-logo rotator — pair-chunking, out-in crossfade sequencing, timer.',
+      'Count-up stat animation — the reusable tween primitive, wired to both stat cards.',
+    ],
+    prohibitions: [
+      'Never hardcode a resolved literal that has a mapped token.',
+      'Never substitute a visually-similar token for a missing semantic role — add the role.',
+      'Never silently "fix" the two reference gaps (dot hover/focus-visible absence; ungraceful payment-icon/string fallback) without flagging them for design review — implement a reasonable default AND note it, per the harden-as-MUST requirement.',
+      'Never use the transition/animation shorthand with a comma-bearing easing token.',
+      'Never animate layout properties (width/height/top/left) on the carousel\'s hot path — only transform/opacity.',
+      'Never assume a supplied third-party logo asset is polarity-matched to its background the way this repo\'s own first-party assets are.',
+    ],
+  },
+})

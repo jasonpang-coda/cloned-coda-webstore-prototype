@@ -1,0 +1,10 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#0f0c0a"/>
+  <rect x="8" y="8" width="184" height="184" fill="none" stroke="#d1a974" stroke-opacity="0.3" stroke-width="1.5"/>
+  <g fill="#d1a974" fill-opacity="0.5">
+    <path d="M100 64 L104 96 L100 100 L96 96 Z"/>
+    <path d="M100 136 L104 104 L100 100 L96 104 Z"/>
+    <path d="M64 100 L96 96 L100 100 L96 104 Z"/>
+    <path d="M136 100 L104 96 L100 100 L104 104 Z"/>
+  </g>
+</svg>

@@ -1,0 +1,253 @@
+/* ============================================================================
+   EXTENSIONS  —  brand effects with NO design-system slot
+   ----------------------------------------------------------------------------
+   The DS covers colour/space/type semantics. This file holds the COD:M-specific
+   treatments that have no Figma-variable equivalent: composed box-shadows
+   (the DS "elevation" tokens are blur-radius scalars, not shadows), graded
+   scrims, multi-step translucent surface/hairline ramps, component-effect
+   gradients, rarity fills, a few off-scale radii, and dev-chrome colours.
+
+   These are sanctioned — extensions.css is the home for brand treatments that
+   do not fit a semantic token. They are still tokens (never raw literals in a
+   component). A reskin overrides any of these in its [data-theme] block.
+   Authored in OKLCH; colours reference DS palette/seed vars where they can.
+   ============================================================================ */
+
+:root {
+  /* ── Composed elevations (box-shadow) — consume the elevation scale ──────*/
+  --x-shadow-card:       0 var(--x-sys-elevation-level-2-main) 4px oklch(0 0 0 / 0.25);
+  /* Hover now carries a faint version of the SAME brand glow selected uses
+     (--x-fx-glow-hover, defined below — a fainter color-mix of the store's
+     own --x-hdr-glow) so hover reads as a precursor to selected rather than
+     two visually unrelated states; the jump from "lifted, faint glow" to
+     "lifted, strong glow" is one continuum instead of a colour-and-intensity
+     cliff (this is also what keeps mouse-out from reading as a hard cut). */
+  --x-shadow-card-hover: 0 6px 12px oklch(0 0 0 / 0.30), 0 0 12px 0px var(--x-fx-glow-hover);
+  /* Selected-state glow — layers the resting shadow under a brand-coloured
+     bleed (--x-fx-glow-selected, defined below) so selection reads as "lit up"
+     rather than just a border/fill swap. Shared by SkuCard and HeroSkuCard. */
+  --x-shadow-card-selected: var(--x-shadow-card), 0 0 20px 1px var(--x-fx-glow-selected);
+  --x-shadow-bestseller: 0 var(--x-sys-elevation-level-3-main) 24px oklch(0 0 0 / 0.35);
+  --x-shadow-bestseller-selected: var(--x-shadow-bestseller), 0 0 20px 1px var(--x-fx-glow-selected);
+  --x-shadow-drawer:     6px 0 32px oklch(0.12 0.01 273 / 0.55);
+  --x-shadow-sheet:      0 -8px 16px oklch(0.17 0.02 80 / 0.30);
+  /* Checkout footer's own upward cast. Defaults to the sheet shadow; stores
+     whose footer floats over the loyalty ribbon (FCM) override with a tighter,
+     darker shadow so the lift reads against the ribbon fill. */
+  --x-shadow-checkout-footer: var(--x-shadow-sheet);
+  --x-shadow-story-card:
+    0 2px 5px oklch(0.12 0.01 273 / 0.31),
+    0 8px 8px oklch(0.12 0.01 273 / 0.27),
+    0 19px 11px oklch(0.12 0.01 273 / 0.16);
+  --x-shadow-logo: drop-shadow(0 4px 2px oklch(0 0 0 / 0.25));
+  --x-shadow-nav:
+    0 309px 87px oklch(0.12 0.01 273 / 0.01),
+    0 198px 79px oklch(0.12 0.01 273 / 0.05),
+    0 111px 67px oklch(0.12 0.01 273 / 0.16),
+    0 49px 49px oklch(0.12 0.01 273 / 0.27),
+    0 12px 27px oklch(0.12 0.01 273 / 0.31);
+  --x-shadow-nav-inset:
+    inset 0 4px 4px oklch(0.12 0.01 273 / 0.16),
+    inset 0 2px 8px oklch(0 0 0 / 0.24);
+  --x-shadow-rewards-pill: inset 4px 4px 4px oklch(0 0 0 / 0.25);
+  --x-text-shadow-story-heading:
+    0 2px 5px oklch(0.12 0.01 273 / 0.31),
+    0 8px 8px oklch(0.12 0.01 273 / 0.27);
+  /* Legibility shadow for text sitting directly over product art (currently
+     only ProdHighlightedSkuCard, the fcmSkuCardModel pilot) — plain black,
+     matching Figma's raw rgba(0,0,0,0.25) 1:1 in oklch. */
+  --x-text-shadow-sku-card-prod: 4px 4px 4px oklch(0 0 0 / 0.25);
+
+  /* ── Graded scrims (page colour at increasing opacity, paired with blur) ─*/
+  --x-scrim:               color-mix(in oklab, var(--x-palette-neutral-1000) 60%, transparent);
+  --x-scrim-strong:        color-mix(in oklab, var(--x-palette-neutral-1000) 72%, transparent);
+  --x-scrim-banner:        color-mix(in oklab, var(--x-palette-neutral-1000) 80%, transparent);
+  --x-scrim-banner-strong: color-mix(in oklab, var(--x-palette-neutral-1000) 88%, transparent);
+  --x-field-dark:          oklch(0.15 0 0 / 0.6); /* carousel/category dark field */
+
+  /* ── Translucent surface ramp (icon-button / hover fills) ───────────────*/
+  --x-surface-ghost:   oklch(1 0 0 / 0.06);
+  --x-surface-ghost-2: oklch(1 0 0 / 0.08);
+  --x-surface-ghost-3: oklch(1 0 0 / 0.10);
+  --x-surface-ghost-4: oklch(1 0 0 / 0.12);
+  --x-surface-ghost-5: oklch(1 0 0 / 0.16);
+  --x-surface-frost:       oklch(0.992 0.003 286 / 0.04);
+  --x-surface-frost-hover: oklch(0.992 0.003 286 / 0.10);
+
+  /* ── Translucent hairline ramp ──────────────────────────────────────────*/
+  --x-border-soft:   oklch(0.992 0.003 286 / 0.08);
+  --x-border-soft-2: oklch(0.992 0.003 286 / 0.12);
+  --x-border-soft-3: oklch(0.992 0.003 286 / 0.16);
+  --x-border-warm:   oklch(0.93 0.03 80 / 0.16); /* BestSeller warm hairline */
+
+  /* ── Special ink (off the DS ramp) ──────────────────────────────────────*/
+  --x-text-header-strong: oklch(1 0 0);                  /* pure white emphasis */
+  --x-border-signin-btn:  var(--x-text-header-strong);     /* sign-in button border — white; FCM overrides to action-green via html[data-theme] */
+  --x-text-header-dim:    color-mix(in oklab, var(--x-palette-neutral-0) 90%, transparent);
+  --x-text-icon-muted:    oklch(1 0 0 / 0.40);
+  --x-text-icon-faint:    oklch(1 0 0 / 0.50);
+  --x-bestseller-warm:    oklch(0.181 0.006 55.9); /* #14110f warm near-black hero base */
+  --x-gloss-sheen:        oklch(1 0 0 / 0.70);     /* checkout shimmer (HDR-boosted below) */
+
+  /* ── Off-scale radii (no DS step) ───────────────────────────────────────*/
+  --x-radius-md:      10px;
+  --x-radius-control: 7px;
+  --x-radius-circle:  50%;
+
+  /* ── Component-effect gradients ─────────────────────────────────────────*/
+  /* Gold radial — ease-out stop distribution: bright gold core compressed into
+     the first 20%, then a long dramatic falloff to warm near-black across the
+     remaining 80%. Hotspot sits left of the card edge so only the mid-ramp
+     is visible on the left side. */
+  --x-gradient-bestseller-hero: radial-gradient(ellipse 160% 180% at -5% 11%, oklch(0.91 0.19 104 / 0.88) 0%, oklch(0.85 0.175 104 / 0.88) 5%, oklch(0.72 0.14 103 / 0.85) 12%, oklch(0.52 0.10 101 / 0.80) 22%, oklch(0.36 0.065 99 / 0.70) 38%, oklch(0.25 0.035 97 / 0.55) 58%, oklch(0.17 0.012 95 / 0.88) 100%);
+  --x-gradient-bestseller-hero-hover: radial-gradient(ellipse 165% 185% at -7% 9%, oklch(0.91 0.19 104 / 0.88) 0%, oklch(0.85 0.175 104 / 0.88) 5%, oklch(0.72 0.14 103 / 0.87) 12%, oklch(0.52 0.10 101 / 0.82) 22%, oklch(0.36 0.065 99 / 0.72) 38%, oklch(0.25 0.035 97 / 0.58) 58%, oklch(0.17 0.012 95 / 1) 100%);
+  --x-gradient-bestseller-gloss: linear-gradient(100deg, transparent 30%, oklch(0.98 0.04 90 / 0.55) 50%, transparent 70%);
+  --x-gradient-bestseller-metallic-shine: linear-gradient(100deg, oklch(1 0 0 / 0) 15%, oklch(1 0 0 / 0.61) 50%, oklch(1 0 0 / 0) 85%);
+  /* Applied on top of the gradient's own internal alpha (the 0.61 peak stop
+     above) — both compound. Was a bare 0.25 literal on the pseudo-element in
+     BestSellerCard.vue; formalized here so it's a real token, not a magic
+     number, even though only one component consumes it today. */
+  --x-fx-bestseller-shimmer-opacity: 0.25;
+  --x-gradient-bestseller-vignette: linear-gradient(180deg, oklch(0.14 0.005 50 / 0) 0%, oklch(0.14 0.005 50 / 0.56) 100%);
+  --x-gradient-story-vignette: linear-gradient(180deg, transparent 45%, oklch(0.12 0.01 273 / 0.55) 100%);
+  /* Bottom scrim behind the story-carousel content (logo/heading/CTA). Defaults
+     to the soft vignette; a store can override to fade the banner into its page
+     background for a seamless blend + stronger logo legibility. */
+  --x-gradient-story-scrim: var(--x-gradient-story-vignette);
+  --x-gradient-story-progress-scrim: linear-gradient(to bottom, oklch(0.99 0.002 286 / 0.2) 0%, transparent 100%);
+  --x-gradient-bundle-banner: linear-gradient(-49deg, oklch(0.15 0 0 / 0.64) 21%, oklch(0.55 0 0 / 0) 40%);
+  --x-gradient-checkout-banner:
+    linear-gradient(var(--x-scrim-strong), var(--x-scrim-strong)),
+    radial-gradient(120% 140% at 80% 0%, oklch(0.26 0.08 290) 0%, oklch(0.18 0.006 56) 70%);
+  --x-gradient-thumb-gloss: linear-gradient(135deg, oklch(0.992 0.003 286 / 0.12), oklch(0.992 0.003 286 / 0.02));
+  /* Scrim over the download banner's optional background image (config-driven
+     content.downloadBannerBg) — fades to the page background so heading/body
+     contrast holds regardless of what art is behind it. Built from --x-bg-page
+     specifically (always a plain colour), not --x-bg-card-default — a store
+     whose card fill is a multi-layer image (e.g. a noise + gradient material)
+     would make color-mix() invalid and silently drop this whole declaration. */
+  --x-gradient-download-banner-scrim: linear-gradient(0deg, var(--x-bg-page) 0%, color-mix(in oklab, var(--x-bg-page) 70%, transparent) 100%);
+  --x-gradient-scroll-fade-left:  linear-gradient(to right, var(--x-bg-page) 0%, transparent 100%);
+  --x-gradient-scroll-fade-right: linear-gradient(to left,  var(--x-bg-page) 0%, transparent 100%);
+  /* Bottom scroll scrim — modals/sheets (sheet__body, selector__body) show this
+     when their content overflows, hinting there's more below. Built from the
+     neutral scrim tokens (not --x-bg-page) so it reads correctly over any surface —
+     sheet fills are often a themed gradient image, not a flat colour. */
+  --x-gradient-scroll-fade-bottom: linear-gradient(to top, var(--x-scrim-banner) 0%, transparent 100%);
+  /* Top + bottom fade for the background-variant SKU image card. Card surface bleeds
+     in from both edges, leaving only the middle section of the art exposed. */
+  --x-gradient-sku-image-card-fade: linear-gradient(
+    to bottom,
+    var(--x-bg-sku-card-default) 0%,
+    transparent 30%,
+    transparent 65%,
+    var(--x-bg-sku-card-default) 100%
+  );
+  /* Bottom-fade mask for the panel-variant card background image.
+     Black = fully reveal the image; transparent = hide (reveals the dark __bg surface beneath).
+     Achieves a top-visible → bottom-fade-to-black effect without any hardcoded colour. */
+  --x-mask-sku-card-bg-fade: linear-gradient(to bottom, black 55%, transparent 82%);
+
+  /* Bottom-up legibility scrim for the full-bleed HeroSkuCard — keeps overlaid
+     title / price readable over key art. Built from the neutral scrim tokens so
+     it tracks each store's void colour. */
+  --x-gradient-hero-scrim: linear-gradient(
+    to top,
+    var(--x-scrim-banner-strong) 0%,
+    var(--x-scrim-banner-strong) 25%,
+    var(--x-scrim-banner) 50%,
+    var(--x-scrim) 70%,
+    transparent 95%
+  );
+
+  /* FX border effects — color-stop tokens shared by all .fx-glow-border-* classes.
+     All effects read only --fx-border-* so they inherit each store's brand colour
+     automatically (every theme defines --x-hdr-glow/hot; roguetrader overrides directly).
+     Classes: --rotate (full lit ring), --pulse (breathing), --hud (corner brackets),
+     --trace (draw-on), --dual (two comets), --hdr (single comet HDR). */
+  --x-fx-border-glow:        var(--x-hdr-glow);
+  --x-fx-border-hot:         var(--x-hdr-hot);
+  --x-fx-border-trail-glow:  var(--x-hdr-glow);
+  --x-fx-border-trail-hot:   var(--x-hdr-hot);
+
+  /* Selected-card ambient glow — feeds --x-shadow-card-selected/-bestseller-selected
+     above. Aliases --x-hdr-glow directly (not --x-fx-border-glow) so a store can
+     retune the selection glow independently of the running-border effect. */
+  --x-fx-glow-selected: color-mix(in oklch, var(--x-hdr-glow) 55%, transparent);
+  /* Hover-card ambient glow — same source colour as selected (--x-hdr-glow),
+     much fainter mix, so hover and selected are one intensity continuum
+     rather than two different colours (see --x-shadow-card-hover above). */
+  --x-fx-glow-hover: color-mix(in oklch, var(--x-hdr-glow) 22%, transparent);
+
+  /* HUD corner-bracket dimensions — arm length and stroke weight */
+  --x-fx-hud-corner-length:  18px;
+  --x-fx-hud-weight:         var(--border-weight-default);
+
+  /* Camo Breathe period — --fx-glow-border--camo-breathe's opacity-breathe
+     cycle. Slower than --x-motion-border-pulse (2400ms) by design: "calm and
+     stealthy" reads as patient, not urgent. Themes may retune (e.g. MGSSE
+     stretches it further via html[data-theme="mgsse"]). */
+  --x-motion-border-camo:    5500ms;
+  /* Camo Breathe ring thickness — thicker than --border-weight-default so the
+     ring stays legible without a spin to catch the eye. */
+  --x-fx-camo-border-width:  3px;
+
+  /* ── Rarity fills (COD:M domain — themeable per store) ───────────────────*/
+  --x-rarity-gradient-mythic:    linear-gradient(180deg, oklch(0.63 0.20 26 / 0.64) 0%, oklch(0.19 0.03 29 / 0.64) 100%);
+  --x-rarity-gradient-legendary: linear-gradient(180deg, oklch(0.85 0.11 85 / 0.64) 0%, oklch(0.34 0.03 80 / 0.64) 100%);
+  --x-rarity-gradient-epic:      linear-gradient(180deg, oklch(0.75 0.13 300 / 0.64) 0%, oklch(0.32 0.02 290 / 0.64) 100%);
+  --x-rarity-gradient-rare:      linear-gradient(180deg, oklch(0.55 0.16 250 / 0.64) 0%, oklch(0.31 0.05 255 / 0.64) 100%);
+  --x-rarity-gradient-common:    var(--x-bg-card-default);
+  --x-rarity-gradient-neutral:   radial-gradient(120% 120% at 50% 0%, oklch(0.99 0.003 286 / 0.04) 0%, oklch(0.38 0.01 278 / 0.04) 100%);
+
+  /* Muted blue — same hue as rarity/rare (250–255°) at roughly half the
+     chroma, for a headline surface that needs to read as blue without
+     competing with a saturated CTA sitting on top of it. Kept separate from
+     --x-rarity-gradient-rare (not a re-tune of it) since that token is
+     shared by every rarity-tagged item across the app — this one is scoped
+     to a single calmer use case. Lowered again (was 0.64) so the card's own
+     --x-fx-gradient-muted-blue-driven bloom halo (MilestoneRewardCard.vue)
+     reads through the glass instead of being fully masked by an opaque fill. */
+  --x-fx-gradient-muted-blue: linear-gradient(180deg, oklch(0.55 0.08 250 / 0.36) 0%, oklch(0.30 0.03 255 / 0.36) 100%);
+
+  /* Rarity solid text colours — the top stop of each gradient at full opacity.
+     Used to tint item names (e.g. the Item Summary accordion). Neutral falls
+     back to the default header ink via the consumer, not a token here. */
+  --x-rarity-mythic:    oklch(0.63 0.20 26);
+  --x-rarity-legendary: oklch(0.85 0.11 85);
+  --x-rarity-epic:      oklch(0.75 0.13 300);
+  --x-rarity-rare:      oklch(0.55 0.16 250);
+
+  /* ── Flag tile (region/language switcher) ───────────────────────────────
+     Hairline inset border + top-light gloss over the flag art (Figma 1507:17608:
+     1px rgba(0,0,0,.1) border; white(.7)→black(.3) overlay-blended gradient).
+     Flag artwork is real-world colour — these effects are surface-agnostic. */
+  --x-flag-tile-border: oklch(0 0 0 / 0.10);
+  --x-flag-tile-gloss:  linear-gradient(to bottom, oklch(1 0 0 / 0.70), oklch(0 0 0 / 0.30));
+
+  /* ── Interaction / dev chrome ───────────────────────────────────────────*/
+  --x-checkout-loyalty-overlap: 0px; /* overlap of footer over the loyalty ribbon; FCM overrides (via html[data-theme] — see web-store-tokens §3) */
+  --x-fx-ripple-color:      oklch(1 0 0 / 0.14);
+  --x-fx-ripple-color-dark: oklch(0 0 0 / 0.15); /* dark ripple for light/brand-coloured surfaces */
+
+  /* Third-party platform button backgrounds */
+  --x-brand-apple:           oklch(0.14 0 0);         /* #1c1c1e */
+  --x-brand-google:          oklch(1 0 0);            /* #ffffff */
+  --x-brand-meta:            oklch(0.47 0.20 261);   /* #1877f2 */
+  --x-brand-steam:           oklch(0.19 0.02 226);   /* #1b2838 */
+  --x-brand-xbox:            oklch(0.43 0.14 143);   /* #107c10 */
+  --x-brand-playstation:     oklch(0.22 0.14 267);   /* #003087 */
+
+  --x-toolbar-bg:        oklch(0.13 0.01 270 / 0.8);
+  --x-toolbar-text-idle: color-mix(in oklab, var(--x-palette-neutral-0) 60%, transparent);
+
+  /* ── Hitmarker condense alias (legacy name kept for the global block) ────*/
+  --x-hm-scale: var(--x-sys-font-condense);
+  /* Body-family variant — follows the body condense so a theme variant can
+     uncondense body text (demo body-font toggle) while headings stay squeezed. */
+  --x-hm-scale-body: var(--x-sys-font-condense-body, var(--x-sys-font-condense));
+}
+
+@media (dynamic-range: high) {
+  :root { --x-gloss-sheen: oklch(1.3 0 0 / 0.8); }
+}

@@ -1,0 +1,1041 @@
+{
+  "meta": {
+    "brand": "METAL GEAR SOLID Δ: SNAKE EATER",
+    "version": "1.0",
+    "sourceImageCount": 8,
+    "confidence": "high",
+    "notes": "Primary green #009600 cross-validated two ways: CSS census (common.css — loader spinner, .cmn-pfbtn platform-button accent, .cmn-section-title marker bar, 9 uses) AND pixel-frequency-sampled from the logo PNG's Delta glyph (5842 of ~5900 green-family pixels are exactly #009600). This is the strongest possible evidence tier. PS5 blue (#0070CC) and Xbox green (#107C10) are platform-badge colours scoped to .cmn-pfbtn.is-ps5/.is-xbox — excluded from the 7-role brand palette as store-flexible/incidental, not brand-locked. statusPositive reuses the brand's own primary green (military status-light convention, observed directly on the Fox Hunt server-status page: green/olive/grey dots for Online/Under maintenance/Down, each paired with a text label — non-colour-alone cue already native to the brand). statusCaution and statusNegative are derived to fit the muted military palette."
+  },
+  "generic": {
+    "essence": {
+      "adjectives": [
+        "tactical",
+        "authentic",
+        "gritty",
+        "cinematic",
+        "mission-briefing"
+      ],
+      "positioning": "The Beginning of it All — a faithful, next-gen remake of the Cold War espionage classic, rendered with photoreal Unreal Engine 5 fidelity."
+    },
+    "voice": {
+      "confidence": "observed",
+      "source": "live copy read from https://www.konami.com/mg/mgs3r/us/en/ and /characters/ via browser",
+      "summary": "Measured, mission-briefing register — third person, factual, dossier-like character bios; marketing copy is confident but restrained, never exclamatory.",
+      "pillars": [
+        {
+          "name": "Dossier-style character bios",
+          "evidence": "A GRU colonel known in the West by the codename \"Thunderbolt.\" A sadist with a penchant for torture, ultra-high voltage electricity flows through his body, which he unleashes in his attacks."
+        },
+        {
+          "name": "Legacy-respecting, not oversold",
+          "evidence": "Everything you love, and more — The story, characters, voice acting, gameplay, and music that made the original a sensation return, remade for modern consoles."
+        },
+        {
+          "name": "Technical credibility as a selling point",
+          "evidence": "Characters are rendered in such fine detail that facial wrinkles, pores, and even separate eye and iris movements are visible, allowing for rich and emotive facial animations."
+        },
+        {
+          "name": "Permanence / consequence framing",
+          "evidence": "Injuries will leave their mark on Snake's body permanently, telling a story of each player's unique journey through the game."
+        },
+        {
+          "name": "Understated milestone announcements",
+          "evidence": "2,000,000 COPIES SOLD *As of 2/17/2026, per internal tracking"
+        }
+      ],
+      "person": "third person throughout; the player is never addressed directly as \"you\" in narrative copy (only in feature-description copy, e.g. \"Players can elect for...\")",
+      "cadence": "measured, declarative sentences; em-dashes for dramatic pause (\"a mission that will mark the start of a new legend, against the backdrop of the ever-changing march of history\"); no exclamation points; ALL-CAPS reserved for section labels and platform names",
+      "lexicon": {
+        "say": [
+          "mission",
+          "infiltrate",
+          "survival stealth action",
+          "Cold War",
+          "legend",
+          "codename",
+          "operative"
+        ],
+        "avoid": [
+          "hype exclamations",
+          "casual slang",
+          "discount/urgency commerce language"
+        ]
+      },
+      "commerceVoice": "Sales milestones are cited like a field report (\"2,000,000 COPIES SOLD *As of 2/17/2026, per internal tracking\") rather than promoted; sale/bundle news sits in the same understated News feed as patch notes.",
+      "copyExamples": {
+        "hero": "The Beginning of it All.",
+        "skuCta": "Begin the Mission",
+        "bonusBadge": "Includes the METAL GEAR SOLID: MASTER COLLECTION Vol.1 Bundle",
+        "scarcityBadge": "Not used — the brand voice avoids scarcity/urgency framing",
+        "confirmation": "Mission parameters confirmed.",
+        "navLabels": [
+          "Top",
+          "Videos",
+          "Characters",
+          "Products"
+        ],
+        "emptyState": "No transmissions received.",
+        "errorState": "Signal lost — please retry the transmission.",
+        "checkoutCta": "Deploy"
+      }
+    },
+    "artStyle": {
+      "family": "photoreal",
+      "subStyle": "military-realism Unreal Engine 5 photogrammetry-grade character rendering, jungle/Cold-War-Soviet environmental realism",
+      "renderingCues": [
+        "physically-based skin/cloth shading with visible pore-level detail",
+        "volumetric jungle fog and dappled light",
+        "battle-damage/wear decals applied in real time on character models",
+        "handheld-camera-adjacent framing in key art (motion blur, shallow DOF)"
+      ]
+    },
+    "palette": {
+      "primary": {
+        "hex": "#009600",
+        "rgb": [
+          0,
+          150,
+          0
+        ],
+        "usage": "section-title accent bar, platform-button accent, loader spinner, Δ logo glyph — cross-validated CSS + logo pixel sample"
+      },
+      "secondary": {
+        "hex": "#C4E39C",
+        "rgb": [
+          196,
+          227,
+          156
+        ],
+        "usage": "pale lime gradient highlight on inline flourish text"
+      },
+      "tertiary": {
+        "hex": "#007E00",
+        "rgb": [
+          0,
+          126,
+          0
+        ],
+        "usage": "solid CTA button background (slightly darker green than the primary accent)"
+      },
+      "neutral": {
+        "hex": "#080808",
+        "rgb": [
+          8,
+          8,
+          8
+        ],
+        "usage": "dominant page/panel background"
+      },
+      "statusPositive": {
+        "hex": "#009600",
+        "rgb": [
+          0,
+          150,
+          0
+        ],
+        "usage": "server-status \"Online\" indicator — reuses brand primary green, paired with a text label (non-colour-alone cue native to the brand)"
+      },
+      "statusCaution": {
+        "hex": "#8a8a3a",
+        "rgb": [
+          138,
+          138,
+          58
+        ],
+        "usage": "derived olive-yellow for \"Under maintenance\" status, consistent with the muted military palette"
+      },
+      "statusNegative": {
+        "hex": "#8a8a8a",
+        "rgb": [
+          138,
+          138,
+          138
+        ],
+        "usage": "\"Down\" status uses grey, not red — observed brand convention avoids alarm-red for routine status"
+      }
+    },
+    "contrastRules": [
+      "White (#FFFFFF) on Void Black (#080808) ≈ 20:1 — default body/heading pairing",
+      "Primary Green (#009600) on Void Black ≈ 5.1:1 — safe for body copy, unlike many brand greens",
+      "Pale Lime (#C4E39C) on Void Black ≈ 14.1:1 — safe for body copy",
+      "White on solid Green button fill (#007E00 tertiary) ≈ 3.9:1 — borderline; only acceptable at the observed bold/large button sizes (17–22px bold), never for small body text on a green fill",
+      "PS5 blue and Xbox green are platform-badge colours only (see storeFlexible note) — do not use as brand accents"
+    ],
+    "typography": {
+      "families": {
+        "display": "URW DIN Semi-Condensed (headings — .cmn-page-title, buttons) — Google Fonts proxy: Oswald",
+        "body": "Helvetica, Arial, Yu Gothic (CJK fallback), sans-serif — no proxy needed, system-safe",
+        "accent": "none"
+      },
+      "scale": {
+        "baseSizePx": 16,
+        "ratio": 1.25,
+        "measureCh": 65,
+        "pairingRationale": "A condensed grotesque display face reads as stencilled/tactical against a plain Helvetica body — classic military-briefing contrast."
+      },
+      "typePrimitives": {
+        "weights": {
+          "extraBold": 800,
+          "bold": 700,
+          "semibold": 600,
+          "regular": 400
+        },
+        "headerSizes": {
+          "h1": "38/38",
+          "h2": "24/40",
+          "h3": "22/32",
+          "h4": "20/28",
+          "h5": "18/24",
+          "h6": "16/20",
+          "h7": "14/18"
+        },
+        "bodySizes": {
+          "l": "16/18",
+          "main": "14/16",
+          "s": "12/14",
+          "xs": "10/12"
+        }
+      },
+      "textStyles": {
+        "heading-display": {
+          "primitive": "h1",
+          "weight": "bold",
+          "leading": 1.0,
+          "tracking": "0.07em",
+          "case": "UPPER",
+          "effect": "none"
+        },
+        "heading-title": {
+          "primitive": "h2",
+          "weight": "bold",
+          "leading": 1.1,
+          "tracking": "0.02em",
+          "case": "UPPER"
+        },
+        "heading-subtitle": {
+          "primitive": "h3",
+          "weight": "bold",
+          "leading": 1.15,
+          "tracking": "0.02em",
+          "case": "UPPER"
+        },
+        "paragraph-l": {
+          "primitive": "body-l",
+          "weight": "regular",
+          "leading": 1.5,
+          "tracking": "0",
+          "case": "sentence"
+        },
+        "paragraph-main": {
+          "primitive": "body-main",
+          "weight": "regular",
+          "leading": 1.5,
+          "tracking": "0",
+          "case": "sentence"
+        },
+        "paragraph-s": {
+          "primitive": "body-s",
+          "weight": "regular",
+          "leading": 1.45,
+          "tracking": "0",
+          "case": "sentence"
+        },
+        "utility-label": {
+          "primitive": "body-xs",
+          "weight": "bold",
+          "leading": 1.1,
+          "tracking": "0.05em",
+          "case": "UPPER"
+        },
+        "utility-mono": {
+          "primitive": "body-s",
+          "weight": "regular",
+          "leading": 1.4,
+          "tracking": "0",
+          "case": "sentence"
+        }
+      },
+      "reversedTypeRule": "all text is white-on-near-black by default; headings use the condensed display face at 0.07em tracking; never letterspace lowercase body text",
+      "observedCss": [
+        {
+          "selector": ".cmn-page-title",
+          "fontFamily": "urw-din-semi-condensed, Helvetica, Arial, serif",
+          "fontSizeMobile": "38px",
+          "fontSizeDesktop": "38px",
+          "weight": null,
+          "lineHeight": "1",
+          "letterSpacing": "0.07em",
+          "color": null,
+          "textShadow": null,
+          "source": "common.css"
+        },
+        {
+          "selector": ".btn-green / .cmn-btn-green",
+          "fontFamily": "urw-din-semi-condensed, Helvetica, Arial, serif",
+          "fontSizeMobile": "17-22px",
+          "fontSizeDesktop": "17-22px",
+          "weight": "bold",
+          "lineHeight": "1.2",
+          "letterSpacing": "0",
+          "color": "#fff",
+          "textShadow": null,
+          "source": "common.css"
+        },
+        {
+          "selector": ".cmn-pfbtn.is-ps5",
+          "fontFamily": "inherit",
+          "fontSizeMobile": null,
+          "fontSizeDesktop": null,
+          "weight": null,
+          "lineHeight": null,
+          "letterSpacing": null,
+          "color": "#0070cc",
+          "textShadow": null,
+          "source": "common.css"
+        },
+        {
+          "selector": ".cmn-pfbtn.is-xbox",
+          "fontFamily": "inherit",
+          "fontSizeMobile": null,
+          "fontSizeDesktop": null,
+          "weight": null,
+          "lineHeight": null,
+          "letterSpacing": null,
+          "color": "#107c10",
+          "textShadow": null,
+          "source": "common.css"
+        },
+        {
+          "selector": ".cmn-section-title .inner:before",
+          "fontFamily": null,
+          "fontSizeMobile": null,
+          "fontSizeDesktop": null,
+          "weight": null,
+          "lineHeight": null,
+          "letterSpacing": null,
+          "color": "#009600",
+          "textShadow": null,
+          "source": "common.css (decorative accent bar, not text)"
+        }
+      ],
+      "fontAcquisition": {
+        "heading": {
+          "family": "URW DIN Semi-Condensed",
+          "source": "licensed-local-woff2",
+          "acquiredCuts": [
+            "Regular (400)",
+            "Bold (700)"
+          ],
+          "localPath": "src/stores/mgsdelta/fonts/URWDINSemiCond-{Regular,Bold}.woff2",
+          "sourceArchive": "src/stores/mgsdelta/font/ (full URW DIN family OTFs supplied by the user; only Regular+Bold converted to woff2 and wired)",
+          "proxyFamily": "Oswald",
+          "proxyRationale": "kept as the CSS fallback (index.html link) in case a woff2 fails to load; no longer the primary face now that the licensed font is local"
+        },
+        "body": {
+          "family": "Helvetica, Arial, sans-serif",
+          "source": "system-fallback",
+          "proxyFamily": "Arial",
+          "proxyRationale": "system font, no acquisition needed"
+        }
+      }
+    },
+    "shape": {
+      "profile": "sharp",
+      "radiusStep": "0",
+      "wonky": false,
+      "motifs": [
+        "thin green accent bar preceding section titles",
+        "diagonal-cut button corners on green CTAs (clip-path bevel)"
+      ]
+    },
+    "lightingModel": {
+      "interactiveElements": "solid green fill + bold condensed label, subtle bevel on CTA buttons",
+      "nonInteractiveElements": "flat near-black panels, no gradient",
+      "vfxSignature": "volumetric jungle fog, embers/sparks in Fox Hunt key art, shallow depth of field on character portraits"
+    },
+    "spacing": {
+      "rhythm": "regular",
+      "baseSysStep": "--x-sys-space-m",
+      "touchTargetSysToken": "--x-sys-size-control-m",
+      "grouping": "space-grouped"
+    },
+    "states": {
+      "hover": "green accent brightens slightly [inferred]",
+      "pressed": "green darkens toward tertiary #007E00 [inferred]",
+      "focus": "visible focus ring required",
+      "disabled": "reduced opacity + desaturated",
+      "primaryActionRule": "one primary action per view"
+    },
+    "accessibility": {
+      "bodyContrast": "≥ 4.5:1 — white-on-black (20:1) and green-on-black (5.1:1) both pass",
+      "largeTextContrast": "≥ 3:1 — white-on-green-button (3.9:1) passes only at the observed bold/large sizes",
+      "statusNotByColourAlone": "the brand's own server-status widget already pairs each colour dot with a text label (Online/Under maintenance/Down) — carry this pattern forward",
+      "focusRing": "present on every focusable element",
+      "notes": "white text on the tertiary green CTA fill is borderline (3.9:1) — flagged; keep CTA labels bold and ≥17px, or darken the green fill for small text"
+    },
+    "texture": {
+      "halftone": {
+        "present": false,
+        "rule": "not observed"
+      },
+      "distress": {
+        "present": false,
+        "rule": "not observed — imagery uses battle damage/wear on character models, not a UI texture layer"
+      },
+      "noise": {
+        "present": true,
+        "opacityPct": 5,
+        "blendMode": "overlay",
+        "note": "subtle film grain on key art photography"
+      },
+      "other": "clean flat UI chrome — texture lives in the 3D-rendered imagery, not the interface"
+    },
+    "motion": {
+      "durationMs": 300,
+      "easing": "ease-out",
+      "signatures": [
+        "scroll-triggered fade-in on section content"
+      ],
+      "interactiveFeedback": "standard hover/press state changes [inferred]"
+    },
+    "assetPrompts": {
+      "heroBanner": "Photoreal Unreal-Engine-5-quality render of a battle-worn special-forces operative in 1960s jungle camouflage, sniper rifle slung, face partially obscured by a bandana, deep jungle fog behind him lit by a single shaft of light, shallow depth of field, cinematic 16:9 key art, desaturated olive-and-black palette with a single vivid green accent.",
+      "skuArt": "Portrait 2:3 photoreal render of Cold War military survival gear (camouflage jacket, binoculars, combat knife) laid out on a weathered field map, single hard overcast light, muted olive and near-black palette with one vivid green accent object.",
+      "background": "Seamless dark jungle-canopy texture tile, near-black with deep olive-green foliage silhouettes, subtle film grain, very low contrast, for use as a dark webstore section background."
+    }
+  },
+  "codashop": {
+    "architectureNote": "5-tier cascade: (1) type primitives + ref seeds → (2) palette ramps (--x-palette-{role}-500 = --x-ref-{role}) → (3) sys intensity / dimensions / effects / states → (4) semantic defaults (--x-bg-*, --x-text-*, --x-border-*) → (5) .text-style-* classes. THREE override layers: SYSTEM CONSTANT (layoutSystem + the 27 textStyle compositions + scales) ⊃ BRAND-LOCKED (ref seeds, font, size values, brandCharacter) ⊃ STORE-FLEXIBLE (semantic colour mapping, component variants).",
+    "layoutSystem": {
+      "mutable": false,
+      "responsiveModel": "container-query",
+      "containerRule": "device screen sets container-type:inline-size; overlay must NOT (traps position:fixed)",
+      "breakpoints": {
+        "xs": "< 641px",
+        "s": "641–800px",
+        "m": "801–1279px",
+        "l": "≥ 1280px"
+      },
+      "grid": {
+        "columns": {
+          "xs": 8,
+          "s": 8,
+          "m": 12,
+          "l": 12
+        },
+        "columnGap": {
+          "token": "--x-gap-grid-gutter",
+          "xs": "8px",
+          "s": "8px",
+          "m": "12px",
+          "l": "16px"
+        },
+        "sidePadding": {
+          "token": "--x-gap-grid-margin",
+          "xs": "12px",
+          "s": "12px",
+          "m": "12px",
+          "l": "16px"
+        },
+        "rowGap": {
+          "token": "--x-gap-grid-row-default",
+          "all": "8px"
+        },
+        "template": "grid-template-columns: repeat(N, minmax(0, 1fr))"
+      },
+      "spanVariants": {
+        "fluid": "grid-column: 1 / -1 at all breakpoints (full bleed)",
+        "content": "full width on XS/S; centred cols 3–10 of 12, max-width 960px, on M/L",
+        "carousel": "full-bleed on XS/S (negative margin cancels grid margin); content on M/L"
+      },
+      "skuGridPatterns": {
+        "_note": "all use display:grid; gap:var(--x-gap-content-default)",
+        "skuList": {
+          "xs": 2,
+          "s": 4,
+          "m": 4
+        },
+        "bundleGrid": {
+          "xs": 1,
+          "s": 1,
+          "m": 2
+        },
+        "giftGrid": {
+          "xs": 2,
+          "s": "variable",
+          "m": "variable"
+        },
+        "storyCarouselAspect": {
+          "xs": "1/1",
+          "s": "1/1",
+          "m": "2.6/1"
+        }
+      },
+      "tokenTierDiscipline": "components consume ONLY semantic (--x-bg-*, --x-text-*, --x-border-*) + spacing/size (--x-pad-*, --x-gap-*, --x-radius-*, --x-size-*); NEVER --x-sys-*, --x-palette-*, or --x-ref-* directly",
+      "mobileDesktopRule": "values switch at breakpoints via -desktop- token twins"
+    },
+    "themePreset": {
+      "id": "store-mgsdelta",
+      "name": "METAL GEAR SOLID Δ: SNAKE EATER",
+      "presetStyle": {
+        "seedColors": {
+          "primary": "#009600",
+          "secondary": "#C4E39C",
+          "tertiary": "#007E00",
+          "neutral": "#080808",
+          "statusPositive": "#009600",
+          "statusCaution": "#8A8A3A",
+          "statusNegative": "#8A8A8A"
+        },
+        "font": "Oswald",
+        "borderRadius": "RADIUS_SHARP",
+        "backgroundColor": "#080808",
+        "backgroundType": "TYPE_SOLID"
+      }
+    },
+    "cssOverride": "body[data-theme='theme-preset--store-mgsdelta'] {\n  --x-ref-primary: #009600;\n  --x-ref-secondary: #C4E39C;\n  --x-ref-tertiary: #007E00;\n  --x-ref-neutral: #080808;\n  --x-ref-status-positive: #009600;\n  --x-ref-status-caution: #8A8A3A;\n  --x-ref-status-negative: #8A8A8A;\n  --x-sys-font-heading: 'Oswald', sans-serif; /* proxy for URW DIN Semi-Condensed */\n  --x-sys-font-body: Helvetica, Arial, sans-serif;\n  --x-bg-page: #080808;\n}",
+    "brandLocked": {
+      "ref": {
+        "primary": "#009600",
+        "secondary": "#C4E39C",
+        "tertiary": "#007E00",
+        "neutral": "#080808",
+        "statusPositive": "#009600",
+        "statusCaution": "#8A8A3A",
+        "statusNegative": "#8A8A8A"
+      },
+      "palette": {
+        "anchorRule": "--x-palette-{role}-500 resolves to --x-ref-{role}",
+        "strategy": "auto"
+      },
+      "typePrimitives": {
+        "fontHeading": "URW DIN Semi-Condensed, Oswald, sans-serif",
+        "fontBody": "Helvetica, Arial, sans-serif",
+        "weights": {
+          "extraBold": 800,
+          "bold": 700,
+          "semibold": 600,
+          "regular": 400
+        },
+        "headerSizes": {
+          "h1": {
+            "mobile": "38px",
+            "desktop": "38"
+          },
+          "h2": {
+            "mobile": "24px",
+            "desktop": "40"
+          },
+          "h3": {
+            "mobile": "22px",
+            "desktop": "32"
+          },
+          "h4": {
+            "mobile": "20px",
+            "desktop": "28"
+          },
+          "h5": {
+            "mobile": "18px",
+            "desktop": "24"
+          },
+          "h6": {
+            "mobile": "16px",
+            "desktop": "20"
+          },
+          "h7": {
+            "mobile": "14px",
+            "desktop": "18"
+          }
+        },
+        "bodySizes": {
+          "l": {
+            "mobile": "16px",
+            "desktop": "18"
+          },
+          "main": {
+            "mobile": "14px",
+            "desktop": "16"
+          },
+          "s": {
+            "mobile": "12px",
+            "desktop": "14"
+          },
+          "xs": {
+            "mobile": "10px",
+            "desktop": "12"
+          }
+        },
+        "leading": {
+          "main": "105%",
+          "loose": "120%",
+          "wide": "150%"
+        },
+        "tracking": {
+          "tight": "-0.5%",
+          "narrow": "-0.2%",
+          "main": "0%",
+          "loose": "0.5%",
+          "wide": "1%"
+        },
+        "modularScale": {
+          "basePx": 16,
+          "ratio": 1.25
+        }
+      },
+      "textStyles": {
+        "heading-display-hero": {
+          "primitive": "h1",
+          "weight": "extra-bold",
+          "leading": "main",
+          "tracking": "loose",
+          "case": "UPPER"
+        },
+        "heading-page-title": {
+          "primitive": "h2",
+          "weight": "bold",
+          "leading": "main",
+          "tracking": "loose",
+          "case": "UPPER"
+        },
+        "heading-section": {
+          "primitive": "h3",
+          "weight": "bold",
+          "leading": "main",
+          "tracking": "loose",
+          "case": "UPPER"
+        },
+        "heading-modal": {
+          "primitive": "h4",
+          "weight": "bold",
+          "leading": "main",
+          "tracking": "main",
+          "case": "UPPER"
+        },
+        "heading-card": {
+          "primitive": "h5",
+          "weight": "semibold",
+          "leading": "main",
+          "tracking": "main",
+          "case": "UPPER"
+        },
+        "heading-banner": {
+          "primitive": "h6",
+          "weight": "bold",
+          "leading": "main",
+          "tracking": "main",
+          "case": "UPPER"
+        },
+        "heading-final-price": {
+          "primitive": "h6",
+          "weight": "extra-bold",
+          "leading": "main",
+          "tracking": "main",
+          "case": "UPPER"
+        },
+        "heading-sku-title": {
+          "primitive": "h4",
+          "weight": "semibold",
+          "leading": "main",
+          "tracking": "main",
+          "case": "UPPER"
+        },
+        "heading-subtitle": {
+          "primitive": "h7",
+          "weight": "semibold",
+          "leading": "main",
+          "tracking": "main",
+          "case": "UPPER"
+        },
+        "paragraph-lead": {
+          "primitive": "body-l",
+          "weight": "regular",
+          "leading": "wide",
+          "tracking": "main",
+          "case": "sentence"
+        },
+        "paragraph-regular": {
+          "primitive": "body-main",
+          "weight": "regular",
+          "leading": "wide",
+          "tracking": "main",
+          "case": "sentence"
+        },
+        "paragraph-small": {
+          "primitive": "body-s",
+          "weight": "regular",
+          "leading": "wide",
+          "tracking": "main",
+          "case": "sentence"
+        },
+        "paragraph-strikethrough": {
+          "primitive": "body-main",
+          "weight": "regular",
+          "leading": "wide",
+          "tracking": "main",
+          "case": "sentence",
+          "decoration": "line-through"
+        },
+        "utility-action-regular": {
+          "primitive": "body-main",
+          "weight": "semibold",
+          "leading": "main",
+          "tracking": "main",
+          "case": "sentence"
+        },
+        "utility-action-uppercase": {
+          "primitive": "body-main",
+          "weight": "semibold",
+          "leading": "main",
+          "tracking": "wide",
+          "case": "UPPER"
+        },
+        "utility-action-strikethrough": {
+          "primitive": "body-main",
+          "weight": "semibold",
+          "leading": "main",
+          "tracking": "main",
+          "case": "sentence",
+          "decoration": "line-through"
+        },
+        "utility-default-regular": {
+          "primitive": "body-s",
+          "weight": "regular",
+          "leading": "wide",
+          "tracking": "main",
+          "case": "sentence"
+        },
+        "utility-default-strikethrough": {
+          "primitive": "body-s",
+          "weight": "regular",
+          "leading": "wide",
+          "tracking": "main",
+          "case": "sentence",
+          "decoration": "line-through"
+        },
+        "utility-default-uppercase": {
+          "primitive": "body-s",
+          "weight": "semibold",
+          "leading": "main",
+          "tracking": "wide",
+          "case": "UPPER"
+        },
+        "utility-label-regular": {
+          "primitive": "body-s",
+          "weight": "semibold",
+          "leading": "main",
+          "tracking": "main",
+          "case": "sentence"
+        },
+        "utility-label-uppercase": {
+          "primitive": "body-s",
+          "weight": "semibold",
+          "leading": "main",
+          "tracking": "wide",
+          "case": "UPPER"
+        },
+        "utility-label-tall": {
+          "primitive": "body-s",
+          "weight": "semibold",
+          "leading": "loose",
+          "tracking": "main",
+          "case": "sentence"
+        },
+        "utility-label-strikethrough": {
+          "primitive": "body-s",
+          "weight": "semibold",
+          "leading": "main",
+          "tracking": "main",
+          "case": "sentence",
+          "decoration": "line-through"
+        },
+        "utility-micro-regular": {
+          "primitive": "body-xs",
+          "weight": "regular",
+          "leading": "main",
+          "tracking": "main",
+          "case": "sentence"
+        },
+        "utility-micro-bold": {
+          "primitive": "body-xs",
+          "weight": "extra-bold",
+          "leading": "main",
+          "tracking": "wide",
+          "case": "sentence"
+        },
+        "utility-micro-uppercase": {
+          "primitive": "body-xs",
+          "weight": "semibold",
+          "leading": "main",
+          "tracking": "wide",
+          "case": "UPPER"
+        },
+        "utility-micro-strikethrough": {
+          "primitive": "body-xs",
+          "weight": "regular",
+          "leading": "main",
+          "tracking": "main",
+          "case": "sentence",
+          "decoration": "line-through"
+        }
+      },
+      "brandCharacter": {
+        "radiusSteps": {
+          "control": "--x-sys-radius-0",
+          "input": "--x-sys-radius-0",
+          "container": "--x-sys-radius-0",
+          "thumbnail": "--x-sys-radius-0",
+          "badge": "--x-sys-radius-0"
+        },
+        "elevationCharacter": {
+          "interactive": "--x-sys-elevation-flat",
+          "modal": "--x-sys-elevation-level-2-main",
+          "toast": "--x-sys-elevation-level-1-main",
+          "nonInteractive": "--x-sys-elevation-flat"
+        },
+        "strokeWeight": {
+          "divider": "--x-sys-stroke-thin",
+          "activeBorder": "--x-sys-stroke-medium",
+          "emphasis": "--x-sys-stroke-medium"
+        },
+        "effectShadow": {
+          "primary": "#003d00",
+          "secondary": "#080808",
+          "neutral": "#000000"
+        },
+        "effectGlow": {
+          "primary": "#009600",
+          "secondary": "#C4E39C"
+        },
+        "states": {
+          "hover": "#1CB71C",
+          "pressed": "#007E00"
+        }
+      }
+    },
+    "storeFlexible": {
+      "semanticDefaults": {
+        "_note": "Every mapping below is store-overridable.",
+        "bg": {
+          "--x-bg-action-primary": "var(--x-sys-colour-primary-main)    /* overridable */",
+          "--x-bg-action-primary-hover": "var(--x-sys-colour-primary-strong)  /* overridable */",
+          "--x-bg-action-secondary": "var(--x-sys-colour-tertiary-soft)  /* overridable */",
+          "--x-bg-action-destructive": "var(--x-sys-colour-status-negative-main) /* overridable */",
+          "--x-bg-surface": "var(--x-sys-colour-neutral-subtle)  /* overridable */",
+          "--x-bg-overlay": "var(--x-sys-colour-neutral-heavy)   /* overridable */"
+        },
+        "text": {
+          "--x-text-primary": "var(--x-sys-colour-neutral-inverse) /* overridable */",
+          "--x-text-secondary": "var(--x-sys-colour-primary-strong)  /* overridable — brand green for secondary text/labels */",
+          "--x-text-on-action-primary": "var(--x-sys-colour-primary-inverse) /* overridable */"
+        },
+        "border": {
+          "--x-border-default": "var(--x-sys-colour-neutral-soft)    /* overridable */",
+          "--x-border-emphasis": "var(--x-sys-colour-primary-main)    /* overridable */",
+          "--x-border-input-focused": "var(--x-sys-colour-primary-strong)  /* overridable */"
+        }
+      },
+      "componentIntent": {
+        "buttonPrimary": {
+          "feel": "field-issued and utilitarian — a stencilled ID tag, not a soft rounded chip",
+          "defaultVariant": "solid",
+          "alternatives": [
+            "outline",
+            "ghost"
+          ],
+          "colourDepthNote": "tertiary green (#007E00) at the observed bold/large sizes; verify contrast if used for small text",
+          "tokenFamilies": [
+            "--x-bg-action-primary",
+            "--x-text-on-action-primary",
+            "--x-sys-colour-primary-*"
+          ]
+        },
+        "buttonSecondary": {
+          "feel": "quiet nav link, condensed uppercase label",
+          "defaultVariant": "ghost",
+          "alternatives": [
+            "outline",
+            "solid-soft"
+          ],
+          "tokenFamilies": [
+            "--x-bg-action-secondary",
+            "--x-text-*",
+            "--x-sys-colour-tertiary-*"
+          ]
+        },
+        "card": {
+          "feel": "flat dossier panel, no elevation, thin green accent bar as the only ornament",
+          "defaultVariant": "flat",
+          "alternatives": [
+            "outlined",
+            "elevated"
+          ],
+          "tokenFamilies": [
+            "--x-bg-*",
+            "--x-sys-elevation-*",
+            "--x-sys-radius-*"
+          ]
+        },
+        "badge": {
+          "feel": "military status tag — colour dot + text label, never colour alone",
+          "defaultVariant": "outline",
+          "alternatives": [
+            "solid-primary",
+            "soft-tint"
+          ],
+          "tokenFamilies": [
+            "--x-bg-action-*",
+            "--x-text-*",
+            "--x-sys-radius-full"
+          ]
+        },
+        "input": {
+          "feel": "clean, utilitarian, no ornament",
+          "defaultVariant": "outlined",
+          "alternatives": [
+            "filled",
+            "underline"
+          ],
+          "tokenFamilies": [
+            "--x-border-*",
+            "--x-bg-*",
+            "--x-sys-radius-*"
+          ]
+        },
+        "modal": {
+          "feel": "full-bleed briefing-room scrim, matches the age-gate precedent",
+          "defaultVariant": "surface",
+          "alternatives": [
+            "drawer",
+            "bottomSheet"
+          ],
+          "tokenFamilies": [
+            "--x-sys-elevation-level-2-main",
+            "--x-bg-*",
+            "--x-sys-radius-*"
+          ]
+        }
+      }
+    },
+    "assetManifest": [
+      {
+        "name": "logo",
+        "sourceUrl": "https://www.konami.com/mg/mgs3r/s/img/top_logo.png",
+        "localPath": "refs/top_logo.png",
+        "kind": "logo",
+        "intendedUse": "hero lockup, nav brand mark",
+        "licence": "© Konami Digital Entertainment — internal design-reference only, not for redistribution"
+      },
+      {
+        "name": "keyart",
+        "sourceUrl": "https://www.konami.com/mg/mgs3r/s/img/top_main.jpg",
+        "localPath": "refs/top_main.jpg",
+        "kind": "keyart",
+        "intendedUse": "cover backdrop, hero banner reference",
+        "licence": "© Konami Digital Entertainment — internal design-reference only, not for redistribution"
+      },
+      {
+        "name": "snake_portrait",
+        "sourceUrl": "https://www.konami.com/mg/mgs3r/s/img/characters/snake.png",
+        "localPath": "refs/snake.png",
+        "kind": "character",
+        "intendedUse": "moodboard, character-render style reference",
+        "licence": "© Konami Digital Entertainment — internal design-reference only, not for redistribution"
+      },
+      {
+        "name": "eva_portrait",
+        "sourceUrl": "https://www.konami.com/mg/mgs3r/s/img/characters/eva.png",
+        "localPath": "refs/eva.png",
+        "kind": "character",
+        "intendedUse": "moodboard",
+        "licence": "© Konami Digital Entertainment — internal design-reference only, not for redistribution"
+      },
+      {
+        "name": "boss_portrait",
+        "sourceUrl": "https://www.konami.com/mg/mgs3r/s/img/characters/boss.png",
+        "localPath": "refs/boss.png",
+        "kind": "character",
+        "intendedUse": "moodboard",
+        "licence": "© Konami Digital Entertainment — internal design-reference only, not for redistribution"
+      },
+      {
+        "name": "volgin_portrait",
+        "sourceUrl": "https://www.konami.com/mg/mgs3r/s/img/characters/volgin.png",
+        "localPath": "refs/volgin.png",
+        "kind": "character",
+        "intendedUse": "moodboard, antagonist reference",
+        "licence": "© Konami Digital Entertainment — internal design-reference only, not for redistribution"
+      },
+      {
+        "name": "ocelot_portrait",
+        "sourceUrl": "https://www.konami.com/mg/mgs3r/s/img/characters/ocelot.png",
+        "localPath": "refs/ocelot.png",
+        "kind": "character",
+        "intendedUse": "moodboard",
+        "licence": "© Konami Digital Entertainment — internal design-reference only, not for redistribution"
+      },
+      {
+        "name": "foxhunt_keyart",
+        "sourceUrl": "https://www.konami.com/mg/mgs3r/s/img/foxhunt/detail_1.jpg",
+        "localPath": "refs/detail_1.jpg",
+        "kind": "environment",
+        "intendedUse": "multiplayer mode art direction reference",
+        "licence": "© Konami Digital Entertainment — internal design-reference only, not for redistribution"
+      }
+    ],
+    "downstreamHandoff": [
+      {
+        "from": "codashop.themePreset.presetStyle.seedColors + codashop.cssOverride",
+        "to": "src/tokens/ds/themes/mgs-delta.css",
+        "action": "write the theme scope block: ref seeds, font vars, bg-page"
+      },
+      {
+        "from": "generic.typography.fontAcquisition",
+        "to": "src/tokens/ds/themes/mgs-delta.css",
+        "action": "add the Oswald Google Fonts <link> proxy for URW DIN Semi-Condensed; no licensing needed"
+      },
+      {
+        "from": "codashop.assetManifest",
+        "to": "src/stores/mgs-delta/store.js (imagery registry)",
+        "action": "copy refs/ assets into the store assets folder and register each by intendedUse"
+      },
+      {
+        "from": "generic.voice.copyExamples + generic.voice.lexicon",
+        "to": "src/stores/mgs-delta/store.js (strings)",
+        "action": "seed user-visible copy in the dossier/mission-briefing voice; obey the avoid-list"
+      },
+      {
+        "from": "codashop.storeFlexible.componentIntent + codashop.brandLocked.brandCharacter",
+        "to": "src/stores/mgs-delta/store.js (config capabilities)",
+        "action": "choose component variants and capability flags that realise the stated feel"
+      },
+      {
+        "from": "codashop.tier2SignatureSurfaces",
+        "to": "component-level CSS (per precedentFile)",
+        "action": "implement each signature surface as scoped CSS/component work"
+      }
+    ],
+    "tier2SignatureSurfaces": [
+      {
+        "name": "Diagonal-cut CTA button corner",
+        "surface": "primary/secondary buttons (.btn-green family)",
+        "tokenExpressible": false,
+        "implementation": "clip-path bevel on one or two corners of the solid green button, observed as a subtle diagonal cut in common.css transform rules (rotate(45deg) pseudo-elements) — approximate with clip-path: polygon(...) trimming ~6px off the top-right corner",
+        "precedentFile": "reference: common.css .cmn-pfbtn / .btn-green rules"
+      },
+      {
+        "name": "Section-title accent bar",
+        "surface": "all section headings (.cmn-section-title)",
+        "tokenExpressible": false,
+        "implementation": "a 5px-wide, full-height solid green (#009600) bar positioned to the left of the section title text via ::before — not a token-expressible border, a dedicated decorative element",
+        "precedentFile": "reference: common.css .cmn-section-title .inner:before"
+      },
+      {
+        "name": "Server-status traffic-light widget",
+        "surface": "Fox Hunt platform status page",
+        "tokenExpressible": false,
+        "implementation": "coloured dot (green/olive/grey) + adjacent text label per platform — reusable pattern for any live-service status display; never colour alone",
+        "precedentFile": "reference: /mg/mgs3r/foxhunt/us/en/ live page"
+      }
+    ]
+  }
+}

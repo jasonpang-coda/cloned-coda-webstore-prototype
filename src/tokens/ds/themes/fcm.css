@@ -1,0 +1,475 @@
+/* ── Cruyff Sans — EA SPORTS FC Mobile brand face ────────────────────────────
+   FCM ships its own properly-proportioned face, so there is NO condense hack
+   (--x-sys-font-condense: 1, set below). Three real cuts are provided (woff2):
+   Regular 400, Medium 500, Bold 700. There is no Semibold (600) or ExtraBold
+   (800) cut, so the weight TOKENS below remap those roles onto Medium / Bold —
+   this keeps every weight a genuine cut and avoids faux-bold synthesis. Swap in
+   real 600/800 cuts later by adding faces here and restoring the token values.
+   Paths relative to this file: ../../../stores/fcm/fonts/ */
+@font-face {
+  font-family: 'Cruyff Sans';
+  src: url('../../../stores/fcm/fonts/CruyffSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cruyff Sans';
+  src: url('../../../stores/fcm/fonts/CruyffSans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cruyff Sans';
+  src: url('../../../stores/fcm/fonts/CruyffSans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================================
+   FCM THEME  —  EA SPORTS FC Mobile  —  [data-theme="fcm"]
+   ----------------------------------------------------------------------------
+   Built from the Figma export (EA SPORTS FC™ Mobile Tokens.css). Carries every
+   brand/store-specific value: colour seeds, the spectrum ramps, the typography
+   system, the container-surface overwrite layer, and the handful of semantic /
+   effect overrides the pure alias graph cannot express.
+
+   The structural tiers (system.css / semantics.css / space.css /
+   text-styles.css) live in :root and are theme-agnostic; they only alias the
+   values defined here, so this block cascades to every consumer. Coexists with
+   codm — switch via <html data-theme="fcm">.
+
+   Colours are OKLCH (perceptual, HDR headroom). The vivid primary green and
+   secondary yellow-green carry chroma beyond sRGB and render on P3/wide-gamut panels;
+   the @media (dynamic-range: high) block at the foot pushes brand hues past
+   the sRGB ceiling for a genuine glint. sRGB hex equivalents in comments.
+
+   Export bugs fixed on the way in:
+   - font weights had `px` units (700px) → unitless via --sys-weight-*.
+   - letter-spacing was authored in `%` (invalid CSS) → em (--sys-letter-spacing-*).
+   - opaque `fill` tokens / collapsed responsive `--sys-dimension-*` modes were
+     dropped — those live in the shared structural tiers, not the theme.
+   ============================================================================ */
+
+[data-theme="fcm"] {
+  /* ── Seeds ──────────────────────────────────────────────────────────────
+     Raw brand anchors (Figma --ref-*). Note: unlike codm (seed at step 500),
+     the FCM ramps anchor the seed at mixed steps — primary/positive at 600,
+     negative at 400 — so the -main overrides below re-point those roles. */
+  --x-ref-primary:         oklch(0.803 0.225 149.2);  /* #05E466 */
+  --x-ref-secondary:       oklch(0.948 0.22 117);      /* #E5FF00 */
+  --x-ref-tertiary:        oklch(0.905 0.155 194.8);  /* #00FFFF */
+  --x-ref-status-positive: oklch(0.723 0.192 149.6);  /* #22C55E */
+  --x-ref-status-caution:  oklch(0.769 0.165 70.1);   /* #F59E0B */
+  --x-ref-status-negative: oklch(0.637 0.208 25.3);   /* #EF4444 */
+  --x-ref-neutral:         oklch(0.158 0.002 197);     /* #0C0D0D — container colour; page = neutral-1000 */
+
+  /* ── Spectrums (Figma --palette-* ramps, 50–950) ─────────────────────────── */
+
+  /* primary (FC green) — seed at 600 */
+  --x-palette-primary-950: oklch(0.334 0.083 152.3);  /* #064220 */
+  --x-palette-primary-900: oklch(0.398 0.101 151.9);  /* #07562A */
+  --x-palette-primary-800: oklch(0.526 0.139 150.8);  /* #09803D */
+  --x-palette-primary-700: oklch(0.651 0.178 149.8);  /* #08AC4F */
+  --x-palette-primary-600: var(--x-ref-primary);         /* #05E466 seed */
+  --x-palette-primary-500: oklch(0.857 0.234 150);    /* #13F876 */
+  --x-palette-primary-400: oklch(0.861 0.202 153.1);  /* #40F68F */
+  --x-palette-primary-300: oklch(0.874 0.162 156);    /* #6CF5A8 */
+  --x-palette-primary-200: oklch(0.9 0.118 158);      /* #97F6C0 */
+  --x-palette-primary-100: oklch(0.932 0.072 159.6);  /* #C0F8D8 */
+  --x-palette-primary-50:  oklch(0.952 0.049 159.9);  /* #D4FAE4 */
+
+  /* secondary (yellow-green) — seed at 500 */
+  --x-palette-secondary-950: oklch(0.230 0.065 117);
+  --x-palette-secondary-900: oklch(0.315 0.088 117);
+  --x-palette-secondary-800: oklch(0.460 0.130 117);
+  --x-palette-secondary-700: oklch(0.595 0.170 117);
+  --x-palette-secondary-600: oklch(0.755 0.210 117);
+  --x-palette-secondary-500: var(--x-ref-secondary);       /* #E5FF00 seed */
+  --x-palette-secondary-400: oklch(0.961 0.175 118);
+  --x-palette-secondary-300: oklch(0.971 0.128 118);
+  --x-palette-secondary-200: oklch(0.979 0.080 119);
+  --x-palette-secondary-100: oklch(0.987 0.040 119);
+  --x-palette-secondary-50:  oklch(0.992 0.020 120);
+
+  /* tertiary (cyan) — seed at 500 */
+  --x-palette-tertiary-950: oklch(0.216 0.016 189);    /* #111C1B */
+  --x-palette-tertiary-900: oklch(0.293 0.031 192.3);  /* #183130 */
+  --x-palette-tertiary-800: oklch(0.446 0.062 193.7);  /* #225F5E */
+  --x-palette-tertiary-700: oklch(0.599 0.093 195);    /* #259191 */
+  --x-palette-tertiary-600: oklch(0.751 0.123 194.8);  /* #21C6C6 */
+  --x-palette-tertiary-500: var(--x-ref-tertiary);        /* #00FFFF seed */
+  --x-palette-tertiary-400: oklch(0.925 0.118 194.6);  /* #79FFFE */
+  --x-palette-tertiary-300: oklch(0.944 0.085 194.9);  /* #A7FFFE */
+  --x-palette-tertiary-200: oklch(0.963 0.054 194.9);  /* #C9FFFE */
+  --x-palette-tertiary-100: oklch(0.982 0.026 193.8);  /* #E6FFFE */
+  --x-palette-tertiary-50:  oklch(0.991 0.013 197);    /* #F3FFFF */
+
+  /* neutral — seed (#0C0D0D) at 900; page = 1000 (#000) */
+  --x-palette-neutral-1000: oklch(0 0 0);               /* #000000 page */
+  --x-palette-neutral-950:  oklch(0.094 0.004 196.5);   /* #020303 */
+  --x-palette-neutral-900:  var(--x-ref-neutral);          /* #0C0D0D seed */
+  --x-palette-neutral-800:  oklch(0.199 0.002 197);      /* #151616 */
+  --x-palette-neutral-700:  oklch(0.311 0.004 128.6);   /* #30312F */
+  --x-palette-neutral-600:  oklch(0.428 0.005 197);      /* #4C5050 */
+  --x-palette-neutral-500:  oklch(0.455 0.006 106.6);   /* #575753 */
+  --x-palette-neutral-400:  oklch(0.523 0.008 106.7);   /* #6A6A65 */
+  --x-palette-neutral-300:  oklch(0.571 0.008 106.6);   /* #787873 */
+  --x-palette-neutral-200:  oklch(0.724 0.007 106.6);   /* #A6A6A1 */
+  --x-palette-neutral-100:  oklch(0.899 0.008 106.6);   /* #DEDED8 */
+  --x-palette-neutral-50:   oklch(0.99 0.007 106.5);    /* #FCFCF7 */
+  --x-palette-neutral-0:    oklch(1 0 0);                /* #FFFFFF */
+
+  /* status-positive (green) — seed at 600 */
+  --x-palette-status-positive-950: oklch(0.31 0.069 151.9);   /* #0E3A1E */
+  --x-palette-status-positive-900: oklch(0.369 0.086 151.4);  /* #124C27 */
+  --x-palette-status-positive-800: oklch(0.481 0.118 151);    /* #187039 */
+  --x-palette-status-positive-700: oklch(0.593 0.152 150.2);  /* #1E964A */
+  --x-palette-status-positive-600: var(--x-ref-status-positive); /* #22C55E seed */
+  --x-palette-status-positive-500: oklch(0.782 0.2 150.2);    /* #31DA6F */
+  --x-palette-status-positive-400: oklch(0.806 0.168 152.6);  /* #58DE89 */
+  --x-palette-status-positive-300: oklch(0.837 0.132 154.6);  /* #7EE3A3 */
+  --x-palette-status-positive-200: oklch(0.878 0.095 156.1);  /* #A3EABD */
+  --x-palette-status-positive-100: oklch(0.921 0.056 157.9);  /* #C7F1D7 */
+  --x-palette-status-positive-50:  oklch(0.945 0.038 157.4);  /* #D9F5E3 */
+
+  /* status-caution (amber) — seed at 500 */
+  --x-palette-status-caution-950: oklch(0.308 0.059 74.9);  /* #412B07 */
+  --x-palette-status-caution-900: oklch(0.366 0.072 73.7);  /* #553809 */
+  --x-palette-status-caution-800: oklch(0.478 0.098 72.9);  /* #7E530B */
+  --x-palette-status-caution-700: oklch(0.587 0.123 71.5);  /* #A96E0B */
+  --x-palette-status-caution-600: oklch(0.694 0.148 70.7);  /* #D58A0B */
+  --x-palette-status-caution-500: var(--x-ref-status-caution); /* #F59E0B seed */
+  --x-palette-status-caution-400: oklch(0.806 0.144 77.1);  /* #F3B243 */
+  --x-palette-status-caution-300: oklch(0.841 0.116 79.3);  /* #F3C26F */
+  --x-palette-status-caution-200: oklch(0.879 0.082 80.2);  /* #F4D299 */
+  --x-palette-status-caution-100: oklch(0.923 0.05 81);     /* #F7E3C1 */
+  --x-palette-status-caution-50:  oklch(0.947 0.033 82);    /* #F9ECD5 */
+
+  /* status-negative (red) — seed at 400 */
+  --x-palette-status-negative-950: oklch(0.243 0.08 25.5);   /* #3E0A0A */
+  --x-palette-status-negative-900: oklch(0.285 0.1 26.4);    /* #510C0C */
+  --x-palette-status-negative-800: oklch(0.372 0.139 27.3);  /* #791010 */
+  --x-palette-status-negative-700: oklch(0.455 0.176 28);    /* #A21212 */
+  --x-palette-status-negative-600: oklch(0.537 0.212 28.4);  /* #CC1313 */
+  --x-palette-status-negative-500: oklch(0.599 0.231 27.9);  /* #EA2020 */
+  --x-palette-status-negative-400: var(--x-ref-status-negative); /* #EF4444 seed */
+  --x-palette-status-negative-300: oklch(0.7 0.15 21.7);     /* #ED7474 */
+  --x-palette-status-negative-200: oklch(0.777 0.101 19.6);  /* #F09C9C */
+  --x-palette-status-negative-100: oklch(0.861 0.057 18.3);  /* #F5C3C3 */
+  --x-palette-status-negative-50:  oklch(0.905 0.038 17.9);  /* #F8D6D6 */
+
+  /* ── -main overrides (pixel-accurate brand) ───────────────────────────────
+     The shared system.css maps every role's -main to step 500. FCM anchors the
+     seed off-500 for these roles, so re-point -main to the seed step here.
+     (secondary / tertiary / caution anchor at 500 → no override needed.) */
+  --x-sys-colour-primary-main:  var(--x-palette-primary-600);          /* #05E466 brand green */
+  --x-sys-colour-positive-main: var(--x-palette-status-positive-600);  /* #22C55E */
+  --x-sys-colour-negative-main: var(--x-palette-status-negative-400);  /* #EF4444 */
+
+  /* ── Typography (themed — Cruyff Sans, no condense) ───────────────────────
+     See text-styles.css for the .text-style-* classes that consume these. */
+  --x-sys-font-family-heading: 'Cruyff Sans', 'Inter', system-ui, sans-serif;
+  --x-sys-font-family-body:    'Cruyff Sans', 'Inter', system-ui, sans-serif;
+
+  /* Remapped onto the three available cuts (no 600/800 file).
+     --x-sys-weight-bold drives ONLY the heading classes (text-styles.css); per the
+     design call it maps to Medium 500 to approximate Figma's Semibold display
+     weight (Bold 700 read too heavy). Restore to 700 — and split out a dedicated
+     heading-weight if headings and a real bold ever need to differ — once the
+     Semibold (600) / ExtraBold (800) cuts are supplied. */
+  --x-sys-weight-extra-bold: 700;   /* Bold (no ExtraBold cut) — micro-bold badges */
+  --x-sys-weight-bold:       500;   /* Medium → headings (approximates Semibold 600) */
+  --x-sys-weight-semibold:   500;   /* Medium (no Semibold cut) — micro text */
+  --x-sys-weight-regular:    400;   /* Regular — body */
+
+  /* Heading + body sizes (Mobile mode) — match the Figma scale. */
+  --x-sys-size-h1: 28px;
+  --x-sys-size-h2: 24px;
+  --x-sys-size-h3: 22px;
+  --x-sys-size-h4: 20px;
+  --x-sys-size-h5: 18px;
+  --x-sys-size-h6: 16px;
+  --x-sys-size-h7: 18px;
+  --x-sys-size-body-l:    16px;
+  --x-sys-size-body-main: 14px;
+  --x-sys-size-body-s:    12px;
+  --x-sys-size-body-xs:   10px;
+
+  /* Letter-spacing — em (Figma exported %; converted). No Hitmarker comp:
+     Cruyff Sans is correctly proportioned. loose = 0.5% (headings + micro),
+     wide = 1% (uppercase). */
+  --x-sys-letter-spacing-tight:  -0.005em;  /* -0.5% */
+  --x-sys-letter-spacing-narrow: -0.002em;  /* -0.2% */
+  --x-sys-letter-spacing-main:    0;        /*  0%   */
+  --x-sys-letter-spacing-loose:   0.005em;  /*  0.5% */
+  --x-sys-letter-spacing-wide:    0.01em;   /*  1%   */
+
+  /* Line-height — unitless (Figma: headings 120%, body 150%). */
+  --x-sys-line-height-main:  1;
+  --x-sys-line-height-loose: 1.2;
+  --x-sys-line-height-wide:  1.5;
+
+  /* No condense — Cruyff Sans renders at its true width. */
+  --x-sys-font-condense: 1;
+
+  /* ── Container surfaces (L1–L3 + status) ─────────────────────────────────
+     Moved to the html[data-theme="fcm"] block below — they must beat the
+     system.css :root defaults (0,1,1 > 0,1,0). */
+
+  /* ── Semantic + effect overrides ──────────────────────────────────────────
+     Slots whose FCM value differs from the pure cascade, plus the theme-only
+     brand tokens that components consume directly. */
+
+  /* Card hairline: FCM neutral-soft (#0C0D0D) is invisible on the black page,
+     so use a translucent white hairline (matches codm's intent). */
+  --x-border-card-default: oklch(1 0 0 / 0.08);
+
+  /* Dark text on the bright-green primary CTA. */
+  --x-text-on-primary: var(--x-sys-colour-ink-inverse);
+
+  /* Action inverse — semantics.css routes this to secondary (blue) by default;
+     FCM wants the brand green everywhere a primary action appears. */
+  --x-bg-action-inverse:     var(--x-sys-colour-primary-main);
+  --x-border-action-inverse: var(--x-sys-colour-primary-main);
+
+  /* BONUS / BEST VALUE tag fill + label inherit the base sys bonus role
+     (--sys-colour-bonus-* = primary) → reproduces primary-950 / primary-50. */
+
+  /* ── Loyalty banner (CheckoutSheet, FCM only) ─────────────────────────────
+     The "You will earn N [MP] points" strip above the sticky checkout footer.
+     COD:M never references these (its checkout.loyalty config is null).
+     Flat primary-950 fill matches Figma bg/indicator/brand/subtle (#064220).
+     Text is rendered white bold by the component via --x-text-header-strong. */
+  --x-bg-loyalty-banner:       var(--x-sys-colour-primary-subtle);  /* primary-950 #064220 — Figma bg/indicator/brand/subtle */
+  /* --x-checkout-loyalty-overlap + --x-shadow-checkout-footer override extensions.css
+     :root literals, so they live in the html[data-theme="fcm"] block below —
+     here they'd silently lose by source order (see web-store-tokens §3). */
+
+  /* ── EA Account sign-in action (PageSignInSection, SignInSheet) ───────────
+     EA brand red replaces the neutral black used by COD:M. */
+  --x-bg-action-signin: oklch(0.62 0.22 27);   /* EA red ≈ #F04040 */
+
+
+  /* ── Rarity gradients (FCM has no rarity system) ────────────────────────
+     Override all rarity fills to the L2 surface (--x-bg-card-default) so bundle-item
+     tiles show a consistent mid-depth frosted tile regardless of the rarity prop.
+     A pure CSS token override: BundleItem.vue uses var(--rarity-gradient-*) so
+     this requires no component edit. */
+  --x-rarity-gradient-mythic:    var(--x-sys-colour-surface-l2-fill);
+  --x-rarity-gradient-legendary: var(--x-sys-colour-surface-l2-fill);
+  --x-rarity-gradient-epic:      var(--x-sys-colour-surface-l2-fill);
+  --x-rarity-gradient-rare:      var(--x-sys-colour-surface-l2-fill);
+  --x-rarity-gradient-neutral:   var(--x-sys-colour-surface-l2-fill);
+
+}
+
+/* ── Specificity-safe overrides — html[data-theme="fcm"] (0,1,1) beats :root (0,1,0)
+   in the structural tier files (space.css, semantics.css, extensions.css, motion-sku.css)
+   which are imported after this theme file and would otherwise win by source order. */
+html[data-theme="fcm"] {
+  /* ── Container surfaces (Figma node 2634:4756) — html[data-theme] (0,1,1) so
+     these beat the system.css :root defaults (0,1,0). Two composited layers:
+       1. Dark near-black base:  rgba(12,12,12,0.6) — slight lift above the black page
+       2. White vertical tint:   top=oklch(0.95) → bottom=oklch(0.81), alpha steps by level
+     L1 = 4% (SKU card), L2 = 8% (generic card, PC), L3 = 12% (sheet, nav, popover).
+     Border: flat rgba(242,242,242,0.08) hairline, identical across levels. */
+  --x-sys-colour-surface-l1-fill:
+    linear-gradient(180deg, oklch(0.95 0 0 / 0.04) 0%, oklch(0.81 0 0 / 0.04) 100%),
+    linear-gradient(180deg, oklch(0.047 0 0 / 0.6), oklch(0.047 0 0 / 0.6));
+  --x-sys-colour-surface-l1-border:       oklch(0.95 0 0 / 0.08);
+  --x-sys-colour-surface-l1-border-hover: oklch(0.95 0 0 / 0.16);
+  --x-sys-colour-surface-l2-fill:
+    linear-gradient(180deg, oklch(0.95 0 0 / 0.08) 0%, oklch(0.81 0 0 / 0.08) 100%),
+    linear-gradient(180deg, oklch(0.047 0 0 / 0.6), oklch(0.047 0 0 / 0.6));
+  --x-sys-colour-surface-l2-border: oklch(0.95 0 0 / 0.08);
+  --x-sys-colour-surface-l3-fill:
+    linear-gradient(180deg, oklch(0.95 0 0 / 0.12) 0%, oklch(0.81 0 0 / 0.12) 100%),
+    linear-gradient(180deg, oklch(0.047 0 0 / 0.6), oklch(0.047 0 0 / 0.6));
+  --x-sys-colour-surface-l3-border: oklch(0.95 0 0 / 0.08);
+  /* Status — success uses brand primary green (on-brand selected card + snackbar). */
+  --x-sys-colour-surface-success-fill: linear-gradient(to bottom,
+    color-mix(in oklab, var(--x-palette-primary-700) 16%, transparent) 0%,
+    color-mix(in oklab, var(--x-palette-primary-950) 16%, transparent) 100%);
+  --x-sys-colour-surface-warning-fill: linear-gradient(to bottom,
+    color-mix(in oklab, var(--x-palette-status-caution-600) 16%, transparent) 0%,
+    color-mix(in oklab, var(--x-palette-status-caution-950) 16%, transparent) 100%);
+  --x-sys-colour-surface-failure-fill: linear-gradient(to bottom,
+    color-mix(in oklab, var(--x-palette-status-negative-700) 16%, transparent) 0%,
+    color-mix(in oklab, var(--x-palette-status-negative-950) 16%, transparent) 100%);
+
+  /* Best-seller card surface — L1 instead of the warm-orange COD:M default.
+     Must live here (0,1,1) so it beats extensions.css :root by source order. */
+  --x-gradient-bestseller-hero:       var(--x-bg-sku-card-default);
+  --x-gradient-bestseller-hero-hover: var(--x-bg-sku-card-default);
+  --x-gradient-bestseller-vignette:   transparent;
+
+  /* HDR glow effect colours — must live here (0,1,1) so they beat motion-sku.css :root.
+     glow = FCM primary green (conic lead/trail), hot = secondary yellow-green (conic peak),
+     bloom = deep primary green halo behind the card. Aliased to the ref/palette
+     tier instead of hardcoded literals (which were previously copy-pasted duplicates
+     of --x-ref-primary/--x-ref-secondary — retuning the seed wouldn't have retuned
+     these). glow/hot's HDR boost is now free: see the @media block below. */
+  --x-hdr-glow:  var(--x-ref-primary);          /* #05E466 */
+  --x-hdr-hot:   var(--x-ref-secondary);        /* #E5FF00 */
+  --x-hdr-bloom: var(--x-palette-primary-700);  /* deeper green halo behind the card */
+
+  /* Selected-tab background for the L1/L2/L3 nav (semantics.css default is
+     `none` — inert everywhere else). This history has moved a few times:
+     a hand-tuned HDR-glow gradient → the literal Figma radial-gradient
+     recipe (node 2041:5464) → the flat --x-bg-indicator-selected-subtle DS
+     token → back to a literal Figma gradient (node 3358:28276, this exact
+     recipe — the earlier "flatter, real DS slot" reasoning didn't hold once
+     design confirmed the gradient IS the intended treatment for this specific
+     surface). Percentage-sized ellipse (not the node's absolute 199×75px) so
+     it scales sensibly across L1/L2/L3's differing tab sizes rather than
+     tying the glow to one 265×64px instance's exact pixel dimensions. */
+  --x-bg-nav-selected: radial-gradient(75% 117% at 50% 100%,
+    #0D6166 0%, #0F4856 31.485%, #112F45 62.969%, #1B1C22 100%);
+  /* A saturated fill reads poorly with the hyperlink accent colour
+     (semantics.css default) — keep the label legible with the plain default
+     body text colour instead. */
+  --x-text-nav-selected: var(--x-text-body-default);
+  /* Gradient-stroke underline (node 3358:28276's "Stroke - Bottom Bar
+     Highlight" style) replacing the plain solid border-color default — see
+     semantics.css for why this needs both --x-border-nav-selected: transparent
+     (hides the now-redundant solid border) and a matching thickness override
+     (--x-sys-stroke-thick = 4px, this style's spec, vs the 2px solid default). */
+  --x-border-nav-selected: transparent;
+  --x-gradient-nav-selected-stroke: linear-gradient(90deg,
+    #0F5767 0%, #E2FE00 40%, #05F167 61%, #0E5767 100%);
+  --border-weight-nav-selected-stroke: var(--x-sys-stroke-thick);
+
+  /* Production SKU card design pilot (fcmSkuCardModel flag). Raw hex, not
+     tokenised upstream — these are the current-production values, predating
+     the design-token system, extracted directly from Figma (source file is
+     authored in a Display-P3 profile; #07f468-adjacent greens will read
+     slightly duller here in sRGB than in a wide-gamut browser, but plain hex
+     matches this file's existing convention for one-off FCM literals). */
+  --x-bg-image-sku-card-prod: url('../../../stores/fcm/img/content/SKU Banners/Prod SKU Card BG.webp');
+  --x-border-sku-card-prod: #b0a486; /* regular card's outside hairline (OUTSIDE alignment — see SkuImageCard.vue) */
+  /* Both the CTA/tag gold gradient and this champagne price bar are gloss-
+     metal Fresnel-ish ramps rendered on the same catalog screen (hero card
+     + a grid of regular prod SKU cards below it), so they must share one
+     light angle — see .claude/skills/material-fx (scene gate, §9a of the
+     FCM audit). They previously carried independent hand-picked angles
+     (92.37deg here vs 140.48deg below); both now resolve from the single
+     --x-gradient-sku-card-prod-gold-angle token so retuning the light only
+     ever happens in one place. */
+  --x-gradient-sku-card-prod-price: linear-gradient(var(--x-gradient-sku-card-prod-gold-angle),
+    #a99368 0.77003%, #eae0c9 39.179%, #aca082 99.23%); /* champagne/metallic price bar, shared by both prod cards */
+  --x-bg-sku-card-prod-reward: #101820;
+  --x-border-sku-card-prod-highlighted: #fffb94;
+  --x-bg-image-sku-card-prod-highlighted: url('../../../stores/fcm/img/content/SKU Banners/Prod Highlighted SKU BG.webp');
+  /* Shared angle for every gold/champagne gloss-metal surface on the FCM
+     prod SKU flow (CTA, "RECOMMENDED" tag, and the price bar above) —
+     semantics.css's 0deg default would otherwise win over a var()-fallback
+     here, so this must be set explicitly, not relied on as a fallback. */
+  --x-gradient-sku-card-prod-gold-angle: 140.4809652248109deg;
+  --x-gradient-sku-card-prod-gold: linear-gradient(var(--x-gradient-sku-card-prod-gold-angle),
+    #fffb94 14.893%, #ffffff 29.293%, #fffb94 42.541%, #c4850c 94.957%);
+  --x-text-sku-tag-popular: #42240d;
+  --x-bg-loyalty-badge-prod: #1a1c19; /* Spectrum/neutral/90 in Figma — no existing --sys-colour-neutral-* matched exactly */
+
+  /* Controls — pill-shaped: 999px overrides the 2px default in space.css :root */
+  --x-radius-control-full: var(--x-sys-radius-full);
+
+  /* Sign-in button border — action green; COD:M uses white via extensions.css default */
+  --x-border-signin-btn: var(--x-sys-colour-primary-main);
+
+  /* Checkout footer floats over the loyalty ribbon. Both tokens override
+     extensions.css :root literals (0px / sheet shadow), so they MUST live in
+     this (0,1,1) block — in the plain [data-theme] block above they lose by
+     source order and the overlap renders as 0 (the original shipped bug).
+     Overlap must stay below the ribbon's 24px bottom clearance. */
+  --x-checkout-loyalty-overlap: 16px;
+  /* Tight dark cast — the default soft sheet shadow vanishes on the ribbon green. */
+  --x-shadow-checkout-footer:
+    0 -1px 3px oklch(0 0 0 / 0.45),
+    0 -6px 12px oklch(0 0 0 / 0.50);
+
+  /* Card price sizes — equalize bundle + best seller to regular SKU (h5 = 18px).
+     BundleSkuCard price uses text-style-heading-page-title (h2 = 24px) and
+     BestSellerCard price uses text-style-heading-modal (h4 = 20px); the regular
+     SkuCard uses text-style-heading-card (h5 = 18px). Override font-size on the
+     price element class rather than remapping --x-sys-size-h2/h4 globally so
+     PlayerCard names, SignInSheet, and StoryCarousel headings are unaffected.
+     Specificity (0,1,1) beats the text-style class rule (0,1,0) and the
+     scoped component rule (0,2,0). */
+  .bundle__current     { font-size: var(--x-sys-size-h5); }
+  .bestseller__current { font-size: var(--x-sys-size-h5); }
+  /* SKU title sizes — equalize all card variants to h5 (18px) for FCM.
+     Regular SKU card (.sku-card__amount) uses raw 24px in scoped CSS;
+     Best-seller amount (.bestseller__amount) uses text-style-heading-section (h3 = 22px).
+     Both are overridden here so COD:M retains its original sizing untouched. */
+  .sku-card__amount    { font-size: var(--x-sys-size-h5); }
+  .bestseller__amount  { font-size: var(--x-sys-size-h5); }
+
+  /* Hyperlink family — default/hover/pressed inherit the global hyperlink ramp
+     (= primary = brand green). Only inverse differs: near-white for links on a
+     coloured/brand surface. */
+  --x-sys-colour-hyperlink-inverse: var(--x-sys-colour-neutral-inverse); /* near-white */
+}
+
+/* ── HDR — push OKLCH chroma past the sRGB ceiling on wide-gamut panels so the
+   brand green, yellow-green, and gradient border genuinely glint. The primary green seed
+   (#05E466) at C 0.225 already clips slightly outside sRGB; on a P3 panel it can
+   hold C ≈ 0.27 and look vivid rather than clipped. Overrides the [data-theme]
+   values above for every consumer for free. */
+@media (dynamic-range: high) {
+  html[data-theme="fcm"] {
+    /* Brand seeds — wider gamut versions */
+    --x-ref-primary:         oklch(0.820 0.270 149.2);  /* #05E466 pushed to full P3 gamut */
+    --x-ref-secondary:       oklch(0.960 0.26 117);     /* #E5FF00 wider chroma */
+    --x-ref-tertiary:        oklch(0.920 0.185 194.8);  /* #00FFFF wider chroma */
+
+    /* Hairline borders — L pushed past 1.0 so the flat ring genuinely glints on
+       HDR displays (same effect the COD:M gradient ring achieves across the border
+       alpha ramp; FCM achieves it with a single bright flat colour instead). */
+    --x-sys-colour-surface-l1-border:       oklch(1.1 0 0 / 0.10);
+    --x-sys-colour-surface-l1-border-hover: oklch(1.1 0 0 / 0.20);
+    --x-sys-colour-surface-l2-border:       oklch(1.1 0 0 / 0.10);
+    --x-sys-colour-surface-l3-border:       oklch(1.1 0 0 / 0.10);
+
+    /* --x-hdr-glow/--x-hdr-hot need no override here — they alias --x-ref-primary/
+       --x-ref-secondary above, which this block already boosts (see the ref-*
+       lines above); the boost cascades through automatically. --x-hdr-bloom
+       has no boosted ancestor to lean on (it aliases a mid-ramp palette step,
+       not a seed), so it's derived directly via relative colour syntax —
+       multiplier reverse-engineered from the previous hardcoded boosted
+       value (0.70 0.26 149) against the new SDR alias, so the rendered
+       colour is unchanged; only how it's computed changed. */
+    --x-hdr-bloom: oklch(from var(--x-palette-primary-700) calc(l * 1.075) calc(c * 1.46) h);
+  }
+}
+
+/* ── EA sign-in overlay — FCM store-specific brand palette ───────────────────
+   Relocated from extensions.css. EaSignInPage is only mounted in the FCM flow
+   so these tokens are scoped to this theme. */
+[data-theme="fcm"] {
+  --x-ea-page-bg:            oklch(0.12 0.02 222);   /* #0f1923 EA dark page */
+  --x-ea-logo-bg:            oklch(1 0 0);            /* white logo circle */
+  --x-ea-cta-default:        oklch(0.49 0.18 258);   /* #1473e6 EA brand blue */
+  --x-ea-cta-hover:          oklch(0.56 0.18 256);   /* #1a82ff lighter hover */
+  --x-ea-cta-soft:           oklch(0.67 0.14 252);   /* #4d9eff soft blue (links) */
+  --x-ea-input-bg:           oklch(1 0 0 / 0.05);    /* field fill */
+  --x-ea-input-border:       oklch(1 0 0 / 0.15);    /* field hairline + separators */
+  --x-ea-input-border-focus: oklch(1 0 0 / 0.40);    /* focused field */
+  --x-ea-placeholder:        oklch(1 0 0 / 0.30);    /* placeholder text */
+  --x-ea-label-dim:          oklch(1 0 0 / 0.60);    /* field label / secondary text */
+  --x-ea-text-muted:         oklch(1 0 0 / 0.85);    /* muted body text */
+  --x-ea-create-border:      oklch(1 0 0 / 0.25);    /* outlined button ring */
+}
+
+/* ─── Fixed page background image ─────────────────────────────────────────
+   App.vue injects --page-bg-image when assets.brand.bg is defined. The
+   html[data-theme] selector (0,2,1) beats DeviceFrame's scoped .device__screen
+   (0,2,0). background-attachment:fixed keeps the art in place while scrolling. */
+html[data-theme="fcm"] .device__screen {
+  background-image:      var(--page-bg-image, none);
+  background-size:       cover;
+  background-position:   center top;
+  background-attachment: fixed;
+}

@@ -1,0 +1,469 @@
+{
+  "meta": {
+    "brand": "Yu-Gi-Oh! MASTER DUEL",
+    "version": "1.0",
+    "sourceImageCount": 9,
+    "confidence": "high",
+    "notes": "Reference URL https://www.konami.com/yugioh/masterduel/us/en/ was read live via browser (no age/region gate encountered — direct load). The site's own CSS (common.css, style.css, top.css) is Konami's SHARED CORPORATE TEMPLATE reused across Konami game microsites — its colours (teal #139a9a, blue #2137bd/#0054ff, navy #14007b) are Konami-corporate chrome, NOT Yu-Gi-Oh!/Master Duel brand colours, and are reported separately as observedCss evidence rather than folded into the brand palette. Distinctive Master Duel brand identity lives entirely in imagery — the 4th Anniversary hero key art, the logo lockup crops, and character/event art — so the brand palette below is derived primarily from [observed: pixel sample] on harvested key art, which for this brand outranks the generic template CSS. No custom webfont is loaded by the site (font-family declarations resolve to Japanese system-font stacks with sans-serif/serif fallback for non-CJK locales) — the wordmark is bespoke logotype artwork, not a font; a Google Fonts proxy is recommended for webstore UI type. statusPositive/statusCaution/statusNegative have no native equivalent in the source material (the brand has no green and only one red, already claimed by the brand-accent role) and are derived to match the arcane blue-violet/gold mood — flagged per-swatch below."
+  },
+
+  "generic": {
+    "essence": {
+      "adjectives": ["ARCANE", "COMPETITIVE", "LEGENDARY", "ORNATE", "DEFINITIVE"],
+      "positioning": "The definitive, decades-deep duelling arena — every card, every Summon method, one ultimate battle."
+    },
+    "voice": {
+      "confidence": "observed",
+      "source": "live copy read from https://www.konami.com/yugioh/masterduel/us/en/ via browser",
+      "summary": "Grand and declarative, addresses the reader as a 'Duelist' entering an arena of 20+ years of competitive history; short exclamatory hooks paired with confident, authority-backed claims ('the definitive edition').",
+      "pillars": [
+        { "name": "Definitive authority", "evidence": "The definitive edition of the competitive card game that has been evolving for over 20 years!" },
+        { "name": "Challenge & stakes", "evidence": "Are you ready to enter the ultimate battle?" },
+        { "name": "Mastery framing", "evidence": "Master the basic rules of the game as you play!" },
+        { "name": "Abundance / scale", "evidence": "Enjoy various Decks and Duels with over 10,000 different cards!" },
+        { "name": "Competitive aspiration", "evidence": "Become the top Duelist in the world" },
+        { "name": "Value reassurance (commerce)", "evidence": "You'll find better prices there than when purchasing items in-game." }
+      ],
+      "person": "second person; the player is addressed directly and referred to in third person elsewhere as \"Duelist\" (Duelist Cup, Yu-Gi-Oh! DUELIST POINT Program)",
+      "cadence": "Exclamatory, punchy sentence fragments ending in '!'; game-mode and event names are Title Cased like proper nouns (Tutorial, Duel Strategy, Fusion Festival, Duelist Cup); numerals used for scale claims (20 years, 10,000 cards).",
+      "lexicon": {
+        "say": ["Duelist", "Duel", "Summon (Synchro/Xyz/Pendulum/Link)", "Festival", "Deck", "the ultimate battle", "definitive edition"],
+        "avoid": ["casual slang", "discount-first framing (\"cheap\", \"sale!!!\")", "generic \"player\" instead of \"Duelist\"", "passive/hedging phrasing"]
+      },
+      "commerceVoice": "Value is framed as insider knowledge, not discounting: \"you'll find better prices there than when purchasing items in-game\" — reassuring and practical rather than urgent or scarcity-driven; official-authority framing (\"authorised reseller\", \"operated on behalf of Konami\") builds trust before price is even mentioned.",
+      "copyExamples": {
+        "hero": "Enter the ultimate battle. Duel smarter with better value.",
+        "skuCta": "Master the Deck",
+        "bonusBadge": "Duelist Bonus",
+        "scarcityBadge": "Festival-Limited",
+        "confirmation": "Your Gems are linked to your KONAMI ID, Duelist.",
+        "navLabels": ["Gems", "Bundles", "Festivals", "My Account"],
+        "emptyState": "No cards drawn yet — browse the Duelist's picks.",
+        "errorState": "The Duel was interrupted. Please try again.",
+        "checkoutCta": "Complete the Duel"
+      }
+    },
+    "artStyle": {
+      "family": "cel-shaded anime illustration over painterly/VFX-rich digital backgrounds",
+      "subStyle": "ornate Egyptian-mythic tech-magic — Millennium-relic gold hieroglyph motifs and arcane magic-circle seals layered against modern anime character rendering and lens-flare-heavy sci-fantasy VFX",
+      "renderingCues": [
+        "clean cel-shaded line art with sharp specular highlights on armor/metal",
+        "heavy bloom/glow VFX (chromatic lens flare, particle sparks, energy trails)",
+        "high-contrast dark backdrops (near-black starfield/nebula) push saturated character rendering forward",
+        "gold hieroglyph-covered circular seals as a recurring background motif",
+        "chrome/metallic specular treatment on the wordmark logotype itself"
+      ]
+    },
+    "palette": {
+      "primary":        { "hex": "#E8C878", "rgb": [232,200,120], "usage": "Millennium-gold — hieroglyph seal rings, anniversary sub-text, premium/ornate accents" },
+      "secondary":      { "hex": "#E8001E", "rgb": [232,0,30],   "usage": "Yu-Gi-Oh! logo ribbon red — brand ID mark, high-alert accents, primary CTA punch" },
+      "tertiary":       { "hex": "#5B4FC7", "rgb": [91,79,199],  "usage": "arcane violet-blue magic-circle energy — VFX glow, secondary accents, active/selected states" },
+      "neutral":        { "hex": "#0B0C1C", "rgb": [11,12,28],   "usage": "near-black starfield backdrop — page/layout foundation, panel base" },
+      "statusPositive": { "hex": "#3FBF8F", "rgb": [63,191,143], "usage": "success / positive delta — derived; brand has no native green" },
+      "statusCaution":  { "hex": "#E8A23C", "rgb": [232,162,60], "usage": "warning / caution — derived amber, kept warmer and less saturated than primary gold so the two never get confused" },
+      "statusNegative": { "hex": "#FF3B3B", "rgb": [255,59,59],  "usage": "error / negative delta — brighter, more universally 'alert' red than brand secondary #E8001E so a UI error is never mistaken for the logo mark" }
+    },
+    "contrastRules": [
+      "Gold (#E8C878) on neutral near-black (#0B0C1C) ≈ 12.2:1 — safe for body text and large headings alike",
+      "White (#F5F5F7) on neutral near-black ≈ 18.1:1 — the default reversed body-text pairing",
+      "Silver/chrome (#E4E6EC) on deep navy panel (#12142A) ≈ 14.5:1 — matches the wordmark's own chrome-on-dark contrast",
+      "Secondary red (#E8001E) on near-black ≈ 4.5:1 — meets the AA large-text floor only; reserve for large headings, badges, and icon-paired accents, never small body copy",
+      "Never place gold text directly on the derived caution amber — both sit in the same warm-gold family and fail to differentiate; caution always pairs with the warning icon, not colour alone",
+      "Status colours are never the only signal: statusPositive pairs with an up-chevron/check icon, statusCaution with a triangle-exclamation icon, statusNegative with an X icon or explicit label"
+    ],
+    "typography": {
+      "families": { "display": "bespoke logotype artwork (proxy: Rajdhani)", "body": "system font stack (proxy: Noto Sans)", "accent": "none observed" },
+      "scale": { "baseSizePx": 16, "ratio": 1.25, "measureCh": 65, "pairingRationale": "Rajdhani's condensed, angular, technical letterforms echo the wordmark's sharp cut-corner chrome slashes without trying to fake the bespoke logotype; Noto Sans is chosen for body copy specifically because the site itself declares support for 10 languages (Japanese, English, French, Italian, German, Spanish, Korean, Portuguese, Simplified Chinese, Traditional Chinese) and Noto Sans is the one open family with full coverage across all of them." },
+      "typePrimitives": {
+        "weights": { "extraBold": 800, "bold": 700, "semibold": 600, "regular": 400 },
+        "headerSizes": { "h1": "28px/48px", "h2": "24px/40px", "h3": "22px/32px", "h4": "20px/28px", "h5": "18px/24px", "h6": "16px/20px", "h7": "14px/18px" },
+        "bodySizes":   { "l": "16px/18px", "main": "14px/16px", "s": "12px/14px", "xs": "10px/12px" }
+      },
+      "textStyles": {
+        "heading-display":   { "primitive": "h1", "weight": "extra-bold", "leading": 1.1, "tracking": "-0.02em", "case": "UPPER",   "effect": "optional chrome specular gradient + thin blue rim-glow, matching the logotype treatment — use sparingly, hero only" },
+        "heading-title":     { "primitive": "h2", "weight": "bold",       "leading": 1.15,"tracking": "-0.01em", "case": "Title"    },
+        "heading-subtitle":  { "primitive": "h3", "weight": "semibold",   "leading": 1.2, "tracking": "0",       "case": "Title"    },
+        "paragraph-l":       { "primitive": "body-l",    "weight": "regular",  "leading": 1.55,"tracking": "0", "case": "sentence" },
+        "paragraph-main":    { "primitive": "body-main", "weight": "regular",  "leading": 1.5, "tracking": "0", "case": "sentence" },
+        "paragraph-s":       { "primitive": "body-s",    "weight": "regular",  "leading": 1.45,"tracking": "0", "case": "sentence" },
+        "utility-label":     { "primitive": "body-xs",   "weight": "semibold", "leading": 1.1, "tracking": "+0.08em", "case": "UPPER" },
+        "utility-mono":      { "primitive": "body-s",    "weight": "regular",  "leading": 1.4, "tracking": "0", "case": "sentence" }
+      },
+      "reversedTypeRule": "Base UI is already dark-on-darker (near-black neutral foundation), so most type IS reversed type by default: keep body weight at regular but never below 14px effective size for gold-on-black; bump uppercase labels to semibold minimum; never letterspace lowercase; letterspace CAPS/numerals +5–10%."
+    },
+    "observedCss": [
+      {
+        "selector": "body (site-wide default via common.css)",
+        "fontFamily": "\"メイリオ\", Meiryo, \"ヒラギノ角ゴ Pro W3\", \"Hiragino Kaku Gothic Pro\", Osaka, \"ＭＳ Ｐゴシック\", \"MS PGothic\", sans-serif",
+        "fontSizeMobile": "not declared (browser default)",
+        "fontSizeDesktop": "not declared (browser default)",
+        "weight": 400,
+        "lineHeight": "not declared",
+        "letterSpacing": "0",
+        "color": "not declared at this selector",
+        "textShadow": null,
+        "source": "common.css — Konami shared corporate template, not Master Duel-specific"
+      },
+      {
+        "selector": ".jp-serif-heading (top.css heading utility)",
+        "fontFamily": "\"游明朝\", YuMincho, \"ヒラギノ明朝 ProN W3\", \"Hiragino Mincho ProN\", \"HG明朝E\", \"ＭＳ Ｐ明朝\", \"ＭＳ 明朝\", serif",
+        "fontSizeMobile": "not declared (context-dependent)",
+        "fontSizeDesktop": "not declared (context-dependent)",
+        "weight": 400,
+        "lineHeight": "not declared",
+        "letterSpacing": "0",
+        "color": "not declared at this selector",
+        "textShadow": null,
+        "source": "style.css — Konami shared corporate template serif utility, used for JP editorial headings elsewhere on konami.com, not observed active on the /en/ Master Duel page itself"
+      },
+      {
+        "selector": "top.css button/pill glow states (.btn-primary-like elements)",
+        "fontFamily": "inherited from body stack",
+        "fontSizeMobile": "not declared",
+        "fontSizeDesktop": "not declared",
+        "weight": 400,
+        "lineHeight": "not declared",
+        "letterSpacing": "0",
+        "color": "#fff",
+        "textShadow": null,
+        "source": "top.css — box-shadow: 0 0 0 1px #88f, 0 0 5px 0 #55f (hover) / 0 0 0 1px #fff, 0 0 7px 0 #55f (active); border-radius: 10em/20em/50em elsewhere in style.css — pill-shaped interactive chrome is a template convention worth noting even though the colours themselves are corporate-template blue, not brand"
+      }
+    ],
+    "fontAcquisition": {
+      "heading": {
+        "family": "bespoke MASTER DUEL logotype artwork (not a font)",
+        "source": "system-fallback",
+        "proxyFamily": "Rajdhani",
+        "proxyRationale": "The wordmark is custom-cut logotype art (sharp angular slashes, chrome specular fill, italic lean) — it is not typeset and must never be recreated with a webfont for the actual logo. Rajdhani (Google Fonts, weights 500–700) is the closest openly-licensed condensed/angular technical sans for surrounding UI headings that need to rhyme with the wordmark's energy without impersonating it."
+      },
+      "body": {
+        "family": "\"メイリオ\", Meiryo, \"ヒラギノ角ゴ Pro W3\", Osaka, \"ＭＳ Ｐゴシック\", sans-serif",
+        "source": "system-fallback",
+        "proxyFamily": "Noto Sans",
+        "proxyRationale": "Site declares 10 supported languages including Japanese, Korean, and Simplified/Traditional Chinese; Noto Sans (+ Noto Sans JP/KR/SC/TC subsets) is the one open family with full glyph coverage across all of them, matching the system-fallback stack's intent."
+      }
+    },
+    "shape": {
+      "profile": "sharp",
+      "radiusStep": "full",
+      "wonky": false,
+      "motifs": ["downward-pointing triangle/chevron beneath the wordmark", "circular hieroglyph-ring seals", "angular cut-corner slashes on the logotype strokes"]
+    },
+    "lightingModel": {
+      "interactiveElements": "elevation-level-1 + higher saturation sys step + states overlay — buttons/pills read as glowing energy sources (Konami's own template already glows pill buttons with a blue rim-light on hover)",
+      "nonInteractiveElements": "elevation-flat + subtle/soft sys step + no shadow + no overlay — background art and static panels stay flat/painterly, contrast comes from value not glow",
+      "vfxSignature": "chromatic bloom/lens-flare, floating particle sparks, energy-trail streaks radiating from a single dramatic light source behind the subject"
+    },
+    "spacing": {
+      "rhythm": "regular",
+      "baseSysStep": "--x-sys-space-s",
+      "touchTargetSysToken": "--x-sys-size-control-m",
+      "grouping": "border-grouped"
+    },
+    "states": {
+      "hover": "brighten + rim-glow in tertiary violet-blue, echoing the template's own #55f/#88f hover glow",
+      "pressed": "deepen + tighten glow radius",
+      "focus": "visible focus ring required — gold (#E8C878) ring reads clearly against the near-black foundation",
+      "disabled": "reduced opacity + desaturated; pointer-events none",
+      "primaryActionRule": "one primary action per view"
+    },
+    "accessibility": {
+      "bodyContrast": "≥ 4.5:1 — gold-on-near-black ≈ 12.2:1, white-on-near-black ≈ 18.1:1, both comfortably pass",
+      "largeTextContrast": "≥ 3:1 — secondary red-on-near-black ≈ 4.5:1, meets the AA floor for large text/headings only",
+      "statusNotByColourAlone": "positive pairs with a check/up-chevron icon, caution with a warning-triangle icon, negative with an X icon or explicit text label — never colour alone",
+      "focusRing": "present on every focusable element, rendered in primary gold for maximum separation from the dark foundation",
+      "notes": "Secondary red fails the 4.5:1 body-text floor (≈4.5:1 is a razor's edge, but the true logo red trends slightly warmer/brighter — treat as large-text-only to be safe); if red body text is ever needed, use a lightened tint, not the raw brand hex."
+    },
+    "texture": {
+      "halftone": { "present": false, "rule": "not used — clean cel-shaded rendering, not print/comic texture" },
+      "distress":  { "present": false, "rule": "not used" },
+      "noise":     { "present": true, "opacityPct": 8, "blendMode": "screen — fine sparkle/particle bokeh drifting over dark backgrounds, not a uniform grain" },
+      "other": "gold hieroglyph-ring seal as a recurring background watermark motif; radial energy-burst gradients behind hero subjects"
+    },
+    "motion": {
+      "durationMs": 220,
+      "easing": "ease-out",
+      "signatures": ["glow pulse on hover (matches template's own blue rim-glow convention)", "particle drift/parallax on hero backgrounds", "chevron/triangle wipe transitions echoing the logo's downward triangle motif"],
+      "interactiveFeedback": "scale-on-press (subtle, ~0.97) + glow-intensify-on-hover; avoid bouncy/cartoon easing — the brand reads competitive and precise, not playful"
+    },
+    "assetPrompts": {
+      "heroBanner": "Anime-style key art, cel-shaded duelist spellcaster in dark ornate armor mid-action pose, backlit by a massive glowing gold hieroglyph-covered magic circle, violet-blue arcane energy swirls and lightning in a near-black starfield background, chromatic lens flare and floating particle sparks, dramatic 3/4 low-angle camera, high contrast rim lighting, 16:9 landscape composition with clear negative space on the left third for logo and CTA overlay",
+      "skuArt": "Portrait-format bundle art, ornate gold hieroglyph ring seal centered behind a card-game item icon (booster pack / gem cluster), near-black background with subtle violet-blue energy glow radiating from behind the seal, sharp cel-shaded specular highlights, no character present, clean silhouette suitable for a small SKU thumbnail crop",
+      "background": "Seamless dark tileable texture, near-black (#0B0C1C) base with sparse fine gold particle sparkle and faint violet-blue nebula wisps, very low contrast so foreground UI stays legible, 8% opacity screen-blend noise, no hard edges or repeating seams"
+    }
+  },
+
+  "codashop": {
+    "architectureNote": "5-tier cascade: (1) type primitives + ref seeds → (2) palette ramps (--x-palette-{role}-500 = --x-ref-{role}) → (3) sys intensity / dimensions / effects / states → (4) semantic defaults (--x-bg-*, --x-text-*, --x-border-*) → (5) .text-style-* classes. Figma token exports drop the --x- prefix; repo names always include it. emitter.ts injects only Tier 1 ref seeds + optional Tier 2 ramps + font + --x-bg-page. Tiers 3-4 auto-resolve downstream and are store-overridable. THREE override layers: SYSTEM CONSTANT (layoutSystem + the 27 textStyle compositions + scales — never change) ⊃ BRAND-LOCKED (ref seeds, font, size values, brandCharacter) ⊃ STORE-FLEXIBLE (semantic colour mapping, component variants).",
+
+    "layoutSystem": {
+      "mutable": false,
+      "responsiveModel": "container-query",
+      "containerRule": "device screen sets container-type:inline-size; overlay must NOT (traps position:fixed)",
+      "breakpoints": { "xs": "< 641px", "s": "641–800px", "m": "801–1279px", "l": "≥ 1280px" },
+      "grid": {
+        "columns":     { "xs": 8, "s": 8, "m": 12, "l": 12 },
+        "columnGap":   { "token": "--x-gap-grid-gutter", "xs": "8px", "s": "8px", "m": "12px", "l": "16px" },
+        "sidePadding": { "token": "--x-gap-grid-margin", "xs": "12px", "s": "12px", "m": "12px", "l": "16px" },
+        "rowGap":      { "token": "--x-gap-grid-row-default", "all": "8px" },
+        "template":    "grid-template-columns: repeat(N, minmax(0, 1fr))"
+      },
+      "spanVariants": {
+        "fluid":    "grid-column: 1 / -1 at all breakpoints (full bleed)",
+        "content":  "full width on XS/S; centred cols 3–10 of 12, max-width 960px, on M/L",
+        "carousel": "full-bleed on XS/S (negative margin cancels grid margin); content on M/L"
+      },
+      "skuGridPatterns": {
+        "_note": "all use display:grid; gap:var(--x-gap-content-default)",
+        "skuList":        { "xs": 2, "s": 4, "m": 4 },
+        "bundleGrid":     { "xs": 1, "s": 1, "m": 2 },
+        "giftGrid":       { "xs": 2, "s": "variable", "m": "variable" },
+        "storyCarouselAspect": { "xs": "1/1", "s": "1/1", "m": "2.6/1" }
+      },
+      "tokenTierDiscipline": "components consume ONLY semantic (--x-bg-*, --x-text-*, --x-border-*) + spacing/size (--x-pad-*, --x-gap-*, --x-radius-*, --x-size-*); NEVER --x-sys-*, --x-palette-*, or --x-ref-* directly",
+      "mobileDesktopRule": "values switch at breakpoints via -desktop- token twins: --x-sys-space-desktop-*, --x-sys-radius-desktop-*, --x-sys-size-control-desktop-*, --x-text-size-desktop-*"
+    },
+
+    "themePreset": {
+      "id": "store-yugioh-masterduel",
+      "name": "Yu-Gi-Oh! MASTER DUEL",
+      "presetStyle": {
+        "seedColors": {
+          "primary":        "#E8C878",
+          "secondary":      "#E8001E",
+          "tertiary":       "#5B4FC7",
+          "neutral":        "#0B0C1C",
+          "statusPositive": "#3FBF8F",
+          "statusCaution":  "#E8A23C",
+          "statusNegative": "#FF3B3B"
+        },
+        "font": "Rajdhani",
+        "borderRadius": "RADIUS_SHARP",
+        "backgroundColor": "#0B0C1C",
+        "backgroundType": "TYPE_GRADIENT",
+        "backgroundGradient": "radial-gradient(120% 100% at 15% 0%, #1C1440 0%, #0B0C1C 55%, #050509 100%)"
+      }
+    },
+
+    "cssOverride": "body[data-theme='theme-preset--store-yugioh-masterduel'] {\n  --x-ref-primary: #E8C878;\n  --x-ref-secondary: #E8001E;\n  --x-ref-tertiary: #5B4FC7;\n  --x-ref-neutral: #0B0C1C;\n  --x-ref-status-positive: #3FBF8F;\n  --x-ref-status-caution: #E8A23C;\n  --x-ref-status-negative: #FF3B3B;\n  --x-sys-font-heading: 'Rajdhani', sans-serif;\n  --x-sys-font-body: 'Noto Sans', sans-serif;\n  --x-bg-page: #0B0C1C;\n}",
+
+    "brandLocked": {
+      "ref": {
+        "primary":        "#E8C878",
+        "secondary":      "#E8001E",
+        "tertiary":       "#5B4FC7",
+        "neutral":        "#0B0C1C",
+        "statusPositive": "#3FBF8F",
+        "statusCaution":  "#E8A23C",
+        "statusNegative": "#FF3B3B"
+      },
+      "palette": {
+        "anchorRule": "--x-palette-{role}-500 resolves to --x-ref-{role} — the 500 step IS the seed",
+        "strategy": "auto",
+        "manualStops": { "neutral": "extended ramp adds -0 (true black, matches the near-black starfield foundation) and -1000 (true white, reserved for maximum-contrast chrome specular highlights)" }
+      },
+      "typePrimitives": {
+        "fontHeading": "Rajdhani, sans-serif",
+        "fontBody": "Noto Sans, sans-serif",
+        "weights": { "extraBold": 800, "bold": 700, "semibold": 600, "regular": 400 },
+        "headerSizes": {
+          "h1": { "mobile": "30px", "desktop": "52" },
+          "h2": { "mobile": "24px", "desktop": "40" },
+          "h3": { "mobile": "22px", "desktop": "32" },
+          "h4": { "mobile": "20px", "desktop": "28" },
+          "h5": { "mobile": "18px", "desktop": "24" },
+          "h6": { "mobile": "16px", "desktop": "20" },
+          "h7": { "mobile": "14px", "desktop": "18" }
+        },
+        "bodySizes": {
+          "l":    { "mobile": "16px", "desktop": "18" },
+          "main": { "mobile": "14px", "desktop": "16" },
+          "s":    { "mobile": "12px", "desktop": "14" },
+          "xs":   { "mobile": "10px", "desktop": "12" }
+        },
+        "leading": { "main": "105%", "loose": "120%", "wide": "150%" },
+        "tracking": { "tight": "-0.5%", "narrow": "-0.2%", "main": "0%", "loose": "0.5%", "wide": "1%" },
+        "modularScale": { "basePx": 16, "ratio": 1.25 }
+      },
+      "textStyles": {
+        "heading-display-hero":   { "primitive": "h1", "weight": "extra-bold", "leading": "loose", "tracking": "tight",  "case": "UPPER" },
+        "heading-page-title":     { "primitive": "h2", "weight": "bold",       "leading": "loose", "tracking": "narrow", "case": "Title" },
+        "heading-section":        { "primitive": "h3", "weight": "bold",       "leading": "loose", "tracking": "main",   "case": "Title" },
+        "heading-modal":          { "primitive": "h4", "weight": "bold",       "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-card":           { "primitive": "h5", "weight": "semibold",   "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-banner":         { "primitive": "h6", "weight": "bold",       "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-final-price":    { "primitive": "h6", "weight": "extra-bold", "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-sku-title":      { "primitive": "h4", "weight": "semibold",   "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-subtitle":       { "primitive": "h7", "weight": "semibold",   "leading": "main",  "tracking": "main",   "case": "Title" },
+        "paragraph-lead":          { "primitive": "body-l",    "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-regular":       { "primitive": "body-main", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-small":         { "primitive": "body-s",    "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-strikethrough": { "primitive": "body-main", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-action-regular":         { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-action-uppercase":       { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-action-strikethrough":   { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-default-regular":        { "primitive": "body-s",    "weight": "regular",  "leading": "wide", "tracking": "main", "case": "sentence" },
+        "utility-default-strikethrough":  { "primitive": "body-s",    "weight": "regular",  "leading": "wide", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-default-uppercase":      { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-label-regular":          { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-label-uppercase":        { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-label-tall":             { "primitive": "body-s",    "weight": "semibold", "leading": "loose","tracking": "main", "case": "sentence" },
+        "utility-label-strikethrough":    { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-micro-regular":          { "primitive": "body-xs",   "weight": "regular",  "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-micro-bold":             { "primitive": "body-xs",   "weight": "extra-bold","leading": "main","tracking": "wide", "case": "sentence" },
+        "utility-micro-uppercase":        { "primitive": "body-xs",   "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-micro-strikethrough":    { "primitive": "body-xs",   "weight": "regular",  "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" }
+      },
+      "brandCharacter": {
+        "radiusSteps": {
+          "control":   "--x-sys-radius-full",
+          "input":     "--x-sys-radius-xs",
+          "container": "--x-sys-radius-0",
+          "thumbnail": "--x-sys-radius-0",
+          "badge":     "--x-sys-radius-full"
+        },
+        "elevationCharacter": {
+          "interactive":    "--x-sys-elevation-level-1-main",
+          "modal":          "--x-sys-elevation-level-2-main",
+          "toast":          "--x-sys-elevation-level-3-main",
+          "nonInteractive": "--x-sys-elevation-flat"
+        },
+        "strokeWeight": {
+          "divider":      "--x-sys-stroke-thin",
+          "activeBorder": "--x-sys-stroke-medium",
+          "emphasis":     "--x-sys-stroke-thick"
+        },
+        "effectShadow": {
+          "primary":   "#8A6410",
+          "secondary": "#7A0010",
+          "neutral":   "#000000"
+        },
+        "effectGlow": {
+          "primary":   "#F5DFA0",
+          "secondary": "#5B4FC7"
+        },
+        "states": {
+          "hover":   "#7A6FDD",
+          "pressed": "#4A3FA0"
+        }
+      }
+    },
+
+    "storeFlexible": {
+      "semanticDefaults": {
+        "_note": "Every mapping below is store-overridable. Tag them as suggestions, not requirements.",
+        "bg": {
+          "--x-bg-action-primary":            "var(--x-sys-colour-primary-main)    /* overridable */",
+          "--x-bg-action-primary-hover":      "var(--x-sys-colour-primary-strong)  /* overridable */",
+          "--x-bg-action-secondary":          "var(--x-sys-colour-secondary-soft)  /* overridable */",
+          "--x-bg-action-destructive":        "var(--x-sys-colour-status-negative-main) /* overridable */",
+          "--x-bg-surface":                   "var(--x-sys-colour-neutral-subtle)  /* overridable */",
+          "--x-bg-overlay":                   "var(--x-sys-colour-neutral-heavy)   /* overridable */"
+        },
+        "text": {
+          "--x-text-primary":                 "var(--x-sys-colour-neutral-inverse) /* overridable */",
+          "--x-text-secondary":               "var(--x-sys-colour-neutral-strong)  /* overridable */",
+          "--x-text-on-action-primary":       "var(--x-sys-colour-primary-inverse) /* overridable */"
+        },
+        "border": {
+          "--x-border-default":               "var(--x-sys-colour-neutral-soft)    /* overridable */",
+          "--x-border-emphasis":              "var(--x-sys-colour-primary-main)    /* overridable */",
+          "--x-border-input-focused":         "var(--x-sys-colour-primary-strong)  /* overridable */"
+        }
+      },
+      "componentIntent": {
+        "buttonPrimary": {
+          "feel": "an activated relic — gold-forward, glowing, unmistakably the one action that matters",
+          "defaultVariant": "solid",
+          "alternatives": ["gradient", "glow", "outline"],
+          "colourDepthNote": "main or strong sys intensity step for the default; stores may choose subtle for a softer feel",
+          "tokenFamilies": ["--x-bg-action-primary", "--x-text-on-action-primary", "--x-sys-colour-primary-*"]
+        },
+        "buttonSecondary": {
+          "feel": "supporting, clearly secondary weight vs primary — a duel-field option, not the main event",
+          "defaultVariant": "outline",
+          "alternatives": ["ghost", "solid-soft"],
+          "tokenFamilies": ["--x-bg-action-secondary", "--x-text-*", "--x-sys-colour-secondary-*"]
+        },
+        "card": {
+          "feel": "a card in a duel field — crisp sharp-cut edges, dark surface, gold or violet rim on emphasis",
+          "defaultVariant": "outlined",
+          "alternatives": ["elevated", "flat", "frosted"],
+          "tokenFamilies": ["--x-bg-*", "--x-sys-elevation-*", "--x-sys-radius-*"]
+        },
+        "badge": {
+          "feel": "compact, high-visibility label — reads like a card-rarity or Festival tag",
+          "defaultVariant": "solid-primary",
+          "alternatives": ["outline", "soft-tint", "neutral"],
+          "tokenFamilies": ["--x-bg-action-*", "--x-text-*", "--x-sys-radius-full"]
+        },
+        "input": {
+          "feel": "clean, clearly editable, sits quietly against the ornate chrome around it",
+          "defaultVariant": "outlined",
+          "alternatives": ["filled", "underline"],
+          "tokenFamilies": ["--x-border-*", "--x-bg-*", "--x-sys-radius-*"]
+        },
+        "modal": {
+          "feel": "a summoning ritual — focused, elevated, everything else recedes",
+          "defaultVariant": "surface",
+          "alternatives": ["drawer", "bottomSheet"],
+          "tokenFamilies": ["--x-sys-elevation-level-2-main", "--x-bg-*", "--x-sys-radius-*"]
+        }
+      }
+    },
+
+    "assetManifest": [
+      { "name": "hero-4th-anniversary-keyart", "sourceUrl": "https://img.konami.com/yugioh/masterduel/images/4thanniv-pc.webp", "localPath": "refs/hero-keyart.jpg", "kind": "keyart", "intendedUse": "cover backdrop, hero banner reference for VFX/lighting direction", "licence": "© Konami Digital Entertainment / Studio Dice — internal design-reference only, not for redistribution" },
+      { "name": "logo-lockup-clean", "sourceUrl": "https://www.konami.com/yugioh/masterduel/images/en/guide-summon.jpg (logo crop)", "localPath": "refs/logo-clean.jpg", "kind": "logo", "intendedUse": "logo page reference — real lockup, do not recreate with a webfont", "licence": "© Konami Digital Entertainment — internal design-reference only, not for redistribution" },
+      { "name": "character-archetype-render", "sourceUrl": "https://www.konami.com/yugioh/masterduel/images/thmb-ip.jpg", "localPath": "refs/char-ip-masquerena.jpg", "kind": "character", "intendedUse": "art-style reference for cel-shaded anime rendering + colour treatment", "licence": "© Konami Digital Entertainment / Studio Dice — internal design-reference only, not for redistribution" },
+      { "name": "festival-event-art", "sourceUrl": "https://www.konami.com/yugioh/masterduel/images/event-image-fusion.jpg", "localPath": "refs/event-fusion.jpg", "kind": "environment", "intendedUse": "event/promo banner composition reference", "licence": "© Konami Digital Entertainment — internal design-reference only, not for redistribution" },
+      { "name": "ui-guide-panel", "sourceUrl": "https://www.konami.com/yugioh/masterduel/images/en/guide-summon.jpg", "localPath": "refs/ui-guide-summon.jpg", "kind": "texture", "intendedUse": "clean logo-on-dark-background reference, tutorial panel styling", "licence": "© Konami Digital Entertainment — internal design-reference only, not for redistribution" },
+      { "name": "background-sparks-texture", "sourceUrl": "https://img.konami.com/yugioh/masterduel/images/background-sparks.jpg", "localPath": "refs/bg-sparks.jpg", "kind": "texture", "intendedUse": "ambient particle/spark background texture reference", "licence": "© Konami Digital Entertainment — internal design-reference only, not for redistribution" }
+    ],
+
+    "downstreamHandoff": [
+      { "from": "codashop.themePreset.presetStyle.seedColors + codashop.cssOverride",
+        "to": "src/tokens/ds/themes/yugioh-masterduel.css",
+        "action": "write the theme scope block: ref seeds, font vars, bg-page, plus any surface overrides the alias graph cannot express" },
+      { "from": "generic.fontAcquisition",
+        "to": "src/tokens/ds/themes/yugioh-masterduel.css (Google Fonts <link> for Rajdhani + Noto Sans proxies)",
+        "action": "add the Google Fonts <link> for both proxy families; the real logotype must always be shipped as image/SVG artwork, never re-typeset" },
+      { "from": "codashop.assetManifest",
+        "to": "src/stores/yugioh-masterduel/store.js (imagery registry)",
+        "action": "copy refs/ assets into the store assets folder and register each by intendedUse" },
+      { "from": "generic.voice.copyExamples + generic.voice.lexicon",
+        "to": "src/stores/yugioh-masterduel/store.js (strings)",
+        "action": "seed user-visible copy in the extracted brand voice; obey the avoid-list; always address the player as Duelist" },
+      { "from": "codashop.storeFlexible.componentIntent + codashop.brandLocked.brandCharacter",
+        "to": "src/stores/yugioh-masterduel/store.js (config capabilities)",
+        "action": "choose component variants and capability flags that realise the stated feel" },
+      { "from": "codashop.tier2SignatureSurfaces",
+        "to": "component-level CSS (per precedentFile)",
+        "action": "implement each signature surface as scoped CSS/component work — these are NOT expressible as tokens" }
+    ],
+
+    "tier2SignatureSurfaces": [
+      {
+        "name": "chrome-specular-wordmark-treatment",
+        "surface": "hero heading-display-hero, when the brand needs its own logo energy on a typeset headline",
+        "tokenExpressible": false,
+        "implementation": "background: linear-gradient(180deg, #FFFFFF 0%, #C9CEDB 45%, #7C82A0 55%, #FFFFFF 100%); -webkit-background-clip: text; color: transparent; filter: drop-shadow(0 0 6px rgba(91,79,199,.55));",
+        "precedentFile": "component-level CSS on the hero/cover heading only — never apply to body or utility text"
+      },
+      {
+        "name": "hieroglyph-ring-seal-watermark",
+        "surface": "section backgrounds behind hero banners, empty states, or premium SKU cards",
+        "tokenExpressible": false,
+        "implementation": "large low-opacity (8–14%) radial gold ring SVG/PNG centered behind content, radial-gradient glow beneath it in tertiary violet-blue; never let it reduce foreground text contrast below the stated ratios",
+        "precedentFile": "background-image on section wrapper, z-index below content, pointer-events:none"
+      },
+      {
+        "name": "downward-chevron-divider",
+        "surface": "section dividers, under page-title headings",
+        "tokenExpressible": false,
+        "implementation": "clip-path triangle pointing down, thin 1px gold or violet stroke, echoing the logo's own downward chevron beneath the wordmark",
+        "precedentFile": "component-level CSS, decorative only, aria-hidden"
+      }
+    ]
+  }
+}

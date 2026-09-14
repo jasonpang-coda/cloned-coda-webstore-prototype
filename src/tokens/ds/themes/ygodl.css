@@ -1,0 +1,308 @@
+/* ============================================================================
+   YU-GI-OH! DUEL LINKS THEME  —  [data-theme="ygodl"]   (publisher: KONAMI)
+   ----------------------------------------------------------------------------
+   Brand identity (from the Coda proposal deck): a black header over a blue
+   tech/circuit page background, electric blue primary (#2563EB), KONAMI red
+   secondary (#B60014), and gold hyperlinks (#FFCC00). Section surfaces sit on a
+   cold near-black navy (#0B111B). Status ramps stay conventional (reused from
+   the COD:M / TDR baseline).
+
+   SCAFFOLD STATUS: wiring-only build. Palette + store wiring + copy are real;
+   logo / gem icon / SKU art are PLACEHOLDERs (search "PLACEHOLDER" in store.js).
+   Typography inherits the system stack — no custom brand face yet.
+
+   Mirrors the structure of codm.css / tdr.css: seeds → 50–950 spectrum ramps
+   (500 aliases the seed) → typography → semantic/surface overrides → HDR push.
+   Colours are authored in OKLCH; sRGB hex equivalents are in comments.
+
+   To retune: change a seed below and regenerate that ramp around the 500 step.
+   ============================================================================ */
+
+[data-theme="ygodl"] {
+  /* ── Seeds ──────────────────────────────────────────────────────────────
+     Raw brand anchors. sRGB hex equivalents in comments. */
+  --x-ref-primary:         oklch(0.550 0.215 264);   /* #2563EB — electric blue */
+  --x-ref-secondary:       oklch(0.460 0.195 27);    /* #B60014 — KONAMI red */
+  --x-ref-tertiary:        oklch(0.860 0.175 95);    /* #FFCC00 — gold accent / links */
+  --x-ref-status-positive: oklch(0.880 0.246 138.2); /* #79FB40 */
+  --x-ref-status-caution:  oklch(0.743 0.142 66.8);  /* #E79839 */
+  --x-ref-status-negative: oklch(0.619 0.209 28.5);  /* #E93E33 */
+  --x-ref-neutral:         oklch(0.160 0.020 255);   /* #0B111B — cold navy page colour */
+
+  /* ── Spectrums ──────────────────────────────────────────────────────────
+     Per-role 50–950 ramps. The 500 step aliases the seed. */
+
+  /* primary (electric blue) */
+  --x-palette-primary-950: oklch(0.240 0.070 264);
+  --x-palette-primary-900: oklch(0.300 0.100 264);
+  --x-palette-primary-800: oklch(0.380 0.140 264);
+  --x-palette-primary-700: oklch(0.460 0.180 264);
+  --x-palette-primary-600: oklch(0.510 0.200 264);
+  --x-palette-primary-500: var(--x-ref-primary);
+  --x-palette-primary-400: oklch(0.640 0.190 264);
+  --x-palette-primary-300: oklch(0.740 0.150 263);
+  --x-palette-primary-200: oklch(0.840 0.100 262);
+  --x-palette-primary-100: oklch(0.920 0.055 261);
+  --x-palette-primary-50:  oklch(0.970 0.025 260);
+
+  /* secondary (KONAMI red) */
+  --x-palette-secondary-950: oklch(0.200 0.060 27);
+  --x-palette-secondary-900: oklch(0.260 0.090 27);
+  --x-palette-secondary-800: oklch(0.340 0.130 27);
+  --x-palette-secondary-700: oklch(0.400 0.165 27);
+  --x-palette-secondary-600: oklch(0.440 0.185 27);
+  --x-palette-secondary-500: var(--x-ref-secondary);
+  --x-palette-secondary-400: oklch(0.550 0.200 28);
+  --x-palette-secondary-300: oklch(0.660 0.175 29);
+  --x-palette-secondary-200: oklch(0.780 0.120 30);
+  --x-palette-secondary-100: oklch(0.890 0.065 31);
+  --x-palette-secondary-50:  oklch(0.960 0.030 32);
+
+  /* tertiary (gold) */
+  --x-palette-tertiary-950: oklch(0.300 0.060 95);
+  --x-palette-tertiary-900: oklch(0.400 0.090 95);
+  --x-palette-tertiary-800: oklch(0.550 0.120 95);
+  --x-palette-tertiary-700: oklch(0.680 0.145 95);
+  --x-palette-tertiary-600: oklch(0.780 0.165 95);
+  --x-palette-tertiary-500: var(--x-ref-tertiary);
+  --x-palette-tertiary-400: oklch(0.890 0.155 96);
+  --x-palette-tertiary-300: oklch(0.920 0.120 97);
+  --x-palette-tertiary-200: oklch(0.950 0.080 98);
+  --x-palette-tertiary-100: oklch(0.975 0.045 99);
+  --x-palette-tertiary-50:  oklch(0.990 0.020 100);
+
+  /* neutral (cold navy == prototype greys) */
+  --x-palette-neutral-1000: var(--x-ref-neutral);          /* #0B111B page */
+  --x-palette-neutral-950:  oklch(0.225 0.018 255);      /* panel / section surface */
+  --x-palette-neutral-900:  oklch(0.290 0.016 255);      /* divider / container */
+  --x-palette-neutral-800:  oklch(0.360 0.014 255);      /* floating / indicator */
+  --x-palette-neutral-700:  oklch(0.430 0.012 255);
+  --x-palette-neutral-600:  oklch(0.500 0.011 255);
+  --x-palette-neutral-500:  oklch(0.580 0.010 255);
+  --x-palette-neutral-400:  oklch(0.650 0.008 255);
+  --x-palette-neutral-300:  oklch(0.720 0.007 255);      /* body-soft */
+  --x-palette-neutral-200:  oklch(0.790 0.006 255);
+  --x-palette-neutral-100:  oklch(0.855 0.005 255);
+  --x-palette-neutral-50:   oklch(0.923 0.004 255);
+  --x-palette-neutral-0:    oklch(0.992 0.002 255);      /* header / ink */
+
+  /* status-positive (green) — conventional, reused from baseline */
+  --x-palette-status-positive-950: oklch(0.211 0.027 131.4);
+  --x-palette-status-positive-900: oklch(0.286 0.050 135.6);
+  --x-palette-status-positive-800: oklch(0.434 0.100 136.6);
+  --x-palette-status-positive-700: oklch(0.584 0.150 137.5);
+  --x-palette-status-positive-600: oklch(0.731 0.197 137.8);
+  --x-palette-status-positive-500: var(--x-ref-status-positive);
+  --x-palette-status-positive-400: oklch(0.904 0.201 136.8);
+  --x-palette-status-positive-300: oklch(0.927 0.153 135.4);
+  --x-palette-status-positive-200: oklch(0.951 0.104 134.4);
+  --x-palette-status-positive-100: oklch(0.976 0.051 132.8);
+  --x-palette-status-positive-50:  oklch(0.987 0.026 133.0);
+
+  /* status-caution (amber) — conventional, reused from baseline */
+  --x-palette-status-caution-950: oklch(0.199 0.021 69.4);
+  --x-palette-status-caution-900: oklch(0.259 0.031 67.8);
+  --x-palette-status-caution-800: oklch(0.381 0.060 67.1);
+  --x-palette-status-caution-700: oklch(0.502 0.088 67.2);
+  --x-palette-status-caution-600: oklch(0.623 0.115 66.9);
+  --x-palette-status-caution-500: var(--x-ref-status-caution);
+  --x-palette-status-caution-400: oklch(0.794 0.121 66.9);
+  --x-palette-status-caution-300: oklch(0.846 0.096 65.4);
+  --x-palette-status-caution-200: oklch(0.898 0.067 65.3);
+  --x-palette-status-caution-100: oklch(0.949 0.034 64.6);
+  --x-palette-status-caution-50:  oklch(0.973 0.017 62.0);
+
+  /* status-negative (red) — conventional, reused from baseline */
+  --x-palette-status-negative-950: oklch(0.184 0.029 42.9);
+  --x-palette-status-negative-900: oklch(0.234 0.045 31.7);
+  --x-palette-status-negative-800: oklch(0.332 0.086 30.3);
+  --x-palette-status-negative-700: oklch(0.427 0.127 29.0);
+  --x-palette-status-negative-600: oklch(0.524 0.168 29.0);
+  --x-palette-status-negative-500: var(--x-ref-status-negative);
+  --x-palette-status-negative-400: oklch(0.695 0.172 30.0);
+  --x-palette-status-negative-300: oklch(0.771 0.134 30.4);
+  --x-palette-status-negative-200: oklch(0.843 0.087 31.3);
+  --x-palette-status-negative-100: oklch(0.919 0.042 32.6);
+  --x-palette-status-negative-50:  oklch(0.959 0.020 32.5);
+
+  /* ── Typography ───────────────────────────────────────────────────────────
+     Meiryo is a properly-proportioned face — no scaleX condense needed.
+     Sizes match COD:M exactly (COD:M authors smaller to account for its 0.82
+     Hitmarker scaleX; at condense:1 these read slightly smaller than COD:M
+     visually, but are pixel-identical). */
+  --x-sys-font-family-heading: 'メイリオ', 'Meiryo', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+  --x-sys-font-family-body:    'メイリオ', 'Meiryo', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+
+  --x-sys-weight-extra-bold: 800;
+  --x-sys-weight-bold:       700;
+  --x-sys-weight-semibold:   600;
+  --x-sys-weight-regular:    400;
+
+  /* Heading + body sizes (Mobile mode) — matches COD:M. */
+  --x-sys-size-h1: 28px;
+  --x-sys-size-h2: 24px;
+  --x-sys-size-h3: 22px;
+  --x-sys-size-h4: 20px;
+  --x-sys-size-h5: 18px;
+  --x-sys-size-h6: 16px;
+  --x-sys-size-h7: 14px;
+  --x-sys-size-body-l:    16px;
+  --x-sys-size-body-main: 14px;
+  --x-sys-size-body-s:    12px;
+  --x-sys-size-body-xs:   10px;
+
+  /* Letter-spacing — no Hitmarker +5% compensation needed for Meiryo. */
+  --x-sys-letter-spacing-tight:  -0.005em;
+  --x-sys-letter-spacing-narrow: -0.002em;
+  --x-sys-letter-spacing-main:    0;
+  --x-sys-letter-spacing-loose:   0.005em;
+  --x-sys-letter-spacing-wide:    0.010em;
+
+  /* Line-height — unitless. */
+  --x-sys-line-height-main:  1;
+  --x-sys-line-height-loose: 1.2;
+  --x-sys-line-height-wide:  1.5;
+
+  /* No condense — Meiryo renders at true width. */
+  --x-sys-font-condense: 1;
+
+  /* ── Container surfaces (L1–L3 + status) ─────────────────────────────────
+     Moved to the html[data-theme="ygodl"] block below — they must beat the
+     system.css :root defaults (0,1,1 > 0,1,0). NOTE ygodl's scale is inverted
+     (L1 top-stop darkest → L3 lightest), which is why --x-bg-sheet is remapped to
+     L2 in that block for the sheet-panel vs footer depth read. */
+  --x-blur-container: 8px;   /* 8px blur for all ygodl L1/L2/L3 surfaces */
+
+  /* Pixel-parity overrides — keep the look exact where the pure cascade differs. */
+  --x-border-card-default: oklch(0.992 0.003 255 / 0.10);   /* translucent hairline */
+
+  /* KONAMI ID (myKONAMI) CTA — brand red gradient, mirrors eFootball wiring. */
+  --x-bg-action-mykonami: linear-gradient(180deg,
+    var(--x-palette-secondary-500), var(--x-palette-secondary-700));
+  --x-bg-action-signin:   var(--x-bg-action-mykonami);
+
+  /* Brand bonus text (no clean DS slot — codashop purple, cp blue) */
+  --x-text-web-bonus-codashop: oklch(0.78 0.155 297);
+  --x-text-web-bonus-cp:       var(--x-sys-colour-primary-heavy);  /* primary-300 */
+
+  /* Tag BONUS fill inherits the base sys bonus role (primary-950). The gold tag
+     label + bonus amount come from the --sys-colour-bonus-* overrides in the
+     html[data-theme] block below (tag label = amount = gold). */
+
+  /* SKU card background image fade — bottom third fades to transparent. */
+  --x-mask-sku-card-bg-fade: linear-gradient(to bottom, black 67%, transparent 100%);
+
+  /* Conic glow border — gold (tertiary) lead.
+     Standard (.fx-glow-border): track = dark gold, glow = mid gold, hot = pale.
+     HDR (.fx-glow-border--hdr / BestSellerCard): full-chroma gold, near-white peak. */
+  --x-fx-border-track: var(--x-palette-tertiary-900);
+  --x-fx-border-glow:  var(--x-palette-tertiary-500);
+  --x-fx-border-hot:   var(--x-palette-tertiary-100);
+  --x-hdr-glow:        var(--x-ref-tertiary);
+  --x-hdr-hot:         var(--x-palette-tertiary-100);
+}
+
+/* Tokens that semantics.css also defines at :root (0,1,0) — must use html[data-theme]
+   (0,1,1) specificity to win regardless of load order. */
+html[data-theme="ygodl"] {
+  /* Navbar — solid black per the proposal deck. */
+  --x-bg-navbar: oklch(0 0 0);
+
+  /* Page base — cold navy fallback so the body is never white (e.g. on short
+     pages or before the fixed background image loads). The image renders on
+     top via .device__screen; the L1/L2/L3 frosted overlays work over dark. */
+  --x-bg-page: var(--x-palette-neutral-1000);
+
+  /* ── Container surfaces (Figma nodes 4004:30369–30371) — html[data-theme]
+     (0,1,1) so these beat the system.css :root defaults (0,1,0). Dark frosted
+     overlays; the scale is INVERTED vs other stores — L1's top stop is darkest
+     (64%), L3's is lightest (42%), all converging opaque at the bottom. */
+  --x-sys-colour-surface-l1-fill: linear-gradient(to bottom, oklch(0 0 0 / 0.64) 24.519%, oklch(0 0 0));
+  --x-sys-colour-surface-l1-border: linear-gradient(
+    160deg,
+    oklch(0.99 0.004 255 / 0.05) 0%,
+    oklch(0.99 0.004 255 / 0.24) 45%,
+    oklch(0.99 0.004 255 / 0.60) 100%
+  );
+  --x-sys-colour-surface-l1-border-hover: linear-gradient(
+    160deg,
+    oklch(0.99 0.004 255 / 0.10) 0%,
+    oklch(0.99 0.004 255 / 0.38) 45%,
+    oklch(0.99 0.004 255 / 0.80) 100%
+  );
+  --x-sys-colour-surface-l2-fill: linear-gradient(to bottom, oklch(0 0 0 / 0.56) 24.519%, oklch(0 0 0 / 0.88));
+  --x-sys-colour-surface-l2-border: oklch(1 0 0 / 0.12);
+  --x-sys-colour-surface-l3-fill: linear-gradient(to bottom, oklch(0 0 0 / 0.42) 25.481%, oklch(0 0 0 / 0.88));
+  --x-sys-colour-surface-l3-border: oklch(1 0 0 / 0.16);
+  --x-sys-colour-surface-success-fill: linear-gradient(to bottom,
+    color-mix(in oklab, var(--x-palette-status-positive-700) 16%, transparent) 0%,
+    color-mix(in oklab, var(--x-palette-status-positive-950) 16%, transparent) 100%);
+  --x-sys-colour-surface-warning-fill: linear-gradient(to bottom,
+    color-mix(in oklab, var(--x-palette-status-caution-600) 16%, transparent) 0%,
+    color-mix(in oklab, var(--x-palette-status-caution-950) 16%, transparent) 100%);
+  --x-sys-colour-surface-failure-fill: linear-gradient(to bottom,
+    color-mix(in oklab, var(--x-palette-status-negative-700) 16%, transparent) 0%,
+    color-mix(in oklab, var(--x-palette-status-negative-950) 16%, transparent) 100%);
+
+  /* Bottom sheets — L2 panel, L3 footer (depth separation; L2 top-stop is
+     darker/heavier than L3's in ygodl's inverted scale). */
+  --x-bg-sheet: var(--x-sys-colour-surface-l2-fill);
+
+  /* Hyperlinks / price CTAs — default/hover/pressed inherit the global hyperlink
+     ramp (= primary = electric blue). Only inverse differs: gold. */
+  --x-sys-colour-hyperlink-inverse: var(--x-sys-colour-tertiary-strong);  /* gold (tertiary-400) */
+
+  /* Bonus role → gold for the tag label + bonus amount (chip fill stays primary). */
+  --x-sys-colour-bonus-strong:  var(--x-sys-colour-tertiary-strong);  /* gold bonus amount */
+  --x-sys-colour-bonus-inverse: var(--x-sys-colour-tertiary-strong);  /* gold tag label */
+
+  /* Selected card fill — primary-950 (the global default) is near-black and
+     imperceptible against ygodl's dark surfaces; soft (primary-700) gives a
+     clearly visible electric-blue tint. */
+  --x-bg-card-selected: var(--x-sys-colour-primary-soft);
+
+  /* Bundle item tiles use the L3 frosted surface instead of rarity gradients. */
+  --x-rarity-gradient-neutral:   var(--x-sys-colour-surface-l3-fill);
+  --x-rarity-gradient-legendary: var(--x-sys-colour-surface-l3-fill);
+  --x-rarity-gradient-epic:      var(--x-sys-colour-surface-l3-fill);
+  --x-rarity-gradient-rare:      var(--x-sys-colour-surface-l3-fill);
+  --x-rarity-gradient-mythic:    var(--x-sys-colour-surface-l3-fill);
+}
+
+/* Heading text-style classes — explicit bold so the font-weight resolves even
+   if the --x-sys-weight-bold variable chain breaks on some browsers. */
+html[data-theme="ygodl"] [class*="text-style-heading-"] {
+  font-weight: 800;
+}
+
+/* Fixed page background image — the provided blue tech/circuit art stays in place
+   while the page scrolls. App.vue injects --page-bg-image when assets.brand.bg is
+   defined; html[data-theme] beats system.css :root specificity. */
+html[data-theme="ygodl"] .device__screen {
+  background-image:      var(--page-bg-image, none);
+  background-size:       cover;
+  background-position:   center top;
+  background-attachment: fixed;
+}
+
+/* HDR — push OKLCH L past the sRGB ceiling on wide-gamut panels so the gold
+   accent + gradient border genuinely glint. Scoped to the YGO:DL theme. */
+@media (dynamic-range: high) {
+  /* html[data-theme] (0,1,1) so the surface-l1-border boost beats system.css :root. */
+  html[data-theme="ygodl"] {
+    --x-sys-colour-surface-l1-border: linear-gradient(
+      160deg,
+      oklch(1.0 0.006 255 / 0.06) 0%,
+      oklch(1.1 0.008 255 / 0.30) 45%,
+      oklch(1.2 0.010 255 / 0.65) 100%
+    );
+    --x-sys-colour-surface-l1-border-hover: linear-gradient(
+      160deg,
+      oklch(1.0 0.006 255 / 0.10) 0%,
+      oklch(1.1 0.008 255 / 0.45) 45%,
+      oklch(1.3 0.010 255 / 0.85) 100%
+    );
+    --x-hdr-glow: oklch(0.90 0.185 95);
+    --x-hdr-hot:  oklch(0.99 0.055 99);
+  }
+}

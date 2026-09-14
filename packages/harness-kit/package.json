@@ -1,0 +1,43 @@
+{
+  "name": "@coda/harness-kit",
+  "version": "0.1.0",
+  "description": "Design harness kit for Vue 3 & Vite web stores — isolated StoryStage, RAF-driven BeatTimeline choreography scrubber, live TokenSandbox, and device viewport frame primitives.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./vue": "./dist/vue.js",
+    "./vue/style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "prepare": "vite build"
+  },
+  "dependencies": {
+    "mermaid": "^11.17.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0"
+  },
+  "peerDependenciesMeta": {
+    "vue": { "optional": true }
+  },
+  "keywords": [
+    "design-harness",
+    "storybook",
+    "choreography",
+    "tokens",
+    "devtools",
+    "vue"
+  ],
+  "license": "UNLICENSED",
+  "private": false
+}

@@ -1,0 +1,421 @@
+[
+  {
+    "id": "RETRO-MTLDAQFI",
+    "timestamp": "2026-09-03T10:13:43.374Z",
+    "category": "process",
+    "lesson": "Never run 'git checkout -- <file>' as a manual debugging reflex to 'fix' an unexpected git-status diff without first confirming what that diff actually is — it silently discards uncommitted work with no confirmation. A near-miss during this session: an export-handoff --verify test corrupted-then-correctly-restored docs/Handoff/pwa-web-push/spec.json, but a manual 'git checkout --' run afterward (to investigate an unrelated test failure) wiped that correctly-restored content, discarding the user's real pending edit. Recovered because spec.json is a deterministic build artifact of the untouched flow.js source and an earlier test had already proven they were in sync — but that recovery path won't exist for hand-authored files.",
+    "component": null,
+    "tokenNote": "Recovery required ~6 extra tool calls (git fsck, tmutil, grep dangling blobs, then regenerate+diff) after a 2-second unsafe command; the safe path (git diff first, then decide) would have cost nothing.",
+    "session": null
+  },
+  {
+    "id": "RETRO-MTLDAQGP",
+    "timestamp": "2026-09-03T10:13:43.417Z",
+    "category": "quality",
+    "lesson": "Two of four ledger regressions marked 'fixed' (REG-RETRO02 duplicate token-scanning regex, REG-RETRO04 silent zero-match exit) had silently reappeared, relocated to files nobody re-checked after the original fix landed. A ledger entry recorded the lesson but nothing enforced it — the fix rotted because it was never locked with a test. Added a node:test suite (npm test) specifically so a future recurrence fails a real assertion instead of waiting to be caught by the next full audit.",
+    "component": null,
+    "tokenNote": "The full audit (3 parallel review agents + manual verification of every fix) was the expensive way to find this; a per-fix locking test is the cheap way to keep it found.",
+    "session": null
+  },
+  {
+    "id": "RETRO-MTLO5SVM",
+    "timestamp": "2026-09-03T15:17:49.042Z",
+    "category": "quality",
+    "lesson": "A story batch (31 new .stories.js files across Navigation, Account, and Overlays) was authored and reported 'complete' without running the spec-export step, leaving npm test / export-handoff --story --verify red (31 missing specs) with nobody noticing until the next full test run.",
+    "component": null,
+    "tokenNote": "Cheap to prevent: run 'npm run handoff:export -- --story' (or npm test) right after each story batch, not after all batches — catching 31 drifted specs at once cost one full-output test run to triage vs. a few seconds per batch.",
+    "session": null
+  },
+  {
+    "id": "RETRO-MTLO5UPX",
+    "timestamp": "2026-09-03T15:17:51.429Z",
+    "category": "process",
+    "lesson": "When claude-mem reports its inference allowance exhausted (passive session-summary capture stops), don't wait or restart the worker — gather retro material directly: git log for the last release ref, git diff/status against it, and a fresh npm test run. This session's retro was assembled entirely that way after the observer went down mid-session.",
+    "component": null,
+    "tokenNote": null,
+    "session": null
+  },
+  {
+    "id": "RETRO-MTMTH49F",
+    "timestamp": "2026-09-04T10:34:21.267Z",
+    "category": "process",
+    "lesson": "Before diagnosing a 'slow' or 'hung' npm test / dev-server command, run 'ps aux | grep <cmd>' first to check for a stale overlapping process from an earlier run — two sessions attributed a hang to the code under test when it was actually a leftover zombie process (competing for the same node_modules/.vite optimizeDeps cache under 'force: true') that had to be killed before any new invocation could complete.",
+    "component": null,
+    "tokenNote": null,
+    "session": null
+  },
+  {
+    "id": "RETRO-MTMTH4AG",
+    "timestamp": "2026-09-04T10:34:21.304Z",
+    "category": "process",
+    "lesson": "Piping a long-running command through 'tail' (e.g. 'npm test 2>&1 | tail -20') gives zero progress visibility — tail fully buffers until the pipeline closes, so a genuinely hung process and a merely-slow one look identical until the whole thing exits or is killed. Read the raw background-task output file directly (or avoid piping through tail) when you need to tell 'still running' apart from 'stuck'.",
+    "component": null,
+    "tokenNote": null,
+    "session": null
+  },
+  {
+    "id": "RETRO-MTMTH4BJ",
+    "timestamp": "2026-09-04T10:34:21.343Z",
+    "category": "quality",
+    "lesson": "Any one-shot script that spins up 'vite.createServer({ middlewareMode: true })' purely for SSR module loading (no browser ever attaches) should always pass 'server.hmr: false' — the default HMR websocket has no purpose there and intermittently throws 'Port is already in use' under concurrent invocations. tools/cms/audit.mjs already had this right; harness-render.mjs, export-handoff.mjs, and token-crosswalk.mjs did not. Grep all 'createServer(' call sites in one pass when fixing this class of bug, not just the file that happened to surface the symptom.",
+    "component": "harness-render",
+    "tokenNote": null,
+    "session": null
+  },
+  {
+    "id": "RETRO-MTOGWVL0",
+    "timestamp": "2026-09-05T14:18:13.860Z",
+    "category": "quality",
+    "lesson": "A file path mentioned in a JS/CSS multi-line /** ... */ comment is a landmine the moment it contains a wildcard-like '*' immediately followed by '/' (e.g. 'components/*/spec.md') — it closes the comment early and crashes at runtime, not at write-time. This exact bug (already a known lesson from a prior session) recurred 3 more times in one session before being caught, each time reactively via a crash rather than proactively. After fixing ANY instance of this bug in a batch of new files, immediately grep the whole batch for the pattern before running any of them, rather than waiting for each remaining instance to crash on its own turn.",
+    "component": null,
+    "tokenNote": null,
+    "session": null
+  },
+  {
+    "id": "RETRO-MTOGX6NY",
+    "timestamp": "2026-09-05T14:18:28.222Z",
+    "category": "process",
+    "lesson": "When test-installing a locally-built package as a stand-in for a real dependency (before it's actually published to a registry or git remote), always use 'npm install --install-links <path>', never a plain local-path install. A plain install symlinks the package, and Node/bundler module resolution resolves a symlinked import against its REALPATH's node_modules, not the consumer's — so any dependency the local package itself declares (e.g. an npm package it imports) fails to resolve even though it's correctly listed and installed in the consumer. This looks exactly like a real packaging bug but is a test-methodology artifact; a real git+https or registry install is a genuine copy, not a symlink, and never hits this.",
+    "component": null,
+    "tokenNote": "Cost a full debug cycle (reading the wrong error, checking package.json, re-verifying the dependency was installed) before recognizing the symlink resolution issue as a test artifact rather than a kit defect.",
+    "session": null
+  },
+  {
+    "id": "RETRO-MTOGXC7Q",
+    "timestamp": "2026-09-05T14:18:35.414Z",
+    "category": "process",
+    "lesson": "When restarting a dev server on a port a Browser-pane tab has already visited, open a FRESH tab for the next check rather than reusing the old one. A reused tab's Vite HMR client retains a stale websocket reconnect token from the previous server instance and floods read_console_messages with 'Failed to load resource: net::ERR_CONNECTION_REFUSED' / stale-token websocket errors that are indistinguishable from real errors at a glance — confirmed twice this session by opening a fresh tab against the same running server and getting zero errors. Also: killing a dev server for a reused-port workflow should always be a precise 'lsof -ti:<port> | xargs kill', never a broad 'pkill -f vite', which can kill an unrelated session's dev server on a shared machine.",
+    "component": null,
+    "tokenNote": null,
+    "session": null
+  },
+  {
+    "id": "RETRO-MTOISWVK",
+    "timestamp": "2026-09-05T15:11:08.144Z",
+    "category": "quality",
+    "lesson": "Text nodes hug by default via textAutoResize — never call layoutSizingHorizontal/Vertical on a freshly created text node at all unless deliberately overriding default behavior, and only after appending it to its auto-layout parent (figma-use skill rule 12). Violated this in a text() helper the same session the rule was read, caught only via the thrown error.",
+    "component": null,
+    "tokenNote": null,
+    "session": null
+  },
+  {
+    "id": "RETRO-MTOIT2IC",
+    "timestamp": "2026-09-05T15:11:15.444Z",
+    "category": "process",
+    "lesson": "Before a use_figma call that both embeds a large (10KB+) data payload and exercises an unverified/new API option (e.g. an untested variable-scope combination like ALL_FILLS plus another fill scope), dry-run the risky option alone on one throwaway item first. A 26KB colors-collection payload had to be resent in full after a scope-conflict error on the first attempt, when a 1-variable test would have caught it for a fraction of the cost.",
+    "component": null,
+    "tokenNote": "Full embedded payload (~26KB) resent verbatim after an avoidable first-try scope error; a 1-variable dry run would have caught it before paying for the payload twice.",
+    "session": null
+  },
+  {
+    "id": "RETRO-MTOIT9WF",
+    "timestamp": "2026-09-05T15:11:25.023Z",
+    "category": "process",
+    "lesson": "A published Figma team library does NOT auto-update when its source file's local variables/styles change via the Plugin API — publishing requires a manual click in Figma's Assets panel, unreachable from use_figma. After importing library variables into a consumer file right after rebuilding the source file's local tokens, verify the actual imported value by reading it back (e.g. check the resolved fill) rather than assuming it matches the just-rebuilt source; it may be the stale last-published snapshot.",
+    "component": null,
+    "tokenNote": null,
+    "session": null
+  },
+  {
+    "id": "RETRO-MTPTL1YN",
+    "timestamp": "2026-09-06T13:00:43.439Z",
+    "category": "process",
+    "lesson": "The web-store-fe skill's documented 'npm run token resolve <token-name> -- --store <store>' example is factually wrong: a token name starts with '--', and npm silently swallows any --flag-shaped arg placed BEFORE the literal '--' separator as its own 'Unknown cli config' (a warning, not a hard error), never forwarding it to the script — which then fails with a confusing 'Token name required' despite a name clearly being passed. Both args must go after the one '--' (npm run token resolve -- --x-token-name --store codm). Verified empirically: the documented form warns+fails, the fixed form resolves correctly.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "Fixed inline: .claude/skills/web-store-fe/SKILL.md line 44 corrected to the working form with an inline warning about the npm arg-swallowing gotcha.",
+    "session": null
+  },
+  {
+    "id": "RETRO-MTPTM97H",
+    "timestamp": "2026-09-06T13:01:39.485Z",
+    "category": "quality",
+    "lesson": "Build-quality gates (preflight, vite build, harness test across store themes) verify tokens/structure/rendering but do NOT catch visual-layering/overlap defects — e.g. a child tag pill (BundleItem's -8px top overhang) overlapping a text line above it in a new SkuCard breakdown row passed preflight+build+harness cleanly and was only caught by an actual browser screenshot+zoom after the user flagged it. When adding a new visual element that overlaps/straddles its own container edge (negative margins, absolute-positioned badges poking outside their box), always do a live browser render check specifically zoomed on that element before considering the change verified — the automated gates are necessary but not sufficient for this class of bug.",
+    "component": "SkuCard",
+    "tokenNote": null,
+    "actionable": "None further needed this session — root cause fixed in SkuCard.vue (padding-top clearance) and reverified live in browser across both layouts before shipping.",
+    "session": null
+  },
+  {
+    "id": "RETRO-MTPTMQQU",
+    "timestamp": "2026-09-06T13:02:02.214Z",
+    "category": "token",
+    "lesson": "sprint-retro's own workflow doc (step 1) promises claude-mem session_summaries rows carry named request/investigated/learned/completed/next_steps fields, but the actually-available mcp-search tools (search/get_observations/session_start_context/timeline/smart_search) only expose a session title+timestamp plus per-observation title/subtitle/facts/narrative/concepts/discovery_tokens — those five named fields are not retrievable at all. A full background-agent fetch spent ~98k tokens to discover this via exhaustive tool trial-and-error, when a single direct session_start_context or get_observations call (a few hundred tokens) would have surfaced the same 'field doesn't exist, here's what's actually there' answer far cheaper.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "Update sprint-retro/SKILL.md step 1 to describe the fields the mcp-search tools ACTUALLY return (title/subtitle/facts/narrative/concepts/discovery_tokens per observation, session title+timestamp per session) instead of the five named fields that don't exist, and recommend a direct call before reaching for a background agent to gather claude-mem material — not done inline this session, flagging for next retro or a dedicated follow-up.",
+    "session": null
+  },
+  {
+    "id": "RETRO-MTRDXG5F",
+    "timestamp": "2026-09-07T15:18:00.195Z",
+    "category": "process",
+    "lesson": "When a user's spatial/layout request uses an ambiguous reference frame (e.g. 'full width', 'straight', 'within these lines'), confirm which boundary it means (the raw device/screen edge vs. an already-established safe-content viewport) before implementing — don't guess and build. This session needed two separate implement-then-revert cycles (a CSS inset on CategoryNav, then a whole unclipped .device__chrome layer) because 'full width' was read as 'to the true screen edge' when the user meant 'to the already-inset safe viewport used elsewhere.'",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "None further needed — the lesson is the guard: ask which boundary, with the two concrete alternatives named, before writing layout code for an ambiguous spatial request.",
+    "session": null
+  },
+  {
+    "id": "RETRO-MTRDXMQ6",
+    "timestamp": "2026-09-07T15:18:08.718Z",
+    "category": "quality",
+    "lesson": "A layout fix built for a reported symptom must be re-verified against the ORIGINAL reported repro flow, not just the underlying state toggle that exposes it. The landscape corner-clearance fix (overlayInsetLeft) was verified by rotating orientation and screenshotting the store page, then shipped — but the user's original bug report was specifically about the checkout sheet, which wasn't re-opened during that verification pass. It shipped a regression (banner squashed) that a full repro (rotate AND open the sheet) would have caught before the user did.",
+    "component": "DeviceFrame",
+    "tokenNote": null,
+    "actionable": "Documented as a DeviceFrame-specific rule via compound.mjs: any orientation/geometry change to DeviceFrame.vue must be re-verified with the checkout sheet open, not just the bare store page.",
+    "session": null
+  },
+  {
+    "id": "RETRO-MTRDXZYG",
+    "timestamp": "2026-09-07T15:18:25.864Z",
+    "category": "process",
+    "lesson": "When browser-testing a multi-step flow gated by an async state change (e.g. player-ID verification, a store switch), confirm the state actually landed (read_page/get_page_text for the expected confirmation text) before the next click — several retries this session were clicks that landed on stale coordinates/refs because the previous state-changing action hadn't visibly settled yet (verification spinner still running, or a stray click accidentally switched the store dropdown instead of the intended field).",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "None further needed — the lesson is the guard: confirm state via read_page/get_page_text before the next interaction in a gated flow, rather than clicking through blind.",
+    "session": null
+  },
+  {
+    "id": "RETRO-MTRED2GK",
+    "timestamp": "2026-09-07T15:30:08.948Z",
+    "category": "process",
+    "lesson": "For a permanent, cross-session ledger meant to prevent repeated mistakes (retro-ledger.json, regressions-log.json), recency-based truncation is the wrong fix for 'this will get too big to read' — it discards old-but-still-valid lessons and directly reopens the mistakes they exist to prevent. The real bloat driver is appending a near-duplicate row every time the SAME distinct lesson recurs, not the passage of time. The correct fix is dedup-on-write (merge a recurrence into its existing entry, bump a seen-count) plus reading by relevance (category/component-scoped) rather than reading everything — bounding the ledger by DISTINCT lessons known, not by session count or age.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "Implemented: tools/retro.mjs now warns (word-overlap heuristic, category+component scoped) when --lesson looks like an existing entry, and a new --update <ID> flag merges a recurrence into it instead of appending a duplicate row (bumps an instances/seen-count field). Locked with tests in tests/ledger.test.mjs. SKILL.md's step 0 and step 4 updated to prefer --check over --list and document the merge workflow.",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTSWPDIZ",
+    "timestamp": "2026-09-08T16:51:22.427Z",
+    "category": "quality",
+    "lesson": "Multiple independent watch() callbacks that each do router.replace({...route.query, ...}) race: router.replace() resolves asynchronously, so if two watchers fire in the same tick (e.g. an overlay-open microtask and an immediate device/theme watch both firing on boot), the second one reads route.query before the first's navigation has landed and silently drops whichever dimension the first watcher just wrote. Merge every URL-writing dimension into ONE watch() that builds one merged query object and calls router.replace() once, rather than one watcher per dimension.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "Already fixed in src/composables/useUrlState.js — the device/orientation/theme/overlay/sku writer is now a single merged watch(); caught live in the browser (device+theme silently vanished from the URL, leaving only ?overlay=) before it shipped.",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTTBZ7MV",
+    "timestamp": "2026-09-08T23:58:55.591Z",
+    "category": "process",
+    "lesson": "Before using an external module's exported shape, ID, or interface that wasn't written this session — a helper's return value shape, a story/component id, a registry key — verify it by reading the actual source/grepping for it first, rather than guessing from its name or a naming convention. This session guessed getAllTokens() returned a plain array (it returns {tokens, tokenNames}) and guessed two story ids from their feature-slug names (best-seller-card/sku-card, not bestseller-card-effects/sku-card-entrance-stagger) — both wrong, each costing a failed run or a last-minute correction that a 10-second grep would have avoided.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "None further needed — the lesson is the guard: grep/read the actual export before consuming its shape.",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTTBZF4I",
+    "timestamp": "2026-09-08T23:59:05.298Z",
+    "category": "process",
+    "lesson": "When browser-verifying app state that requires driving a composable's action (e.g. sign-in), interact through the real rendered UI/DOM (click the actual button, wait for the resulting state) rather than dynamic import()-ing the composable module from javascript_tool to call it directly. A fresh dynamic import of an ES module the running page already loaded creates a SECOND, disconnected module instance (same root cause as the mixed-specifier singleton bug already documented for source code, but happening through the browser console instead) — mutating state through it has zero effect on the actual app, which this session confirmed by getting signedIn: false back even though the real UI had already signed in via the real flow.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "None further needed — the lesson is the guard: drive app state through the rendered UI, never via a fresh dynamic import of an already-loaded module.",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTU79JEW",
+    "timestamp": "2026-09-09T14:34:45.512Z",
+    "category": "quality",
+    "lesson": "A ref placed directly on Vue's <Transition>/<TransitionGroup> resolves to the component instance, not the underlying DOM node — assuming otherwise (to reuse it as a scrollable container ref, e.g. for useDragScroll) throws 'el.addEventListener is not a function' at runtime, silently passing vite build and the repo's preflight linter (neither catches it). Verify against an existing working sibling pattern before assuming Vue API behavior: HomeBlobGenreRail.vue already had the correct pattern sitting in the same component family (a plain wrapping <div> carrying the ref, with an untagged <TransitionGroup> nested inside it for the enter/leave transition) — checking it first would have avoided writing the wrong version at all.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "None further needed — already fixed in HomeBlobHighlights.vue by moving the ref to a wrapping div; the durable rule is the guard itself (verify ref-forwarding assumptions against an existing sibling implementation before writing new Vue-API-dependent code).",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTU79SKD",
+    "timestamp": "2026-09-09T14:34:57.373Z",
+    "category": "quality",
+    "lesson": "When verifying a CSS full-bleed/full-width fix (negative margin-inline cancelling an ancestor's padding), confirming the DECLARED property resolved correctly via getComputedStyle is not sufficient proof the layout actually changed — always measure the element's actual getBoundingClientRect() too. A negative margin on a flex item whose parent uses align-items:center silently no-ops the bleed (the item's width locks to the pre-margin available space, and centering just adds equal blank space on both sides) even though computed style correctly reports the negative margin-inline value applied. This exact silent failure shipped once (HomeBlobSpotlight/Picked rows) and was only caught by measuring bounding-box left/right, not by checking the CSS declaration.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "None further needed — fixed by dropping width:100% and using align-self:stretch instead; the durable rule is the verification method itself (measure rendered geometry, not just declared CSS values, whenever a margin/width trick is meant to change actual box size).",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTU7A3Z1",
+    "timestamp": "2026-09-09T14:35:12.157Z",
+    "category": "process",
+    "lesson": "When multiple worktrees/clones of the same repo can have their own dev server running on this shared machine, don't trust a preview tool's returned port number as 'the correct checkout' — Vite's autoPort silently reassigns to the next free port when the configured one is taken, and the freshest-looking port can still belong to a different worktree entirely. Resolve the actual PID -> cwd mapping via lsof before navigating (lsof -nP -iTCP -sTCP:LISTEN, then lsof -p <pid> | awk cwd), every time a new preview_start is issued mid-session, not just once. Cost several wasted navigate/screenshot round-trips this session (blank pages, wrong branch's content, stale-port errors) before adopting this check consistently.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": null,
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTX2PF4M",
+    "timestamp": "2026-09-11T14:50:26.902Z",
+    "category": "process",
+    "lesson": "When a user reports a 'reverted'/'still showing old' feature on a local dev server, check what process is ACTUALLY serving that port (lsof -nP -iTCP:<port> -sTCP:LISTEN, then ps -o command,cwd on the PID) before assuming the current checkout regressed and reverting anything. A stale vite process left running in a different git worktree/branch (found via 'git worktree list') is a distinct, common failure mode from an actual code regression — conflating them risks reverting correct work in response to a premise that was never true.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "None further needed this session — root-caused correctly (found the stale worktree via lsof+ps, killed it, started a fresh server from main); the lesson is the diagnostic sequence itself for next time.",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTX2QD97",
+    "timestamp": "2026-09-11T14:51:11.131Z",
+    "category": "quality",
+    "lesson": "When overriding a shared/base component's chrome for a new layout mode (e.g. BaseSheet's .sheet__header padding, stripped as 'redundant' with an ancestor's own edge inset), check whether ANY ancestor applies a competing visual clip (a rounded-corner mask, overflow:hidden) at a DIFFERENT radius before removing the padding — the padding may be the only thing keeping content out of that clip zone, not merely decorative spacing. This exact mistake happened twice in one session: once diagnosing the corner-square fix itself (DeviceFrame's overlay clips a full-bleed sheet panel even though the panel's own border-radius is 0), and once causing a regression from it (stripping the landscape header's padding put the close button back inside that same clip zone, making it intermittently disappear).",
+    "component": "BaseSheet",
+    "tokenNote": null,
+    "actionable": "None further needed this session — fixed by restoring the header's default padding and instead squaring the ancestor overlay's corners (DeviceFrame.vue) so no clip-avoidance padding hack is needed at all.",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTX2R96H",
+    "timestamp": "2026-09-11T14:51:52.505Z",
+    "category": "process",
+    "lesson": "The Browser-pane computer tool's coordinate-based click/type/scroll actions require a screenshot taken in the SAME turn after any navigate/preview_start call — reusing coordinates from a screenshot cached before that navigation throws 'requires a prior computer{action:\"screenshot\"}' or silently lands on the wrong element (an input that stays empty after a click+type). This session hit that repeatedly across many verification passes, each costing 2-4 retries (click, type, discover the field is empty, screenshot, retry). Always call computer{action:'screenshot'} immediately after navigate/preview_start, before the first coordinate-based action, and re-verify a typed value (via a fresh screenshot or read_page) before chaining a Tab/Enter/next click on top of it.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "None further needed — the lesson is the sequencing habit itself (screenshot right after navigate, verify typed values before chaining the next action).",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTX2V9AW",
+    "timestamp": "2026-09-11T14:54:59.288Z",
+    "category": "process",
+    "lesson": "Running 'npm run handoff:export -- <slug>' regenerates public/llms.txt from scratch (scripts/export-handoff.mjs's emitPublicMirror), listing ONLY flows registered as .flow.js manifests — it silently drops any hand-authored entries that were manually appended to that file for features with no manifest (e.g. Trust Bar, SKU Card Entrance Stagger, Download Banner, Bestseller Card Effects — real docs/Handoff/<slug>/ folders that predate the manifest system). Always diff public/llms.txt after running the export script and manually restore any dropped hand-authored entries before committing — do not assume a generated file's diff is purely additive just because your own change was.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "Restored the 4 dropped entries this session before committing. Follow-up not done: teach export-handoff.mjs to also enumerate non-manifest docs/Handoff/*/ folders (or AGENTS.md front-matter) so this can't recur — flagging for a future session.",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTY1DZJ5",
+    "timestamp": "2026-09-12T07:01:20.033Z",
+    "category": "process",
+    "lesson": "When taking over a handoff summary from another agent/session (e.g. a Cursor session reporting 'all migrated, all gates pass'), never commit on the strength of that report alone — independently re-run every gate it claims passed (npm test, harness test all, harness:render, handoff:verify, story-mode --verify, vite build, and spot-check the build output like public/handoff/index.json) before treating the handoff as verified. This session did that and it cost nothing extra since the gates were fast, but it's the point where an unverified handoff would have silently shipped a broken claim.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": null,
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTY1EC54",
+    "timestamp": "2026-09-12T07:01:36.376Z",
+    "category": "process",
+    "lesson": "Before committing a large uncommitted working-tree diff that spans multiple prior sessions (401+ files here), don't stage-and-commit by directory/filename alone — diff each file's actual content to group by real feature boundary. This session found 3 unrelated bundles hidden inside one handoff-migration diff that the handoff summary never mentioned: a resizable-sidebar-panel feature, an unrelated carousel scroll-snap CSS tweak, and a stray .claude/launch.json dev-server entry pointing at an absolute path OUTSIDE the repo (/private/tmp/demo-sandbox) — a specific smell worth grepping config files for before committing them, since an out-of-repo path is almost always a machine-local leftover, not something to ship.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": null,
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTYMPSW8",
+    "timestamp": "2026-09-12T16:58:23.240Z",
+    "category": "quality",
+    "lesson": "When a UI control's visible state changes (e.g. a tab highlights as active) but its underlying DOM effect doesn't appear, the 'state' and the 'effect' are not necessarily the same code path — bisect immediately with a console.log placed between them, rather than cycling through environment/caching hypotheses (module rebuild, dev-server cache, browser cache) first. Burned ~15-20 tool calls chasing a suspected stale-module-cache issue for a library-viewer focus-state bug (rebuilding a package, clearing node_modules/.vite, opening fresh tabs, curl-checking served bundles) before a single console.log at the suspected call site immediately revealed the real cause: a missing defineExpose forwarding componentEl, unrelated to caching entirely.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "None further needed — root cause found and fixed (StoryStage.vue defineExpose). Durable rule: reach for direct in-code instrumentation after 2-3 failed environment-hypothesis attempts, not after exhausting them all.",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTYMPYNQ",
+    "timestamp": "2026-09-12T16:58:30.710Z",
+    "category": "process",
+    "lesson": "In the Browser pane, a click-by-ref followed by a SEPARATE javascript_tool/screenshot check in the next turn is unreliable — refs go stale and clicks silently land on the wrong element (an 'active' tab visually changes back to default between calls) even when nothing about the page should have changed. Prefer: a fresh tab (tabs_create) over reusing one that has navigated across multiple dev-server restarts, and batch a click+verify together (browser_batch) rather than as separate sequential tool calls — atomic batches did not reproduce the staleness that sequential calls did, across repeated occurrences this session.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "None further needed — this became the working pattern by the end of the session. Adopt it from the start next time iterative live-browser debugging is needed, rather than discovering it partway through.",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTYMQ3XK",
+    "timestamp": "2026-09-12T17:31:17.571Z",
+    "category": "quality",
+    "lesson": "Before applying or trusting anything a plan file (or any earlier-authored doc) states about current source — a stated safety premise, or a concrete file:line reference — re-verify it against the ACTUAL current source at execution time, even if the plan was written earlier the SAME session. Two separate recurrences: (1) a DS-remediation plan's 'other stores have no signinLogomark' premise had gone stale within the same session (7 more stores had since defined it — still safe, but only because actual values, not just key presence, were checked); (2) re-verifying that same plan's Phase 3 (unrelated part, different session) found several file:line references pointing at a file (CheckoutSheet.vue) that no longer exists — it had been split into components/checkout/*.vue and components/steps/*.vue since the plan was authored, and the raw px values it named had simply moved, not disappeared.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "Durable rule, no separate action needed each time — the lesson IS the action: grep/read current source for what a plan claims, every time, regardless of the plan's age.",
+    "session": null,
+    "instances": 2
+  },
+  {
+    "id": "RETRO-MTYNWD3A",
+    "timestamp": "2026-09-12T17:31:28.966Z",
+    "category": "quality",
+    "lesson": "A grep/pattern-flagged 'violation' (e.g. a whitelabel de-branching lint matching flow === 'codm') matching its surface pattern does not mean its premise (branching on store identity) is actually true in practice — trace every OTHER place that sets the same literal value and whether that code path is even reachable there, before deciding the fix's scope. SignInSheet.vue's labelStyleForFlow() checked flow === 'codm', which looked like a COD:M-specific branch; tracing found 6 OTHER stores also set signIn.flow: 'codm' as an unused placeholder value (every one hides the button via navbar.hideSignIn), so the check only ever fired for the real COD:M store — a disguised store-identity branch, correctly fixed with a small explicit capability flag (config.signIn.ctaCasing) rather than a broader, riskier rename of the shared sentinel value across all 12 store configs.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "No standing action needed — the lesson is the guard: trace real usage/reachability of a flagged value across the whole config surface before picking a fix's scope, not just its literal text match.",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTYNWQ9M",
+    "timestamp": "2026-09-12T17:31:46.042Z",
+    "category": "process",
+    "lesson": "preview_start's own reported URL/port for a newly-started dev server is not always the actual bound address — it reported 'available at http://localhost:63374' for a Vite dev server that, per preview_logs, actually bound to http://localhost:5174 (Vite's autoPort had walked further than the tool's own port bookkeeping tracked). Navigating to the reported URL failed silently ('navigation denied or failed') with no indication WHY; the fix was checking preview_logs for the real bound port before retrying, not retrying the same reported URL. This is distinct from the existing multi-worktree port-confusion lesson (RETRO-MTU7A3Z1) — that one is about a single correctly-reported port belonging to the wrong checkout; this is the tool's own stated port being wrong for its own just-started server.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "When a navigate to a preview_start-reported URL fails, check preview_logs immediately for the actual bound address rather than retrying the same URL or guessing at a nearby port.",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTZKP18Z",
+    "timestamp": "2026-09-13T08:49:34.355Z",
+    "category": "quality",
+    "lesson": "When a z-index/stacking fix does not work even at the maximum possible value (2147483647), stop testing incremental positioning/CSS theories (display:contents, backdrop-filter, duplicate DOM roots) one at a time — a maxed-out z-index still losing hit-testing already falsifies 'stacking context' as the cause category. Treat it as a must-escape-the-DOM-subtree problem immediately: Teleport the element to a known-working overlay layer (this repo's .device__overlay) rather than continuing to iterate on z-index/position theories.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "No standing action needed beyond this session's fix (FilterDropdown.vue now teleports into .device__overlay) — the lesson is the diagnostic shortcut: a maxed z-index test that still fails should immediately end the 'is it stacking?' investigation, not narrow it further.",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTZKP6QX",
+    "timestamp": "2026-09-13T08:49:41.481Z",
+    "category": "process",
+    "lesson": "Before implementing a broad behavior-mode change on a component that has BOTH an L1 (top-level intent/tab) axis and an L2 (nested category/filter) axis gated by overlapping config flags, explicitly map which flag controls which axis and confirm with the user which axis they mean before writing code. In FCM's storefront, config.nav.multiLevel gates L1 (Store/Milestone Rewards/Events intent tabs) while config.catalog.mode==='filter' (isFilter) gates L2 (category display) — a request to 'revert to filter mode' was initially misread as flipping nav.multiLevel, which would have silently deleted the L1 intent tabs entirely; caught only because the user pushed back before the code shipped.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "No standing action needed — the lesson is the pre-flight check itself: for any dual-axis nav/filter component, name both axes and their controlling flags out loud (or ask) before proposing a plan.",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTZKPFV8",
+    "timestamp": "2026-09-13T08:49:53.300Z",
+    "category": "quality",
+    "lesson": "A consumer's scoped CSS ':deep(.child-class)' override stops working the moment that child element is later made to render via <Teleport> — Teleport physically moves the DOM node out of the scoping ancestor, so Vue's scoped data-v attribute matching no longer applies, and the override silently no-ops with no warning. When adding Teleport to a shared component that consumers currently style via ':deep()', convert those overrides to explicit props (e.g. FilterDropdown's new panelBlur/panelOpaque) before or as part of the same change, not after noticing the visual regression.",
+    "component": "FilterDropdown",
+    "tokenNote": null,
+    "actionable": "Already applied in this session's own Teleport change (CategoryJumpNav's blur/opaque overrides moved to panelBlur/panelOpaque props). Durable rule for any future Teleport addition to a shared component: grep consumers for ':deep(' targeting it first.",
+    "session": null,
+    "instances": 1
+  },
+  {
+    "id": "RETRO-MTZL7ZS0",
+    "timestamp": "2026-09-13T09:04:18.912Z",
+    "category": "quality",
+    "lesson": "execSync throws before its own JSON.parse(stdout) line runs on a real tool FAIL (the shelled-out tool correctly process.exit(1)s on FAIL, which is what makes execSync throw) — this silently made orchestrator.mjs's explicit 'if (!parsed.passed) throw new Error(...)' stage checks dead code, and let a stale field-name bug (checking parsed.hasFailures/parsed.totalIssues when preflight.mjs only ever emits passed/count) go unnoticed for good: the preflight hard gate silently never failed regardless of real violations, because the code path that would have checked was never reached.",
+    "component": null,
+    "tokenNote": null,
+    "actionable": "Any execSync-shelled --json stage must recover the tool's JSON from the thrown error's own .stdout on the catch path (see runJsonTool() in tools/orchestrator.mjs), and any such check needs a test that feeds it a REAL violation, not just a clean pass, or a dead code path like this one hides indefinitely.",
+    "session": null,
+    "instances": 1
+  }
+]

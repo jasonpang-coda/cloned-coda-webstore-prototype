@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* NOTE: motion/keyframe/effect token CSS is imported in main.js — a CSS
+   `@import` placed after `@tailwind` is dropped by the browser per spec, so
+   those tokens must be loaded as JS imports instead. */
+
+/* ── @font-face declarations live in each store theme file. ─────────────────
+   src/tokens/ds/themes/codm.css carries the Hitmarker @font-face blocks and
+   references src/stores/codm/fonts/. A new store adds its own @font-face in
+   its own theme file. No font declarations belong here. */
+
+/* ── Design tokens live in src/tokens/ds/*.css (imported via main.js). ───────
+   The 4-tier cascade (themes/codm.css → system → semantics → space/text-styles)
+   + extensions.css. Only base resets, the body baseline, and the Hitmarker
+   condense block remain in this file. */
+
+/* ── Base resets ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--x-bg-page);
+  color: var(--x-text-body-default);
+  font-family: var(--x-sys-font-family-body);
+  -webkit-font-smoothing: antialiased;
+  /* Global tracking baseline — the Hitmarker loose tracking token (carries the
+     +5% static-cut compensation). Overridden per-element where set. The
+     body-base indirection lets the demo body-font toggle zero it for
+     non-Hitmarker body faces without touching heading tracking. */
+  letter-spacing: var(--x-sys-letter-spacing-body-base, var(--x-sys-letter-spacing-loose));
+}
+
+/* ── Condensed display text ──────────────────────────────────────────────────
+   The static HitmarkerNormal cut is normal-width, but the CODM design uses a
+   condensed display style (the variable font matched at ~wdth 40). Static fonts
+   have no width axis, so we condense horizontally with a scaleX transform.
+   Driven by --x-hm-scale (aliases --x-sys-font-condense, set per theme in
+   themes/codm.css; 1 = no condense). Left-aligned text uses origin:left;
+   right-aligned numerics use origin:right; icons are never scaled.
+   Heading-family elements use --x-hm-scale; body-family elements use
+   --x-hm-scale-body so the demo body-font toggle can uncondense them
+   independently (identical values on a stock Hitmarker theme). */
+
+/* Heading family — left-aligned */
+.sku-card__amount,
+.sku-card__ap-amount,
+.bestseller__heading,
+.bestseller__amount,
+.promo-banner__title,
+.sku-list__title,
+.bs-carousel__title {
+  display: inline-block;
+  transform: scaleX(var(--x-hm-scale));
+  transform-origin: left center;
+}
+
+/* Body family — left-aligned */
+.sku-card__bonus,
+.sku-card__icon-label,
+.bestseller__bonus,
+.promo-banner__description,
+.promo-banner__subtext {
+  display: inline-block;
+  transform: scaleX(var(--x-hm-scale-body));
+  transform-origin: left center;
+}
+
+/* Heading family — right-aligned numerics */
+.sku-card__current-price,
+.bestseller__current {
+  transform: scaleX(var(--x-hm-scale));
+  transform-origin: right center;
+}
+
+/* Body family — right-aligned numerics */
+.sku-card__discount,
+.bestseller__discount {
+  transform: scaleX(var(--x-hm-scale-body));
+  transform-origin: right center;
+}

@@ -1,0 +1,454 @@
+{
+  "meta": {
+    "brand": "Zenless Zone Zero (ZZZ)",
+    "version": "1.0",
+    "sourceImageCount": 4,
+    "confidence": "med",
+    "notes": "Hero, nav chrome and the 'Version 3.1 The Long Goodbye' splash sub-page were directly viewed and their CSS/computed styles inspected live (font-family, @font-face, and colour census pulled from the site's actual stylesheets — [observed: CSS] tier). Below the hero, the homepage runs a scroll-linked WebGL/canvas background (character carousel, videos, news, footer) that this sandboxed browser could not paint — those sections render blank screenshots even though the DOM/assets load correctly. Component-level shape/elevation/texture claims for anything below the hero are therefore [inferred] from HoYoverse-genre norms, not pixel-observed, and are flagged as such throughout. statusPositive and statusCaution have no native brand equivalent on the pages that did render and are derived to match the brand's high-saturation neon-on-black mood — flagged per rule 15."
+  },
+
+  "generic": {
+    "essence": {
+      "adjectives": ["kinetic", "deadpan-cool", "maximal-neon", "dual-world", "precise"],
+      "positioning": "A hyper-saturated urban-noir action game that treats its own patch notes like TV episodes and its UI chrome like a corporate operations terminal."
+    },
+    "voice": {
+      "confidence": "observed",
+      "source": "live copy read from https://zenless.hoyoverse.com/en-us/main and the in-app 'Version 3.1 The Long Goodbye' splash sub-page via browser",
+      "summary": "Speaks like an in-world ops broadcast, not a marketing page — exact timestamps, named 'episodes' for each update, and rarity-tier lexicon (S-Rank, W-Engine) doing double duty as both game terms and sales pitch.",
+      "pillars": [
+        { "name": "In-world address, not 'welcome back'", "evidence": "Return to Ridu" },
+        { "name": "Narrative episode naming for routine updates", "evidence": "The Zenless Zone Zero Version 3.2 \"Their Secret Histories\" Special Program will begin on August 28 at 19:30 (UTC+8)!" },
+        { "name": "Rarity-tier lexicon as the sales pitch itself", "evidence": "Log In to Claim A Limited S-Rank Agent & W-Engine of Choice" },
+        { "name": "Terse, non-stacked imperative CTAs", "evidence": "Subscribe Now" },
+        { "name": "One-line thematic tagline over feature lists", "evidence": "Dual Identities, A Singular Adventure" }
+      ],
+      "person": "second-person via UI address, but 'you' is rarely spelled out — the brand prefers naming the place/role over naming the reader (e.g. addressing arrival at a location rather than saying 'welcome, player') [observed] the literal in-lore player title was not present in the captured copy, so it is not asserted here",
+      "cadence": "measured and logistical even at its most excited — exact UTC+8 timestamps and version numbers sit right next to bold display type; at most one exclamation mark per announcement, never stacked; ALL-CAPS reserved for platform/rating chrome (\"AVAILABLE ON\") not for voice",
+      "lexicon": {
+        "say": ["Agent", "W-Engine", "S-Rank", "Version", "Special Program", "Log In to Claim"],
+        "avoid": ["generic hype punctuation (\"!!!\")", "price-slash / percent-off framing", "addressing the reader as \"gamer\" or \"user\""]
+      },
+      "commerceVoice": "Purchase/login incentives are framed as narrative rarity (\"a Limited S-Rank Agent\") rather than a price cut, paired with an exact, almost bureaucratic time-window rather than vague urgency language.",
+      "copyExamples": {
+        "hero": "Dual Identities, A Singular Adventure.",
+        "skuCta": "Claim Your S-Rank Agent",
+        "bonusBadge": "W-Engine of Choice Included",
+        "scarcityBadge": "Limited — Log In Before the Window Closes",
+        "confirmation": "Agent claimed. Return to Ridu.",
+        "navLabels": ["Homepage", "Characters", "Videos", "News & Info", "Background"],
+        "emptyState": "No Agents claimed yet — check News & Info for the current Special Program.",
+        "errorState": "Claim didn't go through. Log in again and retry.",
+        "checkoutCta": "Confirm"
+      }
+    },
+    "artStyle": {
+      "family": "stylized cel-shaded anime 3D-render",
+      "subStyle": "urban near-future / cyberpunk-adjacent street scene on the homepage hero; contrasting ethereal cosmic/'angel-winged' register on version-event splash pages — the brand deliberately spans a grounded-urban and a surreal-cosmic visual register depending on in-fiction story arc",
+      "renderingCues": ["clean cel-shaded rendering with soft ambient occlusion", "high local colour saturation against neutral/industrial backdrops", "graphic sticker-style UI overlays composited directly onto 3D key art (map pins, signage, HUD marks)"]
+    },
+    "palette": {
+      "primary":        { "hex": "#D8FA00", "rgb": [216,250,0], "usage": "primary CTA fill (e.g. .header__navbar-link .nav-content-download) — [observed: CSS]" },
+      "secondary":      { "hex": "#DB9A45", "rgb": [219,154,69], "usage": "premium/gold accent, observed 6x in compiled CSS — [observed: CSS], exact selector not resolved" },
+      "tertiary":       { "hex": "#29D4FF", "rgb": [41,212,255], "usage": "cyan info/highlight accent, observed 4x in compiled CSS — [observed: CSS], exact selector not resolved" },
+      "neutral":        { "hex": "#000000", "rgb": [0,0,0], "usage": "nav/header chrome foundation — [observed: CSS + pixel]; page canvas sits on a lighter #EFEFEF grey, see contrastRules" },
+      "statusPositive": { "hex": "#39E58C", "rgb": [57,229,140], "usage": "success/positive — DERIVED, no native green observed on rendered pages; hue rotated off the primary neon to keep the same saturation/lightness energy [inferred]" },
+      "statusCaution":  { "hex": "#FFB800", "rgb": [255,184,0], "usage": "warning/caution — DERIVED warm amber distinct from the observed gold secondary [inferred]" },
+      "statusNegative": { "hex": "#FF5E41", "rgb": [255,94,65], "usage": "error/negative delta, observed 4x in compiled CSS — [observed: CSS]" }
+    },
+    "contrastRules": [
+      "Primary CTA: black text (#000) on #D8FA00 neon — extremely high contrast, ~15.6:1, comfortably clears AA for any text size.",
+      "Nav/header: white wordmark on #000000 — ~21:1, maximum contrast, matches the brand's 'contrast is king' chrome instinct.",
+      "Body canvas is a light #EFEFEF grey, not pure white — dark UI chrome (#000) sits on it at ~19:1; this is the one light-mode surface observed outside the dark hero/splash frames.",
+      "No text-on-key-art contrast pairing was directly observable (scroll-blocked sections) — when placing type over character art, default to the brand's own instinct: solid black or near-black scrim block behind type rather than a soft gradient scrim, matching the flat black platform-badge bar under the hero."
+    ],
+    "typography": {
+      "families": { "display": "\"en impact\" (custom, backed by Impact.TTF — not the literal system Impact typeface)", "body": "\"en inpin\" (custom, backed by hongmengti/HarmonyOS-Sans-derived webfont, CJK-capable)", "accent": "locale-swapped display faces exist per-market: SCDream9 (Korean), RoGSanSrfStdN-Bd (Japanese), CloudChaoCuHeiGBT (Traditional Chinese) — evidence of a per-locale display-font swap system [observed: CSS @font-face]" },
+      "scale": { "baseSizePx": 16, "ratio": 1.25, "measureCh": 65, "pairingRationale": "A bold condensed custom display face carries hero/CTA emphasis; a CJK-capable custom sans carries all running UI text so the same layout works across every supported locale without a font swap for body copy." },
+      "typePrimitives": {
+        "weights": { "extraBold": 800, "bold": 700, "semibold": 600, "regular": 400 },
+        "headerSizes": { "h1": "28px/48px", "h2": "24px/40px", "h3": "22px/32px", "h4": "20px/28px", "h5": "18px/24px", "h6": "16px/20px", "h7": "14px/18px" },
+        "bodySizes": { "l": "16px/18px", "main": "14px/16px", "s": "12px/14px", "xs": "10px/12px" }
+      },
+      "textStyles": {
+        "heading-display":  { "primitive": "h1", "weight": "extra-bold", "leading": 1.1, "tracking": "-0.02em", "case": "UPPER", "effect": "hero/CTA emphasis in the custom 'en impact' display face" },
+        "heading-title":     { "primitive": "h2", "weight": "bold", "leading": 1.15, "tracking": "-0.01em", "case": "Title" },
+        "heading-subtitle":  { "primitive": "h3", "weight": "semibold", "leading": 1.2, "tracking": "0", "case": "Title" },
+        "paragraph-l":       { "primitive": "body-l", "weight": "regular", "leading": 1.55, "tracking": "0", "case": "sentence" },
+        "paragraph-main":    { "primitive": "body-main", "weight": "regular", "leading": 1.5, "tracking": "0", "case": "sentence" },
+        "paragraph-s":       { "primitive": "body-s", "weight": "regular", "leading": 1.45, "tracking": "0", "case": "sentence" },
+        "utility-label":     { "primitive": "body-xs", "weight": "semibold", "leading": 1.1, "tracking": "+0.08em", "case": "UPPER" },
+        "utility-mono":      { "primitive": "body-s", "weight": "regular", "leading": 1.4, "tracking": "0", "case": "sentence" }
+      },
+      "reversedTypeRule": "white-on-dark: bump weight +1 step and/or size +1–2px; never letterspace lowercase; letterspace CAPS/numerals +5–15%"
+    },
+    "observedCss": [
+      {
+        "selector": ".header__navbar-link .nav-content-download",
+        "fontFamily": "\"en inpin\", meSubFont, Tahoma, Helvetica, Arial, sans-serif",
+        "fontSizeMobile": null,
+        "fontSizeDesktop": null,
+        "weight": 700,
+        "lineHeight": null,
+        "letterSpacing": null,
+        "color": "rgb(0, 0, 0)",
+        "textShadow": null,
+        "source": "live compiled stylesheet, rule text: \".header__navbar-link .nav-content-download { background-color: rgb(216, 250, 0); color: rgb(0, 0, 0); }\""
+      },
+      {
+        "selector": "body (site default)",
+        "fontFamily": "\"en inpin\", meSubFont, Tahoma, Helvetica, Arial, sans-serif",
+        "fontSizeMobile": null,
+        "fontSizeDesktop": null,
+        "weight": 400,
+        "lineHeight": null,
+        "letterSpacing": null,
+        "color": "rgb(0, 0, 0)",
+        "textShadow": null,
+        "source": "live computed style on document.body"
+      },
+      {
+        "selector": "a (default link rule)",
+        "fontFamily": "meSubFont, Tahoma, Helvetica, Arial, sans-serif",
+        "fontSizeMobile": null,
+        "fontSizeDesktop": null,
+        "weight": 700,
+        "lineHeight": null,
+        "letterSpacing": null,
+        "color": "rgb(120, 120, 120)",
+        "textShadow": null,
+        "source": "live computed style on document.querySelector('a')"
+      }
+    ],
+    "fontAcquisition": {
+      "heading": {
+        "family": "\"en impact\"",
+        "source": "licensed-local-woff2",
+        "proxyFamily": "Anton",
+        "proxyRationale": "Real asset is a self-hosted custom TTF (Impact.TTF, family name 'en impact') — a bold condensed display face. Downstream cannot legally reuse the file; Anton (Google Fonts) is the closest openly-licensed condensed-bold stand-in for the guide's own <link> tag. The real family name stays first in the CSS font-family stack for documentation purposes."
+      },
+      "body": {
+        "family": "\"en inpin\", meSubFont, Tahoma, Helvetica, Arial, sans-serif",
+        "source": "licensed-local-woff2",
+        "proxyFamily": "Noto Sans",
+        "proxyRationale": "Real asset is a self-hosted custom webfont ('inpin hongmengti', a HarmonyOS-Sans-derived CJK-capable family, woff2/woff). Downstream ships no license for it; Noto Sans is the closest openly-licensed Latin+CJK-capable proxy."
+      }
+    },
+    "shape": {
+      "profile": "pill",
+      "radiusStep": "full",
+      "wonky": false,
+      "motifs": ["fully pill-shaped CTA and platform badges (border-radius 67.5px, effectively full)", "black rounded-pill badge row for platform icons directly under hero art"]
+    },
+    "lightingModel": {
+      "interactiveElements": "elevation-level-1 + higher saturation sys step + states overlay — inferred from the single high-saturation neon CTA observed; card-level lighting below the hero could not be verified (scroll-blocked)",
+      "nonInteractiveElements": "elevation-flat + subtle/soft sys step + no shadow + no overlay [inferred]",
+      "vfxSignature": "Hero key art carries in-scene VFX (light rig glow behind subject) rather than UI-chrome glow; no UI glow/rim-light effect was directly observed on the rendered chrome itself."
+    },
+    "spacing": {
+      "rhythm": "regular",
+      "baseSysStep": "--x-sys-space-s",
+      "touchTargetSysToken": "--x-sys-size-control-m",
+      "grouping": "space-grouped"
+    },
+    "states": {
+      "hover": "not directly observed (no hover capture in this pass) — infer a darkened/heavier variant of the neon primary, matching the #C6E800 near-primary hex seen in the CSS census as a plausible hover step [inferred]",
+      "pressed": "not directly observed [inferred]",
+      "focus": "visible focus ring required",
+      "disabled": "reduced opacity + desaturated; pointer-events none",
+      "primaryActionRule": "one primary action per view — the homepage keeps exactly one high-saturation CTA (\"Download Now\") visible at a time in the nav"
+    },
+    "accessibility": {
+      "bodyContrast": "black text on #D8FA00 CTA ≈ 15.6:1 — passes AA/AAA comfortably; white nav text on #000 ≈ 21:1",
+      "largeTextContrast": "≥ 3:1 — both observed pairings clear this by a wide margin",
+      "statusNotByColourAlone": "no live status/error UI state was directly observed on the rendered pages; carry the platform-wide rule forward — pair statusNegative with an icon/label, not colour alone",
+      "focusRing": "present on every focusable element",
+      "notes": "All directly-observed pairings are high-contrast by construction (near-black/near-white extremes); no failing pairing was found."
+    },
+    "texture": {
+      "halftone": { "present": false, "rule": "not observed on rendered pages" },
+      "distress": { "present": false, "rule": "not observed on rendered pages" },
+      "noise": { "present": false, "opacityPct": 0, "blendMode": "overlay" },
+      "other": "Diagonal black/yellow-green striped panel transitions were observed between homepage sections (a comic-panel-style diagonal cut, not a halftone or grain texture) — treat as a signature panel motif, see tier2SignatureSurfaces."
+    },
+    "motion": {
+      "durationMs": 150,
+      "easing": "ease-out",
+      "signatures": ["scroll-linked WebGL/canvas background transitions between sections (observed indirectly — could not render in this sandbox, but confirmed present via DOM/network inspection)"],
+      "interactiveFeedback": "not directly observed [inferred: standard scale/opacity feedback consistent with the CTA's high-contrast, unmistakably-tappable design]"
+    },
+    "assetPrompts": {
+      "heroBanner": "Cel-shaded 3D-render anime key art, two stylish urban operatives leaning on a parked car in a rain-washed industrial alley at dusk, neon signage reflections, cool blue-grey environment palette contrasted against one small saturated neon-yellow-green accent light; clean line work, soft ambient occlusion, no painterly grain; 16:9 landscape composition with open negative space in the lower-left third for logo lockup and CTA.",
+      "skuArt": "Single cel-shaded anime character, ¾ bust framing, dynamic asymmetric pose, flat dark neutral studio backdrop with one rim-light in the brand's neon yellow-green (#D8FA00), portrait 2:3 crop, clean vector-sharp edges, no background clutter.",
+      "background": "Seamless dark near-black (#0A0A0A) tile with a faint diagonal comic-panel cut line in low-contrast dark grey — no dot/halftone texture, no visible grain; reads as a clean industrial backdrop at any tile size."
+    }
+  },
+
+  "codashop": {
+    "architectureNote": "5-tier cascade: (1) type primitives + ref seeds → (2) palette ramps (--x-palette-{role}-500 = --x-ref-{role}) → (3) sys intensity / dimensions / effects / states → (4) semantic defaults (--x-bg-*, --x-text-*, --x-border-*) → (5) .text-style-* classes. Figma token exports drop the --x- prefix; repo names always include it. emitter.ts injects only Tier 1 ref seeds + optional Tier 2 ramps + font + --x-bg-page. Tiers 3-4 auto-resolve downstream and are store-overridable. THREE override layers: SYSTEM CONSTANT (layoutSystem + the 27 textStyle compositions + scales — never change) ⊃ BRAND-LOCKED (ref seeds, font, size values, brandCharacter) ⊃ STORE-FLEXIBLE (semantic colour mapping, component variants).",
+
+    "layoutSystem": {
+      "mutable": false,
+      "responsiveModel": "container-query",
+      "containerRule": "device screen sets container-type:inline-size; overlay must NOT (traps position:fixed)",
+      "breakpoints": { "xs": "< 641px", "s": "641–800px", "m": "801–1279px", "l": "≥ 1280px" },
+      "grid": {
+        "columns": { "xs": 8, "s": 8, "m": 12, "l": 12 },
+        "columnGap": { "token": "--x-gap-grid-gutter", "xs": "8px", "s": "8px", "m": "12px", "l": "16px" },
+        "sidePadding": { "token": "--x-gap-grid-margin", "xs": "12px", "s": "12px", "m": "12px", "l": "16px" },
+        "rowGap": { "token": "--x-gap-grid-row-default", "all": "8px" },
+        "template": "grid-template-columns: repeat(N, minmax(0, 1fr))"
+      },
+      "spanVariants": {
+        "fluid": "grid-column: 1 / -1 at all breakpoints (full bleed)",
+        "content": "full width on XS/S; centred cols 3–10 of 12, max-width 960px, on M/L",
+        "carousel": "full-bleed on XS/S (negative margin cancels grid margin); content on M/L"
+      },
+      "skuGridPatterns": {
+        "_note": "all use display:grid; gap:var(--x-gap-content-default)",
+        "skuList": { "xs": 2, "s": 4, "m": 4 },
+        "bundleGrid": { "xs": 1, "s": 1, "m": 2 },
+        "giftGrid": { "xs": 2, "s": "variable", "m": "variable" },
+        "storyCarouselAspect": { "xs": "1/1", "s": "1/1", "m": "2.6/1" }
+      },
+      "tokenTierDiscipline": "components consume ONLY semantic (--x-bg-*, --x-text-*, --x-border-*) + spacing/size (--x-pad-*, --x-gap-*, --x-radius-*, --x-size-*); NEVER --x-sys-*, --x-palette-*, or --x-ref-* directly",
+      "mobileDesktopRule": "values switch at breakpoints via -desktop- token twins: --x-sys-space-desktop-*, --x-sys-radius-desktop-*, --x-sys-size-control-desktop-*, --x-text-size-desktop-*"
+    },
+
+    "themePreset": {
+      "id": "store-zenless-zone-zero",
+      "name": "Zenless Zone Zero",
+      "presetStyle": {
+        "seedColors": {
+          "primary": "#D8FA00",
+          "secondary": "#DB9A45",
+          "tertiary": "#29D4FF",
+          "neutral": "#000000",
+          "statusPositive": "#39E58C",
+          "statusCaution": "#FFB800",
+          "statusNegative": "#FF5E41"
+        },
+        "font": "\"en impact\" heading / \"en inpin\" body (proxy: Anton / Noto Sans)",
+        "borderRadius": "RADIUS_ROUNDED",
+        "backgroundColor": "#0A0A0A",
+        "backgroundType": "TYPE_SOLID"
+      }
+    },
+
+    "cssOverride": "body[data-theme='theme-preset--store-zenless-zone-zero'] {\n  --x-ref-primary: #D8FA00;\n  --x-ref-secondary: #DB9A45;\n  --x-ref-tertiary: #29D4FF;\n  --x-ref-neutral: #000000;\n  --x-ref-status-positive: #39E58C;\n  --x-ref-status-caution: #FFB800;\n  --x-ref-status-negative: #FF5E41;\n  --x-sys-font-heading: 'Anton', sans-serif;\n  --x-sys-font-body: 'Noto Sans', sans-serif;\n  --x-bg-page: #0A0A0A;\n}",
+
+    "brandLocked": {
+      "ref": {
+        "primary": "#D8FA00",
+        "secondary": "#DB9A45",
+        "tertiary": "#29D4FF",
+        "neutral": "#000000",
+        "statusPositive": "#39E58C",
+        "statusCaution": "#FFB800",
+        "statusNegative": "#FF5E41"
+      },
+      "palette": {
+        "anchorRule": "--x-palette-{role}-500 resolves to --x-ref-{role} — the 500 step IS the seed",
+        "strategy": "auto"
+      },
+      "typePrimitives": {
+        "fontHeading": "\"en impact\", sans-serif",
+        "fontBody": "\"en inpin\", meSubFont, Tahoma, Helvetica, Arial, sans-serif",
+        "weights": { "extraBold": 800, "bold": 700, "semibold": 600, "regular": 400 },
+        "headerSizes": {
+          "h1": { "mobile": "28px", "desktop": "48" },
+          "h2": { "mobile": "24px", "desktop": "40" },
+          "h3": { "mobile": "22px", "desktop": "32" },
+          "h4": { "mobile": "20px", "desktop": "28" },
+          "h5": { "mobile": "18px", "desktop": "24" },
+          "h6": { "mobile": "16px", "desktop": "20" },
+          "h7": { "mobile": "14px", "desktop": "18" }
+        },
+        "bodySizes": {
+          "l": { "mobile": "16px", "desktop": "18" },
+          "main": { "mobile": "14px", "desktop": "16" },
+          "s": { "mobile": "12px", "desktop": "14" },
+          "xs": { "mobile": "10px", "desktop": "12" }
+        },
+        "leading": { "main": "105%", "loose": "120%", "wide": "150%" },
+        "tracking": { "tight": "-0.5%", "narrow": "-0.2%", "main": "0%", "loose": "0.5%", "wide": "1%" },
+        "modularScale": { "basePx": 16, "ratio": 1.25 }
+      },
+      "textStyles": {
+        "heading-display-hero":   { "primitive": "h1", "weight": "extra-bold", "leading": "loose", "tracking": "tight",  "case": "UPPER" },
+        "heading-page-title":     { "primitive": "h2", "weight": "bold",       "leading": "loose", "tracking": "narrow", "case": "Title" },
+        "heading-section":        { "primitive": "h3", "weight": "bold",       "leading": "loose", "tracking": "main",   "case": "Title" },
+        "heading-modal":          { "primitive": "h4", "weight": "bold",       "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-card":           { "primitive": "h5", "weight": "semibold",   "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-banner":         { "primitive": "h6", "weight": "bold",       "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-final-price":    { "primitive": "h6", "weight": "extra-bold", "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-sku-title":      { "primitive": "h4", "weight": "semibold",   "leading": "main",  "tracking": "main",   "case": "Title" },
+        "heading-subtitle":       { "primitive": "h7", "weight": "semibold",   "leading": "main",  "tracking": "main",   "case": "Title" },
+        "paragraph-lead":          { "primitive": "body-l",    "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-regular":       { "primitive": "body-main", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-small":         { "primitive": "body-s",    "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence" },
+        "paragraph-strikethrough": { "primitive": "body-main", "weight": "regular", "leading": "wide", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-action-regular":         { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-action-uppercase":       { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-action-strikethrough":   { "primitive": "body-main", "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-default-regular":        { "primitive": "body-s",    "weight": "regular",  "leading": "wide", "tracking": "main", "case": "sentence" },
+        "utility-default-strikethrough":  { "primitive": "body-s",    "weight": "regular",  "leading": "wide", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-default-uppercase":      { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-label-regular":          { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-label-uppercase":        { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-label-tall":             { "primitive": "body-s",    "weight": "semibold", "leading": "loose","tracking": "main", "case": "sentence" },
+        "utility-label-strikethrough":    { "primitive": "body-s",    "weight": "semibold", "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" },
+        "utility-micro-regular":          { "primitive": "body-xs",   "weight": "regular",  "leading": "main", "tracking": "main", "case": "sentence" },
+        "utility-micro-bold":             { "primitive": "body-xs",   "weight": "extra-bold","leading": "main","tracking": "wide", "case": "sentence" },
+        "utility-micro-uppercase":        { "primitive": "body-xs",   "weight": "semibold", "leading": "main", "tracking": "wide", "case": "UPPER" },
+        "utility-micro-strikethrough":    { "primitive": "body-xs",   "weight": "regular",  "leading": "main", "tracking": "main", "case": "sentence", "decoration": "line-through" }
+      },
+      "brandCharacter": {
+        "radiusSteps": {
+          "control": "--x-sys-radius-full",
+          "input": "--x-sys-radius-s",
+          "container": "--x-sys-radius-l",
+          "thumbnail": "--x-sys-radius-xs",
+          "badge": "--x-sys-radius-full"
+        },
+        "elevationCharacter": {
+          "interactive": "--x-sys-elevation-level-1-main",
+          "modal": "--x-sys-elevation-level-2-main",
+          "toast": "--x-sys-elevation-level-3-main",
+          "nonInteractive": "--x-sys-elevation-flat"
+        },
+        "strokeWeight": {
+          "divider": "--x-sys-stroke-thin",
+          "activeBorder": "--x-sys-stroke-medium",
+          "emphasis": "--x-sys-stroke-thick"
+        },
+        "effectShadow": {
+          "primary": "#0A0A0A",
+          "secondary": "#3A2A10",
+          "neutral": "#000000"
+        },
+        "effectGlow": {
+          "primary": "#D8FA00",
+          "secondary": "#29D4FF"
+        },
+        "states": {
+          "hover": "#C6E800",
+          "pressed": "#A8C400"
+        }
+      }
+    },
+
+    "storeFlexible": {
+      "semanticDefaults": {
+        "_note": "Every mapping below is store-overridable. Tag them as suggestions, not requirements.",
+        "bg": {
+          "--x-bg-action-primary": "var(--x-sys-colour-primary-main)    /* overridable */",
+          "--x-bg-action-primary-hover": "var(--x-sys-colour-primary-strong)  /* overridable */",
+          "--x-bg-action-secondary": "var(--x-sys-colour-secondary-soft)  /* overridable */",
+          "--x-bg-action-destructive": "var(--x-sys-colour-status-negative-main) /* overridable */",
+          "--x-bg-surface": "var(--x-sys-colour-neutral-subtle)  /* overridable */",
+          "--x-bg-overlay": "var(--x-sys-colour-neutral-heavy)   /* overridable */"
+        },
+        "text": {
+          "--x-text-primary": "var(--x-sys-colour-neutral-inverse) /* overridable */",
+          "--x-text-secondary": "var(--x-sys-colour-neutral-strong)  /* overridable */",
+          "--x-text-on-action-primary": "var(--x-sys-colour-primary-inverse) /* overridable */"
+        },
+        "border": {
+          "--x-border-default": "var(--x-sys-colour-neutral-soft)    /* overridable */",
+          "--x-border-emphasis": "var(--x-sys-colour-primary-main)    /* overridable */",
+          "--x-border-input-focused": "var(--x-sys-colour-primary-strong)  /* overridable */"
+        }
+      },
+      "componentIntent": {
+        "buttonPrimary": {
+          "feel": "high-contrast, unmistakably tappable, reads primary at a glance — the neon-on-black pill is the brand's single strongest signature",
+          "defaultVariant": "solid",
+          "alternatives": ["ghost", "outline", "gradient"],
+          "colourDepthNote": "main sys intensity step for the default; a store may choose subtle for a calmer feel, but the brand itself never does",
+          "tokenFamilies": ["--x-bg-action-primary", "--x-text-on-action-primary", "--x-sys-colour-primary-*"]
+        },
+        "buttonSecondary": {
+          "feel": "supporting, clearly secondary weight vs primary — never competes with the neon CTA",
+          "defaultVariant": "outline",
+          "alternatives": ["ghost", "solid-soft"],
+          "tokenFamilies": ["--x-bg-action-secondary", "--x-text-*", "--x-sys-colour-secondary-*"]
+        },
+        "card": {
+          "feel": "not directly observed below the hero — infer a clean flat dark panel consistent with the black chrome, no heavy elevation",
+          "defaultVariant": "flat",
+          "alternatives": ["elevated", "outlined"],
+          "tokenFamilies": ["--x-bg-*", "--x-sys-elevation-*", "--x-sys-radius-*"]
+        },
+        "badge": {
+          "feel": "compact, high-visibility label — matches the observed platform-icon pill row",
+          "defaultVariant": "solid-neutral",
+          "alternatives": ["solid-primary", "outline"],
+          "tokenFamilies": ["--x-bg-action-*", "--x-text-*", "--x-sys-radius-full"]
+        },
+        "input": {
+          "feel": "clean, clearly editable — not directly observed, infer from overall flat/high-contrast brand instinct",
+          "defaultVariant": "outlined",
+          "alternatives": ["filled", "underline"],
+          "tokenFamilies": ["--x-border-*", "--x-bg-*", "--x-sys-radius-*"]
+        },
+        "modal": {
+          "feel": "focused, elevated above content — not directly observed, infer standard dark-scrim treatment consistent with the black chrome",
+          "defaultVariant": "surface",
+          "alternatives": ["drawer", "bottomSheet"],
+          "tokenFamilies": ["--x-sys-elevation-level-2-main", "--x-bg-*", "--x-sys-radius-*"]
+        }
+      }
+    },
+
+    "assetManifest": [
+      {
+        "name": "logo",
+        "sourceUrl": "https://zenless.hoyoverse.com/_nuxt/img/logo.1e072ee.png",
+        "localPath": "refs/logo-zzz.png",
+        "kind": "logo",
+        "intendedUse": "hero lockup, nav brand mark reference",
+        "licence": "© COGNOSPHERE / HoYoverse — internal design-reference only, not for redistribution"
+      },
+      {
+        "name": "character-roxy",
+        "sourceUrl": "https://fastcdn.hoyoverse.com/content-v2/nap/165591/1ecf0322900ace0d1bdeaaf059503791_2352214338355543397.png",
+        "localPath": "refs/character-roxy.jpg",
+        "kind": "character",
+        "intendedUse": "art-direction reference — cel-shaded character render style, lighting, colour treatment",
+        "licence": "© COGNOSPHERE / HoYoverse — internal design-reference only, not for redistribution"
+      }
+    ],
+
+    "downstreamHandoff": [
+      { "from": "codashop.themePreset.presetStyle.seedColors + codashop.cssOverride",
+        "to": "src/tokens/ds/themes/zenless-zone-zero.css",
+        "action": "write the theme scope block: ref seeds, font vars, bg-page, plus any surface overrides the alias graph cannot express" },
+      { "from": "generic.fontAcquisition",
+        "to": "src/tokens/ds/themes/zenless-zone-zero.css (+ store fonts folder if licensing the real 'en impact'/'en inpin' assets is later cleared)",
+        "action": "add the Google Fonts <link> for the Anton/Noto Sans proxy pair; swap in the licensed originals only if usage rights are separately obtained" },
+      { "from": "codashop.assetManifest",
+        "to": "src/stores/zenless-zone-zero/store.js (imagery registry)",
+        "action": "copy refs/ assets into the store assets folder and register each by intendedUse" },
+      { "from": "generic.voice.copyExamples + generic.voice.lexicon",
+        "to": "src/stores/zenless-zone-zero/store.js (strings)",
+        "action": "seed user-visible copy in the extracted brand voice; obey the avoid-list" },
+      { "from": "codashop.storeFlexible.componentIntent + codashop.brandLocked.brandCharacter",
+        "to": "src/stores/zenless-zone-zero/store.js (config capabilities)",
+        "action": "choose component variants and capability flags that realise the stated feel" },
+      { "from": "codashop.tier2SignatureSurfaces",
+        "to": "component-level CSS (per precedentFile)",
+        "action": "implement each signature surface as scoped CSS/component work — these are NOT expressible as tokens" }
+    ],
+
+    "tier2SignatureSurfaces": [
+      {
+        "name": "Diagonal panel-cut section transition",
+        "surface": "Section dividers between homepage blocks (e.g. hero → Characters)",
+        "tokenExpressible": false,
+        "implementation": "A large diagonal clip-path (roughly 20–25° off vertical) cutting a black panel across a neon-yellow-green field at each major section boundary — implement as a full-bleed pseudo-element with clip-path: polygon(...) rather than a token, since the angle and colour-block relationship is bespoke per breakpoint.",
+        "precedentFile": "observed directly on https://zenless.hoyoverse.com/en-us/main between the hero and the Characters section"
+      }
+    ]
+  }
+}

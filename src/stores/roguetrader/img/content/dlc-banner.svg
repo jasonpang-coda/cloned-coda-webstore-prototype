@@ -1,0 +1,30 @@
+<svg width="660" height="254" viewBox="0 0 660 254" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="dlcVoid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#161310"/>
+      <stop offset="0.6" stop-color="#0f0c0a"/>
+      <stop offset="1" stop-color="#0c0a0a"/>
+    </linearGradient>
+    <radialGradient id="dlcGlow" cx="0.78" cy="0.2" r="0.7">
+      <stop offset="0" stop-color="#a1e967" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#a1e967" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="660" height="254" fill="url(#dlcVoid)"/>
+  <rect width="660" height="254" fill="url(#dlcGlow)"/>
+  <!-- faint gold rule line motif -->
+  <g stroke="#d1a974" stroke-opacity="0.14" stroke-width="1.5" fill="none">
+    <path d="M0 200 L660 200"/>
+    <path d="M0 210 L660 210" stroke-opacity="0.07"/>
+  </g>
+  <!-- offset warp-green orb -->
+  <circle cx="520" cy="96" r="64" fill="#a1e967" opacity="0.05"/>
+  <circle cx="520" cy="96" r="64" stroke="#d1a974" stroke-opacity="0.18" stroke-width="1.5" fill="none"/>
+  <!-- gold filigree corner frames -->
+  <g stroke="#d1a974" stroke-opacity="0.2" stroke-width="1.5" fill="none">
+    <path d="M26 26 h60 M26 26 v46 M26 42 q16 -16 34 -16"/>
+    <path d="M634 26 h-60 M634 26 v46 M634 42 q-16 -16 -34 -16"/>
+    <path d="M26 228 h60 M26 228 v-46 M26 212 q16 16 34 16"/>
+    <path d="M634 228 h-60 M634 228 v-46 M634 212 q-16 16 -34 16"/>
+  </g>
+</svg>

@@ -1,0 +1,395 @@
+/* ============================================================================
+   ZENLESS ZONE ZERO THEME  —  [data-theme="zzz"]
+   ----------------------------------------------------------------------------
+   Brand identity: pure-black chrome + one screaming neon yellow-green CTA
+   accent (primary), with a gold/premium secondary and a cyan/info tertiary
+   observed alongside it in the live site's compiled CSS. Sourced from
+   docs/style-guides/zenless-zone-zero/spec.json — colours are [observed: CSS]
+   (frequency-counted straight out of the live stylesheet), fonts are
+   [observed: CSS @font-face]; statusPositive/statusCaution are DERIVED (the
+   brand ships no native green/amber — see spec.json meta.notes).
+
+   Typography: heading font is the brand's self-hosted custom "en impact"
+   family (Impact.TTF) — a bold condensed display face with no open-licence
+   original, proxied here with Anton (Google Fonts) per spec.json's
+   generic.fontAcquisition.heading. Body is the brand's self-hosted "en inpin"
+   family (a HarmonyOS-Sans-derived CJK-capable webfont) — proxied with Noto
+   Sans. Both linked in index.html.
+
+   Mirrors the structure of diabloimmortal.css: seeds → 50–950 spectrum ramps
+   (500 aliases the seed) → typography → semantic overrides. Colours in OKLCH.
+   ============================================================================ */
+
+[data-theme="zzz"] {
+  /* ── Seeds ──────────────────────────────────────────────────────────────
+     [observed: CSS] primary (.header__navbar-link .nav-content-download fill)
+     and statusNegative, frequency-counted from the live compiled stylesheet;
+     secondary/tertiary are the next most-frequent brand accents observed
+     (exact selectors not resolved — see spec.json). statusPositive/-Caution
+     are DERIVED — this brand has no native green/amber. */
+  --x-ref-primary:         oklch(0.910 0.246 128.9); /* #D8FA00 — neon yellow-green CTA fill */
+  --x-ref-secondary:       oklch(0.686 0.107 61.9);  /* #DB9A45 — gold/premium accent */
+  --x-ref-tertiary:        oklch(0.803 0.121 220.9);  /* #29D4FF — cyan info/highlight accent */
+  --x-ref-status-positive: oklch(0.803 0.191 152.5); /* #39E58C — DERIVED, hue-rotated off primary */
+  --x-ref-status-caution:  oklch(0.827 0.171 75.0);  /* #FFB800 — DERIVED warm amber */
+  --x-ref-status-negative: oklch(0.708 0.191 33.9);  /* #FF5E41 — [observed: CSS] */
+  --x-ref-neutral:         oklch(0 0 0);              /* #000000 — nav/chrome foundation */
+
+  /* ── Spectrums — 50-950 ramps, 500 aliases the seed ────────────────────── */
+
+  /* primary (neon yellow-green) */
+  --x-palette-primary-950: oklch(0.166 0.045 128.9);
+  --x-palette-primary-900: oklch(0.300 0.081 128.9);
+  --x-palette-primary-800: oklch(0.450 0.122 128.9);
+  --x-palette-primary-700: oklch(0.614 0.166 128.9);
+  --x-palette-primary-600: oklch(0.778 0.209 128.9);
+  --x-palette-primary-500: var(--x-ref-primary);
+  --x-palette-primary-400: oklch(0.934 0.185 128.9);
+  --x-palette-primary-300: oklch(0.955 0.139 128.9);
+  --x-palette-primary-200: oklch(0.972 0.093 128.9);
+  --x-palette-primary-100: oklch(0.987 0.046 128.9);
+  --x-palette-primary-50:  oklch(0.997 0.014 128.9);
+
+  /* secondary (gold/premium) */
+  --x-palette-secondary-950: oklch(0.166 0.026 61.9);
+  --x-palette-secondary-900: oklch(0.222 0.038 61.9);
+  --x-palette-secondary-800: oklch(0.297 0.056 61.9);
+  --x-palette-secondary-700: oklch(0.379 0.076 61.9);
+  --x-palette-secondary-600: oklch(0.463 0.093 61.9);
+  --x-palette-secondary-500: var(--x-ref-secondary);
+  --x-palette-secondary-400: oklch(0.599 0.093 61.9);
+  --x-palette-secondary-300: oklch(0.710 0.076 61.9);
+  --x-palette-secondary-200: oklch(0.807 0.056 61.9);
+  --x-palette-secondary-100: oklch(0.890 0.032 61.9);
+  --x-palette-secondary-50:  oklch(0.957 0.014 61.9);
+
+  /* tertiary (cyan info/highlight) */
+  --x-palette-tertiary-950: oklch(0.166 0.032 220.9);
+  --x-palette-tertiary-900: oklch(0.240 0.052 220.9);
+  --x-palette-tertiary-800: oklch(0.333 0.075 220.9);
+  --x-palette-tertiary-700: oklch(0.436 0.095 220.9);
+  --x-palette-tertiary-600: oklch(0.541 0.111 220.9);
+  --x-palette-tertiary-500: var(--x-ref-tertiary);
+  --x-palette-tertiary-400: oklch(0.845 0.101 220.9);
+  --x-palette-tertiary-300: oklch(0.889 0.079 220.9);
+  --x-palette-tertiary-200: oklch(0.927 0.055 220.9);
+  --x-palette-tertiary-100: oklch(0.959 0.030 220.9);
+  --x-palette-tertiary-50:  oklch(0.984 0.011 220.9);
+
+  /* status-positive (DERIVED green — hue-rotated off primary, same energy) */
+  --x-palette-status-positive-950: oklch(0.166 0.037 152.5);
+  --x-palette-status-positive-900: oklch(0.263 0.065 152.5);
+  --x-palette-status-positive-800: oklch(0.373 0.097 152.5);
+  --x-palette-status-positive-700: oklch(0.494 0.130 152.5);
+  --x-palette-status-positive-600: oklch(0.649 0.163 152.5);
+  --x-palette-status-positive-500: var(--x-ref-status-positive);
+  --x-palette-status-positive-400: oklch(0.860 0.146 152.5);
+  --x-palette-status-positive-300: oklch(0.905 0.110 152.5);
+  --x-palette-status-positive-200: oklch(0.941 0.073 152.5);
+  --x-palette-status-positive-100: oklch(0.972 0.037 152.5);
+  --x-palette-status-positive-50:  oklch(0.992 0.011 152.5);
+
+  /* status-caution (DERIVED warm amber) */
+  --x-palette-status-caution-950: oklch(0.166 0.033 75.0);
+  --x-palette-status-caution-900: oklch(0.268 0.058 75.0);
+  --x-palette-status-caution-800: oklch(0.386 0.090 75.0);
+  --x-palette-status-caution-700: oklch(0.510 0.120 75.0);
+  --x-palette-status-caution-600: oklch(0.668 0.150 75.0);
+  --x-palette-status-caution-500: var(--x-ref-status-caution);
+  --x-palette-status-caution-400: oklch(0.877 0.135 75.0);
+  --x-palette-status-caution-300: oklch(0.917 0.101 75.0);
+  --x-palette-status-caution-200: oklch(0.948 0.068 75.0);
+  --x-palette-status-caution-100: oklch(0.976 0.034 75.0);
+  --x-palette-status-caution-50:  oklch(0.994 0.010 75.0);
+
+  /* status-negative ([observed: CSS] orange-red) */
+  --x-palette-status-negative-950: oklch(0.166 0.037 33.9);
+  --x-palette-status-negative-900: oklch(0.246 0.065 33.9);
+  --x-palette-status-negative-800: oklch(0.346 0.098 33.9);
+  --x-palette-status-negative-700: oklch(0.458 0.132 33.9);
+  --x-palette-status-negative-600: oklch(0.583 0.164 33.9);
+  --x-palette-status-negative-500: var(--x-ref-status-negative);
+  --x-palette-status-negative-400: oklch(0.786 0.148 33.9);
+  --x-palette-status-negative-300: oklch(0.858 0.111 33.9);
+  --x-palette-status-negative-200: oklch(0.917 0.074 33.9);
+  --x-palette-status-negative-100: oklch(0.965 0.037 33.9);
+  --x-palette-status-negative-50:  oklch(0.991 0.011 33.9);
+
+  /* neutral — true black up to near-white (the brand's own "contrast is king"
+     black chrome, not a warm/cool-tinted charcoal like other stores) */
+  --x-palette-neutral-1000: var(--x-ref-neutral);
+  --x-palette-neutral-950:  oklch(0.145 0 0);
+  --x-palette-neutral-900:  oklch(0.205 0 0);
+  --x-palette-neutral-800:  oklch(0.290 0 0);
+  --x-palette-neutral-700:  oklch(0.390 0 0);
+  --x-palette-neutral-600:  oklch(0.490 0 0);
+  --x-palette-neutral-500:  oklch(0.590 0 0);
+  --x-palette-neutral-400:  oklch(0.690 0 0);
+  --x-palette-neutral-300:  oklch(0.790 0 0);
+  --x-palette-neutral-200:  oklch(0.870 0 0);
+  --x-palette-neutral-100:  oklch(0.930 0 0);
+  --x-palette-neutral-50:   oklch(0.970 0 0);
+  --x-palette-neutral-0:    oklch(1 0 0);
+
+  /* ── Typography ───────────────────────────────────────────────────────────
+     Heading: Anton proxies the brand's self-hosted "en impact" (see file
+     header). Body: Noto Sans proxies "en inpin". Both linked in index.html. */
+  --x-sys-font-family-heading: 'Anton', 'Arial Narrow', sans-serif;
+  --x-sys-font-family-body:    'Noto Sans', Tahoma, Helvetica, Arial, sans-serif;
+
+  --x-sys-weight-extra-bold: 800; /* Noto Sans ships a true 800; Anton is single-weight display */
+  --x-sys-weight-bold:       700;
+  --x-sys-weight-semibold:   600;
+  --x-sys-weight-regular:    400;
+
+  /* Sizes follow the style guide's own default scale (docs/style-guides/
+     zenless-zone-zero/spec.json) — [inferred: med], the scroll-blocked
+     sections prevented direct per-selector measurement of every heading
+     level on the live site; the display/body font pairing itself is
+     [observed: CSS]. */
+  --x-sys-size-h1: 28px;
+  --x-sys-size-h2: 24px;
+  --x-sys-size-h3: 22px;
+  --x-sys-size-h4: 20px;
+  --x-sys-size-h5: 18px;
+  --x-sys-size-h6: 16px;
+  --x-sys-size-h7: 14px;
+  --x-sys-size-body-l:    16px;
+  --x-sys-size-body-main: 14px;
+  --x-sys-size-body-s:    12px;
+  --x-sys-size-body-xs:   10px;
+
+  --x-sys-letter-spacing-tight:  -0.005em;
+  --x-sys-letter-spacing-narrow: -0.002em;
+  --x-sys-letter-spacing-main:    0;
+  --x-sys-letter-spacing-loose:   0.01em;
+  --x-sys-letter-spacing-wide:    0.02em;
+
+  --x-sys-line-height-main:  1.05;
+  --x-sys-line-height-loose: 1.2;
+  --x-sys-line-height-wide:  1.5;
+
+  /* Anton is a normal-width condensed display face — no Hitmarker-style
+     horizontal squeeze needed or observed on the live site. */
+  --x-sys-font-condense: 1;
+}
+
+/* ── Shape + surfaces — clean flat, pill controls ─────────────────────────
+   Classified per the material-fx skill: the one directly-observed surface
+   (the CTA) is a flat, self-luminous-reading neon fill with NO sheen/gloss/
+   halftone/grain layer — style guide texture verdict is "clean flat — avoid
+   adding texture" (no halftone/distress/noise observed). Card-level shape
+   below the hero was scroll-blocked on the live site, so surfaces here stay
+   a plain flat black/near-black fill (elevation-flat) rather than inventing
+   an unobserved gloss/metal treatment. The one confirmed brand signature is
+   the pill: the live CTA measures border-radius 67.5px (effectively full) —
+   html[data-theme] (0,1,1) beats space.css's :root (0,1,0), the same
+   specificity trap as FCM's --radius-control-full case (web-store-tokens
+   skill §3). */
+html[data-theme="zzz"] {
+  --x-radius-control-full: var(--x-sys-radius-full);
+
+  /* L1 — SKU cards. Flat near-black fill, no gradient sheen, no grain —
+     the brand's own instinct per the style guide is high-contrast flat
+     chrome, not a lit/textured surface. */
+  --x-sys-colour-surface-l1-fill:         var(--x-palette-neutral-950);
+  --x-sys-colour-surface-l1-border:       var(--x-palette-neutral-800);
+  --x-sys-colour-surface-l1-border-hover: var(--x-palette-primary-500);
+
+  /* L2 — generic cards (StepCard, PcCard, checkout sheet, bottom nav). */
+  --x-sys-colour-surface-l2-fill:   var(--x-palette-neutral-1000);
+  --x-sys-colour-surface-l2-border: var(--x-palette-neutral-800);
+
+  /* L3 — sheets/overlays. */
+  --x-sys-colour-surface-l3-fill:   var(--x-palette-neutral-1000);
+  --x-sys-colour-surface-l3-border: var(--x-palette-neutral-800);
+
+  --x-border-card-default: var(--x-palette-neutral-800);
+
+  /* Sign-in button border — matches the brand's single accent, not COD:M's
+     default white. (Sign-in flow is unused by this store's guest-checkout
+     model, but keep the override consistent for any future path.) */
+  --x-border-signin-btn: var(--x-sys-colour-primary-main);
+
+  /* Hyperlink family — inverse (a link on a coloured/brand surface) reads
+     near-white rather than the global default, matching the brand's
+     black-and-neon-only palette (no mid-tone link colour observed). */
+  --x-sys-colour-hyperlink-inverse: var(--x-sys-colour-neutral-inverse);
+
+  /* Both user-supplied brand marks (logomark.svg, wordmark.svg) are flat
+     black artwork with no light/transparent colourway of their own — on
+     this store's pure-black nav/footer chrome they'd otherwise be
+     invisible. Force a white silhouette rather than fabricating a
+     recoloured asset: brightness(0) collapses every colour channel to
+     black first (so a stray non-black fill in the source SVG doesn't
+     survive as a mismatched hue), then invert(1) flips that to white. */
+  .navbar__logo,
+  .footer__tm-logo {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Category banner — a single border all the way around (not just the
+     component's own default bottom divider line), same neutral card-border
+     colour as every other flat surface in this theme. The border-bottom
+     longhand is restated at the same value so all four edges match, same
+     precedent as diabloimmortal.css. */
+  --x-category-banner-border: var(--border-weight-default) solid var(--x-border-card-default);
+  --x-category-banner-border-bottom: var(--border-weight-default) solid var(--x-border-card-default);
+
+  /* Download banner — same treatment, all four edges (App.vue's own
+     .download-banner has no border by default for any other store — this
+     token is the sanctioned escape hatch added there for this store). */
+  --x-download-banner-border: var(--border-weight-default) solid var(--x-border-card-default);
+
+  /* Download banner scrim — the default (extensions.css :root) fades from
+     fully-opaque --x-bg-page at the bottom to 70%-opaque at the top. This
+     store's --x-bg-page resolves near-black, and the supplied banner art is
+     ALSO a dark collage — stacked, the default scrim reads as solid black
+     and the image never shows. Lighten both stops so the real art is
+     visible while the text (centred, not bottom-anchored) stays legible
+     against the art's own dark tones. */
+  --x-gradient-download-banner-scrim: linear-gradient(
+    0deg,
+    color-mix(in oklab, var(--x-bg-page) 55%, transparent) 0%,
+    color-mix(in oklab, var(--x-bg-page) 25%, transparent) 100%
+  );
+}
+
+/* ── Light-mode variant ───────────────────────────────────────────────────
+   Every semantic/system role in this store (surface fills, ink, hyperlink-
+   inverse, etc.) is wired to a --x-palette-neutral-* step or an accent
+   ramp step, never a raw literal — so a light theme doesn't need its own
+   semantic overrides. It falls out of mirroring each ramp's lightness
+   around its centre: step N swaps places with the step the same distance
+   on the other side of 500 (neutral's centre is 500, with 1000⟷0 at the
+   ends). Hue/chroma per step are kept, only WHICH step holds which L moves.
+   500 (== the brand seed, --x-ref-*) is the mirror's centre and stays put
+   on every ramp — the accent identity doesn't invert, only the neutral
+   scaffold and each ramp's light/dark balance around it. This flips
+   --x-sys-colour-surface-page (neutral-1000) and every L1-L3 fill (950/
+   1000) from near-black to near-white, and --x-sys-colour-ink-main/-heavy
+   (neutral-0) from white to black, with no changes needed outside this
+   file.
+
+   Driven by [data-color-scheme="light"] on <html> (useColorScheme.js), set
+   by the toolbar's light/dark toggle — not @media (prefers-color-scheme),
+   so the toggle is the single source of truth rather than fighting the OS
+   setting. html[data-theme="zzz"][data-color-scheme="light"] is (0,2,1),
+   comfortably ahead of the :root (0,1,0) structural tiers it overrides
+   regardless of import order — same margin as the html[data-theme] escape
+   hatch documented in the web-store-tokens skill §3. */
+html[data-theme="zzz"][data-color-scheme="light"] {
+  /* --x-sys-colour-primary-main (which --x-ref-primary seeds) does DOUBLE
+     duty in this design system: it's both the CTA/button FILL (with text
+     drawn on top) and, directly, the TEXT colour for hyperlinks, the final
+     price, and the focused-input state (system.css/semantics.css alias it
+     straight through — see --x-sys-colour-hyperlink-main, --x-text-final-
+     price, --x-text-input-focused). One token, two roles, so it has to
+     clear WCAG 2.1 AA (4.5:1, normal text) in BOTH directions at once:
+       - as TEXT on --x-bg-page (white)      → needs relative luminance ≤ 0.183
+       - as a FILL under on-brand TEXT (black or white) → needs luminance ≥ 0.175
+     That leaves only a narrow ~0.175–0.183 luminance band — solved for the
+     brand hue (119.8) by sweeping OKLC for the highest chroma inside that
+     band: L 0.555, C 0.132 lands at luminance 0.178, giving 4.61:1 against
+     white and 4.61:1 against white text on the fill (below). The dark-mode
+     seed (#D8FA00, L 0.910) is nowhere near this band — hence the original
+     light-mode swap to #c6e800 (L 0.875) was STILL too light: it only
+     fixed the fill-legibility half, not the text-on-white half. This is a
+     genuinely darker, more olive-leaning green than the neon dark-mode
+     accent; that desaturation is the real cost of hitting AA on a single
+     shared token rather than a cosmetic choice. */
+  --x-ref-primary: oklch(0.555 0.132 119.8); /* #6a7d00 */
+
+  /* --x-text-on-primary: with the fill this dark (luminance 0.178, see
+     above), white text now reads better than black — 4.61:1 vs black's
+     4.56:1, and a dark fill conventionally takes light text. neutral-1000
+     is white in this block (mirrored from the dark theme's black). */
+  --x-text-on-primary: var(--x-palette-neutral-1000);
+
+  /* primary (neon yellow-green) */
+  --x-palette-primary-950: oklch(0.997 0.014 128.9);
+  --x-palette-primary-900: oklch(0.987 0.046 128.9);
+  --x-palette-primary-800: oklch(0.972 0.093 128.9);
+  --x-palette-primary-700: oklch(0.955 0.139 128.9);
+  --x-palette-primary-600: oklch(0.934 0.185 128.9);
+  --x-palette-primary-400: oklch(0.778 0.209 128.9);
+  --x-palette-primary-300: oklch(0.614 0.166 128.9);
+  --x-palette-primary-200: oklch(0.450 0.122 128.9);
+  --x-palette-primary-100: oklch(0.300 0.081 128.9);
+  --x-palette-primary-50:  oklch(0.166 0.045 128.9);
+
+  /* secondary (gold/premium) */
+  --x-palette-secondary-950: oklch(0.957 0.014 61.9);
+  --x-palette-secondary-900: oklch(0.890 0.032 61.9);
+  --x-palette-secondary-800: oklch(0.807 0.056 61.9);
+  --x-palette-secondary-700: oklch(0.710 0.076 61.9);
+  --x-palette-secondary-600: oklch(0.599 0.093 61.9);
+  --x-palette-secondary-400: oklch(0.463 0.093 61.9);
+  --x-palette-secondary-300: oklch(0.379 0.076 61.9);
+  --x-palette-secondary-200: oklch(0.297 0.056 61.9);
+  --x-palette-secondary-100: oklch(0.222 0.038 61.9);
+  --x-palette-secondary-50:  oklch(0.166 0.026 61.9);
+
+  /* tertiary (cyan info/highlight) */
+  --x-palette-tertiary-950: oklch(0.984 0.011 220.9);
+  --x-palette-tertiary-900: oklch(0.959 0.030 220.9);
+  --x-palette-tertiary-800: oklch(0.927 0.055 220.9);
+  --x-palette-tertiary-700: oklch(0.889 0.079 220.9);
+  --x-palette-tertiary-600: oklch(0.845 0.101 220.9);
+  --x-palette-tertiary-400: oklch(0.541 0.111 220.9);
+  --x-palette-tertiary-300: oklch(0.436 0.095 220.9);
+  --x-palette-tertiary-200: oklch(0.333 0.075 220.9);
+  --x-palette-tertiary-100: oklch(0.240 0.052 220.9);
+  --x-palette-tertiary-50:  oklch(0.166 0.032 220.9);
+
+  /* status-positive (DERIVED green) */
+  --x-palette-status-positive-950: oklch(0.992 0.011 152.5);
+  --x-palette-status-positive-900: oklch(0.972 0.037 152.5);
+  --x-palette-status-positive-800: oklch(0.941 0.073 152.5);
+  --x-palette-status-positive-700: oklch(0.905 0.110 152.5);
+  --x-palette-status-positive-600: oklch(0.860 0.146 152.5);
+  --x-palette-status-positive-400: oklch(0.649 0.163 152.5);
+  --x-palette-status-positive-300: oklch(0.494 0.130 152.5);
+  --x-palette-status-positive-200: oklch(0.373 0.097 152.5);
+  --x-palette-status-positive-100: oklch(0.263 0.065 152.5);
+  --x-palette-status-positive-50:  oklch(0.166 0.037 152.5);
+
+  /* status-caution (DERIVED warm amber) */
+  --x-palette-status-caution-950: oklch(0.994 0.010 75.0);
+  --x-palette-status-caution-900: oklch(0.976 0.034 75.0);
+  --x-palette-status-caution-800: oklch(0.948 0.068 75.0);
+  --x-palette-status-caution-700: oklch(0.917 0.101 75.0);
+  --x-palette-status-caution-600: oklch(0.877 0.135 75.0);
+  --x-palette-status-caution-400: oklch(0.668 0.150 75.0);
+  --x-palette-status-caution-300: oklch(0.510 0.120 75.0);
+  --x-palette-status-caution-200: oklch(0.386 0.090 75.0);
+  --x-palette-status-caution-100: oklch(0.268 0.058 75.0);
+  --x-palette-status-caution-50:  oklch(0.166 0.033 75.0);
+
+  /* status-negative (orange-red) */
+  --x-palette-status-negative-950: oklch(0.991 0.011 33.9);
+  --x-palette-status-negative-900: oklch(0.965 0.037 33.9);
+  --x-palette-status-negative-800: oklch(0.917 0.074 33.9);
+  --x-palette-status-negative-700: oklch(0.858 0.111 33.9);
+  --x-palette-status-negative-600: oklch(0.786 0.148 33.9);
+  --x-palette-status-negative-400: oklch(0.583 0.164 33.9);
+  --x-palette-status-negative-300: oklch(0.458 0.132 33.9);
+  --x-palette-status-negative-200: oklch(0.346 0.098 33.9);
+  --x-palette-status-negative-100: oklch(0.246 0.065 33.9);
+  --x-palette-status-negative-50:  oklch(0.166 0.037 33.9);
+
+  /* neutral — mirrored around 500: 1000⟷0, 950⟷50, 900⟷100, 800⟷200,
+     700⟷300, 600⟷400. Black-chrome brand becomes white-chrome. */
+  --x-palette-neutral-1000: oklch(1 0 0);
+  --x-palette-neutral-950:  oklch(0.970 0 0);
+  --x-palette-neutral-900:  oklch(0.930 0 0);
+  --x-palette-neutral-800:  oklch(0.870 0 0);
+  --x-palette-neutral-700:  oklch(0.790 0 0);
+  --x-palette-neutral-600:  oklch(0.690 0 0);
+  --x-palette-neutral-400:  oklch(0.490 0 0);
+  --x-palette-neutral-300:  oklch(0.390 0 0);
+  --x-palette-neutral-200:  oklch(0.290 0 0);
+  --x-palette-neutral-100:  oklch(0.205 0 0);
+  --x-palette-neutral-50:   oklch(0.145 0 0);
+  --x-palette-neutral-0:    oklch(0 0 0);
+}

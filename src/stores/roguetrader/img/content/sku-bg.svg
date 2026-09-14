@@ -1,0 +1,23 @@
+<svg width="400" height="480" viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bgVoid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#19140e"/>
+      <stop offset="0.55" stop-color="#0f0c0a"/>
+      <stop offset="1" stop-color="#0c0a0a"/>
+    </linearGradient>
+    <radialGradient id="bgGlow" cx="0.5" cy="0.12" r="0.7">
+      <stop offset="0" stop-color="#d1a974" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#d1a974" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="480" fill="url(#bgVoid)"/>
+  <rect width="400" height="480" fill="url(#bgGlow)"/>
+  <!-- faint engraved filigree corners -->
+  <g stroke="#d1a974" stroke-opacity="0.16" stroke-width="1.5" fill="none">
+    <path d="M22 22 h54 M22 22 v54 M22 40 q14 -14 30 -14"/>
+    <path d="M378 22 h-54 M378 22 v54 M378 40 q-14 -14 -30 -14"/>
+    <path d="M22 458 h54 M22 458 v-54 M22 440 q14 14 30 14"/>
+    <path d="M378 458 h-54 M378 458 v-54 M378 440 q-14 14 -30 14"/>
+  </g>
+  <circle cx="200" cy="240" r="120" fill="#a1e967" opacity="0.04"/>
+</svg>

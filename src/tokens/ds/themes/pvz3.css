@@ -1,0 +1,170 @@
+/* ============================================================================
+   PLANTS VS. ZOMBIES 3: EVOLVED THEME  —  [data-theme="pvz3"]
+   ----------------------------------------------------------------------------
+   SCAFFOLD / PLACEHOLDER — colour seeds, ramps, and typography below are
+   provisional (lawn-green / sun-yellow guesses, no brand kit yet). Retune
+   every value in this file against real PvZ3 brand references before launch
+   — see web-store-whitelabel skill §5 step 1 and setup-checklist.md Phase 1.
+
+   TODO (Phase 1 — palette):
+     - Confirm brand seeds (primary/secondary/tertiary/status/neutral) against
+       official art, then regenerate the 6 spectrum ramps below.
+     - Decide light vs dark UI base (placeholder assumes a dark lawn-at-night
+       surface; PvZ's actual brand may read better light/candy-colored).
+
+   TODO (Phase 5/6 — typography):
+     - No licensed font yet. Placeholder stack is system sans-serif.
+       Swap --x-sys-font-family-heading/body once a heading/body face is chosen,
+       add @font-face blocks here (see codm.css / mgsse.css for the pattern),
+       and drop files under src/stores/pvz3/fonts/.
+   ============================================================================ */
+
+[data-theme="pvz3"] {
+  /* ── Seeds — PLACEHOLDER, not brand-verified ─────────────────────────────── */
+  --x-ref-primary:         oklch(0.72  0.19 142.5); /* PLACEHOLDER grass green */
+  --x-ref-secondary:       oklch(0.85  0.17 95);    /* PLACEHOLDER sunflower yellow */
+  --x-ref-tertiary:        oklch(0.5   0.15 142.5); /* PLACEHOLDER deep leaf green */
+  --x-ref-status-positive: oklch(0.72  0.19 142.5); /* reuses primary */
+  --x-ref-status-caution:  oklch(0.8   0.15 80);    /* PLACEHOLDER amber */
+  --x-ref-status-negative: oklch(0.6   0.22 25);    /* PLACEHOLDER zombie-alert red */
+  --x-ref-neutral:         oklch(0.2   0.02 140);   /* PLACEHOLDER dark mossy neutral */
+
+  /* ── Spectrums — PLACEHOLDER ramps, same shape/curve used elsewhere in this
+     design system; retune once real seeds are confirmed. 500 aliases the seed. */
+
+  /* primary (grass green) */
+  --x-palette-primary-950: oklch(0.212 0.109 142.5);
+  --x-palette-primary-900: oklch(0.271 0.140 142.5);
+  --x-palette-primary-800: oklch(0.365 0.170 142.5);
+  --x-palette-primary-700: oklch(0.46  0.190 142.5);
+  --x-palette-primary-600: oklch(0.59  0.195 142.5);
+  --x-palette-primary-500: var(--x-ref-primary);
+  --x-palette-primary-400: oklch(0.77  0.16  142.5);
+  --x-palette-primary-300: oklch(0.82  0.13  142.5);
+  --x-palette-primary-200: oklch(0.87  0.095 142.5);
+  --x-palette-primary-100: oklch(0.91  0.06  142.5);
+  --x-palette-primary-50:  oklch(0.94  0.03  142.5);
+
+  /* secondary (sunflower yellow) */
+  --x-palette-secondary-950: oklch(0.30  0.055 95);
+  --x-palette-secondary-900: oklch(0.38  0.075 95);
+  --x-palette-secondary-800: oklch(0.51  0.10  95);
+  --x-palette-secondary-700: oklch(0.65  0.12  95);
+  --x-palette-secondary-600: oklch(0.78  0.145 95);
+  --x-palette-secondary-500: var(--x-ref-secondary);
+  --x-palette-secondary-400: oklch(0.90  0.13  95);
+  --x-palette-secondary-300: oklch(0.94  0.09  95);
+  --x-palette-secondary-200: oklch(0.96  0.06  95);
+  --x-palette-secondary-100: oklch(0.975 0.035 95);
+  --x-palette-secondary-50:  oklch(0.985 0.018 95);
+
+  /* tertiary (deep leaf green) */
+  --x-palette-tertiary-950: oklch(0.145 0.07  142.5);
+  --x-palette-tertiary-900: oklch(0.187 0.096 142.5);
+  --x-palette-tertiary-800: oklch(0.268 0.126 142.5);
+  --x-palette-tertiary-700: oklch(0.35  0.149 142.5);
+  --x-palette-tertiary-600: oklch(0.432 0.166 142.5);
+  --x-palette-tertiary-500: var(--x-ref-tertiary);
+  --x-palette-tertiary-400: oklch(0.566 0.161 142.5);
+  --x-palette-tertiary-300: oklch(0.617 0.137 142.5);
+  --x-palette-tertiary-200: oklch(0.669 0.105 142.5);
+  --x-palette-tertiary-100: oklch(0.72  0.067 142.5);
+  --x-palette-tertiary-50:  oklch(0.746 0.035 142.5);
+
+  /* status-positive (reuses primary green) */
+  --x-palette-status-positive-950: var(--x-palette-primary-950);
+  --x-palette-status-positive-900: var(--x-palette-primary-900);
+  --x-palette-status-positive-800: var(--x-palette-primary-800);
+  --x-palette-status-positive-700: var(--x-palette-primary-700);
+  --x-palette-status-positive-600: var(--x-palette-primary-600);
+  --x-palette-status-positive-500: var(--x-ref-status-positive);
+  --x-palette-status-positive-400: var(--x-palette-primary-400);
+  --x-palette-status-positive-300: var(--x-palette-primary-300);
+  --x-palette-status-positive-200: var(--x-palette-primary-200);
+  --x-palette-status-positive-100: var(--x-palette-primary-100);
+  --x-palette-status-positive-50:  var(--x-palette-primary-50);
+
+  /* status-caution (amber) */
+  --x-palette-status-caution-950: oklch(0.174 0.041 80);
+  --x-palette-status-caution-900: oklch(0.224 0.057 80);
+  --x-palette-status-caution-800: oklch(0.322 0.074 80);
+  --x-palette-status-caution-700: oklch(0.42  0.088 80);
+  --x-palette-status-caution-600: oklch(0.519 0.098 80);
+  --x-palette-status-caution-500: var(--x-ref-status-caution);
+  --x-palette-status-caution-400: oklch(0.679 0.095 80);
+  --x-palette-status-caution-300: oklch(0.741 0.081 80);
+  --x-palette-status-caution-200: oklch(0.802 0.062 80);
+  --x-palette-status-caution-100: oklch(0.864 0.039 80);
+  --x-palette-status-caution-50:  oklch(0.895 0.02  80);
+
+  /* status-negative (zombie-alert red) */
+  --x-palette-status-negative-950: oklch(0.179 0.05 25);
+  --x-palette-status-negative-900: oklch(0.23  0.07 25);
+  --x-palette-status-negative-800: oklch(0.331 0.10 25);
+  --x-palette-status-negative-700: oklch(0.431 0.14 25);
+  --x-palette-status-negative-600: oklch(0.532 0.18 25);
+  --x-palette-status-negative-500: var(--x-ref-status-negative);
+  --x-palette-status-negative-400: oklch(0.697 0.19 25);
+  --x-palette-status-negative-300: oklch(0.76  0.16 25);
+  --x-palette-status-negative-200: oklch(0.823 0.12 25);
+  --x-palette-status-negative-100: oklch(0.886 0.07 25);
+  --x-palette-status-negative-50:  oklch(0.918 0.035 25);
+
+  /* neutral 0-1000 — low-chroma mossy grey; 1000 = page seed */
+  --x-palette-neutral-0:    oklch(0.975 0.005 140);
+  --x-palette-neutral-50:   oklch(0.93  0.005 140);
+  --x-palette-neutral-100:  oklch(0.87  0.006 140);
+  --x-palette-neutral-200:  oklch(0.8   0.008 140);
+  --x-palette-neutral-300:  oklch(0.73  0.01  140);
+  --x-palette-neutral-400:  oklch(0.66  0.012 140);
+  --x-palette-neutral-500:  oklch(0.585 0.014 140);
+  --x-palette-neutral-600:  oklch(0.515 0.014 140);
+  --x-palette-neutral-700:  oklch(0.445 0.016 140);
+  --x-palette-neutral-800:  oklch(0.375 0.018 140);
+  --x-palette-neutral-900:  oklch(0.3   0.02  140);
+  --x-palette-neutral-950:  oklch(0.225 0.02  140);
+  --x-palette-neutral-1000: var(--x-ref-neutral);
+
+  /* ── Typography — PLACEHOLDER system stack, no licensed font yet (see TODO
+     header above). --x-sys-font-condense stays 1 until a face is chosen. */
+  --x-sys-font-family-heading: 'Inter', system-ui, sans-serif;
+  --x-sys-font-family-body:    'Inter', system-ui, sans-serif;
+
+  --x-sys-weight-extra-bold: 800;
+  --x-sys-weight-bold:       700;
+  --x-sys-weight-semibold:   600;
+  --x-sys-weight-regular:    400;
+
+  --x-sys-size-h1: 32px;
+  --x-sys-size-h2: 24px;
+  --x-sys-size-h3: 20px;
+  --x-sys-size-h4: 18px;
+  --x-sys-size-h5: 16px;
+  --x-sys-size-h6: 14px;
+  --x-sys-size-h7: 12px;
+  --x-sys-size-body-l:    16px;
+  --x-sys-size-body-main: 14px;
+  --x-sys-size-body-s:    12px;
+  --x-sys-size-body-xs:   10px;
+
+  --x-sys-letter-spacing-tight:  -0.01em;
+  --x-sys-letter-spacing-narrow: -0.005em;
+  --x-sys-letter-spacing-main:    0;
+  --x-sys-letter-spacing-loose:   0.02em;
+  --x-sys-letter-spacing-wide:    0.04em;
+
+  --x-sys-line-height-main:  1;
+  --x-sys-line-height-loose: 1.15;
+  --x-sys-line-height-wide:  1.5;
+
+  --x-sys-font-condense: 1;
+}
+
+/* ── Semantic / alias-role OVERRIDES — none yet. Any token also defined by a
+   later :root tier (semantics.css / system.css) must be re-set from
+   html[data-theme="pvz3"] (specificity 0,1,1), not bare [data-theme] (0,1,0),
+   or it silently loses by source order — see web-store-tokens skill §3. */
+html[data-theme="pvz3"] {
+  /* TODO — corner radius, hairline/border tint, fx-glow-border retint, hero
+     bloom gradient, story-logo sizing, etc. once brand references land. */
+}

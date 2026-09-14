@@ -1,0 +1,146 @@
+/* ============================================================================
+   TEXT STYLES  —  typographic semantic classes (:root / global)
+   ----------------------------------------------------------------------------
+   The semantic typography layer. Each class composes the themed --sys-* type
+   tokens (family / size / weight / line-height / tracking) so components apply a
+   single class instead of hand-writing font-size / weight / letter-spacing.
+
+   Corrections applied vs the source spec:
+   - font-family uses var(--sys-font-family-*) (NOT a hardcoded "Inter").
+   - letter-spacing tokens are em (CSS letter-spacing rejects %).
+   - every value is wrapped in var().
+   - line-height tokens are unitless.
+
+   Condense: Hitmarker display text renders ~18% too wide, so every text-style
+   applies a scaleX transform. Default transform-origin is left; right-aligned
+   (prices) and centred (tabs/badges) consumers override transform-origin in
+   their scoped CSS. For elements that run a scale keyframe (e.g. a popping
+   badge) use negative letter-spacing instead — do NOT combine a static scaleX
+   with an animated transform (see skill gotcha). A non-Hitmarker store sets
+   --x-sys-font-condense: 1 and this becomes a no-op.
+
+   Body vs heading condense: body/utility styles read
+   --x-sys-font-condense-body (falls back to --x-sys-font-condense), heading styles
+   always read --x-sys-font-condense. This lets a theme variant swap the body
+   family to an uncondensed face (e.g. the demo body-font toggle:
+   [data-body-font] blocks in themes/codm.css) while headings stay condensed
+   Hitmarker.
+   ============================================================================ */
+
+html {
+  font-family: var(--x-sys-font-family-body);
+}
+
+[class*="text-style-"] {
+  font-family: var(--x-sys-font-family-body);
+  display: inline-block;
+  transform: scaleX(var(--x-sys-font-condense-body, var(--x-sys-font-condense)));
+  transform-origin: left center;
+}
+
+/* ── Headings (display) ─────────────────────────────────────────────────── */
+.text-style-heading-display-hero,
+.text-style-heading-page-title,
+.text-style-heading-section,
+.text-style-heading-modal,
+.text-style-heading-card,
+.text-style-heading-banner,
+.text-style-heading-final-price,
+.text-style-heading-sku-title,
+.text-style-heading-subtitle {
+  font-family: var(--x-sys-font-family-heading);
+  font-weight: var(--x-sys-weight-bold);
+  line-height: var(--x-sys-line-height-loose);
+  letter-spacing: var(--x-sys-letter-spacing-wide);
+  /* Headings always use the heading condense (body may be uncondensed). */
+  transform: scaleX(var(--x-sys-font-condense));
+}
+.text-style-heading-display-hero { font-size: var(--x-sys-size-h1); }
+.text-style-heading-page-title   { font-size: var(--x-sys-size-h2); }
+.text-style-heading-section      { font-size: var(--x-sys-size-h3); }
+.text-style-heading-modal        { font-size: var(--x-sys-size-h4); }
+.text-style-heading-card         { font-size: var(--x-sys-size-h5); }
+.text-style-heading-banner       { font-size: var(--x-sys-size-h6); }
+.text-style-heading-final-price  { font-size: var(--x-sys-size-h6); }
+.text-style-heading-sku-title    { font-size: var(--x-sys-size-h4); }
+.text-style-heading-subtitle     { font-size: var(--x-sys-size-h7); }
+
+/* ── Paragraphs (body copy) ─────────────────────────────────────────────── */
+.text-style-paragraph-lead,
+.text-style-paragraph-regular,
+.text-style-paragraph-small,
+.text-style-paragraph-strikethrough {
+  font-weight: var(--x-sys-weight-regular);
+  line-height: var(--x-sys-line-height-wide);
+  letter-spacing: var(--x-sys-letter-spacing-main);
+}
+.text-style-paragraph-lead          { font-size: var(--x-sys-size-body-l); }
+.text-style-paragraph-regular       { font-size: var(--x-sys-size-body-main); }
+.text-style-paragraph-small         { font-size: var(--x-sys-size-body-s); }
+.text-style-paragraph-strikethrough { font-size: var(--x-sys-size-body-main); text-decoration: line-through; }
+
+/* ── Utility: action (button / CTA labels) ──────────────────────────────── */
+.text-style-utility-action-regular,
+.text-style-utility-action-bold,
+.text-style-utility-action-uppercase,
+.text-style-utility-action-strikethrough {
+  font-size: var(--x-sys-size-body-l);
+  line-height: var(--x-sys-line-height-main);
+}
+.text-style-utility-action-regular,
+.text-style-utility-action-uppercase,
+.text-style-utility-action-strikethrough { font-weight: var(--x-sys-weight-regular); }
+.text-style-utility-action-bold          { font-weight: var(--x-sys-weight-bold); }
+.text-style-utility-action-regular       { letter-spacing: var(--x-sys-letter-spacing-main); }
+.text-style-utility-action-bold          { letter-spacing: var(--x-sys-letter-spacing-main); }
+.text-style-utility-action-uppercase     { letter-spacing: var(--x-sys-letter-spacing-wide); text-transform: uppercase; }
+.text-style-utility-action-strikethrough { letter-spacing: var(--x-sys-letter-spacing-main); text-decoration: line-through; }
+
+/* ── Utility: default ───────────────────────────────────────────────────── */
+.text-style-utility-default-regular,
+.text-style-utility-default-bold,
+.text-style-utility-default-strikethrough,
+.text-style-utility-default-uppercase {
+  font-size: var(--x-sys-size-body-main);
+  line-height: var(--x-sys-line-height-main);
+}
+.text-style-utility-default-regular,
+.text-style-utility-default-strikethrough,
+.text-style-utility-default-uppercase { font-weight: var(--x-sys-weight-regular); }
+.text-style-utility-default-bold      { font-weight: var(--x-sys-weight-bold); }
+.text-style-utility-default-regular       { letter-spacing: var(--x-sys-letter-spacing-main); }
+.text-style-utility-default-bold          { letter-spacing: var(--x-sys-letter-spacing-main); }
+.text-style-utility-default-strikethrough { letter-spacing: var(--x-sys-letter-spacing-main); text-decoration: line-through; }
+.text-style-utility-default-uppercase     { letter-spacing: var(--x-sys-letter-spacing-main); text-transform: uppercase; }
+
+/* ── Utility: label ─────────────────────────────────────────────────────── */
+.text-style-utility-label-regular,
+.text-style-utility-label-bold,
+.text-style-utility-label-uppercase,
+.text-style-utility-label-tall,
+.text-style-utility-label-strikethrough {
+  font-size: var(--x-sys-size-body-s);
+}
+.text-style-utility-label-regular,
+.text-style-utility-label-uppercase,
+.text-style-utility-label-tall,
+.text-style-utility-label-strikethrough { font-weight: var(--x-sys-weight-regular); }
+.text-style-utility-label-bold          { font-weight: var(--x-sys-weight-bold); }
+.text-style-utility-label-regular       { line-height: var(--x-sys-line-height-main); letter-spacing: var(--x-sys-letter-spacing-main); }
+.text-style-utility-label-bold          { line-height: var(--x-sys-line-height-main); letter-spacing: var(--x-sys-letter-spacing-main); }
+.text-style-utility-label-uppercase     { line-height: var(--x-sys-line-height-main); letter-spacing: var(--x-sys-letter-spacing-wide); text-transform: uppercase; }
+.text-style-utility-label-strikethrough { line-height: var(--x-sys-line-height-main); letter-spacing: var(--x-sys-letter-spacing-main); text-decoration: line-through; }
+.text-style-utility-label-tall          { line-height: 20px; letter-spacing: var(--x-sys-letter-spacing-main); } /* intentional one-off */
+
+/* ── Utility: micro (badges / icon labels) ──────────────────────────────── */
+.text-style-utility-micro-regular,
+.text-style-utility-micro-bold,
+.text-style-utility-micro-uppercase,
+.text-style-utility-micro-strikethrough {
+  font-size: var(--x-sys-size-body-xs);
+  line-height: var(--x-sys-line-height-main);
+}
+.text-style-utility-micro-regular       { font-weight: var(--x-sys-weight-semibold);   letter-spacing: var(--x-sys-letter-spacing-loose); }
+.text-style-utility-micro-bold          { font-weight: var(--x-sys-weight-extra-bold); letter-spacing: var(--x-sys-letter-spacing-wide); }
+.text-style-utility-micro-uppercase     { font-weight: var(--x-sys-weight-semibold);   letter-spacing: var(--x-sys-letter-spacing-wide); text-transform: uppercase; }
+.text-style-utility-micro-strikethrough { font-weight: var(--x-sys-weight-semibold);   letter-spacing: var(--x-sys-letter-spacing-loose); text-decoration: line-through; }

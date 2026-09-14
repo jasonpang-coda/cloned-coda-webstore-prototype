@@ -1,0 +1,788 @@
+{
+  "version": "1.0.0",
+  "mappings": [
+    {
+      "figmaNodeId": "figma://node/accordion-header",
+      "componentName": "AccordionHeader",
+      "storyPath": "src/library/stories/AccordionHeader.stories.js",
+      "sourceComponent": "src/components/AccordionHeader.vue",
+      "storyUrl": "http://localhost:5173/?library=accordion-header",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"accordionHeaderStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/accordion-panel",
+      "componentName": "AccordionPanel",
+      "storyPath": "src/library/stories/AccordionPanel.stories.js",
+      "sourceComponent": "src/components/AccordionPanel.vue",
+      "storyUrl": "http://localhost:5173/?library=accordion-panel",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"accordionPanelStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/account-popover",
+      "componentName": "AccountPopover",
+      "storyPath": "src/library/stories/AccountPopover.stories.js",
+      "sourceComponent": "src/components/AccountPopover.vue",
+      "storyUrl": "http://localhost:5173/?library=account-popover",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"accountPopoverStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/base-sheet",
+      "componentName": "BaseSheet",
+      "storyPath": "src/library/stories/BaseSheet.stories.js",
+      "sourceComponent": "src/components/BaseSheet.vue",
+      "storyUrl": "http://localhost:5173/?library=base-sheet",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"baseSheetStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/best-seller-card",
+      "componentName": "BestSellerCard",
+      "storyPath": "src/library/stories/BestSellerCard.stories.js",
+      "sourceComponent": "src/components/BestSellerCard.vue",
+      "storyUrl": "http://localhost:5173/?library=best-seller-card",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"bestSellerCardStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/best-seller-carousel",
+      "componentName": "BestSellerCarousel",
+      "storyPath": "src/library/stories/BestSellerCarousel.stories.js",
+      "sourceComponent": "src/components/BestSellerCarousel.vue",
+      "storyUrl": "http://localhost:5173/?library=best-seller-carousel",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"bestSellerCarouselStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/bundle-breakdown",
+      "componentName": "BundleBreakdown",
+      "storyPath": "src/library/stories/BundleBreakdown.stories.js",
+      "sourceComponent": "src/components/BundleBreakdown.vue",
+      "storyUrl": "http://localhost:5173/?library=bundle-breakdown",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"bundleBreakdownStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/bundle-grid",
+      "componentName": "BundleGrid",
+      "storyPath": "src/library/stories/BundleGrid.stories.js",
+      "sourceComponent": "src/components/BundleGrid.vue",
+      "storyUrl": "http://localhost:5173/?library=bundle-grid",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"bundleGridStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/bundle-item",
+      "componentName": "BundleItem",
+      "storyPath": "src/library/stories/BundleItem.stories.js",
+      "sourceComponent": "src/components/BundleItem.vue",
+      "storyUrl": "http://localhost:5173/?library=bundle-item",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"bundleItemStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/bundle-sku-card",
+      "componentName": "BundleSkuCard",
+      "storyPath": "src/library/stories/BundleSkuCard.stories.js",
+      "sourceComponent": "src/components/BundleSkuCard.vue",
+      "storyUrl": "http://localhost:5173/?library=bundle-sku-card",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"bundleSkuCardStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/button",
+      "componentName": "Button",
+      "storyPath": "src/library/stories/Button.stories.js",
+      "sourceComponent": "src/components/Button.vue",
+      "storyUrl": "http://localhost:5173/?library=button",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"buttonStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/buy-now-bar",
+      "componentName": "BuyNowBar",
+      "storyPath": "src/library/stories/BuyNowBar.stories.js",
+      "sourceComponent": "src/components/BuyNowBar.vue",
+      "storyUrl": "http://localhost:5173/?library=buy-now-bar",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"buyNowBarStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/card",
+      "componentName": "Card",
+      "storyPath": "src/library/stories/Card.stories.js",
+      "sourceComponent": "src/components/Card.vue",
+      "storyUrl": "http://localhost:5173/?library=card",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"cardStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/catalog-nav-stack",
+      "componentName": "CatalogNavStack",
+      "storyPath": "src/library/stories/CatalogNavStack.stories.js",
+      "sourceComponent": "src/components/CatalogNavStack.vue",
+      "storyUrl": "http://localhost:5173/?library=catalog-nav-stack",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"catalogNavStackStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/category-banner",
+      "componentName": "CategoryBanner",
+      "storyPath": "src/library/stories/CategoryBanner.stories.js",
+      "sourceComponent": "src/components/CategoryBanner.vue",
+      "storyUrl": "http://localhost:5173/?library=category-banner",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"categoryBannerStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/category-catalog",
+      "componentName": "CategoryCatalog",
+      "storyPath": "src/library/stories/CategoryCatalog.stories.js",
+      "sourceComponent": "src/components/CategoryCatalog.vue",
+      "storyUrl": "http://localhost:5173/?library=category-catalog",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"categoryCatalogStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/category-nav",
+      "componentName": "CategoryNav",
+      "storyPath": "src/library/stories/CategoryNav.stories.js",
+      "sourceComponent": "src/components/CategoryNav.vue",
+      "storyUrl": "http://localhost:5173/?library=category-nav",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"categoryNavStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/checkout-step-body",
+      "componentName": "CheckoutStepBody",
+      "storyPath": "src/library/stories/CheckoutStepBody.stories.js",
+      "sourceComponent": "src/components/CheckoutStepBody.vue",
+      "storyUrl": "http://localhost:5173/?library=checkout-step-body",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"checkoutStepBodyStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/checkout-step-footer",
+      "componentName": "CheckoutStepFooter",
+      "storyPath": "src/library/stories/CheckoutStepFooter.stories.js",
+      "sourceComponent": "src/components/CheckoutStepFooter.vue",
+      "storyUrl": "http://localhost:5173/?library=checkout-step-footer",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"checkoutStepFooterStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/demo-gift-daily",
+      "componentName": "ClaimGiftSheet",
+      "storyPath": "src/library/stories/ClaimGiftSheet.stories.js",
+      "sourceComponent": "src/components/ClaimGiftSheet.vue",
+      "storyUrl": "http://localhost:5173/?library=demo-gift-daily",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"demoGiftDailyStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/compact-hero",
+      "componentName": "CompactHero",
+      "storyPath": "src/library/stories/CompactHero.stories.js",
+      "sourceComponent": "src/components/CompactHero.vue",
+      "storyUrl": "http://localhost:5173/?library=compact-hero",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"compactHeroStory\" />"
+    },
+    {
+      "figmaNodeId": "6144:22072",
+      "componentName": "DownloadBanner",
+      "storyPath": "src/library/stories/DownloadBanner.stories.js",
+      "sourceComponent": "src/components/DownloadBanner.vue",
+      "storyUrl": "http://localhost:5173/?library=download-banner",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"downloadBannerStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/featured-carousel",
+      "componentName": "FeaturedCarousel",
+      "storyPath": "src/library/stories/FeaturedCarousel.stories.js",
+      "sourceComponent": "src/components/FeaturedCarousel.vue",
+      "storyUrl": "http://localhost:5173/?library=featured-carousel",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"featuredCarouselStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/filter-dropdown",
+      "componentName": "FilterDropdown",
+      "storyPath": "src/library/stories/FilterDropdown.stories.js",
+      "sourceComponent": "src/components/FilterDropdown.vue",
+      "storyUrl": "http://localhost:5173/?library=filter-dropdown",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"filterDropdownStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/filter-tabs",
+      "componentName": "FilterTabs",
+      "storyPath": "src/library/stories/FilterTabs.stories.js",
+      "sourceComponent": "src/components/FilterTabs.vue",
+      "storyUrl": "http://localhost:5173/?library=filter-tabs",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"filterTabsStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/flag-tile",
+      "componentName": "FlagTile",
+      "storyPath": "src/library/stories/FlagTile.stories.js",
+      "sourceComponent": "src/components/FlagTile.vue",
+      "storyUrl": "http://localhost:5173/?library=flag-tile",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"flagTileStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/footer",
+      "componentName": "Footer",
+      "storyPath": "src/library/stories/Footer.stories.js",
+      "sourceComponent": "src/components/Footer.vue",
+      "storyUrl": "http://localhost:5173/?library=footer",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"footerStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/gift-grid",
+      "componentName": "GiftGrid",
+      "storyPath": "src/library/stories/GiftGrid.stories.js",
+      "sourceComponent": "src/components/GiftGrid.vue",
+      "storyUrl": "http://localhost:5173/?library=gift-grid",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"giftGridStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/gift-sku-card",
+      "componentName": "GiftSkuCard",
+      "storyPath": "src/library/stories/GiftSkuCard.stories.js",
+      "sourceComponent": "src/components/GiftSkuCard.vue",
+      "storyUrl": "http://localhost:5173/?library=gift-sku-card",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"giftSkuCardStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/gift-task-banner",
+      "componentName": "GiftTaskBanner",
+      "storyPath": "src/library/stories/GiftTaskBanner.stories.js",
+      "sourceComponent": "src/components/GiftTaskBanner.vue",
+      "storyUrl": "http://localhost:5173/?library=gift-task-banner",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"giftTaskBannerStory\" />"
+    },
+    {
+      "figmaNodeId": "1386:1381",
+      "componentName": "Grid",
+      "storyPath": "src/library/stories/Grid.stories.js",
+      "sourceComponent": "src/components/Grid.vue",
+      "storyUrl": "http://localhost:5173/?library=grid",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"gridStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/hero-sku-card",
+      "componentName": "HeroSkuCard",
+      "storyPath": "src/library/stories/HeroSkuCard.stories.js",
+      "sourceComponent": "src/components/HeroSkuCard.vue",
+      "storyUrl": "http://localhost:5173/?library=hero-sku-card",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"heroSkuCardStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/moba",
+      "componentName": "HomeCategoryCards",
+      "storyPath": "src/library/stories/HomeCategoryCards.stories.js",
+      "sourceComponent": "src/components/HomeCategoryCards.vue",
+      "storyUrl": "http://localhost:5173/?library=moba",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"mobaStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/home-faq",
+      "componentName": "HomeFaq",
+      "storyPath": "src/library/stories/HomeFaq.stories.js",
+      "sourceComponent": "src/components/HomeFaq.vue",
+      "storyUrl": "http://localhost:5173/?library=home-faq",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"homeFaqStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/home-newsletter",
+      "componentName": "HomeNewsletter",
+      "storyPath": "src/library/stories/HomeNewsletter.stories.js",
+      "sourceComponent": "src/components/HomeNewsletter.vue",
+      "storyUrl": "http://localhost:5173/?library=home-newsletter",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"homeNewsletterStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/home-promo-tiles",
+      "componentName": "HomePromoTiles",
+      "storyPath": "src/library/stories/HomePromoTiles.stories.js",
+      "sourceComponent": "src/components/HomePromoTiles.vue",
+      "storyUrl": "http://localhost:5173/?library=home-promo-tiles",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"homePromoTilesStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/home-steps",
+      "componentName": "HomeSteps",
+      "storyPath": "src/library/stories/HomeSteps.stories.js",
+      "sourceComponent": "src/components/HomeSteps.vue",
+      "storyUrl": "http://localhost:5173/?library=home-steps",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"homeStepsStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/info-step-body",
+      "componentName": "InfoStepBody",
+      "storyPath": "src/library/stories/InfoStepBody.stories.js",
+      "sourceComponent": "src/components/InfoStepBody.vue",
+      "storyUrl": "http://localhost:5173/?library=info-step-body",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"infoStepBodyStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/info-step-footer",
+      "componentName": "InfoStepFooter",
+      "storyPath": "src/library/stories/InfoStepFooter.stories.js",
+      "sourceComponent": "src/components/InfoStepFooter.vue",
+      "storyUrl": "http://localhost:5173/?library=info-step-footer",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"infoStepFooterStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/info-tag",
+      "componentName": "InfoTag",
+      "storyPath": "src/library/stories/InfoTag.stories.js",
+      "sourceComponent": "src/components/InfoTag.vue",
+      "storyUrl": "http://localhost:5173/?library=info-tag",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"infoTagStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/inline-checkout-cta",
+      "componentName": "InlineCheckoutCta",
+      "storyPath": "src/library/stories/InlineCheckoutCta.stories.js",
+      "sourceComponent": "src/components/InlineCheckoutCta.vue",
+      "storyUrl": "http://localhost:5173/?library=inline-checkout-cta",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"inlineCheckoutCtaStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/item-summary-accordion",
+      "componentName": "ItemSummaryAccordion",
+      "storyPath": "src/library/stories/ItemSummaryAccordion.stories.js",
+      "sourceComponent": "src/components/ItemSummaryAccordion.vue",
+      "storyUrl": "http://localhost:5173/?library=item-summary-accordion",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"itemSummaryAccordionStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/language-selector-sheet",
+      "componentName": "LanguageSelectorSheet",
+      "storyPath": "src/library/stories/LanguageSelectorSheet.stories.js",
+      "sourceComponent": "src/components/LanguageSelectorSheet.vue",
+      "storyUrl": "http://localhost:5173/?library=language-selector-sheet",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"languageSelectorSheetStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/link-row",
+      "componentName": "LinkRow",
+      "storyPath": "src/library/stories/LinkRow.stories.js",
+      "sourceComponent": "src/components/LinkRow.vue",
+      "storyUrl": "http://localhost:5173/?library=link-row",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"linkRowStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/list-item",
+      "componentName": "ListItem",
+      "storyPath": "src/library/stories/ListItem.stories.js",
+      "sourceComponent": "src/components/ListItem.vue",
+      "storyUrl": "http://localhost:5173/?library=list-item",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"listItemStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/material-icon",
+      "componentName": "MaterialIcon",
+      "storyPath": "src/library/stories/MaterialIcon.stories.js",
+      "sourceComponent": "src/components/MaterialIcon.vue",
+      "storyUrl": "http://localhost:5173/?library=material-icon",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"materialIconStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/media",
+      "componentName": "Media",
+      "storyPath": "src/library/stories/Media.stories.js",
+      "sourceComponent": "src/components/Media.vue",
+      "storyUrl": "http://localhost:5173/?library=media",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"mediaStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/milestone-reward-card",
+      "componentName": "MilestoneRewardCard",
+      "storyPath": "src/library/stories/MilestoneRewardCard.stories.js",
+      "sourceComponent": "src/components/MilestoneRewardCard.vue",
+      "storyUrl": "http://localhost:5173/?library=milestone-reward-card",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"milestoneRewardCardStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/milestone-rewards",
+      "componentName": "MilestoneRewards",
+      "storyPath": "src/library/stories/MilestoneRewards.stories.js",
+      "sourceComponent": "src/components/MilestoneRewards.vue",
+      "storyUrl": "http://localhost:5173/?library=milestone-rewards",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"milestoneRewardsStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/milestone-rewards-rail",
+      "componentName": "MilestoneRewardsRail",
+      "storyPath": "src/library/stories/MilestoneRewardsRail.stories.js",
+      "sourceComponent": "src/components/MilestoneRewardsRail.vue",
+      "storyUrl": "http://localhost:5173/?library=milestone-rewards-rail",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"milestoneRewardsRailStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/nav-bar",
+      "componentName": "NavBar",
+      "storyPath": "src/library/stories/NavBar.stories.js",
+      "sourceComponent": "src/components/NavBar.vue",
+      "storyUrl": "http://localhost:5173/?library=nav-bar",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"navBarStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/nav-drawer",
+      "componentName": "NavDrawer",
+      "storyPath": "src/library/stories/NavDrawer.stories.js",
+      "sourceComponent": "src/components/NavDrawer.vue",
+      "storyUrl": "http://localhost:5173/?library=nav-drawer",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"navDrawerStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/order-complete-page",
+      "componentName": "OrderCompletePage",
+      "storyPath": "src/library/stories/OrderCompletePage.stories.js",
+      "sourceComponent": "src/components/OrderCompletePage.vue",
+      "storyUrl": "http://localhost:5173/?library=order-complete-page",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"orderCompletePageStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/page-sign-in-section",
+      "componentName": "PageSignInSection",
+      "storyPath": "src/library/stories/PageSignInSection.stories.js",
+      "sourceComponent": "src/components/PageSignInSection.vue",
+      "storyUrl": "http://localhost:5173/?library=page-sign-in-section",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"pageSignInSectionStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/payment-step-body",
+      "componentName": "PaymentStepBody",
+      "storyPath": "src/library/stories/PaymentStepBody.stories.js",
+      "sourceComponent": "src/components/PaymentStepBody.vue",
+      "storyUrl": "http://localhost:5173/?library=payment-step-body",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"paymentStepBodyStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/payment-step-footer",
+      "componentName": "PaymentStepFooter",
+      "storyPath": "src/library/stories/PaymentStepFooter.stories.js",
+      "sourceComponent": "src/components/PaymentStepFooter.vue",
+      "storyUrl": "http://localhost:5173/?library=payment-step-footer",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"paymentStepFooterStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/pc-card",
+      "componentName": "PcCard",
+      "storyPath": "src/library/stories/PcCard.stories.js",
+      "sourceComponent": "src/components/PcCard.vue",
+      "storyUrl": "http://localhost:5173/?library=pc-card",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"pcCardStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/player-account",
+      "componentName": "PlayerAccount",
+      "storyPath": "src/library/stories/PlayerAccount.stories.js",
+      "sourceComponent": "src/components/PlayerAccount.vue",
+      "storyUrl": "http://localhost:5173/?library=player-account",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"playerAccountStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/player-card",
+      "componentName": "PlayerCard",
+      "storyPath": "src/library/stories/PlayerCard.stories.js",
+      "sourceComponent": "src/components/PlayerCard.vue",
+      "storyUrl": "http://localhost:5173/?library=player-card",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"playerCardStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/prod-highlighted-sku-card",
+      "componentName": "ProdHighlightedSkuCard",
+      "storyPath": "src/library/stories/ProdHighlightedSkuCard.stories.js",
+      "sourceComponent": "src/components/ProdHighlightedSkuCard.vue",
+      "storyUrl": "http://localhost:5173/?library=prod-highlighted-sku-card",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"prodHighlightedSkuCardStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/promo-code",
+      "componentName": "PromoCode",
+      "storyPath": "src/library/stories/PromoCode.stories.js",
+      "sourceComponent": "src/components/PromoCode.vue",
+      "storyUrl": "http://localhost:5173/?library=promo-code",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"promoCodeStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/purchase-sheet",
+      "componentName": "PurchaseSheet",
+      "storyPath": "src/library/stories/PurchaseSheet.stories.js",
+      "sourceComponent": "src/components/PurchaseSheet.vue",
+      "storyUrl": "http://localhost:5173/?library=purchase-sheet",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"purchaseSheetStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/region-selector-sheet",
+      "componentName": "RegionSelectorSheet",
+      "storyPath": "src/library/stories/RegionSelectorSheet.stories.js",
+      "sourceComponent": "src/components/RegionSelectorSheet.vue",
+      "storyUrl": "http://localhost:5173/?library=region-selector-sheet",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"regionSelectorSheetStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/reseller-banner",
+      "componentName": "ResellerBanner",
+      "storyPath": "src/library/stories/ResellerBanner.stories.js",
+      "sourceComponent": "src/components/ResellerBanner.vue",
+      "storyUrl": "http://localhost:5173/?library=reseller-banner",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"resellerBannerStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/sign-in-loader",
+      "componentName": "SignInLoader",
+      "storyPath": "src/library/stories/SignInLoader.stories.js",
+      "sourceComponent": "src/components/SignInLoader.vue",
+      "storyUrl": "http://localhost:5173/?library=sign-in-loader",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"signInLoaderStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/sign-in-sheet",
+      "componentName": "SignInSheet",
+      "storyPath": "src/library/stories/SignInSheet.stories.js",
+      "sourceComponent": "src/components/SignInSheet.vue",
+      "storyUrl": "http://localhost:5173/?library=sign-in-sheet",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"signInSheetStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/sku-banner",
+      "componentName": "SkuBanner",
+      "storyPath": "src/library/stories/SkuBanner.stories.js",
+      "sourceComponent": "src/components/SkuBanner.vue",
+      "storyUrl": "http://localhost:5173/?library=sku-banner",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"skuBannerStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/sku-card",
+      "componentName": "SkuCard",
+      "storyPath": "src/library/stories/SkuCard.stories.js",
+      "sourceComponent": "src/components/SkuCard.vue",
+      "storyUrl": "http://localhost:5173/?library=sku-card",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"skuCardStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/sku-image-card",
+      "componentName": "SkuImageCard",
+      "storyPath": "src/library/stories/SkuImageCard.stories.js",
+      "sourceComponent": "src/components/SkuImageCard.vue",
+      "storyUrl": "http://localhost:5173/?library=sku-image-card",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"skuImageCardStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/sku-image-list",
+      "componentName": "SkuImageList",
+      "storyPath": "src/library/stories/SkuImageList.stories.js",
+      "sourceComponent": "src/components/SkuImageList.vue",
+      "storyUrl": "http://localhost:5173/?library=sku-image-list",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"skuImageListStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/sku-list",
+      "componentName": "SkuList",
+      "storyPath": "src/library/stories/SkuList.stories.js",
+      "sourceComponent": "src/components/SkuList.vue",
+      "storyUrl": "http://localhost:5173/?library=sku-list",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"skuListStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/sku-tag",
+      "componentName": "SkuTag",
+      "storyPath": "src/library/stories/SkuTag.stories.js",
+      "sourceComponent": "src/components/SkuTag.vue",
+      "storyUrl": "http://localhost:5173/?library=sku-tag",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"skuTagStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/snackbar",
+      "componentName": "Snackbar",
+      "storyPath": "src/library/stories/Snackbar.stories.js",
+      "sourceComponent": "src/components/Snackbar.vue",
+      "storyUrl": "http://localhost:5173/?library=snackbar",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"snackbarStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/span",
+      "componentName": "Span",
+      "storyPath": "src/library/stories/Span.stories.js",
+      "sourceComponent": "src/components/Span.vue",
+      "storyUrl": "http://localhost:5173/?library=span",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"spanStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/status-tag",
+      "componentName": "StatusTag",
+      "storyPath": "src/library/stories/StatusTag.stories.js",
+      "sourceComponent": "src/components/StatusTag.vue",
+      "storyUrl": "http://localhost:5173/?library=status-tag",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"statusTagStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/step-card",
+      "componentName": "StepCard",
+      "storyPath": "src/library/stories/StepCard.stories.js",
+      "sourceComponent": "src/components/StepCard.vue",
+      "storyUrl": "http://localhost:5173/?library=step-card",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"stepCardStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/step-details",
+      "componentName": "StepDetails",
+      "storyPath": "src/library/stories/StepDetails.stories.js",
+      "sourceComponent": "src/components/StepDetails.vue",
+      "storyUrl": "http://localhost:5173/?library=step-details",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"stepDetailsStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/step-gamer-id",
+      "componentName": "StepGamerId",
+      "storyPath": "src/library/stories/StepGamerId.stories.js",
+      "sourceComponent": "src/components/StepGamerId.vue",
+      "storyUrl": "http://localhost:5173/?library=step-gamer-id",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"stepGamerIdStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/step-payment",
+      "componentName": "StepPayment",
+      "storyPath": "src/library/stories/StepPayment.stories.js",
+      "sourceComponent": "src/components/StepPayment.vue",
+      "storyUrl": "http://localhost:5173/?library=step-payment",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"stepPaymentStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/step-zip-code",
+      "componentName": "StepZipCode",
+      "storyPath": "src/library/stories/StepZipCode.stories.js",
+      "sourceComponent": "src/components/StepZipCode.vue",
+      "storyUrl": "http://localhost:5173/?library=step-zip-code",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"stepZipCodeStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/story-carousel",
+      "componentName": "StoryCarousel",
+      "storyPath": "src/library/stories/StoryCarousel.stories.js",
+      "sourceComponent": "src/components/StoryCarousel.vue",
+      "storyUrl": "http://localhost:5173/?library=story-carousel",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"storyCarouselStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/task-gift-sheet",
+      "componentName": "TaskGiftSheet",
+      "storyPath": "src/library/stories/TaskGiftSheet.stories.js",
+      "sourceComponent": "src/components/TaskGiftSheet.vue",
+      "storyUrl": "http://localhost:5173/?library=task-gift-sheet",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"taskGiftSheetStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/thumbnail",
+      "componentName": "Thumbnail",
+      "storyPath": "src/library/stories/Thumbnail.stories.js",
+      "sourceComponent": "src/components/Thumbnail.vue",
+      "storyUrl": "http://localhost:5173/?library=thumbnail",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"thumbnailStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/toggle-switch",
+      "componentName": "ToggleSwitch",
+      "storyPath": "src/library/stories/ToggleSwitch.stories.js",
+      "sourceComponent": "src/components/ToggleSwitch.vue",
+      "storyUrl": "http://localhost:5173/?library=toggle-switch",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"toggleSwitchStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/transaction-card",
+      "componentName": "TransactionCard",
+      "storyPath": "src/library/stories/TransactionCard.stories.js",
+      "sourceComponent": "src/components/TransactionCard.vue",
+      "storyUrl": "http://localhost:5173/?library=transaction-card",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"transactionCardStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/transaction-history-page",
+      "componentName": "TransactionHistoryPage",
+      "storyPath": "src/library/stories/TransactionHistoryPage.stories.js",
+      "sourceComponent": "src/components/TransactionHistoryPage.vue",
+      "storyUrl": "http://localhost:5173/?library=transaction-history-page",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"transactionHistoryPageStory\" />"
+    },
+    {
+      "figmaNodeId": "figma://node/trust-bar",
+      "componentName": "TrustBar",
+      "storyPath": "src/library/stories/TrustBar.stories.js",
+      "sourceComponent": "src/components/TrustBar.vue",
+      "storyUrl": "http://localhost:5173/?library=trust-bar",
+      "harnessImport": "import { StoryStage } from '@coda/harness-kit/vue'",
+      "exampleSnippet": "<StoryStage :story=\"trustBarStory\" />"
+    }
+  ]
+}

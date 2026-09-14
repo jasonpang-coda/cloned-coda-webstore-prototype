@@ -1,0 +1,5435 @@
+[
+  {
+    "name": "Font - System",
+    "modes": [
+      "Mobile",
+      "Desktop"
+    ],
+    "tokens": [
+      {
+        "id": "VariableID:280:1724",
+        "name": "Weight/Extra Bold",
+        "value": 800,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:280:1724",
+        "name": "Weight/Extra Bold",
+        "value": 800,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:280:1725",
+        "name": "Weight/Bold",
+        "value": 700,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:280:1725",
+        "name": "Weight/Bold",
+        "value": 700,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:280:1726",
+        "name": "Weight/Semibold",
+        "value": 600,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:280:1726",
+        "name": "Weight/Semibold",
+        "value": 600,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:280:1727",
+        "name": "Weight/Regular",
+        "value": 400,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:280:1727",
+        "name": "Weight/Regular",
+        "value": 400,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:281:1747",
+        "name": "size/header/H1",
+        "value": 48,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:281:1747",
+        "name": "size/header/H1",
+        "value": 72,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:281:1748",
+        "name": "size/header/H2",
+        "value": 32,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:281:1748",
+        "name": "size/header/H2",
+        "value": 48,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:281:1749",
+        "name": "size/header/H3",
+        "value": 24,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:281:1749",
+        "name": "size/header/H3",
+        "value": 32,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:281:1750",
+        "name": "size/header/H4",
+        "value": 16,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:281:1750",
+        "name": "size/header/H4",
+        "value": 20,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:281:1751",
+        "name": "size/header/H5",
+        "value": 15,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:281:1751",
+        "name": "size/header/H5",
+        "value": 18,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:281:1752",
+        "name": "size/body/l",
+        "value": 16,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:281:1752",
+        "name": "size/body/l",
+        "value": 18,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:281:1753",
+        "name": "size/body/main",
+        "value": 14,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:281:1753",
+        "name": "size/body/main",
+        "value": 14,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:281:1754",
+        "name": "size/body/s",
+        "value": 12,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:281:1754",
+        "name": "size/body/s",
+        "value": 14,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:281:1755",
+        "name": "size/body/xs",
+        "value": 10,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:281:1755",
+        "name": "size/body/xs",
+        "value": 12,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:281:1756",
+        "name": "size/header/H6",
+        "value": 14,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:281:1756",
+        "name": "size/header/H6",
+        "value": 16,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:2042:1636",
+        "name": "size/header/H7",
+        "value": 12,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:2042:1636",
+        "name": "size/header/H7",
+        "value": 14,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Font - System",
+        "mode": "Desktop"
+      }
+    ]
+  },
+  {
+    "name": "Colours - Seeds",
+    "modes": [
+      "Mode 1"
+    ],
+    "tokens": [
+      {
+        "id": "VariableID:455:40",
+        "name": "ref/primary",
+        "value": "#abff00",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Seeds",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:41",
+        "name": "ref/secondary",
+        "value": "#ffb900",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Seeds",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:42",
+        "name": "ref/tertiary",
+        "value": "#ff00b8",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Seeds",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:43",
+        "name": "ref/neutral",
+        "value": "#141517",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Seeds",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:44",
+        "name": "ref/status/positive",
+        "value": "#abff00",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Seeds",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:45",
+        "name": "ref/status/caution",
+        "value": "#ff9c00",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Seeds",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:46",
+        "name": "ref/status/negative",
+        "value": "#ff5e5e",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Seeds",
+        "mode": "Mode 1"
+      }
+    ]
+  },
+  {
+    "name": "Colours - Spectrums",
+    "modes": [
+      "Mode 1"
+    ],
+    "tokens": [
+      {
+        "id": "VariableID:455:48",
+        "name": "palette/primary/950",
+        "value": "#1a3200",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:49",
+        "name": "palette/primary/900",
+        "value": "#315700",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:50",
+        "name": "palette/primary/800",
+        "value": "#4c7e00",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:51",
+        "name": "palette/primary/700",
+        "value": "#6aa800",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:52",
+        "name": "palette/primary/600",
+        "value": "#89d300",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:53",
+        "name": "palette/primary/500",
+        "value": "{ref.primary}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:54",
+        "name": "palette/primary/400",
+        "value": "#b4ff46",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:55",
+        "name": "palette/primary/300",
+        "value": "#bdff68",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:56",
+        "name": "palette/primary/200",
+        "value": "#c7ff84",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:57",
+        "name": "palette/primary/100",
+        "value": "#d2ffa0",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:58",
+        "name": "palette/primary/50",
+        "value": "#deffbe",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:59",
+        "name": "palette/secondary/950",
+        "value": "#362200",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:60",
+        "name": "palette/secondary/900",
+        "value": "#5c3c00",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:61",
+        "name": "palette/secondary/800",
+        "value": "#835800",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:62",
+        "name": "palette/secondary/700",
+        "value": "#ab7700",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:63",
+        "name": "palette/secondary/600",
+        "value": "#d59700",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:64",
+        "name": "palette/secondary/500",
+        "value": "{ref.secondary}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:65",
+        "name": "palette/secondary/400",
+        "value": "#ffc242",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:66",
+        "name": "palette/secondary/300",
+        "value": "#ffcc63",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:67",
+        "name": "palette/secondary/200",
+        "value": "#ffd680",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:68",
+        "name": "palette/secondary/100",
+        "value": "#ffe09e",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:69",
+        "name": "palette/secondary/50",
+        "value": "#ffeabd",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:70",
+        "name": "palette/tertiary/950",
+        "value": "#3f002b",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:71",
+        "name": "palette/tertiary/900",
+        "value": "#650045",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:72",
+        "name": "palette/tertiary/800",
+        "value": "#8b0061",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:73",
+        "name": "palette/tertiary/700",
+        "value": "#b1007d",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:74",
+        "name": "palette/tertiary/600",
+        "value": "#d8009a",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:75",
+        "name": "palette/tertiary/500",
+        "value": "{ref.tertiary}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:76",
+        "name": "palette/tertiary/400",
+        "value": "#ff47c5",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:77",
+        "name": "palette/tertiary/300",
+        "value": "#ff74cf",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:78",
+        "name": "palette/tertiary/200",
+        "value": "#ff97d9",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:79",
+        "name": "palette/tertiary/100",
+        "value": "#ffb4e4",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:80",
+        "name": "palette/tertiary/50",
+        "value": "#ffd0f0",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:81",
+        "name": "palette/neutral/950",
+        "value": "#212429",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:82",
+        "name": "palette/neutral/900",
+        "value": "#30343d",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:83",
+        "name": "palette/neutral/800",
+        "value": "#404550",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:84",
+        "name": "palette/neutral/700",
+        "value": "#515763",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:85",
+        "name": "palette/neutral/600",
+        "value": "#636976",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:86",
+        "name": "palette/neutral/500",
+        "value": "#767c87",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:87",
+        "name": "palette/neutral/400",
+        "value": "#8b8f97",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:88",
+        "name": "palette/neutral/300",
+        "value": "#a1a3a7",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:89",
+        "name": "palette/neutral/200",
+        "value": "#b7b7b8",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:90",
+        "name": "palette/neutral/100",
+        "value": "#cbcccd",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:91",
+        "name": "palette/neutral/50",
+        "value": "#e1e1e2",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:263",
+        "name": "palette/neutral/0",
+        "value": "#f6f7f8",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:264",
+        "name": "palette/status/positive/950",
+        "value": "#1a3200",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:265",
+        "name": "palette/status/positive/900",
+        "value": "#315700",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:266",
+        "name": "palette/status/positive/800",
+        "value": "#4c7e00",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:267",
+        "name": "palette/status/positive/700",
+        "value": "#6aa800",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:268",
+        "name": "palette/status/positive/600",
+        "value": "#89d300",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:269",
+        "name": "palette/status/positive/500",
+        "value": "{ref.status.positive}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:270",
+        "name": "palette/status/positive/400",
+        "value": "#b4ff46",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:271",
+        "name": "palette/status/positive/300",
+        "value": "#bdff68",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:272",
+        "name": "palette/status/positive/200",
+        "value": "#c7ff84",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:273",
+        "name": "palette/status/positive/100",
+        "value": "#d2ffa0",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:274",
+        "name": "palette/status/positive/50",
+        "value": "#deffbe",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:276",
+        "name": "palette/status/caution/950",
+        "value": "#391d00",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:277",
+        "name": "palette/status/caution/900",
+        "value": "#5f3200",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:278",
+        "name": "palette/status/caution/800",
+        "value": "#864a00",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:279",
+        "name": "palette/status/caution/700",
+        "value": "#ad6300",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:280",
+        "name": "palette/status/caution/600",
+        "value": "#d57f00",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:281",
+        "name": "palette/status/caution/500",
+        "value": "{ref.status.caution}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:282",
+        "name": "palette/status/caution/400",
+        "value": "#ffaa40",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:283",
+        "name": "palette/status/caution/300",
+        "value": "#ffb861",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:284",
+        "name": "palette/status/caution/200",
+        "value": "#ffc57e",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:285",
+        "name": "palette/status/caution/100",
+        "value": "#ffd49c",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:286",
+        "name": "palette/status/caution/50",
+        "value": "#ffe3bd",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:287",
+        "name": "palette/status/negative/950",
+        "value": "#3e0f0f",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:288",
+        "name": "palette/status/negative/900",
+        "value": "#63191a",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:289",
+        "name": "palette/status/negative/800",
+        "value": "#8a2628",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:290",
+        "name": "palette/status/negative/700",
+        "value": "#b03739",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:291",
+        "name": "palette/status/negative/600",
+        "value": "#d74a4b",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:292",
+        "name": "palette/status/negative/500",
+        "value": "{ref.status.negative}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:293",
+        "name": "palette/status/negative/400",
+        "value": "#ff7673",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:294",
+        "name": "palette/status/negative/300",
+        "value": "#ff908b",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:295",
+        "name": "palette/status/negative/200",
+        "value": "#ffa9a3",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:296",
+        "name": "palette/status/negative/100",
+        "value": "#ffc1bb",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:455:297",
+        "name": "palette/status/negative/50",
+        "value": "#ffd7d2",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:772:4",
+        "name": "palette/neutral/1000",
+        "value": "{ref.neutral}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Spectrums",
+        "mode": "Mode 1"
+      }
+    ]
+  },
+  {
+    "name": "Colours - System",
+    "modes": [
+      "Mode 1"
+    ],
+    "tokens": [
+      {
+        "id": "VariableID:488:26",
+        "name": "sys/colour/surface/container",
+        "value": "{palette.neutral.900}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:488:27",
+        "name": "sys/colour/surface/page",
+        "value": "{palette.neutral.1000}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:29",
+        "name": "sys/colour/surface/panel",
+        "value": "{palette.neutral.800}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:30",
+        "name": "sys/colour/surface/inverse",
+        "value": "{palette.neutral.0}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:31",
+        "name": "sys/colour/positive/soft",
+        "value": "{palette.status.positive.900}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:32",
+        "name": "sys/colour/positive/subtle",
+        "value": "{palette.status.positive.950}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:33",
+        "name": "sys/colour/caution/soft",
+        "value": "{palette.status.caution.900}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:34",
+        "name": "sys/colour/caution/subtle",
+        "value": "{palette.status.caution.950}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:35",
+        "name": "sys/colour/negative/soft",
+        "value": "{palette.status.negative.900}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:36",
+        "name": "sys/colour/negative/subtle",
+        "value": "{palette.status.negative.950}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:47",
+        "name": "sys/colour/tertiary/soft",
+        "value": "{palette.tertiary.900}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:48",
+        "name": "sys/colour/tertiary/subtle",
+        "value": "{palette.tertiary.950}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:52",
+        "name": "sys/colour/positive/strong",
+        "value": "{palette.status.positive.400}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:53",
+        "name": "sys/colour/caution/strong",
+        "value": "{palette.status.caution.400}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:54",
+        "name": "sys/colour/negative/strong",
+        "value": "{palette.status.negative.400}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:55",
+        "name": "sys/colour/tertiary/strong",
+        "value": "{palette.tertiary.400}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:59",
+        "name": "sys/colour/surface/floating",
+        "value": "{palette.neutral.700}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:89",
+        "name": "sys/colour/primary/main",
+        "value": "{palette.primary.500}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:90",
+        "name": "sys/colour/primary/subtle",
+        "value": "{palette.primary.950}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:91",
+        "name": "sys/colour/primary/strong",
+        "value": "{palette.primary.400}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:92",
+        "name": "sys/colour/primary/heavy",
+        "value": "{palette.primary.300}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:98",
+        "name": "sys/colour/surface/overlay",
+        "value": "rgba(20, 21, 23, 0.6)",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:99",
+        "name": "sys/colour/primary/inverse",
+        "value": "{palette.primary.50}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:189",
+        "name": "sys/colour/secondary/soft",
+        "value": "{palette.secondary.900}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:190",
+        "name": "sys/colour/secondary/subtle",
+        "value": "{palette.secondary.950}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:191",
+        "name": "sys/colour/secondary/strong",
+        "value": "{palette.secondary.400}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:192",
+        "name": "sys/colour/secondary/inverse",
+        "value": "{palette.secondary.50}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:559:62",
+        "name": "sys/colour/positive/heavy",
+        "value": "{palette.status.positive.300}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:559:63",
+        "name": "sys/colour/caution/heavy",
+        "value": "{palette.status.caution.300}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:559:64",
+        "name": "sys/colour/secondary/heavy",
+        "value": "{palette.secondary.300}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:559:65",
+        "name": "sys/colour/positive/inverse",
+        "value": "{palette.status.positive.50}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:559:66",
+        "name": "sys/colour/caution/inverse",
+        "value": "{palette.status.caution.50}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:559:67",
+        "name": "sys/colour/negative/heavy",
+        "value": "{palette.status.negative.300}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:559:68",
+        "name": "sys/colour/negative/inverse",
+        "value": "{palette.status.negative.50}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:559:69",
+        "name": "sys/colour/tertiary/heavy",
+        "value": "{palette.tertiary.300}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:559:70",
+        "name": "sys/colour/tertiary/inverse",
+        "value": "{palette.tertiary.50}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:813:120",
+        "name": "sys/colour/secondary/main",
+        "value": "{palette.secondary.500}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:813:121",
+        "name": "sys/colour/tertiary/main",
+        "value": "{palette.tertiary.500}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:813:122",
+        "name": "sys/colour/positive/main",
+        "value": "{palette.status.positive.500}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:813:123",
+        "name": "sys/colour/caution/main",
+        "value": "{palette.status.caution.500}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:813:124",
+        "name": "sys/colour/negative/main",
+        "value": "{palette.status.negative.500}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2037:1567",
+        "name": "sys/colour/primary/soft",
+        "value": "{palette.primary.900}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2040:1568",
+        "name": "sys/effect/shadow/primary",
+        "value": "#0b1800",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2040:1570",
+        "name": "sys/effect/shadow/secondary",
+        "value": "#362200",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1571",
+        "name": "sys/effect/shadow/tertiary",
+        "value": "rgba(63, 0, 43, 0.3)",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1572",
+        "name": "sys/effect/shadow/neutral",
+        "value": "rgba(20, 21, 23, 0.3)",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1573",
+        "name": "sys/effect/shadow/positive",
+        "value": "rgba(26, 50, 0, 0.3)",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1574",
+        "name": "sys/effect/shadow/caution",
+        "value": "rgba(57, 29, 0, 0.3)",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1575",
+        "name": "sys/effect/shadow/negative",
+        "value": "rgba(62, 15, 15, 0.3)",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1576",
+        "name": "sys/effect/glow/primary",
+        "value": "#abff00",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1577",
+        "name": "sys/effect/glow/secondary",
+        "value": "#ffb900",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1578",
+        "name": "sys/effect/glow/tertiary",
+        "value": "rgba(255, 0, 184, 0.25)",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1579",
+        "name": "sys/effect/glow/neutral",
+        "value": "rgba(0, 0, 0, 0.25)",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1580",
+        "name": "sys/effect/glow/positive",
+        "value": "rgba(171, 255, 0, 0.25)",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1581",
+        "name": "sys/effect/glow/caution",
+        "value": "rgba(255, 156, 0, 0.25)",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1582",
+        "name": "sys/effect/glow/negative",
+        "value": "rgba(255, 94, 94, 0.25)",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1600",
+        "name": "sys/colour/neutral/subtle",
+        "value": "{palette.neutral.950}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1601",
+        "name": "sys/colour/neutral/soft",
+        "value": "{palette.neutral.900}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1602",
+        "name": "sys/colour/neutral/main",
+        "value": "{palette.neutral.1000}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1603",
+        "name": "sys/colour/neutral/strong",
+        "value": "{palette.neutral.800}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1604",
+        "name": "sys/colour/neutral/heavy",
+        "value": "{palette.neutral.700}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1605",
+        "name": "sys/colour/neutral/inverse",
+        "value": "{palette.neutral.0}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1647",
+        "name": "sys/colour/ink/main",
+        "value": "{palette.neutral.0}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1648",
+        "name": "sys/colour/ink/soft",
+        "value": "{palette.neutral.200}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1649",
+        "name": "sys/colour/ink/subtle",
+        "value": "{palette.neutral.400}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1650",
+        "name": "sys/colour/ink/strong",
+        "value": "{palette.neutral.0}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1651",
+        "name": "sys/colour/ink/heavy",
+        "value": "{palette.neutral.0}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2042:1652",
+        "name": "sys/colour/ink/inverse",
+        "value": "{palette.neutral.1000}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2046:1659",
+        "name": "sys/colour/fill/main/subtle",
+        "value": "rgba(0, 0, 0, 0.1)",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2046:1660",
+        "name": "sys/colour/fill/inverse/strong",
+        "value": "rgba(255, 255, 255, 0.2)",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2046:1661",
+        "name": "sys/colour/fill/main/strong",
+        "value": "rgba(0, 0, 0, 0.2)",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2046:1662",
+        "name": "sys/colour/fill/inverse/subtle",
+        "value": "rgba(255, 255, 255, 0.1)",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - System",
+        "mode": "Mode 1"
+      }
+    ]
+  },
+  {
+    "name": "Colours - Semantics",
+    "modes": [
+      "Mode 1"
+    ],
+    "tokens": [
+      {
+        "id": "VariableID:490:44",
+        "name": "bg/card/default",
+        "value": "{sys.colour.surface.container}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:65",
+        "name": "text/header/default",
+        "value": "{sys.colour.ink.heavy}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:66",
+        "name": "text/body/default",
+        "value": "{sys.colour.ink.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:67",
+        "name": "text/header/inverse",
+        "value": "{sys.colour.ink.inverse}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:68",
+        "name": "text/body/inverse",
+        "value": "{sys.colour.ink.inverse}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:69",
+        "name": "text/success/default",
+        "value": "{sys.colour.positive.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:70",
+        "name": "text/success/subtitle",
+        "value": "{sys.colour.positive.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:71",
+        "name": "text/hyperlink/default",
+        "value": "{sys.colour.primary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:73",
+        "name": "text/hyperlink/hover",
+        "value": "{sys.colour.primary.strong}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:74",
+        "name": "text/hyperlink/focused",
+        "value": "{sys.colour.primary.strong}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:75",
+        "name": "text/hyperlink/pressed",
+        "value": "{sys.colour.primary.heavy}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:76",
+        "name": "text/warning/default",
+        "value": "{sys.colour.caution.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:77",
+        "name": "text/warning/subtitle",
+        "value": "{sys.colour.caution.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:78",
+        "name": "text/error/default",
+        "value": "{sys.colour.negative.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:79",
+        "name": "text/error/subtitle",
+        "value": "{sys.colour.negative.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:86",
+        "name": "bg/action/primary",
+        "value": "{sys.colour.primary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:97",
+        "name": "text/text-on-brand",
+        "value": "{sys.colour.tertiary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:107",
+        "name": "border/input/default",
+        "value": "{sys.colour.neutral.strong}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:108",
+        "name": "border/input/hover",
+        "value": "{sys.colour.primary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:109",
+        "name": "border/input/pressed",
+        "value": "{sys.colour.primary.strong}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:490:111",
+        "name": "bg/page",
+        "value": "{sys.colour.surface.page}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:161",
+        "name": "border/input/success",
+        "value": "{sys.colour.positive.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:162",
+        "name": "border/input/warning",
+        "value": "{sys.colour.caution.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:163",
+        "name": "border/input/error",
+        "value": "{sys.colour.negative.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:164",
+        "name": "bg/input/default",
+        "value": "{sys.colour.fill.main.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:166",
+        "name": "bg/input/success",
+        "value": "{sys.colour.positive.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:167",
+        "name": "bg/input/warning",
+        "value": "{sys.colour.caution.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:168",
+        "name": "bg/input/error",
+        "value": "{sys.colour.negative.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:174",
+        "name": "border/action/default",
+        "value": "{sys.colour.primary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:188",
+        "name": "bg/info",
+        "value": "{sys.colour.fill.main.strong}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:196",
+        "name": "border/card/default",
+        "value": "#30343d",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:197",
+        "name": "border/card/selected",
+        "value": "{sys.colour.primary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:502:201",
+        "name": "border/divider",
+        "value": "{sys.colour.neutral.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:505:205",
+        "name": "bg/tag/neutral",
+        "value": "{sys.colour.fill.main.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:507:209",
+        "name": "text/body/soft",
+        "value": "{sys.colour.ink.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:507:212",
+        "name": "text/body/subtle",
+        "value": "{sys.colour.ink.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:216",
+        "name": "bg/tag/success",
+        "value": "{sys.colour.positive.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:217",
+        "name": "bg/tag/warning",
+        "value": "{sys.colour.caution.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:218",
+        "name": "bg/tag/error",
+        "value": "{sys.colour.negative.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:219",
+        "name": "bg/snackbar/neutral",
+        "value": "{sys.colour.surface.floating}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:220",
+        "name": "bg/snackbar/success",
+        "value": "{sys.colour.positive.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:221",
+        "name": "bg/snackbar/warning",
+        "value": "{sys.colour.caution.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:222",
+        "name": "bg/snackbar/error",
+        "value": "{sys.colour.negative.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:223",
+        "name": "border/snackbar/neutral",
+        "value": "{sys.colour.neutral.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:224",
+        "name": "border/snackbar/success",
+        "value": "{sys.colour.positive.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:225",
+        "name": "border/snackbar/warning",
+        "value": "{sys.colour.caution.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:226",
+        "name": "border/snackbar/error",
+        "value": "{sys.colour.negative.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:227",
+        "name": "border/tag/neutral",
+        "value": "{sys.colour.neutral.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:228",
+        "name": "border/tag/success",
+        "value": "{sys.colour.positive.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:229",
+        "name": "border/tag/warning",
+        "value": "{sys.colour.caution.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:230",
+        "name": "border/tag/error",
+        "value": "{sys.colour.negative.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:512:232",
+        "name": "text/final-price",
+        "value": "{sys.colour.primary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:523:863",
+        "name": "text/placeholder",
+        "value": "{sys.colour.ink.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:530:864",
+        "name": "border/input/focused",
+        "value": "{sys.colour.primary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:559:60",
+        "name": "border/card/highlighted",
+        "value": "{sys.colour.tertiary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:559:61",
+        "name": "bg/card/highlighted",
+        "value": "{sys.colour.tertiary.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:559:71",
+        "name": "bg/action/subtle",
+        "value": "{sys.colour.primary.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:561:84",
+        "name": "bg/navbar",
+        "value": "{sys.colour.surface.page}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:561:118",
+        "name": "border/navbar",
+        "value": "{sys.colour.surface.panel}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:575:139",
+        "name": "bg/info banner/neutral",
+        "value": "{sys.colour.neutral.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:575:140",
+        "name": "bg/info banner/success",
+        "value": "{sys.colour.positive.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:575:141",
+        "name": "bg/info banner/warning",
+        "value": "{sys.colour.caution.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:575:142",
+        "name": "bg/info banner/error",
+        "value": "{sys.colour.negative.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:575:143",
+        "name": "border/info banner/neutral",
+        "value": "{sys.colour.secondary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:575:144",
+        "name": "border/info banner/success",
+        "value": "{sys.colour.positive.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:575:145",
+        "name": "border/info banner/warning",
+        "value": "{sys.colour.caution.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:575:146",
+        "name": "border/info banner/error",
+        "value": "{sys.colour.negative.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:582:152",
+        "name": "bg/info banner/highlighted",
+        "value": "{sys.colour.secondary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:582:153",
+        "name": "border/info banner/highlighted",
+        "value": "{sys.colour.tertiary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:584:156",
+        "name": "border/tag/highlighted",
+        "value": "{sys.colour.tertiary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:609:315",
+        "name": "bg/sheet",
+        "value": "{sys.colour.surface.page}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:609:316",
+        "name": "bg/SKU card/default",
+        "value": "{sys.colour.surface.container}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:609:320",
+        "name": "bg/SKU card/success",
+        "value": "{sys.colour.positive.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:609:321",
+        "name": "bg/SKU card/warning",
+        "value": "{sys.colour.caution.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:609:322",
+        "name": "bg/SKU card/error",
+        "value": "{sys.colour.negative.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:609:323",
+        "name": "bg/SKU card/selected",
+        "value": "{sys.colour.primary.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:609:324",
+        "name": "bg/SKU card/highlighted",
+        "value": "{sys.colour.tertiary.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:611:325",
+        "name": "border/sheet",
+        "value": "{sys.colour.neutral.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:613:326",
+        "name": "bg/card/subtle",
+        "value": "{sys.colour.neutral.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:617:332",
+        "name": "border/SKU card/default",
+        "value": "{sys.colour.neutral.heavy}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:617:333",
+        "name": "border/SKU card/hover",
+        "value": "{sys.colour.primary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:617:334",
+        "name": "border/SKU card/focused",
+        "value": "{sys.colour.primary.strong}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:617:335",
+        "name": "border/SKU card/pressed",
+        "value": "{sys.colour.primary.heavy}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:617:336",
+        "name": "border/SKU card/selected",
+        "value": "{sys.colour.primary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:617:337",
+        "name": "border/SKU card/highlighted",
+        "value": "{sys.colour.tertiary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:620:341",
+        "name": "bg/card/selected",
+        "value": "{sys.colour.surface.container}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:620:343",
+        "name": "border/card/hover",
+        "value": "{sys.colour.neutral.strong}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:620:344",
+        "name": "border/card/focused",
+        "value": "{sys.colour.neutral.strong}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:620:345",
+        "name": "border/card/pressed",
+        "value": "{sys.colour.neutral.heavy}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:623:362",
+        "name": "bg/overlay",
+        "value": "{sys.colour.surface.overlay}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:632:370",
+        "name": "bg/section/default",
+        "value": "{sys.colour.neutral.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:632:371",
+        "name": "bg/section/inverse",
+        "value": "{sys.colour.neutral.inverse}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:632:372",
+        "name": "bg/section/subtle",
+        "value": "{sys.colour.neutral.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:632:373",
+        "name": "bg/section/brand",
+        "value": "{sys.colour.primary.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:693:21",
+        "name": "bg/section/success",
+        "value": "{sys.colour.positive.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:693:22",
+        "name": "bg/section/warning",
+        "value": "{sys.colour.caution.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:693:23",
+        "name": "bg/section/error",
+        "value": "{sys.colour.negative.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:693:24",
+        "name": "bg/section/highlighted",
+        "value": "{sys.colour.tertiary.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:719:8",
+        "name": "bg/SKU card price/default",
+        "value": "{sys.colour.primary.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:719:12",
+        "name": "bg/SKU card price/selected",
+        "value": "{sys.colour.primary.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:776:2",
+        "name": "border/SKU card/success",
+        "value": "{sys.colour.positive.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:776:3",
+        "name": "border/SKU card/warning",
+        "value": "{sys.colour.caution.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:776:4",
+        "name": "border/SKU card/error",
+        "value": "{sys.colour.negative.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:778:5",
+        "name": "bg/input/inverse",
+        "value": "{sys.colour.fill.inverse.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:799:27",
+        "name": "bg/indicator/neutral/default",
+        "value": "{sys.colour.neutral.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:799:28",
+        "name": "bg/indicator/neutral/subtle",
+        "value": "{sys.colour.neutral.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:799:29",
+        "name": "bg/indicator/selected/default",
+        "value": "{sys.colour.secondary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:799:30",
+        "name": "bg/indicator/selected/subtle",
+        "value": "{sys.colour.secondary.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:799:31",
+        "name": "bg/indicator/highlighted/default",
+        "value": "{sys.colour.tertiary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:799:32",
+        "name": "bg/indicator/highlighted/subtle",
+        "value": "{sys.colour.tertiary.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:799:33",
+        "name": "bg/indicator/success/default",
+        "value": "{sys.colour.positive.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:799:34",
+        "name": "bg/indicator/success/subtle",
+        "value": "{sys.colour.positive.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:799:35",
+        "name": "bg/indicator/warning/default",
+        "value": "{sys.colour.caution.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:799:36",
+        "name": "bg/indicator/warning/subtle",
+        "value": "{sys.colour.caution.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:799:37",
+        "name": "bg/indicator/error/default",
+        "value": "{sys.colour.negative.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:799:38",
+        "name": "bg/indicator/error/subtle",
+        "value": "{sys.colour.negative.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:811:8",
+        "name": "bg/indicator/prominent/default",
+        "value": "{sys.colour.negative.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:811:9",
+        "name": "bg/indicator/prominent/subtle",
+        "value": "{sys.colour.negative.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:811:18",
+        "name": "text/success/inverse",
+        "value": "{sys.colour.positive.inverse}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:811:19",
+        "name": "text/error/inverse",
+        "value": "{sys.colour.negative.inverse}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:811:20",
+        "name": "text/warning/inverse",
+        "value": "{sys.colour.caution.inverse}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2025:1283",
+        "name": "border/indicator/prominent",
+        "value": "{sys.colour.negative.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2025:1284",
+        "name": "border/indicator/neutral",
+        "value": "{sys.colour.neutral.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2025:1285",
+        "name": "border/indicator/success",
+        "value": "{sys.colour.positive.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2025:1286",
+        "name": "border/indicator/warning",
+        "value": "{sys.colour.caution.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2025:1287",
+        "name": "border/indicator/selected",
+        "value": "{sys.colour.primary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2025:1288",
+        "name": "border/indicator/highlighted",
+        "value": "{sys.colour.tertiary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2025:1289",
+        "name": "border/indicator/error",
+        "value": "{sys.colour.negative.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2025:1290",
+        "name": "border/indicator/brand",
+        "value": "{sys.colour.primary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2025:1291",
+        "name": "bg/indicator/brand/default",
+        "value": "{sys.colour.primary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2025:1292",
+        "name": "bg/indicator/brand/subtle",
+        "value": "{sys.colour.primary.soft}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2025:1299",
+        "name": "text/hyperlink/inverse",
+        "value": "{sys.colour.secondary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2043:1653",
+        "name": "bg/tag/inverse",
+        "value": "{sys.colour.fill.inverse.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2043:1654",
+        "name": "border/tag/inverse",
+        "value": "{sys.colour.neutral.inverse}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2047:1675",
+        "name": "bg/control/default",
+        "value": "{sys.colour.neutral.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2047:1679",
+        "name": "bg/control/active",
+        "value": "{bg.action.primary}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2047:1680",
+        "name": "bg/action/inverse",
+        "value": "{sys.colour.tertiary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2047:1685",
+        "name": "border/control/default",
+        "value": "{sys.colour.primary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2047:1686",
+        "name": "border/control/active",
+        "value": "{sys.colour.primary.heavy}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2052:1742",
+        "name": "bg/action/tertiary",
+        "value": "{sys.colour.fill.inverse.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2052:1743",
+        "name": "bg/action/secondary",
+        "value": "{sys.colour.secondary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2052:1747",
+        "name": "bg/action/destructive",
+        "value": "{sys.colour.negative.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2052:1806",
+        "name": "border/action/tertiary",
+        "value": "{sys.colour.tertiary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2058:245",
+        "name": "border/action/destructive",
+        "value": "{sys.colour.negative.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2058:246",
+        "name": "border/action/inverse",
+        "value": "{sys.colour.primary.inverse}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2059:191",
+        "name": "border/input/inverse",
+        "value": "{sys.colour.neutral.inverse}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2060:203",
+        "name": "bg/card/inverse",
+        "value": "{sys.colour.neutral.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2072:194",
+        "name": "bg/control/secondary",
+        "value": "{sys.colour.fill.main.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2072:195",
+        "name": "border/control/secondary",
+        "value": "{sys.colour.fill.main.strong}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2074:2",
+        "name": "bg/snackbar/highlight",
+        "value": "{sys.colour.secondary.subtle}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:2074:3",
+        "name": "border/snackbar/highlighted",
+        "value": "{sys.colour.tertiary.main}",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Colours - Semantics",
+        "mode": "Mode 1"
+      }
+    ]
+  },
+  {
+    "name": "Spacing - System",
+    "modes": [
+      "Mobile",
+      "Desktop"
+    ],
+    "tokens": [
+      {
+        "id": "VariableID:584:158",
+        "name": "sys/space/0",
+        "value": 0,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:158",
+        "name": "sys/space/0",
+        "value": 0,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:159",
+        "name": "sys/space/xxxs",
+        "value": 1,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:159",
+        "name": "sys/space/xxxs",
+        "value": 2,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:160",
+        "name": "sys/space/xxs",
+        "value": 2,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:160",
+        "name": "sys/space/xxs",
+        "value": 4,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:161",
+        "name": "sys/space/xs",
+        "value": 4,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:161",
+        "name": "sys/space/xs",
+        "value": 8,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:162",
+        "name": "sys/space/s",
+        "value": 8,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:162",
+        "name": "sys/space/s",
+        "value": 12,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:163",
+        "name": "sys/space/main",
+        "value": 12,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:163",
+        "name": "sys/space/main",
+        "value": 16,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:164",
+        "name": "sys/space/l",
+        "value": 16,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:164",
+        "name": "sys/space/l",
+        "value": 24,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:165",
+        "name": "sys/space/xl",
+        "value": 24,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:165",
+        "name": "sys/space/xl",
+        "value": 32,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:166",
+        "name": "sys/space/xxl",
+        "value": 32,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:166",
+        "name": "sys/space/xxl",
+        "value": 48,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:167",
+        "name": "sys/space/xxxl",
+        "value": 48,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:167",
+        "name": "sys/space/xxxl",
+        "value": 64,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:168",
+        "name": "sys/radius/0",
+        "value": 0,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:168",
+        "name": "sys/radius/0",
+        "value": 0,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:169",
+        "name": "sys/radius/xxs",
+        "value": 2,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:169",
+        "name": "sys/radius/xxs",
+        "value": 2,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:170",
+        "name": "sys/radius/s",
+        "value": 8,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:170",
+        "name": "sys/radius/s",
+        "value": 8,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:171",
+        "name": "sys/radius/m",
+        "value": 12,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:171",
+        "name": "sys/radius/m",
+        "value": 12,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:172",
+        "name": "sys/radius/full",
+        "value": 999,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:172",
+        "name": "sys/radius/full",
+        "value": 999,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:174",
+        "name": "sys/size-control/xxs",
+        "value": 24,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:174",
+        "name": "sys/size-control/xxs",
+        "value": 24,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:175",
+        "name": "sys/radius/xs",
+        "value": 4,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:175",
+        "name": "sys/radius/xs",
+        "value": 4,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:176",
+        "name": "sys/radius/xl",
+        "value": 24,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:176",
+        "name": "sys/radius/xl",
+        "value": 24,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:177",
+        "name": "sys/radius/xxl",
+        "value": 32,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:177",
+        "name": "sys/radius/xxl",
+        "value": 32,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:178",
+        "name": "sys/radius/l",
+        "value": 16,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:178",
+        "name": "sys/radius/l",
+        "value": 16,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:179",
+        "name": "sys/size-control/xs",
+        "value": 32,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:179",
+        "name": "sys/size-control/xs",
+        "value": 32,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:180",
+        "name": "sys/size-control/s",
+        "value": 40,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:180",
+        "name": "sys/size-control/s",
+        "value": 36,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:181",
+        "name": "sys/size-control/m",
+        "value": 48,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:181",
+        "name": "sys/size-control/m",
+        "value": 40,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:182",
+        "name": "sys/size-control/l",
+        "value": 56,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:182",
+        "name": "sys/size-control/l",
+        "value": 48,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:183",
+        "name": "sys/size-control/xl",
+        "value": 64,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:183",
+        "name": "sys/size-control/xl",
+        "value": 56,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:184",
+        "name": "sys/size-control/xxl",
+        "value": 72,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:184",
+        "name": "sys/size-control/xxl",
+        "value": 64,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:185",
+        "name": "sys/size/xxxs",
+        "value": 12,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:185",
+        "name": "sys/size/xxxs",
+        "value": 12,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:186",
+        "name": "sys/size/xxs",
+        "value": 16,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:186",
+        "name": "sys/size/xxs",
+        "value": 16,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:187",
+        "name": "sys/size/xs",
+        "value": 20,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:187",
+        "name": "sys/size/xs",
+        "value": 20,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:188",
+        "name": "sys/size/s",
+        "value": 24,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:188",
+        "name": "sys/size/s",
+        "value": 24,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:189",
+        "name": "sys/size/m",
+        "value": 32,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:189",
+        "name": "sys/size/m",
+        "value": 32,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:190",
+        "name": "sys/size/l",
+        "value": 48,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:190",
+        "name": "sys/size/l",
+        "value": 48,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:191",
+        "name": "sys/size/xl",
+        "value": 64,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:191",
+        "name": "sys/size/xl",
+        "value": 64,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:192",
+        "name": "sys/size/xxl",
+        "value": 96,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:192",
+        "name": "sys/size/xxl",
+        "value": 96,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:193",
+        "name": "sys/size/xxxl",
+        "value": 128,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:584:193",
+        "name": "sys/size/xxxl",
+        "value": 128,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:607:313",
+        "name": "sys/size-control/xxxs",
+        "value": 16,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:607:313",
+        "name": "sys/size-control/xxxs",
+        "value": 16,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:638:374",
+        "name": "sys/size/xxxxs",
+        "value": 8,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:638:374",
+        "name": "sys/size/xxxxs",
+        "value": 8,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:2042:1610",
+        "name": "sys/stroke/thin",
+        "value": 1,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:2042:1610",
+        "name": "sys/stroke/thin",
+        "value": 1,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:2042:1611",
+        "name": "sys/stroke/medium",
+        "value": 2,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:2042:1611",
+        "name": "sys/stroke/medium",
+        "value": 2,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:2042:1612",
+        "name": "sys/stroke/thick",
+        "value": 4,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:2042:1612",
+        "name": "sys/stroke/thick",
+        "value": 4,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:2042:1613",
+        "name": "sys/elevation/flat",
+        "value": 0,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:2042:1613",
+        "name": "sys/elevation/flat",
+        "value": 0,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:2042:1614",
+        "name": "sys/elevation/level 1/main",
+        "value": 2,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:2042:1614",
+        "name": "sys/elevation/level 1/main",
+        "value": 2,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:2042:1615",
+        "name": "sys/elevation/level 2/main",
+        "value": 4,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:2042:1615",
+        "name": "sys/elevation/level 2/main",
+        "value": 4,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:2042:1616",
+        "name": "sys/elevation/level 3/main",
+        "value": 8,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:2042:1616",
+        "name": "sys/elevation/level 3/main",
+        "value": 8,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:2042:1617",
+        "name": "sys/blur",
+        "value": 16,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:2042:1617",
+        "name": "sys/blur",
+        "value": 16,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:2042:1618",
+        "name": "sys/elevation/level 1/inverse",
+        "value": -2,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:2042:1618",
+        "name": "sys/elevation/level 1/inverse",
+        "value": -2,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:2042:1619",
+        "name": "sys/elevation/level 2/inverse",
+        "value": -4,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:2042:1619",
+        "name": "sys/elevation/level 2/inverse",
+        "value": -4,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:2042:1620",
+        "name": "sys/elevation/level 3/inverse",
+        "value": -8,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Mobile"
+      },
+      {
+        "id": "VariableID:2042:1620",
+        "name": "sys/elevation/level 3/inverse",
+        "value": -8,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System",
+        "mode": "Desktop"
+      }
+    ]
+  },
+  {
+    "name": "Spacing - Semantics",
+    "modes": [
+      "mode 1"
+    ],
+    "tokens": [
+      {
+        "id": "VariableID:584:222",
+        "name": "radius/container/s",
+        "value": "{sys.radius.xs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:584:239",
+        "name": "size/control/s",
+        "value": "{sys.size-control.xs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:584:240",
+        "name": "default",
+        "value": "{sys.space.s}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:584:242",
+        "name": "size/chip/height",
+        "value": "{sys.size-control.xxs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:250",
+        "name": "gap/content/tight",
+        "value": "{sys.space.xxs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:251",
+        "name": "gap/content/default",
+        "value": "{sys.space.s}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:252",
+        "name": "gap/content/loose",
+        "value": "{sys.space.main}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:253",
+        "name": "gap/content/separation",
+        "value": "{sys.space.l}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:254",
+        "name": "gap/control/m",
+        "value": "{sys.space.s}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:255",
+        "name": "gap/control/l",
+        "value": "{sys.space.main}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:256",
+        "name": "gap/control/s",
+        "value": "{sys.space.xs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:257",
+        "name": "gap/form/label",
+        "value": "{sys.space.xs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:258",
+        "name": "gap/form/row",
+        "value": "{sys.space.s}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:259",
+        "name": "gap/form/group",
+        "value": "{sys.space.l}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:260",
+        "name": "gap/grid/gutter",
+        "value": "{sys.space.s}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:261",
+        "name": "gap/grid/margin",
+        "value": "{sys.space.main}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:262",
+        "name": "gap/nav/narrow",
+        "value": "{sys.space.xs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:263",
+        "name": "gap/section/default",
+        "value": "{sys.space.main}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:264",
+        "name": "gap/section/separation",
+        "value": "{sys.space.xl}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:271",
+        "name": "xs",
+        "value": "{sys.space.xxs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:272",
+        "name": "s",
+        "value": "{sys.space.xs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:273",
+        "name": "m",
+        "value": "{sys.space.s}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:276",
+        "name": "pad/surface/xs",
+        "value": "{sys.space.xs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:277",
+        "name": "pad/surface/s",
+        "value": "{sys.space.s}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:278",
+        "name": "pad/surface/m",
+        "value": "{sys.space.main}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:279",
+        "name": "pad/surface/l",
+        "value": "{sys.space.l}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:280",
+        "name": "pad/surface/xl",
+        "value": "{sys.space.xl}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:281",
+        "name": "pad/inset/s",
+        "value": "{sys.space.s}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:282",
+        "name": "pad/inset/m",
+        "value": "{sys.space.main}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:283",
+        "name": "pad/inset/l",
+        "value": "{sys.space.l}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:293",
+        "name": "size/img/xs",
+        "value": "{sys.size.xs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:294",
+        "name": "size/img/s",
+        "value": "{sys.size.s}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:295",
+        "name": "size/img/m",
+        "value": "{sys.size.m}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:296",
+        "name": "size/img/l",
+        "value": "{sys.size.l}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:297",
+        "name": "size/img/xl",
+        "value": "{sys.size.xl}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:298",
+        "name": "size/icon/xs",
+        "value": "{sys.size.xxxs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:299",
+        "name": "size/icon/s",
+        "value": "{sys.size.xxs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:300",
+        "name": "size/icon/m",
+        "value": "{sys.size.xs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:301",
+        "name": "size/icon/l",
+        "value": "{sys.size.s}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:587:302",
+        "name": "size/icon/xl",
+        "value": "{sys.size.m}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:591:304",
+        "name": "radius/control/s",
+        "value": "{sys.radius.full}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:593:305",
+        "name": "gap/content/narrow",
+        "value": "{sys.space.xs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:593:306",
+        "name": "gap/nav/default",
+        "value": "{sys.space.s}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:593:307",
+        "name": "gap/nav/loose",
+        "value": "{sys.space.main}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:595:308",
+        "name": "pad/surface/xxs",
+        "value": "{sys.space.xxs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:597:310",
+        "name": "gap/form/col",
+        "value": "{sys.space.s}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:597:311",
+        "name": "radius/input/s",
+        "value": "{sys.radius.xs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:605:312",
+        "name": "size/input/m",
+        "value": "{sys.size-control.s}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:615:331",
+        "name": "size/img/xxl",
+        "value": "{sys.size.xxl}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:623:347",
+        "name": "size/overlay/height",
+        "value": "{sys.dimension.height.100}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:623:348",
+        "name": "size/sheet/height",
+        "value": "{sys.dimension.height.85}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:623:349",
+        "name": "size/drawer menu/height",
+        "value": "{sys.dimension.height.100}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:623:356",
+        "name": "size/sheet/width",
+        "value": "{sys.dimension.width.full width}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:623:357",
+        "name": "size/overlay/width",
+        "value": "{sys.dimension.width.full width}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:623:358",
+        "name": "size/viewport/height",
+        "value": "{sys.dimension.height.100}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:623:359",
+        "name": "size/viewport/width",
+        "value": "{sys.dimension.width.full width}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:628:366",
+        "name": "border/weight/default",
+        "value": "{sys.stroke.thin}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:628:367",
+        "name": "border/weight/selected",
+        "value": "{sys.stroke.medium}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:628:368",
+        "name": "border/weight/pressed",
+        "value": "{sys.stroke.medium}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:630:369",
+        "name": "border/weight/action",
+        "value": "{sys.stroke.medium}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:638:375",
+        "name": "size/icon/xxs",
+        "value": "{sys.size.xxxxs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:655:376",
+        "name": "radius/thumbnail/m",
+        "value": "{sys.radius.0}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:715:26",
+        "name": "l",
+        "value": "{sys.space.main}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:715:27",
+        "name": "xl",
+        "value": "{sys.space.l}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:738:8",
+        "name": "radius/input/m",
+        "value": "{sys.radius.xs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:739:9",
+        "name": "gap/grid/row/default",
+        "value": "{sys.space.main}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:739:10",
+        "name": "gap/grid/row/loose",
+        "value": "{sys.space.xl}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:739:11",
+        "name": "gap/grid/row/separation",
+        "value": "{sys.space.xxl}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:739:12",
+        "name": "gap/section/loose",
+        "value": "{sys.space.l}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:747:29",
+        "name": "radius/container/m",
+        "value": "{sys.radius.xs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:747:36",
+        "name": "radius/thumbnail/s",
+        "value": "{sys.radius.0}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:753:58",
+        "name": "radius/thumbnail/xs",
+        "value": "{sys.radius.0}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:2049:1690",
+        "name": "radius/control/full",
+        "value": "{sys.radius.full}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:2049:1691",
+        "name": "radius/badge/s",
+        "value": "{sys.radius.full}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:2064:182",
+        "name": "gap/control/xs",
+        "value": "{sys.space.xxs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:2064:183",
+        "name": "radius/control/xs",
+        "value": "{sys.radius.full}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:2066:184",
+        "name": "gap/control/xl",
+        "value": "{sys.space.l}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:2066:185",
+        "name": "radius/badge/full",
+        "value": "{sys.radius.full}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:2066:186",
+        "name": "radius/container/l",
+        "value": "{sys.radius.xs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:2066:187",
+        "name": "radius/container/xs",
+        "value": "{sys.radius.xs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:2066:188",
+        "name": "size/control/m",
+        "value": "{sys.size-control.s}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:2066:189",
+        "name": "size/control/xs",
+        "value": "{sys.size-control.xxs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      },
+      {
+        "id": "VariableID:2066:190",
+        "name": "size/control/xxs",
+        "value": "{sys.size-control.xxxs}",
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - Semantics",
+        "mode": "mode 1"
+      }
+    ]
+  },
+  {
+    "name": "Spacing - System (Desktop Dimensions)",
+    "modes": [
+      "Desktop"
+    ],
+    "tokens": [
+      {
+        "id": "VariableID:584:198",
+        "name": "sys/dimension/width/full width",
+        "value": 1280,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Desktop Dimensions)",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:199",
+        "name": "sys/dimension/width/12 col",
+        "value": 1248,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Desktop Dimensions)",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:200",
+        "name": "sys/dimension/width/11 col",
+        "value": 1143,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Desktop Dimensions)",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:201",
+        "name": "sys/dimension/width/10 col",
+        "value": 1038,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Desktop Dimensions)",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:202",
+        "name": "sys/dimension/width/9 col",
+        "value": 933,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Desktop Dimensions)",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:203",
+        "name": "sys/dimension/width/8 col",
+        "value": 828,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Desktop Dimensions)",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:204",
+        "name": "sys/dimension/width/7 col",
+        "value": 723,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Desktop Dimensions)",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:205",
+        "name": "sys/dimension/width/6 col",
+        "value": 618,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Desktop Dimensions)",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:206",
+        "name": "sys/dimension/width/5 col",
+        "value": 513,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Desktop Dimensions)",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:207",
+        "name": "sys/dimension/width/4 col",
+        "value": 408,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Desktop Dimensions)",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:208",
+        "name": "sys/dimension/width/3 col",
+        "value": 303,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Desktop Dimensions)",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:209",
+        "name": "sys/dimension/width/2 col",
+        "value": 198,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Desktop Dimensions)",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:584:210",
+        "name": "sys/dimension/width/1 col",
+        "value": 93,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Desktop Dimensions)",
+        "mode": "Desktop"
+      },
+      {
+        "id": "VariableID:623:360",
+        "name": "sys/dimension/height/100",
+        "value": 720,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Desktop Dimensions)",
+        "mode": "Desktop"
+      }
+    ]
+  },
+  {
+    "name": "Spacing - System (Mobile Dimensions)",
+    "modes": [
+      "Mode 1"
+    ],
+    "tokens": [
+      {
+        "id": "VariableID:584:212",
+        "name": "sys/dimension/width/full width",
+        "value": 360,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Mobile Dimensions)",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:584:213",
+        "name": "sys/dimension/width/8 col",
+        "value": 336,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Mobile Dimensions)",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:584:214",
+        "name": "sys/dimension/width/7 col",
+        "value": 293,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Mobile Dimensions)",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:584:215",
+        "name": "sys/dimension/width/6 col",
+        "value": 250,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Mobile Dimensions)",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:584:216",
+        "name": "sys/dimension/width/5 col",
+        "value": 207,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Mobile Dimensions)",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:584:217",
+        "name": "sys/dimension/width/4 col",
+        "value": 164,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Mobile Dimensions)",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:584:218",
+        "name": "sys/dimension/width/3 col",
+        "value": 121,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Mobile Dimensions)",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:584:219",
+        "name": "sys/dimension/width/2 col",
+        "value": 78,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Mobile Dimensions)",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:584:220",
+        "name": "sys/dimension/width/1 col",
+        "value": 35,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Mobile Dimensions)",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:613:327",
+        "name": "sys/dimension/height/100",
+        "value": 800,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Mobile Dimensions)",
+        "mode": "Mode 1"
+      },
+      {
+        "id": "VariableID:613:328",
+        "name": "sys/dimension/height/85",
+        "value": 680,
+        "type": "FLOAT",
+        "description": "",
+        "collection": "Spacing - System (Mobile Dimensions)",
+        "mode": "Mode 1"
+      }
+    ]
+  },
+  {
+    "name": "Styles",
+    "modes": [
+      "Default"
+    ],
+    "tokens": [
+      {
+        "id": "S:05d2b1e9de4cbc11c0c9dcde1f30229a23faa6f8,",
+        "name": "states/hover",
+        "value": "#3f002b",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:1aba21f1b85c614ce8a88f2841921e284e89172c,",
+        "name": "states/pressed",
+        "value": "#3f002b",
+        "type": "COLOR",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:ec545888cfd965c3d858e8df89237ff330a24aa8,",
+        "name": "heading/display hero",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "ExtraBold",
+          "fontSize": 48,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 120.00000476837158
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:43c9a5f619ab3f417020fcdb6b90e61981bd7b5f,",
+        "name": "heading/page title",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "Bold",
+          "fontSize": 32,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 120.00000476837158
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:3f34394660de64aab22592a869c185368a89476b,",
+        "name": "heading/section",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "Bold",
+          "fontSize": 24,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 120.00000476837158
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:d6defb209a7eb4d8b37e4163dca70ad83034d9e3,",
+        "name": "heading/modal",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "Bold",
+          "fontSize": 16,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 120.00000476837158
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:d5ac326cc8ac0fac6d942590c2cf3986bbb7a1fb,",
+        "name": "heading/card",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "SemiBold",
+          "fontSize": 15,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 120.00000476837158
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:4c5d14a4195bb1753f49e6d5f02e6739fbd03ba7,",
+        "name": "heading/banner",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "Bold",
+          "fontSize": 14,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 120.00000476837158
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:b5ff2e87e2f68edebd6cfbd9d4a3bd700c811363,",
+        "name": "heading/final price",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "ExtraBold",
+          "fontSize": 14,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 120.00000476837158
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:a2f2ebcffb56766900ff592ce000af56e3552520,",
+        "name": "heading/SKU title",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "SemiBold",
+          "fontSize": 16,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 120.00000476837158
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:cc1d9d3a294d042652c6f137673cf956a5bd9de8,",
+        "name": "heading/subtitle",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "SemiBold",
+          "fontSize": 12,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 120.00000476837158
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:a015add3f1e2b76f9349874188c74bf5c9abe775,",
+        "name": "paragraph/lead",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "Regular",
+          "fontSize": 16,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:d687253c6025f1b8da9843867ceb40a91c966910,",
+        "name": "paragraph/regular",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "Regular",
+          "fontSize": 14,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:4c5d3649794b5b7f6bddd9349916277d79b20ea2,",
+        "name": "paragraph/small",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "Regular",
+          "fontSize": 12,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:cffa91ebcafd2b3c492b54fa571f7ba00327cbb2,",
+        "name": "paragraph/strikethrough",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "Regular",
+          "fontSize": 14,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:9c6fcddf157400e6f229ebc74a3e623638d9954e,",
+        "name": "utility/action/regular",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "SemiBold",
+          "fontSize": 14,
+          "lineHeight": {
+            "unit": "AUTO"
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:7504ed970a298857bdb05b361131bb0d9ce29a10,",
+        "name": "utility/action/uppercase",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "SemiBold",
+          "fontSize": 14,
+          "lineHeight": {
+            "unit": "AUTO"
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:e1bdd2754dec1a1d265c4115543ae9f0a51fc951,",
+        "name": "utility/action/strikethrough",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "SemiBold",
+          "fontSize": 14,
+          "lineHeight": {
+            "unit": "AUTO"
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:71de3e6b927de6281671503c8accb29b11fef869,",
+        "name": "utility/default/regular",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "Regular",
+          "fontSize": 12,
+          "lineHeight": {
+            "unit": "AUTO"
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:c8199af6d171d7b8b4d6bfe70fca15b4dabe00ed,",
+        "name": "utility/default/strikethrough",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "Regular",
+          "fontSize": 12,
+          "lineHeight": {
+            "unit": "AUTO"
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:364a96718e171618926646dd80c87300e5f767d9,",
+        "name": "utility/default/uppercase",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "SemiBold",
+          "fontSize": 12,
+          "lineHeight": {
+            "unit": "AUTO"
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:beddb4e603f76bbebdd6a10b30565b408a6629e5,",
+        "name": "utility/label/regular",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "SemiBold",
+          "fontSize": 12,
+          "lineHeight": {
+            "unit": "AUTO"
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:6054584ae3167b6176462c7338d9d418ca8d180d,",
+        "name": "utility/label/uppercase",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "SemiBold",
+          "fontSize": 12,
+          "lineHeight": {
+            "unit": "AUTO"
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:ba53402b51b42e71cbb946be427352add76ac68b,",
+        "name": "utility/label/tall",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "SemiBold",
+          "fontSize": 12,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 20
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:41ab897e121e7264c7f37ff7b8fc090fd7174f0e,",
+        "name": "utility/label/strikethrough",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "SemiBold",
+          "fontSize": 12,
+          "lineHeight": {
+            "unit": "AUTO"
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:2855153556f7f3de8a47262026bfdcd2b780beb8,",
+        "name": "utility/micro/regular",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "Regular",
+          "fontSize": 10,
+          "lineHeight": {
+            "unit": "AUTO"
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:da32dc262f006dde95346770858aa8e48b1865d5,",
+        "name": "utility/micro/bold",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "ExtraBold",
+          "fontSize": 10,
+          "lineHeight": {
+            "unit": "AUTO"
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:c6eb65e5bd088e7dc324533afba19ad866118918,",
+        "name": "utility/micro/uppercase",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "SemiBold",
+          "fontSize": 10,
+          "lineHeight": {
+            "unit": "AUTO"
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      },
+      {
+        "id": "S:c1c42b2dd518104fd2ae124b6617a394181071ab,",
+        "name": "utility/micro/strikethrough",
+        "value": {
+          "fontFamily": "Saira Condensed",
+          "fontWeight": "Regular",
+          "fontSize": 10,
+          "lineHeight": {
+            "unit": "AUTO"
+          }
+        },
+        "type": "TYPOGRAPHY",
+        "description": "",
+        "collection": "Styles",
+        "mode": "Default"
+      }
+    ]
+  }
+]

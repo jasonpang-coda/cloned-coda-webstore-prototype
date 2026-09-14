@@ -1,0 +1,24 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Profit Factor">
+  <defs>
+    <linearGradient id="pfGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3e3b0"/>
+      <stop offset="0.45" stop-color="#d1a974"/>
+      <stop offset="1" stop-color="#8a6e3f"/>
+    </linearGradient>
+  </defs>
+  <circle cx="24" cy="24" r="22" fill="#1a140c" stroke="url(#pfGold)" stroke-width="2.5"/>
+  <circle cx="24" cy="24" r="17" fill="none" stroke="#6d5d3f" stroke-width="1"/>
+  <!-- 8-point Imperial sunburst -->
+  <g fill="url(#pfGold)">
+    <path d="M24 7 L26 22 L24 24 L22 22 Z"/>
+    <path d="M24 41 L26 26 L24 24 L22 26 Z"/>
+    <path d="M7 24 L22 22 L24 24 L22 26 Z"/>
+    <path d="M41 24 L26 22 L24 24 L26 26 Z"/>
+    <path d="M12 12 L23 23 L24 24 L23 25 Z" opacity="0.85"/>
+    <path d="M36 36 L25 25 L24 24 L25 23 Z" opacity="0.85"/>
+    <path d="M36 12 L25 23 L24 24 L23 23 Z" opacity="0.85"/>
+    <path d="M12 36 L23 25 L24 24 L25 25 Z" opacity="0.85"/>
+  </g>
+  <circle cx="24" cy="24" r="3.4" fill="#a1e967"/>
+  <circle cx="24" cy="24" r="3.4" fill="none" stroke="url(#pfGold)" stroke-width="1.2"/>
+</svg>
